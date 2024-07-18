@@ -8,7 +8,10 @@
                 <div v-if="successMessage" class="alert alert-success">
                     {{ successMessage }}
                 </div>
-                <form @submit.prevent="addSlider">
+                <div v-if="errorMessage" class="alert alert-danger">
+                    {{ errorMessage }}
+                </div>
+                <form @submit.prevent="addSlider" enctype="multipart/form-data">
                     <div class="row g-3">
                         <div class="col-md-6">
                             <label for="slider_text_top" class="form-label">Slider Text (Top):</label>
@@ -16,14 +19,7 @@
                                 placeholder="" required>
                         </div>
                         <div class="col-md-6">
-                            <label for="slider_text_middle" class="form-label">Slider Text (Middle):</label>
-                            <input type="text" class="form-control" id="slider_text_middle" v-model="homeSlider.slider_text_middle"
-                                placeholder="" required>
-                        </div>
-                    </div>
-                    <div class="row g-3">                        
-                        <div class="col-md-12">
-                            <label for="slider_text_last" class="form-label">Slider Text (Last):</label>
+                            <label for="slider_text_last" class="form-label">Slider Text (Bottom):</label>
                             <input type="text" class="form-control" id="slider_text_last" v-model="homeSlider.slider_text_last"
                                 placeholder="">
                         </div>
@@ -31,8 +27,10 @@
                     <div class="row g-3">
                         <div class="col-md-6">
                             <label for="image" class="form-label">Slider Image:</label>
-                            <input type="file" class="form-control" id="image"
-                                placeholder="" required>
+                            <input type="file" class="form-control" id="image" @change="handleFileUpload" required>
+                            <div v-if="validationErrors.image" class="text-danger">
+                                {{ validationErrors.image[0] }}
+                            </div>
                         </div> 
                         <div class="col-md-6">
                             <label for="alt_tag" class="form-label">Image Alt Tag:</label>
@@ -60,8 +58,11 @@
                         </div> 
                         <div class="col-md-6">
                             <label for="status" class="form-label">Slider Status:</label>
-                            <input type="text" class="form-control" id="status" v-model="homeSlider.status"
-                                placeholder="" required>
+                            <select class="form-control" id="status" v-model="homeSlider.status" required>
+                                <option value="" disabled>Select Status</option>
+                                <option value="show">Show</option>
+                                <option value="hide">Hide</option>
+                            </select>
                         </div>
                     </div>
                     <div class="mt-4 text-center">
@@ -83,36 +84,60 @@
     background: linear-gradient(45deg, #007bff, #6610f2);
 }
 </style>
-<script>
+
+<script setup>
 import { reactive, ref } from 'vue';
 import { useRouter } from 'vue-router';
+import axios from 'axios';
 
-export default {
-    setup() {
-        const homeSlider = reactive({ slider_text_top: '', slider_text_middle: '', slider_text_last: '', image: '', alt_tag: '', button_text: '', button_url: '', position: '', status: '' });
-        const router = useRouter();
-        const successMessage = ref('');
+const homeSlider = reactive({
+    slider_text_top: '',
+    slider_text_last: '',
+    image: null,  // Changed to null
+    alt_tag: '',
+    button_text: '',
+    button_url: '',
+    position: '',
+    status: ''
+});
+const router = useRouter();
+const successMessage = ref('');
+const errorMessage = ref('');
+const validationErrors = reactive({});
 
-        const addSlider = async () => {
-            const uri = 'http://localhost:8000/home-sliders';
-            try {
-                await axios.post(uri, homeSlider);
-                successMessage.value = 'Slider added successfully!';
-                setTimeout(() => {
-                    successMessage.value = '';
-                    router.push({ name: 'Index' });
-                }, 1000);
-            } catch (error) {
-                console.error('Error adding slider:', error);
-                // Handle the error appropriately
-            }
-        };
+const handleFileUpload = (event) => {
+    homeSlider.image = event.target.files[0];
+};
 
-        return {
-            homeSlider,
-            addSlider,
-            successMessage
-        };
+const addSlider = async () => {
+    const uri = 'http://localhost:8000/home-sliders';
+    const formData = new FormData();
+
+    for (const key in homeSlider) {
+        formData.append(key, homeSlider[key]);
     }
-}
+
+    try {
+        await axios.post(uri, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        });
+        successMessage.value = 'Slider added successfully!';
+        errorMessage.value = '';
+        setTimeout(() => {
+            successMessage.value = '';
+            router.push({ name: 'Index' });
+        }, 1000);
+    } catch (error) {
+        console.error('Error adding slider:', error);
+        // Handle the error appropriately
+        if (error.response && error.response.data) {
+            errorMessage.value = error.response.data.message || 'Error adding slider.';
+            Object.assign(validationErrors, error.response.data.errors || {});
+        } else {
+            errorMessage.value = 'An unexpected error occurred.';
+        }
+    }
+};
 </script>

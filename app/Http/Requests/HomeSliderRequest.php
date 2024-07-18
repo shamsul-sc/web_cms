@@ -23,13 +23,13 @@ class HomeSliderRequest extends FormRequest
     {
         return [
             'slider_text_top'   => 'required|string|max:100',
-            'slider_text_middle'=> 'required|string|max:100',
-            'slider_text_last'  => 'string|max:255|nullable',
-            'image'             => 'required',
-            'alt_tag'           => 'required',
-            'button_text'       => 'string|nullable',
-            'button_url'        => 'required_with:button_text',
-            'position'          => 'integer|digits_between:1,99'
+            'slider_text_last'  => 'nullable|string|max:255',
+            'image'             => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:1024',
+            'alt_tag'           => 'nullable|required_with:image|string|max:255',
+            'button_text'       => 'nullable|string',
+            'button_url'        => 'nullable|url|required_with:button_text',
+            'position'          => 'required|integer|digits_between:1,99',
+            'status'            => 'required|in:show,hide',
         ];
     }
 }
