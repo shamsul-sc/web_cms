@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\HomeSliderRequest;
 use App\Models\HomeSlider;
+use Illuminate\Support\Facades\Storage;
 
 class HomeSliderController extends Controller
 {
@@ -30,40 +31,31 @@ class HomeSliderController extends Controller
      */
     public function store(HomeSliderRequest $request)
     {
-        // HomeSlider::create($request->validated());
+        try {
+            $validated = $request->validated();
 
-        $validated = $request->validated();
+            $homeSlider = new HomeSlider();        
+            $homeSlider->slider_text_top    = $validated['slider_text_top'];
+            $homeSlider->slider_text_last   = $validated['slider_text_last'];
+            $homeSlider->alt_tag            = $validated['alt_tag'];
+            $homeSlider->button_text        = $validated['button_text'];
+            $homeSlider->button_url         = $validated['button_url'];
+            $homeSlider->position           = $validated['position'];        
+            $homeSlider->status             = $validated['status'];
 
-        $homeSlider = new HomeSlider();
-        
-        $homeSlider->slider_text_top    = $validated['slider_text_top'];
-        $homeSlider->slider_text_middle = $validated['slider_text_middle'];
-        $homeSlider->slider_text_last   = $validated['slider_text_last'];
-        $homeSlider->image              = $validated['image'];
-        $homeSlider->alt_tag            = $validated['alt_tag'];
-        $homeSlider->button_text        = $validated['button_text'];
-        $homeSlider->position           = $validated['position'];
-        
-        
-        // // get
-        // $homeSlider->slider_text_top = $request->get('slider_text_top');
-        // // input
-        // $homeSlider->slider_text_middle = $request->input('slider_text_middle');
-        // // without input or get
-        // $homeSlider->slider_text_last   = $request->slider_text_last;
-        // $homeSlider->image              = $request->input('image');
-        // $homeSlider->alt_tag            = $request->input('alt_tag');
-        // $homeSlider->button_text        = $request->input('button_text');
-        // $homeSlider->button_url         = $request->input('button_url');
-        // $homeSlider->position           = $request->input('position');
-        
-        $homeSlider->status             = $request->input('status');
-        $homeSlider->save();
+            // Handle file upload
+            if ($request->hasFile('image')) {
+                $file = $request->file('image');
+                // $path = $file->store('slider_images', 'public');
+                $homeSlider->image = $path;
+            }
 
-        // Additional logic or redirection after successful data storage
-        // return redirect()->back()->with('success', 'Comment stored successfully!');
-
-        return response()->json('Successfully added.');
+            $homeSlider->save();
+            return response()->json('Successfully added.');
+        } catch (\Exception $e) {
+            \Log::error('Error adding slider: ' . $e->getMessage());
+            return response()->json(['error' => 'Failed to add slider.'], 500);
+        }
     }
 
     /**
@@ -79,8 +71,13 @@ class HomeSliderController extends Controller
      */
     public function edit(string $id)
     {
-        $homeSlider = HomeSlider::find($id);        
-        return response()->json($homeSlider);
+        $homeSlider = HomeSlider::find($id);
+        if ($homeSlider) {
+            $homeSlider->image_url = asset('storage/slider_images/' . $homeSlider->image);
+            return response()->json($homeSlider);
+        } else {
+            return response()->json(['message' => 'Slider not found'], 404);
+        }
     }
 
     /**
@@ -88,20 +85,33 @@ class HomeSliderController extends Controller
      */
     public function update(HomeSliderRequest $request, string $id)
     {
-        $validated = $request->validated();
-        
         $homeSlider = HomeSlider::find($id);
 
+        if (!$homeSlider) {
+            return response()->json(['message' => 'Slider not found'], 404);
+        }
+
+        $validated = $request->validated();
+
         $homeSlider->slider_text_top    = $validated['slider_text_top'];
-        $homeSlider->slider_text_middle = $validated['slider_text_middle'];
         $homeSlider->slider_text_last   = $validated['slider_text_last'];
-        $homeSlider->image              = $validated['image'];
         $homeSlider->alt_tag            = $validated['alt_tag'];
         $homeSlider->button_text        = $validated['button_text'];
-        $homeSlider->position           = $validated['position'];
+        $homeSlider->button_url        = $validated['button_url'];
+        $homeSlider->position           = $validated['position'];        
+        $homeSlider->status             = $validated['status'];
 
-        $homeSlider->status             = $request->input('status');
+        // Handle image upload
+        if ($request->hasFile('image')) {
+            // Delete the old image
+            if ($homeSlider->image) {
+                Storage::delete('public/slider_images/' . $homeSlider->image);
+            }
 
+            // Store the new image
+            $path = $request->file('image')->store('public/slider_images');
+            $homeSlider->image = basename($path);
+        }
         $homeSlider->save();
 
         return response()->json('Successfully Updated');
