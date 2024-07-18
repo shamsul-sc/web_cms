@@ -39,14 +39,14 @@ class HomeSliderController extends Controller
             $homeSlider->slider_text_last   = $validated['slider_text_last'];
             $homeSlider->alt_tag            = $validated['alt_tag'];
             $homeSlider->button_text        = $validated['button_text'];
-            $homeSlider->button_url        = $validated['button_url'];
+            $homeSlider->button_url         = $validated['button_url'];
             $homeSlider->position           = $validated['position'];        
             $homeSlider->status             = $validated['status'];
 
             // Handle file upload
             if ($request->hasFile('image')) {
                 $file = $request->file('image');
-                $path = $file->store('slider_images', 'public');
+                // $path = $file->store('slider_images', 'public');
                 $homeSlider->image = $path;
             }
 
