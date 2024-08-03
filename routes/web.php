@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\HomeController;
-
 use App\Http\Controllers\HomeSliderController;
 use Illuminate\Support\Facades\Route;
 
@@ -11,7 +11,6 @@ Route::get('/about', function()
 {
    return View::make('pages.about');
 });
-
 
 Route::resource('home-sliders', HomeSliderController::class);
 
@@ -27,4 +26,6 @@ Route::prefix('dashboard')->group(function () {
         return view('dashboard');
     })->where(['all' => '.*']);
 });
+
+Route::get('locale/{lang}',[LocaleController::class,'setLocale']);
 

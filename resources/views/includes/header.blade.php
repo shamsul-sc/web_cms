@@ -35,11 +35,11 @@
                             <ul class="nav">
                                 <li class="nav-item dropdown nav-item-left-border d-none d-sm-block nav-item-left-border-remove nav-item-left-border-md-show">
                                     <a class="nav-link" href="#" role="button" id="dropdownLanguage" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <img src="img/blank.gif" class="flag flag-us mx-1" alt="English"> English <i class="fas fa-angle-down mx-1"></i>
+                                        <img src="img/blank.gif" class="flag {{ __('locale.flag') }} mx-1" alt="{{ __('locale.alt') }}"> {{ __('locale.locale') }} <i class="fas fa-angle-down mx-1"></i>
                                     </a>												
                                     <div class="dropdown-menu" aria-labelledby="dropdownLanguage" style="">
-                                        <a class="dropdown-item" href="#" data-lang="English" data-flag="flag-us"><img src="img/blank.gif" class="flag flag-us custom-font-size-1" alt="English"> English</a>
-                                        <a class="dropdown-item" href="#" data-lang="বাংলা" data-flag="flag-bd"><img src="img/blank.gif" class="flag flag-bd custom-font-size-1" alt="Bangla"> বাংলা</a>
+                                        <a class="dropdown-item" href="locale/en" data-lang="English" data-flag="flag-us"><img src="img/blank.gif" class="flag flag-us custom-font-size-1" alt="English"> English</a>
+                                        <a class="dropdown-item" href="locale/bn" data-lang="বাংলা" data-flag="flag-bd"><img src="img/blank.gif" class="flag flag-bd custom-font-size-1" alt="Bangla"> বাংলা</a>
                                     </div>
                                 </li>
                             </ul>
@@ -67,10 +67,10 @@
                                 <nav class="collapse">
                                     <ul class="nav nav-pills" id="mainNav">
                                         <li>
-                                            <a href="{{ url('/') }}" class="nav-link active">Home</a>
+                                            <a href="{{ url('/') }}" class="nav-link active">{{ __('custom_lang.home') }}</a>
                                         </li>
                                         <li>
-                                            <a href="/about" class="nav-link">About</a>
+                                            <a href="/about" class="nav-link">{{ __('custom_lang.about') }}</a>
                                         </li>
                                         <li class="dropdown">
                                             <a href="demo-law-firm-2-practice-areas.html" class="dropdown-item dropdown-toggle">Committees</a>

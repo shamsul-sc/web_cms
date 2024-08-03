@@ -70,7 +70,7 @@
                     </div>
                 </form>
                 <div class="mt-4 d-flex justify-content-start">
-                    <router-link :to="{ name: 'Index' }" class="btn btn-outline-secondary">
+                    <router-link :to="{ name: 'home-sliders.index' }" class="btn btn-outline-secondary">
                         <i class="bi bi-arrow-left-circle"></i> Return to Slider List
                     </router-link>
                 </div>
@@ -143,7 +143,7 @@ const updateHomeSlider = async () => {
         errorMessage.value = '';
         setTimeout(() => {
             successMessage.value = '';
-            router.push({ name: 'Index' });
+            router.push({ name: 'home-sliders.index' });
         }, 1000);
     } catch (error) {
         console.error('Error updating slider:', error);
