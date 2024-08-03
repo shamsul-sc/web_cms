@@ -6,7 +6,7 @@
                 {{ successMessage }}
             </div>
             <div class="d-flex justify-content-end mb-4">
-                <router-link :to="{ name: 'Create' }" class="btn btn-success"><i class="bi bi-plus-lg"></i> Create New
+                <router-link :to="{ name: 'home-sliders.create' }" class="btn btn-success"><i class="bi bi-plus-lg"></i> Create New
                     Slider</router-link>
             </div>
 
@@ -32,7 +32,7 @@
                             <td>{{ homeSlider.button_text }}</td>
                             <td>{{ homeSlider.status }}</td>
                             <td>
-                                <router-link :to="{ name: 'Edit', params: { id: homeSlider.id } }"
+                                <router-link :to="{ name: 'home-sliders.edit', params: { id: homeSlider.id } }"
                                     class="btn btn-sm btn-outline-primary me-2"><i class="bi bi-pencil-square me-1"></i>
                                     Edit</router-link>
                                 <button class="btn btn-sm btn-outline-danger" @click="openDeleteConfirmation(homeSlider.id)"> <i
@@ -137,7 +137,7 @@ const deleteHomeSlider = async (id) => {
         successMessage.value = 'Slider deleted successfully!';
         setTimeout(() => {
             successMessage.value = '';
-            router.push({ name: 'Index' });
+            router.push({ name: 'home-sliders.index' });
         }, 1000);
     } catch (error) {
         console.error('Error deleting slider:', error);

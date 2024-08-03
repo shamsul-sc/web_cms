@@ -3,26 +3,23 @@ import { createApp } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
 import App from './App.vue';
-import Create from './components/cms/home/home_sliders/Create.vue';
-import Index from './components/cms/home/home_sliders/Index.vue';
-import Edit from './components/cms/home/home_sliders/Edit.vue';
 
 // Define your routes
 const routes = [
     {
-        name: 'Create',
-        path: '/create',
-        component: Create
+        name: 'home-sliders.create',
+        path: '/home-sliders/create',
+        component: () => import('./components/cms/home/home_sliders/Create.vue')
     },
     {
-        name: 'Index',
-        path: '/',
-        component: Index
+        name: 'home-sliders.index',
+        path: '/home-sliders',
+        component: () => import('./components/cms/home/home_sliders/Index.vue')
     },
     {
-        name: 'Edit',
-        path: '/edit/:id',
-        component: Edit
+        name: 'home-sliders.edit',
+        path: '/home-sliders/edit/:id',
+        component: () => import('./components/cms/home/home_sliders/Edit.vue')
     }
 ];
 
