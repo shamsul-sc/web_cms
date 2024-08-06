@@ -1,0 +1,7 @@
+[data-layout=horizontal] .container-fluid, [data-layout=horizontal] .layout-width {
+    max-width: 100%;
+}
+
+.required {
+	color: red;
+}

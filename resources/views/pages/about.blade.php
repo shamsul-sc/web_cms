@@ -137,17 +137,17 @@
                 <div class="col-lg-4 appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="200">
                     <a class="d-inline-block img-thumbnail img-thumbnail-no-borders img-thumbnail-hover-icon rounded-0" href="img/demos/law-firm-2/generic/generic-2.jpg">
                         <img src="img/demos/law-firm-2/generic/generic-2.jpg" class="img-fluid rounded-0" alt="" />
-                    </a>		
+                    </a>
                 </div>
                 <div class="col-lg-4 appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="400">
                     <a class="d-inline-block img-thumbnail img-thumbnail-no-borders img-thumbnail-hover-icon rounded-0" href="img/demos/law-firm-2/generic/generic-3.jpg">
                         <img src="img/demos/law-firm-2/generic/generic-3.jpg" class="img-fluid rounded-0" alt="" />
-                    </a>		
+                    </a>
                 </div>
                 <div class="col-lg-4 appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="600">
                     <a class="d-inline-block img-thumbnail img-thumbnail-no-borders img-thumbnail-hover-icon rounded-0" href="img/demos/law-firm-2/generic/generic-4.jpg">
                         <img src="img/demos/law-firm-2/generic/generic-4.jpg" class="img-fluid rounded-0" alt="" />
-                    </a>		
+                    </a>
                 </div>
             </div>
         </div>
@@ -165,23 +165,23 @@
             <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet libero id nisi euismod, sed porta est consectetur. Vestibulum auctor felis eget orci semper vestibulum. Pellentesque ultricies nibh gravida, accumsan libero luctus, molestie nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet libero id nisi euismod, sed porta est consectetur. Vestibulum auctor felis eget orci semper vestibulum. Pellentesque ultricies nibh gravida.</p>
             <ul class="list list-icons list-icons-style-2 list-icons-lg d-flex justify-content-between py-4 mt-2 mb-4">
                 <li class="font-weight-semibold text-color-dark mb-0">
-                    <i class="fas fa-check text-color-dark border-color-grey-1 top-7 text-3"></i> 
+                    <i class="fas fa-check text-color-dark border-color-grey-1 top-7 text-3"></i>
                     Pellentesque ultricies nibh
                 </li>
                 <li class="font-weight-semibold text-color-dark mb-0">
-                    <i class="fas fa-check text-color-dark border-color-grey-1 top-7 text-3"></i> 
+                    <i class="fas fa-check text-color-dark border-color-grey-1 top-7 text-3"></i>
                     Ultricies nibh pellen
                 </li>
                 <li class="font-weight-semibold text-color-dark mb-0">
-                    <i class="fas fa-check text-color-dark border-color-grey-1 top-7 text-3"></i> 
+                    <i class="fas fa-check text-color-dark border-color-grey-1 top-7 text-3"></i>
                     Ultricies nibh
                 </li>
                 <li class="font-weight-semibold text-color-dark mb-0">
-                    <i class="fas fa-check text-color-dark border-color-grey-1 top-7 text-3"></i> 
+                    <i class="fas fa-check text-color-dark border-color-grey-1 top-7 text-3"></i>
                     Ultricies nibh pellen
                 </li>
                 <li class="font-weight-semibold text-color-dark mb-0">
-                    <i class="fas fa-check text-color-dark border-color-grey-1 top-7 text-3"></i> 
+                    <i class="fas fa-check text-color-dark border-color-grey-1 top-7 text-3"></i>
                     Pellentesque ultricies nibh
                 </li>
             </ul>
@@ -246,3 +246,4 @@
 </div>
 
 @stop
+

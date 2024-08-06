@@ -1,0 +1,55 @@
+.outlined-input-container {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+.outlined-input-container input,
+.outlined-input-container textarea,
+.outlined-input-container select {
+    border: 1px solid #d8d8d8 !important; /* Dark grey border color */
+    border-radius: 4px;
+    padding: 0.75rem;
+    box-sizing: border-box;
+    width: 100%;
+    outline: none; /* Remove default outline */
+    transition: border-width 0.2s ease-in-out;
+    background-color: #fff; /* Ensure background is white */
+}
+.outlined-input-container label {
+    position: absolute;
+    font-size: .8125rem;
+    top: 0.75rem;; /* Adjust label top position */
+    left: 1rem; /* Adjust label left position */
+    background: #fff; /* Background color for label */
+    padding: 0 0.3rem;
+    color: #6c757d; /* Default label text color */
+    transition: all 0.2s ease;
+    pointer-events: none; /* Prevent label from interfering with input */
+}
+.outlined-input-container input:focus,
+.outlined-input-container textarea:focus,
+.outlined-input-container select:focus {
+    border-width: 1px; /* Keep the border width consistent */
+    border-color: #343a40 !important; /* Ensure border color remains dark grey */
+}
+.outlined-input-container input:focus + label,
+.outlined-input-container textarea:focus + label,
+.outlined-input-container select:focus + label,
+.outlined-input-container input:not(:placeholder-shown) + label,
+.outlined-input-container textarea:not(:placeholder-shown) + label,
+.outlined-input-container select:not(:placeholder-shown) + label {
+    top: -0.50rem; /* Adjust label top position when focused or filled */
+    left: 1rem; /* Adjust label left margin when focused or filled */
+    font-size: .8125rem; /* Adjust label font size when focused or filled */
+    color: #343a40; /* Keep label color dark grey */
+    background: #fff; /* Ensure label background matches input background */
+}
+input:focus, textarea:focus, select:focus, button:focus {
+    box-shadow: none !important;
+}
+.char-count {
+    position: absolute;
+    bottom: 0.1rem;
+    right: 1rem;
+    font-size: 0.8rem;
+    color: #6c757d;
+}
