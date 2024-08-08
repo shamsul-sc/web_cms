@@ -10,6 +10,9 @@
 <!-- Demo -->
 <script src="{{ asset('js/demos/demo-law-firm-2.js') }}"></script>
 
+<!-- Material Design -->
+<script src="{{ asset('js/material-forms.js') }}"></script>
+
 <!-- Theme Custom -->
 <script src="{{ asset('js/custom.js') }}"></script>
 
@@ -22,7 +25,7 @@
         //     e.preventDefault();
         //     var selectedLang = $(this).data('lang');
         //     var selectedFlag = $(this).data('flag');
-            
+
         //     // Update the flag and text
         //     $('#dropdownLanguage img').attr('class', 'flag ' + selectedFlag);
         //     $('#dropdownLanguage img').attr('alt', selectedLang);

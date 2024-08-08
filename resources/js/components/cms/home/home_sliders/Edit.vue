@@ -1,78 +1,88 @@
 <template>
-    <div class="container mt-5">
-        <div class="card shadow-lg">
-            <div class="card-header bg-gradient-primary text-white">
-                <h1 class="card-title text-center">Edit a slider</h1>
-            </div>
-            <div class="card-body">
-                <div v-if="successMessage" class="alert alert-success">
-                    {{ successMessage }}
-                </div>
-                <div v-if="errorMessage" class="alert alert-danger">
-                    {{ errorMessage }}
-                </div>
-                <form @submit.prevent="updateHomeSlider" enctype="multipart/form-data">
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <label for="slider_text_top" class="form-label">Slider Text (Top):</label>
-                            <input type="text" class="form-control" id="slider_text_top" v-model="homeSlider.slider_text_top"
-                                placeholder="" required>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="slider_text_last" class="form-label">Slider Text (Last):</label>
-                            <input type="text" class="form-control" id="slider_text_last" v-model="homeSlider.slider_text_last"
-                                placeholder="">
-                        </div>
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card shadow-lg">
+                <div class="card-header align-items-center d-flex bg-gradient-primary">
+                    <h4 class="card-title mb-0 flex-grow-1 text-white">Edit slider</h4>
+                    <div class="flex-shrink-0">
+                        <router-link :to="{ name: 'home-sliders.index' }" class="btn btn-info btn-sm">
+                            <i class="ri-arrow-go-back-line"></i> Go to list
+                        </router-link>
                     </div>
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <label for="image" class="form-label">Slider Image:</label>
-                            <input type="file" class="form-control" id="image" @change="handleFileUpload" required>
-                            <div v-if="homeSlider.image_url">
-                                <img :src="homeSlider.image_url" alt="Slider Image" class="img-thumbnail mt-2" style="max-height: 150px;">
+                </div><!-- end card header -->
+                <div class="card-body">
+                    <div v-if="successMessage" class="alert alert-success">
+                        {{ successMessage }}
+                    </div>
+                    <div v-if="errorMessage" class="alert alert-danger">
+                        {{ errorMessage }}
+                    </div>
+                    <form @submit.prevent="updateHomeSlider" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-md-6 outlined-input-container">
+                                <input type="text" id="slider_text_top" v-model="homeSlider.slider_text_top" class="form-control" v-charcount maxlength="100" placeholder=" " required>
+                                <label for="slider_text_top" class="form-label">Slider Text (Top) <span class="required">*</span></label>
                             </div>
-                            <div v-if="validationErrors.image" class="text-danger">
-                                {{ validationErrors.image[0] }}
+                            <div class="col-md-6 outlined-input-container">
+                                <input type="text" id="slider_text_last" v-model="homeSlider.slider_text_last" class="form-control" v-charcount maxlength="255" placeholder=" " required>
+                                <label for="slider_text_last" class="form-label">Slider Text (Last) <span class="required">*</span></label>
                             </div>
-                        </div> 
-                        <div class="col-md-6">
-                            <label for="alt_tag" class="form-label">Image Alt Tag:</label>
-                            <input type="text" class="form-control" id="alt_tag" v-model="homeSlider.alt_tag"
-                                placeholder="" required>
                         </div>
-                    </div>
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <label for="button_text" class="form-label">Slider Button Text:</label>
-                            <input type="text" class="form-control" id="button_text" v-model="homeSlider.button_text"
-                                placeholder="" required>
-                        </div> 
-                        <div class="col-md-6">
-                            <label for="button_url" class="form-label">Slider Button Url:</label>
-                            <input type="text" class="form-control" id="button_url" v-model="homeSlider.button_url"
-                                placeholder="" required>
+                        <div class="row">
+                            <div class="col-md-6 outlined-input-container">
+                                <input type="text" id="slider_text_top_bn" v-model="homeSlider.slider_text_top_bn" class="form-control" v-charcount maxlength="100" placeholder=" " required>
+                                <label for="slider_text_top_bn">Slider Text (Top-Bangla)</label>
+                            </div>
+                            <div class="col-md-6 outlined-input-container">
+                                <input type="text" id="slider_text_last_bn" v-model="homeSlider.slider_text_last_bn" class="form-control" v-charcount maxlength="255" placeholder=" " required>
+                                <label for="slider_text_last_bn">Slider Text (Bottom-Bangla)</label>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <label for="position" class="form-label">Slider Position:</label>
-                            <input type="number" class="form-control" id="position" v-model="homeSlider.position"
-                                placeholder="" required>
-                        </div> 
-                        <div class="col-md-6">
-                            <label for="status" class="form-label">Slider Status:</label>
-                            <input type="text" class="form-control" id="status" v-model="homeSlider.status"
-                                placeholder="" required>
+                        <div class="row">
+                            <div class="col-md-6 outlined-input-container">
+                                <label for="image">Image File <span class="required">*</span></label>
+                                <input type="file" class="form-control" id="image" @change="handleFileUpload">
+                                <div v-if="homeSlider.image_url">
+                                    <img :src="homeSlider.image_url" alt="Slider Image" class="img-thumbnail mt-2" style="max-height: 150px;">
+                                </div>
+                                <div v-if="validationErrors.image" class="text-danger">
+                                    {{ validationErrors.image[0] }}
+                                </div>
+                            </div>
+                            <div class="col-md-6 outlined-input-container">
+                                <input type="text" class="form-control" id="alt_tag" v-model="homeSlider.alt_tag" placeholder="" required>
+                                <label for="alt_tag">Image Alt Tag</label>
+                            </div>
                         </div>
-                    </div>
-                    <div class="text-center mt-4">
-                        <button type="submit" class="btn btn-primary px-4">Update Slider</button>
-                    </div>
-                </form>
-                <div class="mt-4 d-flex justify-content-start">
-                    <router-link :to="{ name: 'home-sliders.index' }" class="btn btn-outline-secondary">
-                        <i class="bi bi-arrow-left-circle"></i> Return to Slider List
-                    </router-link>
+                        <div class="row">
+                            <div class="col-md-3 outlined-input-container">
+                                <input type="text" class="form-control" id="button_text" v-model="homeSlider.button_text" placeholder="" required>
+                                <label for="button_text">Slider Button Text</label>
+                            </div>
+                            <div class="col-md-3 outlined-input-container">
+                                <input type="text" class="form-control" id="button_text_bn" v-model="homeSlider.button_text_bn"
+                                    placeholder="">
+                                <label for="button_text_bn">Button Text (Bangla)</label>
+                            </div>
+                            <div class="col-md-6 outlined-input-container">
+                                <input type="text" class="form-control" id="button_url" v-model="homeSlider.button_url" placeholder="" required>
+                                <label for="button_url">Slider Button Url</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 outlined-input-container">
+                                <input type="number" class="form-control" id="position" v-model="homeSlider.position" placeholder="" required>
+                                <label for="position">Slider Position</label>
+                            </div>
+                            <div class="col-md-6 outlined-input-container">
+                                <input type="text" class="form-control" v-model="homeSlider.status" placeholder="" required>
+                                <label for="status">Slider Status</label>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary px-4">Update Slider</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -92,11 +102,14 @@ import axios from 'axios';
 
 const homeSlider = reactive({
     slider_text_top: '',
+    slider_text_top_bn: '',
     slider_text_last: '',
-    image: null,
+    slider_text_last_bn: '',
+    image: 'null',
     image_url: '', // Added for displaying current image
     alt_tag: '',
     button_text: '',
+    button_text_bn: '',
     button_url: '',
     position: '',
     status: ''
@@ -157,5 +170,5 @@ const updateHomeSlider = async () => {
 };
 
 onMounted(getHomeSlider);
- 
+
 </script>

@@ -2,7 +2,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>@yield('title')</title>	
+<title>@yield('title')</title>
 
 <meta name="keywords" content="WebSite Template" />
 <meta name="description" content="">
@@ -32,6 +32,9 @@
 <link rel="stylesheet" href="{{ asset('css/theme-elements.css') }}">
 <link rel="stylesheet" href="{{ asset('css/theme-blog.css') }}">
 <link rel="stylesheet" href="{{ asset('css/theme-shop.css') }}">
+
+<!-- Material Design -->
+<link rel="stylesheet" href="{{ asset('css/material-forms.css') }}">
 
 <!-- Demo CSS -->
 <link rel="stylesheet" href="{{ asset('css/demos/demo-law-firm-2.css') }}">

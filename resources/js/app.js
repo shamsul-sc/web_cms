@@ -1,4 +1,5 @@
 import './bootstrap';
+import directives from "./directives";
 import { createApp } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
@@ -30,6 +31,7 @@ const router = createRouter({
 });
 
 // Create and mount the root instance
-createApp(App)
-    .use(router)
+const app = createApp(App)
+app.directive('charcount', directives.charcount)
+app.use(router)
     .mount('#app');
