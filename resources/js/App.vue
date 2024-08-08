@@ -1,38 +1,21 @@
 <template>
-    <div>
-        <!-- <Navbar/> -->
-
-        <!-- Main Content -->
-        <div class="main-content">
-            <div class="page-content">
-                <div class="container-fluid">
-                    <router-view></router-view>
-                </div>
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+                <router-view></router-view>
             </div>
-
-            <Footer/>
         </div>
 
-
-        <!-- <div class="container my-4">
-            <router-view></router-view>
-        </div> -->
-
+        <Footer/>
     </div>
 </template>
 
 <script>
-import Navbar from './components/includes/Navbar.vue';
-import Footer from './components/includes/Footer.vue';
-
-export default {
-    components: { Navbar, Footer },
-
-    mounted() {
-        console.log('ok')
-        initializeCharCount();
+    import Footer from './components/includes/Footer.vue';
+    export default {
+        components: { Footer },
     }
-}
 </script>
 
 <style>

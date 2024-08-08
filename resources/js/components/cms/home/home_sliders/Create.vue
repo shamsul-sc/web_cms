@@ -1,7 +1,7 @@
 <template>
     <div class="row">
         <div class="col-xl-12">
-            <div class="card">
+            <div class="card shadow-lg">
                 <div class="card-header align-items-center d-flex bg-gradient-primary">
                     <h4 class="card-title mb-0 flex-grow-1 text-white">Add a slider</h4>
                     <div class="flex-shrink-0">
@@ -21,32 +21,22 @@
                     <form @submit.prevent="addSlider" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-md-6 outlined-input-container">
-                                <input type="text" id="slider_text_top" v-model="homeSlider.slider_text_top" class="form-control dynamic-char-count" maxlength="100" placeholder=" " required>
+                                <input type="text" id="slider_text_top" v-model="homeSlider.slider_text_top" class="form-control" v-charcount maxlength="100" placeholder=" " required>
                                 <label for="slider_text_top">Slider Text (Top) <span class="required">*</span></label>
 
                             </div>
                             <div class="col-md-6 outlined-input-container">
-                                <input type="text" id="slider_text_last" v-model="homeSlider.slider_text_last" class="form-control dynamic-char-count" maxlength="255" placeholder=" " required>
+                                <input type="text" id="slider_text_last" v-model="homeSlider.slider_text_last" class="form-control" v-charcount maxlength="255" placeholder=" " required>
                                 <label for="slider_text_last">Slider Text (Bottom) <span class="required">*</span></label>
                             </div>
-                            <!-- <div class="col-md-6">
-                                <label for="slider_text_top" class="form-label">Slider Text (Top):</label>
-                                <input type="text" class="form-control" id="slider_text_top" v-model="homeSlider.slider_text_top"
-                                    placeholder="" required>
-                            </div> -->
-                            <!-- <div class="col-md-6">
-                                <label for="slider_text_last" class="form-label">Slider Text (Bottom):</label>
-                                <input type="text" class="form-control" id="slider_text_last" v-model="homeSlider.slider_text_last"
-                                    placeholder="">
-                            </div> -->
                         </div>
                         <div class="row">
                             <div class="col-md-6 outlined-input-container">
-                                <input type="text" id="slider_text_top_bn" v-model="homeSlider.slider_text_top_bn" class="form-control dynamic-char-count" maxlength="100" placeholder=" " required>
+                                <input type="text" id="slider_text_top_bn" v-model="homeSlider.slider_text_top_bn" class="form-control" v-charcount maxlength="100" placeholder=" " required>
                                 <label for="slider_text_top_bn">Slider Text (Top-Bangla)</label>
                             </div>
                             <div class="col-md-6 outlined-input-container">
-                                <input type="text" id="slider_text_last_bn" v-model="homeSlider.slider_text_last_bn" class="form-control dynamic-char-count" maxlength="255" placeholder=" " required>
+                                <input type="text" id="slider_text_last_bn" v-model="homeSlider.slider_text_last_bn" class="form-control" v-charcount maxlength="255" placeholder=" " required>
                                 <label for="slider_text_last_bn">Slider Text (Bottom-Bangla)</label>
                             </div>
                         </div>
@@ -119,10 +109,13 @@ import axios from 'axios';
 
 const homeSlider = reactive({
     slider_text_top: '',
+    slider_text_top_bn: '',
     slider_text_last: '',
+    slider_text_last_bn: '',
     image: null,  // Changed to null
     alt_tag: '',
     button_text: '',
+    button_text_bn: '',
     button_url: '',
     position: '',
     status: ''
