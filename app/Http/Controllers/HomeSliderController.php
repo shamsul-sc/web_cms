@@ -34,20 +34,27 @@ class HomeSliderController extends Controller
         try {
             $validated = $request->validated();
 
-            $homeSlider = new HomeSlider();        
+            $homeSlider = new HomeSlider();
             $homeSlider->slider_text_top    = $validated['slider_text_top'];
+            $homeSlider->slider_text_top_bn = $validated['slider_text_top_bn'];
             $homeSlider->slider_text_last   = $validated['slider_text_last'];
+            $homeSlider->slider_text_last_bn= $validated['slider_text_last_bn'];
             $homeSlider->alt_tag            = $validated['alt_tag'];
             $homeSlider->button_text        = $validated['button_text'];
+            $homeSlider->button_text_bn     = $validated['button_text_bn'];
             $homeSlider->button_url         = $validated['button_url'];
-            $homeSlider->position           = $validated['position'];        
+            $homeSlider->position           = $validated['position'];
             $homeSlider->status             = $validated['status'];
 
             // Handle file upload
             if ($request->hasFile('image')) {
                 $file = $request->file('image');
-                // $path = $file->store('slider_images', 'public');
-                $homeSlider->image = $path;
+                $path = $file->store('slider_images', 'public');
+                $homeSlider->image = basename($path);
+
+                 // Store the new image
+                // $path = $request->file('image')->store('public/slider_images');
+                // $homeSlider->image = basename($path);
             }
 
             $homeSlider->save();
@@ -94,11 +101,14 @@ class HomeSliderController extends Controller
         $validated = $request->validated();
 
         $homeSlider->slider_text_top    = $validated['slider_text_top'];
-        $homeSlider->slider_text_last   = $validated['slider_text_last'];
-        $homeSlider->alt_tag            = $validated['alt_tag'];
-        $homeSlider->button_text        = $validated['button_text'];
-        $homeSlider->button_url        = $validated['button_url'];
-        $homeSlider->position           = $validated['position'];        
+        $homeSlider->slider_text_top_bn = $validated['slider_text_top_bn'];
+        $homeSlider->slider_text_last   = $validated['slider_text_last'] ?? $homeSlider->slider_text_last;
+        $homeSlider->slider_text_last_bn= $validated['slider_text_last_bn'] ?? $homeSlider->slider_text_last_bn;
+        $homeSlider->alt_tag            = $validated['alt_tag'] ?? $homeSlider->alt_tag;
+        $homeSlider->button_text        = $validated['button_text'] ?? $homeSlider->button_text;
+        $homeSlider->button_text_bn     = $validated['button_text_bn'] ?? $homeSlider->button_text_bn;
+        $homeSlider->button_url         = $validated['button_url'] ?? $homeSlider->button_url;
+        $homeSlider->position           = $validated['position'];
         $homeSlider->status             = $validated['status'];
 
         // Handle image upload
@@ -122,7 +132,25 @@ class HomeSliderController extends Controller
      */
     public function destroy(string $id)
     {
+        // Find the HomeSlider by ID
         $homeSlider = HomeSlider::find($id);
+
+        if (!$homeSlider) {
+            return response()->json(['message' => 'Slider not found'], 404);
+        }
+
+        // Check if the image exists and delete it
+        if ($homeSlider->image) {
+            // Construct the full path to the image
+            $imagePath = 'public/slider_images/' . $homeSlider->image;
+
+            // Delete the image file from storage
+            if (Storage::exists($imagePath)) {
+                Storage::delete($imagePath);
+            }
+        }
+
+        // Delete the HomeSlider record from the database
         $homeSlider->delete();
 
         return response()->json('Successfully Deleted');

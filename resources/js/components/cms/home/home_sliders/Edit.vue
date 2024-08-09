@@ -30,11 +30,11 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6 outlined-input-container">
-                                <input type="text" id="slider_text_top_bn" v-model="homeSlider.slider_text_top_bn" class="form-control" v-charcount maxlength="100" placeholder=" " required>
+                                <input type="text" id="slider_text_top_bn" v-model="homeSlider.slider_text_top_bn" class="form-control" v-charcount maxlength="100" placeholder=" ">
                                 <label for="slider_text_top_bn">Slider Text (Top-Bangla)</label>
                             </div>
                             <div class="col-md-6 outlined-input-container">
-                                <input type="text" id="slider_text_last_bn" v-model="homeSlider.slider_text_last_bn" class="form-control" v-charcount maxlength="255" placeholder=" " required>
+                                <input type="text" id="slider_text_last_bn" v-model="homeSlider.slider_text_last_bn" class="form-control" v-charcount maxlength="255" placeholder=" ">
                                 <label for="slider_text_last_bn">Slider Text (Bottom-Bangla)</label>
                             </div>
                         </div>
@@ -121,8 +121,12 @@ const errorMessage = ref('');
 const validationErrors = reactive({});
 
 const handleFileUpload = (event) => {
-    homeSlider.image = event.target.files[0];
-    homeSlider.image_url = URL.createObjectURL(homeSlider.image);
+    if (event.target.files.length > 0) {
+        homeSlider.image = event.target.files[0];
+        homeSlider.image_url = URL.createObjectURL(homeSlider.image);
+    } else {
+        homeSlider.image = null; // Ensure no empty string is sent
+    }
 };
 
 const getHomeSlider = async () => {
