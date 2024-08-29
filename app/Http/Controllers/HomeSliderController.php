@@ -51,10 +51,6 @@ class HomeSliderController extends Controller
                 $file = $request->file('image');
                 $path = $file->store('slider_images', 'public');
                 $homeSlider->image = basename($path);
-
-                 // Store the new image
-                // $path = $request->file('image')->store('public/slider_images');
-                // $homeSlider->image = basename($path);
             }
 
             $homeSlider->save();
