@@ -32,11 +32,11 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6 outlined-input-container">
-                                <input type="text" id="slider_text_top_bn" v-model="homeSlider.slider_text_top_bn" class="form-control" v-charcount maxlength="100" placeholder=" " required>
+                                <input type="text" id="slider_text_top_bn" v-model="homeSlider.slider_text_top_bn" class="form-control" v-charcount maxlength="100" placeholder=" ">
                                 <label for="slider_text_top_bn">Slider Text (Top-Bangla)</label>
                             </div>
                             <div class="col-md-6 outlined-input-container">
-                                <input type="text" id="slider_text_last_bn" v-model="homeSlider.slider_text_last_bn" class="form-control" v-charcount maxlength="255" placeholder=" " required>
+                                <input type="text" id="slider_text_last_bn" v-model="homeSlider.slider_text_last_bn" class="form-control" v-charcount maxlength="255" placeholder=" ">
                                 <label for="slider_text_last_bn">Slider Text (Bottom-Bangla)</label>
                             </div>
                         </div>
