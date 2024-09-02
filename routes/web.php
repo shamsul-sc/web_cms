@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\LocaleController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\HomeSliderController;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LocaleController;
+use App\Http\Controllers\HomeSliderController;
+use App\Http\Controllers\ProjectCategoryController;
 
 Route::get('/', [HomeController::class, 'index']);
 
@@ -18,6 +20,13 @@ Route::get('/home-sliders/{id}/edit', [HomeSliderController::class, 'edit'])->na
 Route::post('/home-sliders/{id}', [HomeSliderController::class, 'update'])->name('home-sliders.update');
 
 Route::prefix('dashboard')->group(function () {
+
+
+    Route::get('/category_list', [ProjectCategoryController::class, 'category_list'])->name('dashboard.category_list');
+    Route::get('/category_data_table', [ProjectCategoryController::class, 'getDataTable'])->name('dashboard.category_data_table');
+    Route::get('/category_add', [ProjectCategoryController::class, 'category_add'])->name('dashboard.category_add');
+    Route::post('/category_insert', [ProjectCategoryController::class, 'category_insert'])->name('dashboard.category_insert');
+
     Route::get('/', function(){
         return view('dashboard');
     });
@@ -25,7 +34,9 @@ Route::prefix('dashboard')->group(function () {
     Route::get('{all}', function(){
         return view('dashboard');
     })->where(['all' => '.*']);
+
 });
 
-Route::get('locale/{lang}',[LocaleController::class,'setLocale']);
 
+
+Route::get('locale/{lang}',[LocaleController::class,'setLocale']);

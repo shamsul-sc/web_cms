@@ -1,26 +1,30 @@
 <!-- default.blade.php -->
- 
+
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-        @include('includes.head')
-	</head>
-	<body>
 
-		<div class="body">
-            @include('includes.header')
+<head>
+    @include('includes.head')
+</head>
 
-			<div role="main" class="main">
-                
-                @yield('content')
+<body>
 
-			</div> 
+    <div class="body">
+        @include('includes.header')
 
-            @include('includes.footer')
+        <div role="main" class="main">
 
-		</div>
+            @yield('content')
 
-        @include('includes.script')
+        </div>
 
-	</body>
+        @include('includes.footer')
+
+    </div>
+
+    @include('includes.script')
+
+
+</body>
+
 </html>
