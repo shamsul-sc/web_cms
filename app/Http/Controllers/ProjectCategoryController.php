@@ -27,9 +27,7 @@ class ProjectCategoryController extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'category_name' => ['required'],
-            'category_name_bn' => ['required'],
-            'serial' => ['required', 'integer'],
+            
             'slug' => 'required|unique:project_categories',
         ]);
 
@@ -38,6 +36,7 @@ class ProjectCategoryController extends Controller
 
             return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Validation error!');
         }
+
         $category_model = new ProjectCategory();
         $category_model->category_name    = trim($request->category_name);
         $category_model->category_name_bn = trim($request->category_name_bn);
@@ -50,24 +49,47 @@ class ProjectCategoryController extends Controller
 
     }
 
-    public function show(ProjectCategory $projectCategory)
+    public function category_edit($cat_id)
     {
-        //
+        
+        $data['getRecord'] = ProjectCategory::getSingle($cat_id);
+        return view('dashboard.project_category.category_edit',$data );
+    }
+    public function category_update(Request $request, $cat_id)
+    {
+        $validator = Validator::make($request->all(), [
+    
+            'slug' => 'required|unique:project_categories,slug',$cat_id,
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Validation error!');
+        }
+        
+        $category_model = ProjectCategory::getSingle($cat_id);;
+        
+        if (!$category_model) {
+            return redirect()->back()->with('error', 'Category not found!');
+        }
+        
+        $category_model->category_name    = trim($request->category_name);
+        $category_model->category_name_bn = trim($request->category_name_bn);
+        $category_model->slug             = trim($request->slug);
+        $category_model->serial           = (int)trim($request->serial);
+        $category_model->status           = trim($request->status);
+        $category_model->save();
+   
+
+        return redirect('dashboard/category_list')->with('success', 'Category Updated!');
     }
 
-    public function edit(ProjectCategory $projectCategory)
+    public function category_deleted($cat_id)
     {
-        //
-    }
+        $category = ProjectCategory::getSingle($cat_id);
+        $category->is_delete = 1;
+        $category->save();
 
-
-    public function update(Request $request, ProjectCategory $projectCategory)
-    {
-        //
+        return redirect()->back()->with('success', "Category successfully deleted.");
     }
-
-    public function destroy(ProjectCategory $projectCategory)
-    {
-        //
+        
     }
-}

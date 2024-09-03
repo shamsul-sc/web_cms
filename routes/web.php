@@ -23,9 +23,15 @@ Route::prefix('dashboard')->group(function () {
 
 
     Route::get('/category_list', [ProjectCategoryController::class, 'category_list'])->name('dashboard.category_list');
-    Route::get('/category_data_table', [ProjectCategoryController::class, 'getDataTable'])->name('dashboard.category_data_table');
+    // Route::get('/category_data_table', [ProjectCategoryController::class, 'getDataTable'])->name('dashboard.category_data_table');
     Route::get('/category_add', [ProjectCategoryController::class, 'category_add'])->name('dashboard.category_add');
-    Route::post('/category_insert', [ProjectCategoryController::class, 'category_insert'])->name('dashboard.category_insert');
+    Route::post('/category_add', [ProjectCategoryController::class, 'category_insert'])->name('dashboard.category_insert');
+    Route::get('/category_edit/{cat_id?}', [ProjectCategoryController::class, 'category_edit'])->name('dashboard.category_edit');
+    Route::post('category_update/{cat_id?}', [ProjectCategoryController::class, 'category_update'])->name('dashboard.category_update');
+    Route::get('category_deleted/{cat_id?}', [ProjectCategoryController::class, 'category_deleted'])->name('dashboard.category_deleted');
+    
+
+
 
     Route::get('/', function(){
         return view('dashboard');

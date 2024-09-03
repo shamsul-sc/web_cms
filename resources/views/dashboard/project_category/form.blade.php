@@ -3,13 +3,15 @@
 
     <div class="row">
         <div class="col-md-12 outlined-input-container">
-            <input type="text" id="category_name" class="form-control" name="category_name" placeholder="">
+            <input type="text" id="category_name" class="form-control" name="category_name"
+                value="{{ old('category_name') }}" placeholder="">
             <label for="slider_text_last_bn">Category Name<span class="required">*</span></label>
         </div>
     </div>
     <div class="row">
         <div class="col-md-12 outlined-input-container">
-            <input type="text" id="category_name_bn" name="category_name_bn" class="form-control" placeholder="">
+            <input type="text" id="category_name_bn" name="category_name_bn" value="{{ old('category_name_bn') }}"
+                class="form-control" placeholder="">
             <label for="slider_text_last_bn">Category Name BN<span class="required">*</span></label>
         </div>
 

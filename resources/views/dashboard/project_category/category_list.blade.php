@@ -53,8 +53,10 @@
                         </td>
                         <td>{{ date('d-m-Y', strtotime($category->created_at)) }}</td>
                         <td>
-                            <a href="{{ route('dashboard.category_add') }}" class="btn btn-sm btn-info ">Edit</a>
-                            <a href="{{ route('dashboard.category_add') }}" class="btn btn-sm btn-danger">Delete</a>
+                            <a href="{{ route('dashboard.category_edit',$category->cat_id ) }}"
+                                class="btn btn-sm btn-info ">Edit</a>
+                            <a href="{{ route('dashboard.category_deleted',$category->cat_id) }}"
+                                class="btn btn-sm btn-danger">Delete</a>
                         </td>
 
 
@@ -69,41 +71,3 @@
 </div>
 
 @endsection
-
-{{-- @push('scripts')
-<script>
-    $(document).ready(function() {
-        $('#sortable').DataTable({
-            processing: true,
-            serverSide: true,
-            ajax: '{{ url('dashboard.category_list') }}',
-            columns: [
-                { data: 'cat_id', name: 'cat_id' },
-                { data: 'category_name', name: 'category_name' },
-                { data: 'category_name_bn', name: 'category_name_bn' },
-                { data: 'slug', name: 'slug' },
-                { data: 'serial', name: 'serial' },
-                { data: 'status', name: 'status' },
-                { data: 'created_at', name: 'created_at' },
-                { data: 'action', name: 'action', orderable: false, searchable: false }
-            ]
-        });
-    });
-</script>
-@endpush --}}
-@push('script')
-<script type="text/javascript">
-    $(document).ready(function() {
-        var table = $('#datatable').DataTable({
-            language: {
-                paginate: {
-                    next: "{{ __('general.next') }}",
-                    previous: "{{ __('general.previous') }}",
-                },
-                search: "{{ __('general.search') }}",
-            }
-        });
-
-    });
-</script>
-@endpush
