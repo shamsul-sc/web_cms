@@ -8,13 +8,13 @@
                     <div class="row justify-content-center align-items-center pb-5 h-100">
                         <div class="col-lg-8 text-center pb-5 mb-5">
                             <h1 class="text-color-light line-height-1 text-12 text-md-14 positive-ls-3 mb-3 appear-animation" data-appear-animation="blurIn" data-appear-animation-delay="1000" data-plugin-options="{'minWindowWidth': 0}">
-                                {{ App::getLocale() == 'en' ? $slider->slider_text_top : $slider->slider_text_top_bn }}
+                                {{ app()->getLocale() == 'en' ? $slider->slider_text_top : $slider->slider_text_top_bn }}
                             </h1>
                             <h2 class="alternative-font-4 text-color-light line-height-3 text-5 positive-ls-1 mb-2 appear-animation" data-appear-animation="blurIn" data-appear-animation-delay="1300" data-plugin-options="{'minWindowWidth': 0}">
-                                {{ App::getLocale() == 'en' ? $slider->slider_text_last : $slider->slider_text_last_bn }}
+                                {{ app()->getLocale() == 'en' ? $slider->slider_text_last : $slider->slider_text_last_bn }}
                             </h2>
                             <a href="{{ $slider->button_url }}" class="btn btn-primary font-weight-bold text-3-5 px-5 py-3 mt-3 appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="3300">
-                                {{ App::getLocale() == 'en' ? $slider->button_text : $slider->button_text_bn }}
+                                {{ app()->getLocale() == 'en' ? $slider->button_text : $slider->button_text_bn }}
                             </a>
                         </div>
                     </div>
