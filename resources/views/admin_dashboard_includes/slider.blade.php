@@ -19,6 +19,22 @@
         <a class="nav-link menu-link" href="#sidebarPages" data-bs-toggle="collapse" role="button" aria-expanded="false"
             aria-controls="sidebarPages">
             <i class="ri-pages-line"></i>
+            <span data-key="t-pages">Project</span>
+        </a>
+        <div class="collapse menu-dropdown" id="sidebarPages">
+            <ul class="nav nav-sm flex-column">
+                <li class="nav-item">
+                    <a href="{{ route('dashboard.list') }}" class="nav-link" data-key="t-category-list">
+                        Project List
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link menu-link" href="#sidebarPages" data-bs-toggle="collapse" role="button" aria-expanded="false"
+            aria-controls="sidebarPages">
+            <i class="ri-pages-line"></i>
             <span data-key="t-pages">Category</span>
         </a>
         <div class="collapse menu-dropdown" id="sidebarPages">
@@ -27,40 +43,6 @@
                     <a href="{{ route('dashboard.category_list') }}" class="nav-link" data-key="t-category-list">
                         Category List
                     </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#sidebarMachineries" class="nav-link" data-bs-toggle="collapse" role="button"
-                        aria-expanded="false" aria-controls="sidebarMachineries" data-key="t-Machineries"> Machineries
-                    </a>
-                    <div class="collapse menu-dropdown" id="sidebarMachineries">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a href="{% url 'machinery_list' %}" class="nav-link"
-                                    data-key="t-Machinery-List">Machinery List</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{% url 'create_machinery' %}" class="nav-link"
-                                    data-key="t-Machinery-Create">Machinery Create</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a href="#sidebarSpareParts" class="nav-link" data-bs-toggle="collapse" role="button"
-                        aria-expanded="false" aria-controls="sidebarSpareParts" data-key="t-Spare-parts"> Spare-parts
-                    </a>
-                    <div class="collapse menu-dropdown" id="sidebarSpareParts">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a href="{% url 'spare_part_list' %}" class="nav-link"
-                                    data-key="t-Spare-parts-List">Spare-parts List</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{% url 'create_spare_part' %}" class="nav-link"
-                                    data-key="t-Spare-parts-Create">Spare-parts Create</a>
-                            </li>
-                        </ul>
-                    </div>
                 </li>
             </ul>
         </div>

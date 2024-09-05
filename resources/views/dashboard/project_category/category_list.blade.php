@@ -55,8 +55,10 @@
                         <td>
                             <a href="{{ route('dashboard.category_edit',$category->cat_id ) }}"
                                 class="btn btn-sm btn-info ">Edit</a>
-                            <a href="{{ route('dashboard.category_deleted',$category->cat_id) }}"
-                                class="btn btn-sm btn-danger">Delete</a>
+                            <a href="{{ route('dashboard.category_deleted', $category->cat_id) }}"
+                                class="btn btn-sm btn-danger"
+                                onclick="return confirm('Are you sure you want to delete this category?')">Delete</a>
+                        </td>
                         </td>
 
 

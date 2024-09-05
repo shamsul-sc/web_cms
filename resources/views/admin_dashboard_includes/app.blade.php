@@ -88,7 +88,7 @@
                     @yield('content')
                 </div>
                 <!-- Footer -->
-                @include('admin_dashboard_includes.footer')
+                {{-- @include('admin_dashboard_includes.footer') --}}
             </div>
 
 
