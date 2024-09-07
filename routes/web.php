@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\FollowUpController;
+use App\Http\Controllers\CaseStudyController;
 use App\Http\Controllers\HomeSliderController;
 use App\Http\Controllers\ProjectCategoryController;
 
@@ -36,7 +38,23 @@ Route::prefix('dashboard')->group(function () {
     Route::post('/insert', [ProjectController::class, 'insert'])->name('dashboard.insert');
     Route::get('/edit/{id}', [ProjectController::class, 'edit'])->name('dashboard.edit');
     Route::post('update/{id}', [ProjectController::class, 'update'])->name('dashboard.update');
-    Route::get('deleted/{cat_id}', [ProjectController::class, 'deleted'])->name('dashboard.deleted');
+    Route::get('deleted/{id}', [ProjectController::class, 'deleted'])->name('dashboard.deleted');
+
+    //CaseStudy routes
+    Route::get('/case_study_list', [CaseStudyController::class, 'CaseStudy_list'])->name('dashboard.case_study_list');
+    Route::get('/case_study_add', [CaseStudyController::class, 'CaseStudy_add'])->name('dashboard.case_study_add');
+    Route::post('/case_study_insert', [CaseStudyController::class, 'CaseStudy_insert'])->name('dashboard.case_study_insert');
+    Route::get('/case_study_edit/{id}', [CaseStudyController::class, 'CaseStudy_edit'])->name('dashboard.case_study_edit');
+    Route::post('/case_study_update/{id}', [CaseStudyController::class, 'CaseStudy_update'])->name('dashboard.case_study_update');
+    Route::get('/case_study_deleted/{id}', [CaseStudyController::class, 'CaseStudy_deleted'])->name('dashboard.case_study_deleted');
+
+    //FollowUp routes
+    Route::get('/follow_up_list', [FollowUpController::class, 'FollowUp_list'])->name('dashboard.follow_up_list');
+    Route::get('/follow_up_add', [FollowUpController::class, 'FollowUp_add'])->name('dashboard.follow_up_add');
+    Route::post('/follow_up_insert', [FollowUpController::class, 'FollowUp_insert'])->name('dashboard.follow_up_insert');
+    Route::get('/follow_up_edit/{id}', [FollowUpController::class, 'FollowUp_edit'])->name('dashboard.follow_up_edit');
+    Route::post('/follow_up_update/{id}', [FollowUpController::class, 'FollowUp_update'])->name('dashboard.follow_up_update');
+    Route::get('/follow_up_deleted/{id}', [FollowUpController::class, 'FollowUp_deleted'])->name('dashboard.follow_up_deleted');
 
 
 

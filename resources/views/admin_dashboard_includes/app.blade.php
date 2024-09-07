@@ -20,6 +20,7 @@
     <link href="{{ asset('css/dashboard-custom.css') }}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.0/themes/base/jquery-ui.css">
 
+
     {{--
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"> --}}
     <link rel="stylesheet" href="https://cdn.datatables.net/2.1.5/css/dataTables.dataTables.css" />

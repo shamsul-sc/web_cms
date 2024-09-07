@@ -6,7 +6,7 @@
         <div class="card">
             @include('layouts._message')
             <div class="card-header">
-                <h5 class="card-title mb-0">Category List</h5>
+                <h5 class="card-title mb-0">Project List</h5>
             </div>
             <div class="card-body">
                 <div class="col-sm-12  d-flex justify-content-between">

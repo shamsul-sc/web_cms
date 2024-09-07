@@ -37,7 +37,7 @@ class Project extends Model
     static public function getProject()
     {
         return self::select('projects.*','project_categories.category_name as category_name')
-            ->join('project_categories', 'project_categories.cat_id', '=', 'projects.cat_id')
+            ->join('project_categories', 'project_categories.cat_id', '=', 'projects.id')
             ->where('projects.is_delete', '=', 0)
             ->orderBy('projects.id', 'desc')
             ->paginate(20);

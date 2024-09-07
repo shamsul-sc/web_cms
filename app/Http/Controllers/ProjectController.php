@@ -73,6 +73,14 @@ class ProjectController extends Controller
             $project_model->project_image = $filename;
         }
 
+        // if($request->hasFile('project_image'))
+        // {
+        //     $file = $request->file('project_image');
+        //     $filename = time() . '.' . $request->file('project_image')->extension();
+        //     $filePath = public_path() . 'uploads/project_odf';
+        //     $file->move($filePath, $filename);
+        // }
+
         $project_model->save();
 
         return redirect('dashboard/list')->with('success', 'Project Created Successfully!');
@@ -146,7 +154,7 @@ class ProjectController extends Controller
         return redirect('dashboard/list')->with('success', 'Project Successfully updated!');
     }
 
-     public function deleted($id)
+    public function deleted($id)
     {
         $project = Project::getSingle($id);
         $project->is_delete = 1;

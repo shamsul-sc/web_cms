@@ -47,52 +47,39 @@
             </ul>
         </div>
     </li>
-
     <li class="nav-item">
-        <a class="nav-link menu-link" href="#sidebarWorkforces" data-bs-toggle="collapse" role="button"
-            aria-expanded="false" aria-controls="sidebarWorkforces">
+        <a class="nav-link menu-link" href="#sidebarPages" data-bs-toggle="collapse" role="button" aria-expanded="false"
+            aria-controls="sidebarPages">
             <i class="ri-pages-line"></i>
-            <span data-key="t-Workforces"> Workforces </span>
+            <span data-key="t-pages">CaseStudy</span>
         </a>
-        <div class="collapse menu-dropdown" id="sidebarWorkforces">
+        <div class="collapse menu-dropdown" id="sidebarPages">
             <ul class="nav nav-sm flex-column">
                 <li class="nav-item">
-                    <a href="#sidebarMechanics" class="nav-link" data-bs-toggle="collapse" role="button"
-                        aria-expanded="false" aria-controls="sidebarMechanics" data-key="t-Mechanics"> Mechanics
+                    <a href="{{ route('dashboard.case_study_list') }}" class="nav-link" data-key="t-category-list">
+                        CaseStudy List
                     </a>
-                    <div class="collapse menu-dropdown" id="sidebarMechanics">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a href="{% url 'mechanics_list' %}" class="nav-link" data-key="t-Mechanic-List">
-                                    Mechanic List</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{% url 'create_mechanics' %}" class="nav-link" data-key="t-Mechanic-Create">
-                                    Mechanic Create </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a href="#sidebarDriver" class="nav-link" data-bs-toggle="collapse" role="button"
-                        aria-expanded="false" aria-controls="sidebarDriver" data-key="t-Driver"> Driver
-                    </a>
-                    <div class="collapse menu-dropdown" id="sidebarDriver">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a href="{% url 'driver_list' %}" class="nav-link" data-key="t-Driver-List">Driver
-                                    List</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{% url 'create_driver' %}" class="nav-link" data-key="t-Driver-Create">Driver
-                                    Create</a>
-                            </li>
-                        </ul>
-                    </div>
                 </li>
             </ul>
         </div>
     </li>
+    <li class="nav-item">
+        <a class="nav-link menu-link" href="#sidebarPages" data-bs-toggle="collapse" role="button" aria-expanded="false"
+            aria-controls="sidebarPages">
+            <i class="ri-pages-line"></i>
+            <span data-key="t-pages">FollowUp</span>
+        </a>
+        <div class="collapse menu-dropdown" id="sidebarPages">
+            <ul class="nav nav-sm flex-column">
+                <li class="nav-item">
+                    <a href="{{ route('dashboard.follow_up_list') }}" class="nav-link" data-key="t-category-list">
+                        FollwUp List
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </li>
+
 
     <li class="menu-title"><i class="ri-more-fill"></i> <span data-key="t-services">Services</span>
     </li>
