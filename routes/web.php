@@ -8,6 +8,9 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\FollowUpController;
 use App\Http\Controllers\CaseStudyController;
 use App\Http\Controllers\HomeSliderController;
+use App\Http\Controllers\GalleryTypeController;
+use App\Http\Controllers\GalleryAlbumController;
+use App\Http\Controllers\GalleryPhotoController;
 use App\Http\Controllers\ProjectCategoryController;
 
 Route::get('/', [HomeController::class, 'index']);
@@ -55,6 +58,31 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/follow_up_edit/{id}', [FollowUpController::class, 'FollowUp_edit'])->name('dashboard.follow_up_edit');
     Route::post('/follow_up_update/{id}', [FollowUpController::class, 'FollowUp_update'])->name('dashboard.follow_up_update');
     Route::get('/follow_up_deleted/{id}', [FollowUpController::class, 'FollowUp_deleted'])->name('dashboard.follow_up_deleted');
+
+
+    //Gallery Type routes
+    Route::get('/gallery_type_list', [GalleryTypeController::class, 'GalleryType_list'])->name('dashboard.gallery_type_list');
+    Route::get('/gallery_type_add', [GalleryTypeController::class, 'GalleryType_add'])->name('dashboard.gallery_type_add');
+    Route::post('/gallery_type_insert', [GalleryTypeController::class, 'GalleryType_insert'])->name('dashboard.gallery_type_insert');
+    Route::get('/gallery_type_edit/{id}', [GalleryTypeController::class, 'GalleryType_edit'])->name('dashboard.gallery_type_edit');
+    Route::post('/gallery_type_update/{id}', [GalleryTypeController::class, 'GalleryType_update'])->name('dashboard.gallery_type_update');
+    Route::get('/gallery_type_deleted/{id}', [GalleryTypeController::class, 'GalleryType_deleted'])->name('dashboard.gallery_type_deleted');
+
+    //Gallery Photo routes
+    Route::get('/gallery_photo_list', [GalleryPhotoController::class, 'GalleryPhoto_list'])->name('dashboard.gallery_photo_list');
+    Route::get('/gallery_photo_add', [GalleryPhotoController::class, 'GalleryPhoto_add'])->name('dashboard.gallery_photo_add');
+    Route::post('/gallery_photo_insert', [GalleryPhotoController::class, 'GalleryPhoto_insert'])->name('dashboard.gallery_photo_insert');
+    Route::get('/gallery_photo_edit/{id}', [GalleryPhotoController::class, 'GalleryPhoto_edit'])->name('dashboard.gallery_photo_edit');
+    Route::post('/gallery_photo_update/{id}', [GalleryPhotoController::class, 'GalleryPhoto_update'])->name('dashboard.gallery_photo_update');
+    Route::get('/gallery_photo_deleted/{id}', [GalleryPhotoController::class, 'GalleryPhoto_deleted'])->name('dashboard.gallery_photo_deleted');
+
+    //Gallery Album routes
+    Route::get('/gallery_album_list', [GalleryAlbumController::class, 'GalleryAlbum_list'])->name('dashboard.gallery_album_list');
+    Route::get('/gallery_album_add', [GalleryAlbumController::class, 'GalleryAlbum_add'])->name('dashboard.gallery_album_add');
+    Route::post('/gallery_album_insert', [GalleryAlbumController::class, 'GalleryAlbum_insert'])->name('dashboard.gallery_album_insert');
+    Route::get('/gallery_album_edit/{id}', [GalleryAlbumController::class, 'GalleryAlbum_edit'])->name('dashboard.gallery_album_edit');
+    Route::post('/gallery_album_update/{id}', [GalleryAlbumController::class, 'GalleryAlbum_update'])->name('dashboard.gallery_album_update');
+    Route::get('/gallery_album_deleted/{id}', [GalleryAlbumController::class, 'GalleryAlbum_deleted'])->name('dashboard.gallery_album_deleted');
 
 
 

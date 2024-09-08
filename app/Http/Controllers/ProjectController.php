@@ -27,7 +27,6 @@ class ProjectController extends Controller
     {
         $validator = Validator::make($request->all(), [
 
-            'project_title' => 'required|unique:projects,project_title',
             'project_title_bn' => 'required|unique:projects,project_title_bn',
             'slug' => 'required',
             'project_approx_budget' => 'required',
@@ -54,7 +53,6 @@ class ProjectController extends Controller
         $project_model->project_summary_bn    = trim($request->project_summary_bn);
         $project_model->youtube_video_link    = trim($request->youtube_video_link);
         $project_model->album_id    =$request->album_id;
-        $project_model->project_pdf    = trim($request->project_pdf);
         $project_model->featured_project    = trim($request->featured_project);
         $project_model->state    = trim($request->state);
         $project_model->status    = trim($request->status);
@@ -73,13 +71,13 @@ class ProjectController extends Controller
             $project_model->project_image = $filename;
         }
 
-        // if($request->hasFile('project_image'))
-        // {
-        //     $file = $request->file('project_image');
-        //     $filename = time() . '.' . $request->file('project_image')->extension();
-        //     $filePath = public_path() . 'uploads/project_odf';
-        //     $file->move($filePath, $filename);
-        // }
+        if($request->hasFile('project_pdf'))
+        {
+            $file = $request->file('project_pdf');
+            $filename = time() . '.' . $request->file('project_pdf')->extension();
+            $filePath = public_path() . 'uploads/project_odf';
+            $file->move($filePath, $filename);
+        }
 
         $project_model->save();
 
@@ -96,17 +94,16 @@ class ProjectController extends Controller
 
     public function update(Request $request, $id)
     {
-        // $validator = Validator::make($request->all(), [
+        $validator = Validator::make($request->all(), [
 
-        //     'project_title' => 'required|unique:projects,project_title',
-        //     'project_title_bn' => 'required|unique:projects,project_title_bn',
-        //     'slug' => 'required',
-        //     'project_approx_budget' => 'required',
-        // ]);
+            'project_title_bn' => 'required|unique:projects,project_title_bn',
+            'slug' => 'required',
+            'project_approx_budget' => 'required',
+        ]);
 
-        // if ($validator->fails()) {
-        //     return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Validation error!');
-        // }
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Validation error!');
+        }
 
         $project_model = Project::getSingle($id);
 

@@ -10,43 +10,27 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link menu-link" href="{% url 'question_list' %}">
-            <i class="ri-pages-line"></i> <span data-key="t-qa">Q&A</span>
+        <a class="nav-link menu-link" href="#sidebarServices" data-bs-toggle="collapse" role="button"
+            aria-expanded="false" aria-controls="sidebarServices">
+            <i class="ri-pages-line"></i> <span data-key="t-services">Project</span>
         </a>
+        <div class="collapse menu-dropdown" id="sidebarServices">
+            <ul class="nav nav-sm flex-column">
+                <li class="nav-item">
+                    <a href="{{ route('dashboard.list') }}" class="nav-link" data-key="t-starter">Project List</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('dashboard.category_list') }}" class="nav-link" data-key="t-starter">Category
+                        List</a>
+                </li>
+                {{-- <li class="nav-item">
+                    <a href="{% url 'create_service' %}" class="nav-link" data-key="t-starter">Services Create</a>
+                </li> --}}
+            </ul>
+        </div>
     </li>
 
-    <li class="nav-item">
-        <a class="nav-link menu-link" href="#sidebarPages" data-bs-toggle="collapse" role="button" aria-expanded="false"
-            aria-controls="sidebarPages">
-            <i class="ri-pages-line"></i>
-            <span data-key="t-pages">Project</span>
-        </a>
-        <div class="collapse menu-dropdown" id="sidebarPages">
-            <ul class="nav nav-sm flex-column">
-                <li class="nav-item">
-                    <a href="{{ route('dashboard.list') }}" class="nav-link" data-key="t-category-list">
-                        Project List
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link menu-link" href="#sidebarPages" data-bs-toggle="collapse" role="button" aria-expanded="false"
-            aria-controls="sidebarPages">
-            <i class="ri-pages-line"></i>
-            <span data-key="t-pages">Category</span>
-        </a>
-        <div class="collapse menu-dropdown" id="sidebarPages">
-            <ul class="nav nav-sm flex-column">
-                <li class="nav-item">
-                    <a href="{{ route('dashboard.category_list') }}" class="nav-link" data-key="t-category-list">
-                        Category List
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </li>
+
     <li class="nav-item">
         <a class="nav-link menu-link" href="#sidebarPages" data-bs-toggle="collapse" role="button" aria-expanded="false"
             aria-controls="sidebarPages">
@@ -60,20 +44,36 @@
                         CaseStudy List
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('dashboard.follow_up_list') }}" class="nav-link" data-key="t-category-list">
+                        FollwUp List
+                    </a>
+                </li>
             </ul>
         </div>
     </li>
+
     <li class="nav-item">
         <a class="nav-link menu-link" href="#sidebarPages" data-bs-toggle="collapse" role="button" aria-expanded="false"
             aria-controls="sidebarPages">
             <i class="ri-pages-line"></i>
-            <span data-key="t-pages">FollowUp</span>
+            <span data-key="t-pages">Gallery</span>
         </a>
         <div class="collapse menu-dropdown" id="sidebarPages">
             <ul class="nav nav-sm flex-column">
                 <li class="nav-item">
-                    <a href="{{ route('dashboard.follow_up_list') }}" class="nav-link" data-key="t-category-list">
-                        FollwUp List
+                    <a href="{{ route('dashboard.gallery_type_list') }}" class="nav-link" data-key="t-category-list">
+                        Gallery Type
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('dashboard.gallery_photo_list') }}" class="nav-link" data-key="t-category-list">
+                        Gallery Photo
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('dashboard.gallery_album_list') }}" class="nav-link" data-key="t-category-list">
+                        Gallery Albums
                     </a>
                 </li>
             </ul>
@@ -182,5 +182,5 @@
                 </li>
             </ul>
         </div>
-    </li>
+
 </ul>

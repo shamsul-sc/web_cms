@@ -5,7 +5,7 @@
     <div class="col-lg-12">
         <div class="card">
             @include('layouts._message')
-            <div class="card-header">
+            <div class="card-header" style="background-color: rgb(93, 198, 93);">
                 <h5 class="card-title mb-0">Case Study List</h5>
             </div>
             <div class="card-body">
@@ -24,6 +24,7 @@
                 style="width:100%">
                 <thead>
                     <tr>
+                        <th>ID</th>
                         <th>Case Title BN.</th>
                         <th>Case Summary BN</th>
                         <th>Case Approx Budget</th>
@@ -40,6 +41,7 @@
                     @foreach ($getCaseStudy as $case_study )
 
                     <tr>
+                        <td>{{ $case_study->id }}</td>
                         <td>{{ $case_study->case_title_bn }}</td>
                         <td>{!! $case_study->case_summary_bn !!}</td>
                         <td>{{ $case_study->case_approx_budget }}</td>

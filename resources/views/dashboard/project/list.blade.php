@@ -5,7 +5,7 @@
     <div class="col-lg-12">
         <div class="card">
             @include('layouts._message')
-            <div class="card-header">
+            <div class="card-header" style="background-color: rgb(93, 198, 93);">
                 <h5 class="card-title mb-0">Project List</h5>
             </div>
             <div class="card-body">
@@ -24,6 +24,7 @@
                 style="width:100%">
                 <thead>
                     <tr>
+                        <th>ID</th>
                         <th>Category Name</th>
                         <th>Project Title BN.</th>
                         <th>Project Summary BN</th>
@@ -42,6 +43,7 @@
                     @foreach ($getProject as $category )
 
                     <tr>
+                        <td>{{ $category->id }}</td>
                         <td>{{ $category->category_name }}</td>
                         <td>{{ $category->project_title_bn }}</td>
                         <td>{!! $category->project_summary !!}</td>
