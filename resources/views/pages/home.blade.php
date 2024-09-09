@@ -9,7 +9,7 @@
 @include('includes.slider')
 @include('includes.projectCarouselWrapper')
 
-<div class="container py-5 mt-3">
+<div class="container pt-3 pb-5 mt-3">
     <div class="row align-items-center justify-content-center">
         <div class="col-lg-6 mb-5 mb-lg-0">
             <h2 class="text-color-dark font-weight-extra-bold text-10 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">প্রতিষ্ঠা ও প্রতিষ্ঠাতা</h2>
@@ -29,44 +29,47 @@
     </div>
 </div>
 
-<section class="section overlay overlay-show overlay-op-9 border-0 m-0 appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="300" style="background-image: url(img/demos/law-firm-2/backgrounds/background-1.jpg); background-size: cover; background-position: center;">
-    <div class="container pt-5 pb-3">
-        <div class="row">
+<section class="section overlay overlay-show overlay-op-9 border-0 m-0" style="background-image: url(img/backgrounds/background-2.webp); background-size: cover; background-position: center;">
+    <div class="container py-5 mb-5">
+        <div class="row pb-5 mb-4">
             <div class="col text-center">
-                <h2 class="alternative-font-4 text-color-primary font-weight-semibold text-4 mb-2">TESTIMONIALS</h2>
-                <h3 class="text-transform-none text-color-light font-weight-bold text-10 negative-ls-1 pb-3 mb-5">Satisfied Reviews</h3>
-                <p class="custom-font-secondary text-color-light custom-font-size-1 font-weight-extra-bold">“</p>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-lg-7 text-center px-lg-0">
-                <div class="owl-carousel owl-theme dots-horizontal-center custom-dots-style-1 dots-light mb-0" data-plugin-options="{'responsive': {'576': {'items': 1}, '768': {'items': 1}, '992': {'items': 1}, '1200': {'items': 1}}, 'loop': true, 'nav': false, 'dots': true, 'autoplay': false, 'autoplayTimeout': 7000}">
-                    <div class="testimonial testimonial-style-2">
-                        <p class="text-color-light text-6 custom-font-secondary line-height-4 opacity-8 pb-2 mb-0">“ ট্রিটমেন্ট কমিউনিটি ফাউন্ডেশন মানব সেবায় তার পদচিহ্ন রেখে যাবে বলে আমি বিশ্বাস করি। ”</p>
-                        <div class="divider divider-primary divider-small mt-2 mb-4 pb-2">
-                            <hr class="my-4 mx-auto">
-                        </div>
-                        <div class="testimonial-author">
-                            <div class="testimonial-author-thumbnail">
-                                <img src="{{ asset('img/clients/client-1.jpg') }}" class="img-fluid rounded-circle" alt="">
-                            </div>
-                            <p>
-                                <strong class="font-weight-extra-bold text-color-light">
-                                    ডা. হাবিবুল্লাহ তালুকদার রাসকিন
-                                </strong>
-                                <span>
-                                    প্রকল্প সমন্বয়কারী ও বিভাগীয় প্রধান, প্রিভেন্টিভ অনকোলজি, গণস্বাস্থ্য সমাজ ভিত্তিক ক্যান্সার হাসপাতাল
-                                </span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                <h3 class="alternative-font-4 text-color-primary font-weight-semibold text-4 mb-2 appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="200">Featured Projects</h3>
+                <h2 class="text-transform-none text-color-light font-weight-bold text-10 negative-ls-1 mb-0 appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="400">Our Most Valuable Works</h2>
             </div>
         </div>
     </div>
 </section>
 
-<!-- <div class="container py-5 my-3">
+<div class="owl-carousel-wrapper position-relative z-index-3 pb-2 mb-2 appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="600" style="height: 373px; margin-top: -225px;">
+    <div class="owl-carousel owl-theme dots-horizontal-center custom-dots-style-1 dots-dark mb-0" data-plugin-options="{'responsive': {'576': {'items': 2}, '768': {'items': 2}, '992': {'items': 3}, '1200': {'items': 4}, '1440': {'items': 5}}, 'margin': 20, 'stagePadding': 20, 'loop': true, 'nav': false, 'dots': true, 'autoplay': true, 'autoplayTimeout': 7000}">
+        @if($featuredProjects && $featuredProjects->count())
+            @foreach ($featuredProjects as $project)
+            <div class="py-5">
+                <a href="demo-law-firm-2-attorney-detail.html" class="text-decoration-none">
+                    <div class="card custom-card-style-1 border-0 border-radius-0 custom-box-shadow-1">
+                        <img src="/uploads/category/thumbnail/{{ $project->project_image }}" class="card-img-top border-radius-0" alt="John Doe Image" />
+                        <div class="card-body text-center px-4 py-5">
+                            <h2 class="card-title alternative-font-4 text-color-dark font-weight-semibold line-height-1 text-5 mb-1">
+                                {{ app()->getLocale() == 'en' ? $project->project_title : $project->project_title_bn }}
+                            </h2>
+                            <p class="text-color-grey positive-ls-3 mb-3">CEO & FOUNDER</p>
+                            <p class="font-weight-light text-color-dark line-height-7 mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra erat orci, ac auctor lacus tincidunt ut...</p>
+                            <span class="custom-read-more d-inline-flex justify-content-center align-items-center text-3 font-weight-medium svg-fill-color-primary">
+                                VIEW PROFILE
+                                <svg class="ms-2" version="1.1" viewBox="0 0 15.698 8.706" width="17" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <polygon stroke="#777" stroke-width="0.1" fill="#777" points="11.354,0 10.646,0.706 13.786,3.853 0,3.853 0,4.853 13.786,4.853 10.646,8 11.354,8.706 15.698,4.353 "/>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            @endforeach
+        @endif
+    </div>
+</div>
+
+<div class="container pb-5 my-3">
     <div class="row align-items-center">
         <div class="col-lg-6 mb-5 mb-lg-0">
             <div class="card bg-primary border-0 border-radius-0">
@@ -224,7 +227,44 @@
             </form>
         </div>
     </div>
-</div> -->
+</div>
+
+<section class="section overlay overlay-show overlay-op-9 border-0 m-0 appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="300" style="background-image: url(img/demos/law-firm-2/backgrounds/background-1.jpg); background-size: cover; background-position: center;">
+    <div class="container pt-5 pb-3">
+        <div class="row">
+            <div class="col text-center">
+                <h2 class="alternative-font-4 text-color-primary font-weight-semibold text-4 mb-2">TESTIMONIALS</h2>
+                <h3 class="text-transform-none text-color-light font-weight-bold text-10 negative-ls-1 pb-3 mb-5">Satisfied Reviews</h3>
+                <p class="custom-font-secondary text-color-light custom-font-size-1 font-weight-extra-bold">“</p>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-7 text-center px-lg-0">
+                <div class="owl-carousel owl-theme dots-horizontal-center custom-dots-style-1 dots-light mb-0" data-plugin-options="{'responsive': {'576': {'items': 1}, '768': {'items': 1}, '992': {'items': 1}, '1200': {'items': 1}}, 'loop': true, 'nav': false, 'dots': true, 'autoplay': false, 'autoplayTimeout': 7000}">
+                    <div class="testimonial testimonial-style-2">
+                        <p class="text-color-light text-6 custom-font-secondary line-height-4 opacity-8 pb-2 mb-0">“ ট্রিটমেন্ট কমিউনিটি ফাউন্ডেশন মানব সেবায় তার পদচিহ্ন রেখে যাবে বলে আমি বিশ্বাস করি। ”</p>
+                        <div class="divider divider-primary divider-small mt-2 mb-4 pb-2">
+                            <hr class="my-4 mx-auto">
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="testimonial-author-thumbnail">
+                                <img src="{{ asset('img/clients/client-1.jpg') }}" class="img-fluid rounded-circle" alt="">
+                            </div>
+                            <p>
+                                <strong class="font-weight-extra-bold text-color-light">
+                                    ডা. হাবিবুল্লাহ তালুকদার রাসকিন
+                                </strong>
+                                <span>
+                                    প্রকল্প সমন্বয়কারী ও বিভাগীয় প্রধান, প্রিভেন্টিভ অনকোলজি, গণস্বাস্থ্য সমাজ ভিত্তিক ক্যান্সার হাসপাতাল
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- <section class="section section-height-3 bg-primary-darken border-0 m-0 appear-animation" data-appear-animation="fadeIn">
     <div class="container py-3">
@@ -261,24 +301,26 @@
     </div>
 </section> -->
 
+@if($featuredCases && $featuredCases->count())            
 <div class="container py-5 my-5">
     <div class="row pb-2 mb-4">
         <div class="col text-center">
-            <h3 class="alternative-font-4 text-color-primary font-weight-semibold text-4 mb-1 appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="400">RECENT CASES</h3>
+            <h3 class="alternative-font-4 text-color-primary font-weight-semibold text-4 mb-1 appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="400">FEATURED CASES</h3>
             <h2 class="text-transform-none text-color-dark font-weight-bold text-10 negative-ls-1 mb-2 appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="600">Success Stories</h2>
         </div>
     </div>
     <div class="row">
         <div class="col appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="800">
             <div class="custom-carousel-style-2 owl-carousel owl-theme dots-horizontal-center custom-dots-style-1 dots-dark mb-0" data-plugin-options="{'responsive': {'576': {'items': 1}, '768': {'items': 1}, '992': {'items': 2}, '1200': {'items': 2}}, 'loop': true, 'nav': false, 'dots': true, 'margin': 25, 'stagePadding': 25, 'autoplay': false, 'autoplayTimeout': 7000}">
+                @foreach ($featuredCases as $case)
                 <div class="pb-5">
                     <a href="demo-law-firm-2-case-study-detail.html" class="text-decoration-none">
                         <div class="card custom-card-style-2 border-0 border-radius-0">
                             <div class="card-img-top">
-                                <img src="img/demos/law-firm-2/cases/case-1.jpg" class="img-fluid" alt="" />
+                                <img src="/uploads/case_image/thumbnail/{{ $case->case_image }}" class="img-fluid" alt="" />
                             </div>
                             <div class="card-body">
-                                <span class="d-block text-color-grey positive-ls-2 mb-0">FAMILY LAW</span>
+                                <span class="d-block text-color-grey positive-ls-2 mb-0">{{ app()->getLocale() == 'en' ? $case->case_title_bn : $case->case_title_bn }}</span>
                                 <h4 class="text-color-dark font-weight-medium text-5-5 mb-2"><em>Family Law Success Case Example</em></h4>
                                 <span class="custom-read-more font-weight-medium d-inline-flex justify-content-center align-items-center svg-fill-color-primary svg-stroke-color-primary">
                                     VIEW DETAILS
@@ -290,48 +332,12 @@
                         </div>
                     </a>
                 </div>
-                <div class="pb-5">
-                    <a href="demo-law-firm-2-case-study-detail.html" class="text-decoration-none">
-                        <div class="card custom-card-style-2 border-0 border-radius-0">
-                            <div class="card-img-top">
-                                <img src="img/demos/law-firm-2/cases/case-2.jpg" class="img-fluid" alt="" />
-                            </div>
-                            <div class="card-body">
-                                <span class="d-block text-color-grey positive-ls-2 mb-0">BUSINESS LAW</span>
-                                <h4 class="text-color-dark font-weight-medium text-5-5 mb-2"><em>Business Law Success Case Example</em></h4>
-                                <span class="custom-read-more font-weight-medium d-inline-flex justify-content-center align-items-center svg-fill-color-primary svg-stroke-color-primary">
-                                    VIEW DETAILS
-                                    <svg class="ms-2" version="1.1" viewBox="0 0 15.698 8.706" width="17" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                        <polygon stroke="#777" stroke-width="0.1" fill="#777" points="11.354,0 10.646,0.706 13.786,3.853 0,3.853 0,4.853 13.786,4.853 10.646,8 11.354,8.706 15.698,4.353 "/>
-                                    </svg>
-                                </span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="pb-5">
-                    <a href="demo-law-firm-2-case-study-detail.html" class="text-decoration-none">
-                        <div class="card custom-card-style-2 border-0 border-radius-0">
-                            <div class="card-img-top">
-                                <img src="img/demos/law-firm-2/cases/case-1.jpg" class="img-fluid" alt="" />
-                            </div>
-                            <div class="card-body">
-                                <span class="d-block text-color-grey positive-ls-2 mb-0">FAMILY LAW</span>
-                                <h4 class="text-color-dark font-weight-medium text-5-5 mb-2"><em>Family Law Success Case Example</em></h4>
-                                <span class="custom-read-more font-weight-medium d-inline-flex justify-content-center align-items-center svg-fill-color-primary svg-stroke-color-primary">
-                                    VIEW DETAILS
-                                    <svg class="ms-2" version="1.1" viewBox="0 0 15.698 8.706" width="17" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                        <polygon stroke="#777" stroke-width="0.1" fill="#777" points="11.354,0 10.646,0.706 13.786,3.853 0,3.853 0,4.853 13.786,4.853 10.646,8 11.354,8.706 15.698,4.353 "/>
-                                    </svg>
-                                </span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
 </div>
+@endif
 
 <!-- <section class="section parallax bg-transparent border-0 py-0 m-0" data-plugin-parallax data-image-src="img/demos/law-firm-2/backgrounds/background-3.jpg" data-plugin-options="{'speed': 1.5, 'scrollableParallax': true, 'scrollableParallaxMinWidth': 991, 'startOffset': 8, 'cssProperty': 'width', 'cssValueStart': 40, 'cssValueEnd': 100, 'cssValueUnit': 'vw'}">
     <div class="d-flex justify-content-center">

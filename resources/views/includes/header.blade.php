@@ -114,13 +114,17 @@
                                             </ul>
                                         </li>
                                         <li class="dropdown">
-                                            <a href="demo-law-firm-2-practice-areas.html"
-                                                class="dropdown-item dropdown-toggle">Projects</a>
+                                            <a href="/projects" class="dropdown-item dropdown-toggle">{{ __('custom_lang.projects') }}</a>
                                             <ul class="dropdown-menu border-radius-0">
-                                                <li>
-                                                    <a href="demo-law-firm-2-practice-areas-detail.html"
-                                                        class="nav-link">Family Law</a>
-                                                </li>
+                                                {{--  @if($projectCategories && $projectCategories->count())
+                                                    @foreach ($projectCategories as $category)
+                                                    <li>
+                                                        <a href="demo-law-firm-2-practice-areas-detail.html"
+                                                            class="nav-link">{{ app()->getLocale() == 'en' ? $category->category_name : $category->category_name_bn }}
+                                                        </a>
+                                                    </li>
+                                                    @endforeach
+                                                @endif --}}
                                                 <li>
                                                     <a href="demo-law-firm-2-practice-areas-detail.html"
                                                         class="nav-link">Capital Law</a>

@@ -66,7 +66,7 @@ class ProjectController extends Controller
             $project_image->move(public_path('uploads/category').'/original/', $filename);
 
             $image_resize = Image::read(public_path('uploads/category').'/original/' . $filename);
-            $image_resize->resize(600, 440, function ($constraint) {
+            $image_resize->resize(600, 340, function ($constraint) {
                 $constraint->aspectRatio();
             });
             $image_resize->save(public_path('uploads/category').'/thumbnail/' . $filename);
@@ -91,6 +91,7 @@ class ProjectController extends Controller
     {
         $data['categories'] = ProjectCategory::getRecord();
          $data['getRecord'] = Project::getSingle($id);
+         // dd($data['getRecord']); exit;
          return view('dashboard.project.edit', $data);
     }
 
@@ -142,7 +143,7 @@ class ProjectController extends Controller
             $project_image->move(public_path('uploads/category').'/original/', $filename);
 
             $image_resize = Image::read(public_path('uploads/category').'/original/' . $filename);
-            $image_resize->resize(600, 440, function ($constraint) {
+            $image_resize->resize(600, 340, function ($constraint) {
                 $constraint->aspectRatio();
             });
             $image_resize->save(public_path('uploads/category').'/thumbnail/' . $filename);

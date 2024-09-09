@@ -18,25 +18,18 @@
                     <form action="{{ route('dashboard.case_study_update',$getRecord->id) }}" method="POST"
                         enctype="multipart/form-data">
                         {{ csrf_field() }}
-                        {{--
                         <div class="row">
                             <div class="col-md-6 outlined-input-container">
                                 <select id="project_id" name="project_id" class="form-select">
                                     <option value="">Select Project</option>
-                                    @foreach($getProject as $Project)
-                                    <option value="{{ $Project->project_id }}">{{ $Project->project_name }}</option>
+                                    @foreach($projects as $project)
+                                    <option value="{{ $project->id }}">
+                                        {{ app()->getLocale() == 'en' ? $project->project_title : $project->project_title_bn }}
+                                    </option>
                                     @endforeach
 
                                 </select>
-                                <label for="album_id">Project Name<span class="required">*</span></label>
-                            </div>
-                        </div> --}}
-                        <div class="row">
-                            <div class="col-md-6 outlined-input-container">
-                                <input type="text" id="project_id" name="project_id"
-                                    value="{{ old('project_id',$getRecord->project_id) }}" class="form-control"
-                                    placeholder="" maxlength="255">
-                                <label for="project_id">Project ID <span class="required">*</span></label>
+                                <label for="album_id">Project Title<span class="required">*</span></label>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -61,9 +54,8 @@
                             <div class="col-md-12">
                                 <label class="form-lebel" for="introduction_bn">Introduction (Bangla)</label>
                                 <textarea id="introduction_bn" name="introduction_bn"
-                                    value="{{ old('introduction_bn',$getRecord->introduction_bn) }}"
-                                    class="form-control dynamic-char-count" maxlength="10" placeholder=""
-                                    rows="3"></textarea>
+                                    class="form-control dynamic-char-count" maxlength="500" placeholder=""
+                                    rows="3">{!! old('introduction_bn',$getRecord->introduction_bn) !!}</textarea>
 
                             </div>
                         </div>
@@ -71,9 +63,8 @@
                             <div class="col-md-12 ">
                                 <label for="introduction">Introduction <span class="required">*</span></label>
                                 <textarea id="introduction" name="introduction"
-                                    value="{{ old('introduction',$getRecord->introduction) }}"
-                                    class="form-control dynamic-char-count" maxlength="10" placeholder=""
-                                    rows="3"></textarea>
+                                    class="form-control dynamic-char-count" maxlength="500" placeholder=""
+                                    rows="3">{!! old('introduction',$getRecord->introduction) !!}</textarea>
 
                             </div>
                         </div>
@@ -81,14 +72,13 @@
                             <div class="col-md-12 ">
                                 <label for="details_bn">Details (Bangla)</label>
                                 <textarea id="details_bn" name="details_bn"
-                                    value="{{ old('details_bn',$getRecord->details_bn) }}"
-                                    class="form-control dynamic-char-count" placeholder="" rows="5"></textarea>
+                                    class="form-control dynamic-char-count" placeholder="" rows="5">{!! old('details_bn',$getRecord->details_bn) !!}</textarea>
 
                             </div>
                             <div class="col-md-12 ">
                                 <label for="details">Details <span class="required">*</span></label>
-                                <textarea id="details" name="details" value="{{ old('details',$getRecord->details) }}"
-                                    class="form-control dynamic-char-count" placeholder="" rows="5"></textarea>
+                                <textarea id="details" name="details"
+                                    class="form-control dynamic-char-count" placeholder="" rows="5">{!! old('details',$getRecord->details) !!}</textarea>
 
                             </div>
 
@@ -96,18 +86,15 @@
                         <br>
                         <div class="row mb-6">
                             <div class="col-md-6 outlined-input-container">
-                                <input type="text" id="case_summary_bn" name="case_summary_bn"
-                                    value="{{ old('case_summary_bn',$getRecord->case_summary_bn) }}"
-                                    class="form-control" placeholder="" maxlength="255" required>
-                                <label for="case_summary_bn">Case Summary (Bangla) <span
-                                        class="required">*</span></label>
+                                <label for="case_summary_bn">Case Summary (Bangla) <span class="required">*</span></label>
+                                <textarea id="case_summary_bn" name="case_summary_bn"
+                                    class="form-control dynamic-char-count" placeholder="" rows="5">{!! old('case_summary_bn',$getRecord->case_summary_bn) !!}</textarea>
                             </div>
 
                             <div class="col-md-6 outlined-input-container">
-                                <input type="text" id="case_summary" name="case_summary"
-                                    value="{{ old('case_summary',$getRecord->case_summary) }}" class="form-control"
-                                    placeholder="" maxlength="255" required>
-                                <label for="case_summary">Case Summary <span class="required">*</span></label>
+                                <label for="case_summary">Case Summary</label>
+                                <textarea id="case_summary" name="case_summary"
+                                    class="form-control dynamic-char-count" placeholder="" rows="5">{!! old('case_summary',$getRecord->case_summary) !!}</textarea>
                             </div>
                         </div>
 

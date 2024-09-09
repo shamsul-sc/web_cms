@@ -41,13 +41,13 @@
                         <div class="row">
                             <div class="col-md-6 outlined-input-container">
                                 <input type="text" id="project_title" name="project_title"
-                                    value="{{ old('category_name',$getRecord->project_title) }}" class="form-control"
+                                    value="{{ old('project_title',$getRecord->project_title) }}" class="form-control"
                                     placeholder="" maxlength="255" required>
                                 <label for="project_title">Project Title <span class="required">*</span></label>
                             </div>
                             <div class="col-md-6 outlined-input-container">
                                 <input type="text" id="slug" name="slug"
-                                    value="{{ old('category_name',$getRecord->slug) }}" class="form-control"
+                                    value="{{ old('slug',$getRecord->slug) }}" class="form-control"
                                     placeholder="" maxlength="100" required>
                                 <label for="slug">Slug EX.URL <span class="required">*</span></label>
                                 <small class="form-text text-muted">Use small letters and underscores. Example:
@@ -58,7 +58,7 @@
                         <div class="row">
                             <div class="col-md-6 outlined-input-container">
                                 <input type="text" id="project_title_bn" name="project_title_bn"
-                                    value="{{ old('category_name',$getRecord->project_title_bn) }}" class="form-control"
+                                    value="{{ old('project_title_bn',$getRecord->project_title_bn) }}" class="form-control"
                                     placeholder="" maxlength="255" required>
                                 <label for="project_title_bn">Project Title (Bangla) <span
                                         class="required">*</span></label>
@@ -70,10 +70,10 @@
                                         '' }}>
                                         Select Project
                                     </option>
-                                    <option value="No" {{ old('joint_project', $getRecord->status) == 'No' ? 'selected'
+                                    <option value="No" {{ old('joint_project', $getRecord->joint_project) == 'No' ? 'selected'
                                         : ''
                                         }}>No</option>
-                                    <option value="Yes" {{ old('joint_project', $getRecord->status) == 'Yes' ?
+                                    <option value="Yes" {{ old('joint_project', $getRecord->joint_project) == 'Yes' ?
                                         'selected' : ''
                                         }}>Yes</option>
                                 </select>
@@ -102,62 +102,57 @@
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-md-12 ">
+                        <div class="row mb-4">
+                            <div class="col-md-12">
                                 <label for="introduction">Introduction <span class="required">*</span></label>
                                 <textarea id="introduction" name="introduction"
-                                    value="{{ old('introduction',$getRecord->introduction) }}"
                                     class="form-control dynamic-char-count" maxlength="10" placeholder=""
-                                    rows="3"></textarea>
+                                    rows="3">{!! old('introduction',$getRecord->introduction) !!}</textarea>
 
                             </div>
+                        </div>
+                        <div class="row mb-4">
                             <div class="col-md-12">
                                 <label class="form-lebel" for="introduction_bn">Introduction (Bangla)</label>
                                 <textarea id="introduction_bn" name="introduction_bn"
-                                    value="{{ old('introduction_bn',$getRecord->introduction_bn) }}"
                                     class="form-control dynamic-char-count" maxlength="10" placeholder=""
-                                    rows="3"></textarea>
-
+                                    rows="3">{!! old('introduction_bn',$getRecord->introduction_bn) !!}</textarea>
                             </div>
                         </div>
 
-                        <div class="row">
+                        <div class="row mb-4">
                             <div class="col-md-12 ">
                                 <label for="details">Details <span class="required">*</span></label>
-                                <textarea id="details" name="details" value="{{ old('details',$getRecord->details) }}"
-                                    class="form-control dynamic-char-count" placeholder="" rows="5"></textarea>
-
+                                <textarea id="details" name="details" 
+                                    class="form-control dynamic-char-count" placeholder="" rows="5">{!! old('details',$getRecord->details) !!}</textarea>
                             </div>
+                        </div>
+                        <div class="row mb-4">
                             <div class="col-md-12 ">
                                 <label for="details_bn">Details (Bangla)</label>
                                 <textarea id="details_bn" name="details_bn"
-                                    value="{{ old('details_bn',$getRecord->details_bn) }}"
-                                    class="form-control dynamic-char-count" placeholder="" rows="5"></textarea>
+                                    class="form-control dynamic-char-count" placeholder="" rows="5">{!! old('details_bn',$getRecord->details_bn) !!}</textarea>
 
                             </div>
                         </div>
 
-                        <div class="row">
+                        <div class="row mb-4">
                             <div class="col-md-12 ">
                                 <label for="project_summary">Project Summary <span class="required">*</span></label>
                                 <textarea id="project_summary" name="project_summary"
-                                    value="{{ old('project_summary',$getRecord->project_summary) }}"
-                                    class="form-control dynamic-char-count" placeholder="" rows="3"></textarea>
-
-                            </div>
-                            <div class="col-md-12 ">
-                                <label for="project_summary_bn">Project Summary (Bangla)</label>
-                                <textarea id="project_summary_bn" name="project_summary_bn"
-                                    value="{{ old('project_summary_bn',$getRecord->project_summary_bn) }}"
-                                    class="form-control dynamic-char-count" placeholder="" rows="3"></textarea>
+                                    class="form-control dynamic-char-count" placeholder="" rows="3">{!! old('project_summary',$getRecord->project_summary) !!}</textarea>
 
                             </div>
                         </div>
-                        <br>
-                        <hr>
-
+                        <div class="row mb-4">
+                            <div class="col-md-12 ">
+                                <label for="project_summary_bn">Project Summary (Bangla)</label>
+                                <textarea id="project_summary_bn" name="project_summary_bn"
+                                    class="form-control dynamic-char-count" placeholder="" rows="3">{!! old('project_summary_bn',$getRecord->project_summary_bn) !!}</textarea>
+                            </div>
+                        </div>
                         <div class="row">
-                            <div class="col-md-6 ">
+                            <div class="col-md-6 outlined-input-container">
                                 <input type="file" id="project_image" name="project_image"
                                     value="{{ old('project_image',$getRecord->project_image) }}" class="form-control">
                                 <label for="project_image">Project Image <span class="required">*</span></label>
@@ -171,11 +166,9 @@
 
                         <div class="row">
                             <div class="col-md-6 outlined-input-container">
-                                <input type="url" id="youtube_video_link" name="youtube_video_link" {{--
-                                    value="{{ old('youtube_video_link',$getRecord->youtube_video_link) }}" --}}
+                                <input type="url" id="youtube_video_link" name="youtube_video_link" value="{{ old('youtube_video_link',$getRecord->youtube_video_link) }}"
                                     class="form-control" placeholder="">
-                                <label for="youtube_video_link">YouTube Video Link <span
-                                        class="required">*</span></label>
+                                <label for="youtube_video_link">YouTube Video Link <span class="required">*</span></label>
                                 <small class="form-text text-muted">Hint: Please upload embed link like
                                     https://www.youtube.com/embed/OW0kUmsQHnU</small>
                             </div>
@@ -201,7 +194,7 @@
                                         ? 'selected'
                                         : ''
                                         }}>No</option>
-                                    <option value="Yes" {{ old('featured_project', $getRecord->featured_project) == 'No'
+                                    <option value="Yes" {{ old('featured_project', $getRecord->featured_project) == 'Yes'
                                         ? 'selected'
                                         : ''
                                         }}>Yes</option>

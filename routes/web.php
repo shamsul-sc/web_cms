@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\frontend\WebProjectController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\FollowUpController;
@@ -11,11 +12,13 @@ use App\Http\Controllers\HomeSliderController;
 use App\Http\Controllers\ProjectCategoryController;
 
 Route::get('/', [HomeController::class, 'index']);
-
 Route::get('/about', function()
 {
    return View::make('pages.about');
 });
+Route::get('/projects', [WebProjectController::class, 'projects']);
+
+
 
 Route::resource('home-sliders', HomeSliderController::class);
 

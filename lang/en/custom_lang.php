@@ -5,7 +5,6 @@
 return [
     'welcome'   => 'Welcome to our application!',
     'home'      => 'Home',   
-    'about'     => 'About Us' 
-
-
+    'about'     => 'About Us', 
+    'projects'  => 'Projects'
 ];

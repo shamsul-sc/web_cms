@@ -22,7 +22,6 @@ class Project extends Model
         'details_bn',
         'project_summary',
         'project_summary_bn',
-        'youtube_video_link',
         'album_id',
         'featured_project',
         'state',

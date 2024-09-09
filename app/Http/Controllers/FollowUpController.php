@@ -52,7 +52,7 @@ class FollowUpController extends Controller
             $follow_up_image->move(public_path('uploads/follow_up_image').'/original/', $filename);
 
             $image_resize = Image::read(public_path('uploads/follow_up_image').'/original/' . $filename);
-            $image_resize->resize(600, 440, function ($constraint) {
+            $image_resize->resize(600, 340, function ($constraint) {
                 $constraint->aspectRatio();
             });
             $image_resize->save(public_path('uploads/follow_up_image').'/thumbnail/' . $filename);
@@ -93,7 +93,7 @@ class FollowUpController extends Controller
             $follow_up_image->move(public_path('uploads/follow_up_image').'/original/', $filename);
 
             $image_resize = Image::read(public_path('uploads/follow_up_image').'/original/' . $filename);
-            $image_resize->resize(600, 440, function ($constraint) {
+            $image_resize->resize(600, 340, function ($constraint) {
                 $constraint->aspectRatio();
             });
             $image_resize->save(public_path('uploads/follow_up_image').'/thumbnail/' . $filename);

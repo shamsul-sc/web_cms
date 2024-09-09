@@ -15,29 +15,29 @@
                 <div class="card-body mt-2">
 
 
-                    <form action="{{ route('dashboard.case_study_insert') }}" method="POST"
-                        enctype="multipart/form-data">
+                    <form action="{{ route('dashboard.case_study_insert') }}" method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }}
-                        {{--
                         <div class="row">
                             <div class="col-md-6 outlined-input-container">
                                 <select id="project_id" name="project_id" class="form-select">
                                     <option value="">Select Project</option>
-                                    @foreach($getProject as $Project)
-                                    <option value="{{ $Project->project_id }}">{{ $Project->project_name }}</option>
+                                    @foreach($projects as $project)
+                                    <option value="{{ $project->id }}">
+                                        {{ app()->getLocale() == 'en' ? $project->project_title : $project->project_title_bn }}
+                                    </option>
                                     @endforeach
 
                                 </select>
-                                <label for="album_id">Project Name<span class="required">*</span></label>
+                                <label for="album_id">Project Title<span class="required">*</span></label>
                             </div>
-                        </div> --}}
-                        <div class="row">
+                        </div>
+                        <!-- <div class="row">
                             <div class="col-md-6 outlined-input-container">
                                 <input type="text" id="project_id" name="project_id" class="form-control" placeholder=""
                                     maxlength="255" required>
                                 <label for="project_id">Project ID <span class="required">*</span></label>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="row">
                             <div class="col-md-6 outlined-input-container">
                                 <input type="text" id="case_title_bn" name="case_title_bn" class="form-control"

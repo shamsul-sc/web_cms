@@ -13,13 +13,14 @@ class CaseStudyController extends Controller
     public function CaseStudy_list()
     {
         $data['getCaseStudy'] = CaseStudy::getCaseStudy();
-        return view('dashboard.case_study.list',$data);
+        return view('dashboard.case_study.list', $data);
     }
 
     public function CaseStudy_add()
     {
-        // $data['getProject'] = Project::getProject();
-        return view('dashboard.case_study.add');
+        $data['projects'] = Project::where('status', 'Show')->orderBy('serial')->get();
+        // dd($data['projects']); exit;
+        return view('dashboard.case_study.add', $data);
     }
 
     public function CaseStudy_insert(Request $request)
@@ -62,7 +63,7 @@ class CaseStudyController extends Controller
             $case_image->move(public_path('uploads/case_image').'/original/', $filename);
 
             $image_resize = Image::read(public_path('uploads/case_image').'/original/' . $filename);
-            $image_resize->resize(600, 440, function ($constraint) {
+            $image_resize->resize(600, 340, function ($constraint) {
                 $constraint->aspectRatio();
             });
             $image_resize->save(public_path('uploads/case_image').'/thumbnail/' . $filename);
@@ -86,6 +87,8 @@ class CaseStudyController extends Controller
     {
 
         $data['getRecord'] = CaseStudy::getSingle($id);
+        $data['projects'] = Project::where('status', 'Show')->orderBy('serial')->get();
+        // dd($data['getRecord']); exit;
         return view('dashboard.case_study.edit', $data);
     }
 
@@ -121,7 +124,7 @@ class CaseStudyController extends Controller
             $case_image->move(public_path('uploads/case_image').'/original/', $filename);
 
             $image_resize = Image::read(public_path('uploads/case_image').'/original/' . $filename);
-            $image_resize->resize(600, 440, function ($constraint) {
+            $image_resize->resize(600, 340, function ($constraint) {
                 $constraint->aspectRatio();
             });
             $image_resize->save(public_path('uploads/case_image').'/thumbnail/' . $filename);

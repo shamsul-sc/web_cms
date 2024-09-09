@@ -144,9 +144,8 @@
                         <div class="row">
                             <div class="col-md-6 outlined-input-container">
                                 <input type="url" id="youtube_video_link" name="youtube_video_link" class="form-control"
-                                    placeholder="" required>
-                                <label for="youtube_video_link">YouTube Video Link <span
-                                        class="required">*</span></label>
+                                    placeholder="">
+                                <label for="youtube_video_link">YouTube Video Link</label>
                                 <small class="form-text text-muted">Hint: Please upload embed link like
                                     https://www.youtube.com/embed/OW0kUmsQHnU</small>
                             </div>
