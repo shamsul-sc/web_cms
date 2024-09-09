@@ -2,12 +2,14 @@
 
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FAQController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\FollowUpController;
 use App\Http\Controllers\CaseStudyController;
 use App\Http\Controllers\HomeSliderController;
+use App\Http\Controllers\FaqCategoryController;
 use App\Http\Controllers\GalleryTypeController;
 use App\Http\Controllers\GalleryAlbumController;
 use App\Http\Controllers\GalleryPhotoController;
@@ -83,6 +85,22 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/gallery_album_edit/{id}', [GalleryAlbumController::class, 'GalleryAlbum_edit'])->name('dashboard.gallery_album_edit');
     Route::post('/gallery_album_update/{id}', [GalleryAlbumController::class, 'GalleryAlbum_update'])->name('dashboard.gallery_album_update');
     Route::get('/gallery_album_deleted/{id}', [GalleryAlbumController::class, 'GalleryAlbum_deleted'])->name('dashboard.gallery_album_deleted');
+
+     //FAQ category routes
+    Route::get('/faq_category_list', [FaqCategoryController::class, 'FaqCategory_list'])->name('dashboard.faq_category_list');
+    Route::get('/faq_category_add', [FaqCategoryController::class, 'FaqCategory_add'])->name('dashboard.faq_category_add');
+    Route::post('/faq_category_insert', [FaqCategoryController::class, 'FaqCategory_insert'])->name('dashboard.faq_category_insert');
+    Route::get('/faq_category_edit/{id}', [FaqCategoryController::class, 'FaqCategory_edit'])->name('dashboard.faq_category_edit');
+    Route::post('/faq_category_update/{id}', [FaqCategoryController::class, 'FaqCategory_update'])->name('dashboard.faq_category_update');
+    Route::get('/faq_category_deleted/{id}', [FaqCategoryController::class, 'FaqCategory_deleted'])->name('dashboard.faq_category_deleted');
+
+     //FAQ routes
+    Route::get('/faq_list', [FAQController::class, 'Faq_list'])->name('dashboard.faq_list');
+    Route::get('/faq_add', [FAQController::class, 'Faq_add'])->name('dashboard.faq_add');
+    Route::post('/faq_insert', [FAQController::class, 'Faq_insert'])->name('dashboard.faq_insert');
+    Route::get('/faq_edit/{id}', [FAQController::class, 'Faq_edit'])->name('dashboard.faq_edit');
+    Route::post('/faq_update/{id}', [FAQController::class, 'Faq_update'])->name('dashboard.faq_update');
+    Route::get('/faq_deleted/{id}', [FAQController::class, 'Faq_deleted'])->name('dashboard.faq_deleted');
 
 
 
