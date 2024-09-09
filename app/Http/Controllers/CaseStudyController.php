@@ -29,7 +29,7 @@ class CaseStudyController extends Controller
         // die();
          $validator = Validator::make($request->all(), [
 
-            'case_title' => 'required|unique:case_studies,case_title',
+           
             'case_title_bn' => 'required|unique:case_studies,case_title_bn',
             'case_approx_budget' => 'required',
         ]);

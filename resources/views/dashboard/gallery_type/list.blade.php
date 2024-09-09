@@ -6,7 +6,7 @@
         <div class="card">
             @include('layouts._message')
             <div class="card-header" style="background-color: rgb(93, 198, 93);">
-                <h5 class="card-title mb-0">Follow Up List</h5>
+                <h5 class="card-title mb-0">Gellary Type List</h5>
             </div>
             <div class="card-body">
                 <div class="col-sm-12  d-flex justify-content-between">
@@ -15,8 +15,8 @@
                                 aria-controls="scroll-vertical"></label>
                     </div>
                     <div class="mt-2 p-2">
-                        <a class="btn btn-sm btn-primary" href="{{ route('dashboard.follow_up_add') }}">Add New
-                            Follow Up</a>
+                        <a class="btn btn-sm btn-primary" href="{{ route('dashboard.gallery_type_add') }}">Add New
+                            Gellary Type</a>
                     </div>
                 </div>
             </div>
@@ -25,37 +25,37 @@
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Follow Up Title BN.</th>
-                        <th>Follow Up Date</th>
-                        <th>Case Image</th>
+                        <th>Gallery Type Name</th>
+                        <th>Serial Number</th>
                         <th>Status</th>
+                        <th>Created Date</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @if($getFollowUp && $getFollowUp->count())
-                    @foreach ($getFollowUp as $value )
+                    @if($getGalleryType && $getGalleryType->count())
+                    @foreach ($getGalleryType as $value )
 
                     <tr>
                         <td>{{ $value->id }}</td>
-                        <td>{!! $value->follow_up_title_bn !!}</td>
-                        <td>{{ date('d-m-Y', strtotime($value->follow_up_title_bn)) }}</td>
-                        <td><img src="/uploads/follow_up_image/thumbnail/{{ $value->follow_up_image }}" width="100px">
-                        </td>
+                        <td>{{ $value->type_name }}</td>
+                        <td>{{ $value->type_serial }}</td>
+                        <td>{{ date('d-m-Y', strtotime($value->created_at)) }}</td>
+
 
                         <td>
                             <span
                                 class="badge
-                                {{ $value->status === 'Show' ? 'bg-info-subtle text-info' : 'bg-secondary-subtle text-warning' }}">
-                                {{ $value->status === 'Show' ? 'Show' : 'Hide' }}
+                                {{ $value->type_status === 'Show' ? 'bg-info-subtle text-info' : 'bg-secondary-subtle text-warning' }}">
+                                {{ $value->type_status === 'Show' ? 'Show' : 'Hide' }}
                             </span>
                         </td>
 
-                        <td class='d-flex'>
-                            <a href="{{ route('dashboard.follow_up_edit',$value->id ) }}"
+                        <td>
+                            <a href="{{ route('dashboard.gallery_type_edit',$value->id ) }}"
                                 class="btn btn-sm btn-info ">Edit</a>
 
-                            <a href="{{ route('dashboard.follow_up_deleted', $value->id) }}"
+                            <a href="{{ route('dashboard.gallery_type_deleted', $value->id) }}"
                                 class="btn btn-sm btn-danger"
                                 onclick="return confirm('Are you sure you want to deleted?')">Delete</a>
 
