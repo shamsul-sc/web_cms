@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\GalleryAlbum;
+use App\Models\GalleryType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Laravel\Facades\Image;
@@ -17,7 +18,8 @@ class GalleryAlbumController extends Controller
 
     public function GalleryAlbum_add()
     {
-        return view('dashboard.gallery_album.add');
+        $data['galleryTypes'] = GalleryType::where('type_status', 'Show')->orderBy('type_serial')->get();
+        return view('dashboard.gallery_album.add', $data);
     }
 
     public function GalleryAlbum_insert(Request $request)
@@ -51,7 +53,7 @@ class GalleryAlbumController extends Controller
             $featured_image->move(public_path('uploads/gallery_Album_photo').'/original/',$filename);
 
             $image_resize = Image::read(public_path('uploads/gallery_Album_photo').'/original/'.$filename);
-            $image_resize->resize(600, 440, function ($constraint) {
+            $image_resize->resize(600, 340, function ($constraint) {
                 $constraint->aspectRatio();
             });
             $image_resize->save(public_path('uploads/gallery_Album_photo').'/thumbnail/'.$filename);
@@ -111,7 +113,7 @@ class GalleryAlbumController extends Controller
 
 
             $image_resize = Image::make(public_path('uploads/gallery_Album_photo/original/'.$filename));
-            $image_resize->resize(600, 440, function ($constraint) {
+            $image_resize->resize(600, 340, function ($constraint) {
                 $constraint->aspectRatio();
             });
             $image_resize->save(public_path('uploads/gallery_Album_photo/thumbnail/'.$filename));

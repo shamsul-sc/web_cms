@@ -10,3 +10,7 @@
     font-size: 0.8em;
     position: relative;
 }
+
+.custom-card-style-2 .card-body {
+    max-width: 90%;
+}

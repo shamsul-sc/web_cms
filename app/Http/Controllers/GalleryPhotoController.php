@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\GalleryPhoto;
+use App\Models\GalleryAlbum;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Laravel\Facades\Image;
@@ -17,7 +18,8 @@ class GalleryPhotoController extends Controller
 
     public function GalleryPhoto_add()
     {
-        return view('dashboard.gallery_photo.add');
+        $data['albums'] = GalleryAlbum::where('album_status', 'Show')->orderBy('album_serial')->get();
+        return view('dashboard.gallery_photo.add', $data);
     }
 
     public function GalleryPhoto_insert(Request $request)
@@ -49,7 +51,7 @@ class GalleryPhotoController extends Controller
             $image->move(public_path('uploads/gallery_photo').'/original/',$filename);
 
             $image_resize = Image::read(public_path('uploads/gallery_photo').'/original/'.$filename);
-            $image_resize->resize(600, 440, function ($constraint) {
+            $image_resize->resize(600, 340, function ($constraint) {
                 $constraint->aspectRatio();
             });
             $image_resize->save(public_path('uploads/gallery_photo').'/thumbnail/'.$filename);
@@ -107,7 +109,7 @@ class GalleryPhotoController extends Controller
 
 
             $image_resize = Image::make(public_path('uploads/gallery_photo/original/'.$filename));
-            $image_resize->resize(600, 440, function ($constraint) {
+            $image_resize->resize(600, 340, function ($constraint) {
                 $constraint->aspectRatio();
             });
             $image_resize->save(public_path('uploads/gallery_photo/thumbnail/'.$filename));

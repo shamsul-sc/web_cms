@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\frontend\WebProjectController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\FollowUpController;
@@ -13,13 +12,18 @@ use App\Http\Controllers\GalleryTypeController;
 use App\Http\Controllers\GalleryAlbumController;
 use App\Http\Controllers\GalleryPhotoController;
 use App\Http\Controllers\ProjectCategoryController;
+use App\Http\Controllers\frontend\webProjectController;
+use App\Http\Controllers\frontend\WebCaseStudyController;
+use App\Http\Controllers\frontend\webAlbumsController;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/about', function()
 {
    return View::make('pages.about');
 });
-Route::get('/projects', [WebProjectController::class, 'projects']);
+Route::get('/projects', [webProjectController::class, 'projects']);
+Route::get('/case-studies', [WebCaseStudyController::class, 'case_studies'])->name('case_studies');
+Route::get('/albums', [webAlbumsController::class, 'albums'])->name('albums');
 
 
 

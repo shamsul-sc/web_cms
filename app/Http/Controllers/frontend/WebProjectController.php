@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Project;
 use Illuminate\Http\Request;
 
-class WebProjectController extends Controller
+class webProjectController extends Controller
 {
     public function projects()
     {

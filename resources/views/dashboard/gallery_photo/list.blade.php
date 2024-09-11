@@ -44,9 +44,6 @@
                         <td>{{ $value->caption }}</td>
                         <td><img src="/uploads/gallery_photo/thumbnail/{{ $value->image }}" width="100px"></td>
                         <td>{{ $value->serial }}</td>
-                        <td>{{ date('d-m-Y', strtotime($value->created_at)) }}</td>
-
-
                         <td>
                             <span
                                 class="badge
@@ -54,7 +51,7 @@
                                 {{ $value->status === 'Show' ? 'Show' : 'Hide' }}
                             </span>
                         </td>
-
+                        <td>{{ date('d-m-Y', strtotime($value->created_at)) }}</td>
                         <td>
                             <a href="{{ route('dashboard.gallery_photo_edit',$value->id ) }}"
                                 class="btn btn-sm btn-info ">Edit</a>
@@ -64,8 +61,6 @@
                                 onclick="return confirm('Are you sure you want to deleted?')">Delete</a>
 
                         </td>
-
-
                     </tr>
                     @endforeach
 

@@ -27,9 +27,9 @@
                         <div class="card custom-card-style-1 border-0 border-radius-0 custom-box-shadow-1">
                             <img src="/uploads/category/thumbnail/{{ $project->project_image }}" class="card-img-top border-radius-0" alt="John Doe Image" />
                             <div class="card-body text-center px-4 py-5">
-                                <h2 class="card-title alternative-font-4 text-color-dark font-weight-semibold line-height-1 text-5 mb-1">{{ app()->getLocale() == 'en' ? $project->project_title : $project->project_title_bn }}</h2>
-                                <p class="text-color-grey positive-ls-3 mb-3">{{ app()->getLocale() == 'en' ? $project->project_approx_budget : $project->project_approx_budget }}</p>
-                                <p class="font-weight-light text-color-dark line-height-7 mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra erat orci, ac auctor lacus tincidunt ut...</p>
+                                <h2 class="card-title alternative-font-4 text-color-dark font-weight-semibold line-height-1 text-5 mb-3">{{ app()->getLocale() == 'en' ? $project->project_title : $project->project_title_bn }}</h2>
+                                <!-- <p class="text-color-grey positive-ls-3 mb-3">{{ app()->getLocale() == 'en' ? $project->project_approx_budget : $project->project_approx_budget }}</p> -->
+                                <p class="font-weight-light text-color-dark line-height-7 mb-2">{!! app()->getLocale() == 'en' ? $project->project_summary : $project->project_summary_bn !!}</p>
                                 <span class="custom-read-more d-inline-flex justify-content-center align-items-center text-3 font-weight-medium svg-fill-color-primary">
                                     VIEW PROFILE
                                     <svg class="ms-2" version="1.1" viewBox="0 0 15.698 8.706" width="17" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

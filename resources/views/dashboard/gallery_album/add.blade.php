@@ -14,9 +14,17 @@
                         {{ csrf_field() }}
 
                         <div class="row ">
-                            <div class="col-md-12 outlined-input-container">
-                                <input type="number" id="type_id" class="form-control" name="type_id" placeholder="">
-                                <label for="type_id"> Album type Id<span class="required">*</span></label>
+                            <div class="col-md-6 outlined-input-container">
+                                <select id="type_id" name="type_id" class="form-select">
+                                    <option value="">Select album type</option>
+                                    @foreach($galleryTypes as $type)
+                                    <option value="{{ $type->id }}">
+                                        {{ app()->getLocale() == 'en' ? $type->type_name : $type->type_name }}
+                                    </option>
+                                    @endforeach
+
+                                </select>
+                                <label for="type_id">Album type<span class="required">*</span></label>
                             </div>
                         </div>
                         <div class="row ">

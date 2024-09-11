@@ -15,8 +15,16 @@
 
                         <div class="row ">
                             <div class="col-md-12 outlined-input-container">
-                                <input type="number" id="album_id" class="form-control" name="album_id" placeholder="">
-                                <label for="slider_text_last_bn">Album Id<span class="required">*</span></label>
+                                <select id="album_id" name="album_id" class="form-select">
+                                    <option value="">Select album</option>
+                                    @foreach($albums as $album)
+                                    <option value="{{ $album->id }}">
+                                        {{ app()->getLocale() == 'en' ? $album->album_name : $album->album_name }}
+                                    </option>
+                                    @endforeach
+
+                                </select>
+                                <label for="album_id">Album<span class="required">*</span></label>
                             </div>
                         </div>
                         <div class="row ">

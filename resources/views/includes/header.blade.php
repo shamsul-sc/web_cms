@@ -115,44 +115,46 @@
                                         </li>
                                         <li class="dropdown">
                                             <a href="/projects" class="dropdown-item dropdown-toggle">{{ __('custom_lang.projects') }}</a>
-                                            <ul class="dropdown-menu border-radius-0">
-                                                {{--  @if($projectCategories && $projectCategories->count())
-                                                    @foreach ($projectCategories as $category)
-                                                    <li>
-                                                        <a href="demo-law-firm-2-practice-areas-detail.html"
-                                                            class="nav-link">{{ app()->getLocale() == 'en' ? $category->category_name : $category->category_name_bn }}
-                                                        </a>
-                                                    </li>
-                                                    @endforeach
-                                                @endif --}}
-                                                <li>
-                                                    <a href="demo-law-firm-2-practice-areas-detail.html"
-                                                        class="nav-link">Capital Law</a>
+                                            <ul class="dropdown-menu border-radius-0">   
+                                                @if($projectCategories && $projectCategories->count())
+                                                <li class="dropdown-submenu">
+                                                    <a class="dropdown-item" href="#">Category ({{ $projectCategories->count() }})</a>
+                                                    <ul class="dropdown-menu  border-radius-0">
+                                                        @foreach ($projectCategories as $category)
+                                                            <li>
+                                                                <a class="dropdown-item" href="demo-law-firm-2-practice-areas-detail.html">{{ app()->getLocale() == 'en' ? $category->category_name : $category->category_name_bn }}
+                                                                </a>
+                                                            </li>
+                                                        @endforeach
+                                                    </ul>
                                                 </li>
-                                                <li>
-                                                    <a href="demo-law-firm-2-practice-areas-detail.html"
-                                                        class="nav-link">Business Law</a>
+                                                @endif
+
+                                                @if($projects && $projects->count())
+                                                <li class="dropdown-submenu">
+                                                    <a class="dropdown-item" href="#">{{ __('custom_lang.projects') }} ({{ $projects->count() }})</a>
+                                                    <ul class="dropdown-menu  border-radius-0">
+                                                        @foreach ($projects as $project)
+                                                            <li>
+                                                                <a class="dropdown-item" href="demo-law-firm-2-practice-areas-detail.html">{{ app()->getLocale() == 'en' ? $project->project_title : $project->project_title_bn }}
+                                                                </a>
+                                                            </li>
+                                                        @endforeach
+                                                    </ul>
                                                 </li>
-                                                <li>
-                                                    <a href="demo-law-firm-2-practice-areas-detail.html"
-                                                        class="nav-link">Accident & Injury Law</a>
-                                                </li>
-                                                <li>
-                                                    <a href="demo-law-firm-2-practice-areas-detail.html"
-                                                        class="nav-link">Health Law</a>
-                                                </li>
+                                                @endif
                                             </ul>
                                         </li>
                                         <li>
-                                            <a href="demo-law-firm-2-case-study.html" class="nav-link">Case Study</a>
+                                            <a href="/case-studies" class="nav-link">Case Study</a>
                                         </li>
                                         <li class="dropdown">
                                             <a href="demo-law-firm-2-practice-areas.html"
                                                 class="dropdown-item dropdown-toggle">Media</a>
                                             <ul class="dropdown-menu border-radius-0">
                                                 <li>
-                                                    <a href="demo-law-firm-2-practice-areas-detail.html"
-                                                        class="nav-link">Family Law</a>
+                                                    <a href="/albums"
+                                                        class="nav-link">Albums</a>
                                                 </li>
                                             </ul>
                                         </li>
