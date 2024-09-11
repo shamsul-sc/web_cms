@@ -51,7 +51,7 @@
                                 {{ $value->status === 'Show' ? 'Show' : 'Hide' }}
                             </span>
                         </td>
-                        <td>{{ date('d-m-Y', strtotime($value->created_at)) }}</td>
+                        <td>{{ date('d-m-Y h:i:A', strtotime($value->created_at)) }}</td>
                         <td>
                             <a href="{{ route('dashboard.gallery_photo_edit',$value->id ) }}"
                                 class="btn btn-sm btn-info ">Edit</a>

@@ -40,7 +40,7 @@
                         <td>{{ $value->id }}</td>
                         <td>{{ $value->type_name }}</td>
                         <td>{{ $value->type_serial }}</td>
-                        <td>{{ date('d-m-Y', strtotime($value->created_at)) }}</td>
+                        <td>{{ date('d-m-Y h:i:A', strtotime($value->created_at)) }}</td>
 
 
                         <td>

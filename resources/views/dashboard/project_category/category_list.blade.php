@@ -51,7 +51,7 @@
                                 {{ $category->status === 'show' ? 'Show' : 'Hide' }}
                             </span>
                         </td>
-                        <td>{{ date('d-m-Y', strtotime($category->created_at)) }}</td>
+                        <td>{{ date('d-m-Y h:i:A', strtotime($category->created_at)) }}</td>
                         <td>
                             <a href="{{ route('dashboard.category_edit',$category->cat_id ) }}"
                                 class="btn btn-sm btn-info ">Edit</a>

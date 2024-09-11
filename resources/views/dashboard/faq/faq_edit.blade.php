@@ -8,7 +8,7 @@
             <div class="card shadow-lg">
                 <div class="card-header align-items-center d-flex text-white"
                     style="background-color: rgb(93, 198, 93);">
-                    <h4 class="card-title mb-0 flex-grow-1 text-white">Edit FAQ</h4>
+                    <h4 class="card-title mb-0 flex-grow-1 text-white">Edit a FAQ</h4>
 
                 </div>
 
@@ -21,15 +21,20 @@
 
                         <div class="row">
                             <div class="col-md-6 outlined-input-container">
-                                <input type="number" id="faq_cat_id" class="form-control" name="faq_cat_id"
-                                    value="{{ old('faq_cat_id',$getRecord->faq_cat_id) }}" placeholder="">
-                                <label for="faq_cat_id">FAQ Category ID<span class="required">*</span></label>
+                                <select id="faq_cat_id" name="faq_cat_id" class="form-select">
+                                    <option value="">Select FAQ Category</option>
+                                    @foreach($getFaqCategory as $faq_category)
+                                    <option value="{{ $faq_category->id }}" {{ $faq_category->id ==
+                                        $faq_category->id ?
+                                        'selected' : '' }}>{{ $faq_category->faq_cat_name }}</option>
+                                    @endforeach
+                                </select>
+                                <label for="faq_cat_id">FAQ Category Name<span class="required">*</span></label>
                             </div>
 
                             <div class="col-md-6 outlined-input-container">
-                                <input type="number" id="position" name="position"
-                                    value="{{ old('position',$getRecord->position) }}" class="form-control"
-                                    placeholder="" maxlength="255" required>
+                                <input type="number" id="position" name="position" class="form-control" placeholder=""
+                                    value="{{ old('position',$getRecord->position) }}" maxlength="255">
                                 <label for="project_title">Position <span class="required">*</span></label>
                             </div>
 
@@ -37,15 +42,13 @@
 
                         <div class="row">
                             <div class="col-md-6 outlined-input-container">
-                                <input type="text" id="question" name="question"
-                                    value="{{ old('question',$getRecord->question) }}" class="form-control"
-                                    placeholder="" maxlength="255" required>
+                                <input type="text" id="question" name="question" class="form-control" placeholder=""
+                                    value="{{ old('question',$getRecord->question) }}" maxlength="255">
                                 <label for="project_title">Question <span class="required">*</span></label>
                             </div>
                             <div class="col-md-6 outlined-input-container">
-                                <input type="text" id="answer" name="answer"
-                                    value="{{ old('answer',$getRecord->answer) }}" class="form-control" placeholder=""
-                                    maxlength="100" required>
+                                <input type="text" id="answer" name="answer" class="form-control" placeholder=""
+                                    value="{{ old('answer',$getRecord->answer) }}" maxlength="100">
                                 <label for="answer">Answer<span class="required">*</span></label>
 
                             </div>
@@ -53,15 +56,14 @@
 
                         <div class="row">
                             <div class="col-md-6 outlined-input-container">
-                                <input type="text" id="question_bn" name="question_bn"
-                                    value="{{ old('question_bn',$getRecord->question_bn) }}" class="form-control"
-                                    placeholder="" maxlength="255" required>
-                                <label for="project_title">Question BN.(Bangla) <span class="required">*</span></label>
+                                <input type="text" id="question_bn" name="question_bn" class="form-control"
+                                    value="{{ old('question_bn',$getRecord->question_bn) }}" placeholder=""
+                                    maxlength="255">
+                                <label for="question_bn">Question BN.(Bangla) <span class="required">*</span></label>
                             </div>
                             <div class="col-md-6 outlined-input-container">
-                                <input type="text" id="answer_bn" name="answer_bn"
-                                    value="{{ old('answer_bn',$getRecord->answer_bn) }}" class="form-control"
-                                    placeholder="" maxlength="100" required>
+                                <input type="text" id="answer_bn" name="answer_bn" class="form-control" placeholder=""
+                                    value="{{ old('answer_bn',$getRecord->answer_bn) }}" maxlength="100">
                                 <label for="answer">Answer BN(Bangla)<span class="required">*</span></label>
 
                             </div>
@@ -70,7 +72,7 @@
 
                         <div class="row">
                             <div class="col-md-6 outlined-input-container">
-                                <select class="form-select" name="status" required>
+                                <select class="form-select" name="status">
                                     <option value="" disabled {{ old('status', $getRecord->status) === null
                                         ? 'selected' :
                                         '' }}>
@@ -83,6 +85,7 @@
                                         'selected' : ''
                                         }}>Hide</option>
                                 </select>
+                                </select>
                                 <label> Status <span class="required">*</span></label>
                             </div>
 
@@ -94,7 +97,7 @@
                                     <i class="ri-arrow-go-back-line"></i> Go to list
                                 </a>
                                 <button type="submit" class="btn btn-primary px-5 rounded-pill">
-                                    <i class="bi bi-plus-lg"></i> Update
+                                    <i class="bi bi-plus-lg"></i> Submit
                                 </button>
                             </div>
                         </div>
@@ -105,6 +108,4 @@
     </div>
 
 
-
-    @endsec
-    tion
+    @endsection

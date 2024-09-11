@@ -47,7 +47,7 @@
                         <td><img src="/uploads/gallery_Album_photo/thumbnail/{{ $value->featured_image }}"
                                 width="100px"></td>
                         <td>{{ $value->album_serial }}</td>
-                        <td>{{ date('d-m-Y', strtotime($value->date)) }}</td>
+                        <td>{{ date('d-m-Y h:i:A', strtotime($value->date)) }}</td>
 
 
                         <td>

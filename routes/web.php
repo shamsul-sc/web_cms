@@ -11,8 +11,10 @@ use App\Http\Controllers\CaseStudyController;
 use App\Http\Controllers\HomeSliderController;
 use App\Http\Controllers\FaqCategoryController;
 use App\Http\Controllers\GalleryTypeController;
+use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\GalleryAlbumController;
 use App\Http\Controllers\GalleryPhotoController;
+use App\Http\Controllers\MediaCoverageController;
 use App\Http\Controllers\ProjectCategoryController;
 use App\Http\Controllers\frontend\webProjectController;
 use App\Http\Controllers\frontend\WebCaseStudyController;
@@ -101,13 +103,30 @@ Route::prefix('dashboard')->group(function () {
     Route::post('/faq_category_update/{id}', [FaqCategoryController::class, 'FaqCategory_update'])->name('dashboard.faq_category_update');
     Route::get('/faq_category_deleted/{id}', [FaqCategoryController::class, 'FaqCategory_deleted'])->name('dashboard.faq_category_deleted');
 
-     //FAQ routes
+    //FAQ routes
     Route::get('/faq_list', [FAQController::class, 'Faq_list'])->name('dashboard.faq_list');
     Route::get('/faq_add', [FAQController::class, 'Faq_add'])->name('dashboard.faq_add');
     Route::post('/faq_insert', [FAQController::class, 'Faq_insert'])->name('dashboard.faq_insert');
     Route::get('/faq_edit/{id}', [FAQController::class, 'Faq_edit'])->name('dashboard.faq_edit');
     Route::post('/faq_update/{id}', [FAQController::class, 'Faq_update'])->name('dashboard.faq_update');
     Route::get('/faq_deleted/{id}', [FAQController::class, 'Faq_deleted'])->name('dashboard.faq_deleted');
+
+
+     //Testimonial routes
+    Route::get('/testimonial_list', [TestimonialController::class, 'Testimonial_list'])->name('dashboard.testimonial_list');
+    Route::get('/testimonial_add', [TestimonialController::class, 'Testimonial_add'])->name('dashboard.testimonial_add');
+    Route::post('/testimonial_insert', [TestimonialController::class, 'Testimonial_insert'])->name('dashboard.testimonial_insert');
+    Route::get('/testimonial_edit/{id}', [TestimonialController::class, 'Testimonial_edit'])->name('dashboard.testimonial_edit');
+    Route::post('/testimonial_update/{id}', [TestimonialController::class, 'Testimonial_update'])->name('dashboard.testimonial_update');
+    Route::get('/testimonial_deleted/{id}', [TestimonialController::class, 'Testimonial_deleted'])->name('dashboard.testimonial_deleted');
+
+     //MediaCoverage routes
+    Route::get('/media_cover_list', [MediaCoverageController::class, 'MediaCoverage_list'])->name('dashboard.media_cover_list');
+    Route::get('/media_cover_add', [MediaCoverageController::class, 'MediaCoverage_add'])->name('dashboard.media_cover_add');
+    Route::post('/media_cover_insert', [MediaCoverageController::class, 'MediaCoverage_insert'])->name('dashboard.media_cover_insert');
+    Route::get('/media_cover_edit/{id}', [MediaCoverageController::class, 'MediaCoverage_edit'])->name('dashboard.media_cover_edit');
+    Route::post('/media_cover_update/{id}', [MediaCoverageController::class, 'MediaCoverage_update'])->name('dashboard.media_cover_update');
+    Route::get('/media_cover_deleted/{id}', [MediaCoverageController::class, 'MediaCoverage_deleted'])->name('dashboard.media_cover_deleted');
 
 
 

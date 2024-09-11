@@ -56,6 +56,11 @@ class FollowUpController extends Controller
                 $constraint->aspectRatio();
             });
             $image_resize->save(public_path('uploads/follow_up_image').'/thumbnail/' . $filename);
+
+            if ($followUp_model->follow_up_image && file_exists(public_path('uploads/follow_up_image/original/'.$followUp_model->follow_up_image))) {
+                unlink(public_path('uploads/follow_up_image/original/'.$followUp_model->follow_up_image));
+                unlink(public_path('uploads/follow_up_image/thumbnail/'.$followUp_model->follow_up_image));
+            }
             $followUp_model->follow_up_image = $filename;
         }
         $followUp_model->save();
