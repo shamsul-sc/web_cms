@@ -44,7 +44,7 @@
                         <td>{{ $value->caption }}</td>
                         <td><img src="/uploads/gallery_photo/thumbnail/{{ $value->image }}" width="100px"></td>
                         <td>{{ $value->serial }}</td>
-                        <td>{{ date('d-m-Y', strtotime($value->created_at)) }}</td>
+                        <td>{{ date('d-m-Y h:i:A', strtotime($value->created_at)) }}</td>
 
 
                         <td>

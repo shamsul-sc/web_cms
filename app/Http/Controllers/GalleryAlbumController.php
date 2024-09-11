@@ -81,7 +81,7 @@ class GalleryAlbumController extends Controller
         $validator = Validator::make($request->all(), [
 
             'album_name' => 'required',
-            'featured_image' => 'nullable|featured_image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            // 'featured_image' => 'nullable|featured_image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         if($validator->fails())
@@ -110,7 +110,7 @@ class GalleryAlbumController extends Controller
             $featured_image->move(public_path('uploads/gallery_Album_photo/original'), $filename);
 
 
-            $image_resize = Image::make(public_path('uploads/gallery_Album_photo/original/'.$filename));
+            $image_resize = Image::read(public_path('uploads/gallery_Album_photo/original/'.$filename));
             $image_resize->resize(600, 440, function ($constraint) {
                 $constraint->aspectRatio();
             });

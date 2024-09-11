@@ -55,7 +55,7 @@
                                 {{ $value->status === 'Show' ? 'Show' : 'Hide' }}
                             </span>
                         </td>
-                        <td>{{ date('d-m-Y', strtotime($value->created_at)) }}</td>
+                        <td>{{ date('d-m-Y h:i:A', strtotime($value->created_at)) }}</td>
                         <td class='d-flex'>
                             <a href="{{ route('dashboard.faq_edit',$value->id ) }}"
                                 class="btn btn-sm btn-info ">Edit</a>

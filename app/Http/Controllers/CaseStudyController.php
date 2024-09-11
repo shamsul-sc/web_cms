@@ -66,6 +66,11 @@ class CaseStudyController extends Controller
                 $constraint->aspectRatio();
             });
             $image_resize->save(public_path('uploads/case_image').'/thumbnail/' . $filename);
+
+            if ($case_model->case_image && file_exists(public_path('uploads/author_image/original/'.$case_model->case_image))) {
+                unlink(public_path('uploads/case_image/original/'.$case_model->case_image));
+                unlink(public_path('uploads/case_image/thumbnail/'.$case_model->case_image));
+            }
             $case_model->case_image = $filename;
         }
 

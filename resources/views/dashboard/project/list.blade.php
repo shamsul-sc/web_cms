@@ -72,7 +72,7 @@
                                 {{ $category->status === 'Show' ? 'Show' : 'Hide' }}
                             </span>
                         </td>
-                        <td>{{ date('d-m-Y', strtotime($category->created_at)) }}</td>
+                        <td>{{ date('d-m-Y h:i:A', strtotime($category->created_at)) }}</td>
                         <td class='d-flex'>
                             <a href="{{ route('dashboard.edit',$category->id ) }}" class="btn btn-sm btn-info ">Edit</a>
 

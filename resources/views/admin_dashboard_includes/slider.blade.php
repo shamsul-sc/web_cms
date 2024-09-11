@@ -100,24 +100,34 @@
         </div>
     </li>
 
+    <li class="nav-item">
+        <a class="nav-link menu-link" href="#sidebarServices" data-bs-toggle="collapse" role="button"
+            aria-expanded="false" aria-controls="sidebarServices">
+            <i class="ri-pages-line"></i> <span data-key="t-services">Testimonial</span>
+        </a>
+        <div class="collapse menu-dropdown" id="sidebarServices">
+            <ul class="nav nav-sm flex-column">
+                <li class="nav-item">
+                    <a href="{{ route('dashboard.testimonial_list') }}" class="nav-link"
+                        data-key="t-starter">Testimonial
+                        List</a>
+                </li>
+        </div>
+    </li>
+
 
     <li class="menu-title"><i class="ri-more-fill"></i> <span data-key="t-services">Services</span>
     </li>
     <li class="nav-item">
         <a class="nav-link menu-link" href="#sidebarServices" data-bs-toggle="collapse" role="button"
             aria-expanded="false" aria-controls="sidebarServices">
-            <i class="ri-pages-line"></i> <span data-key="t-services">Services</span>
+            <i class="ri-pages-line"></i> <span data-key="t-services">MediaCoverage</span>
         </a>
         <div class="collapse menu-dropdown" id="sidebarServices">
             <ul class="nav nav-sm flex-column">
                 <li class="nav-item">
-                    <a href="{% url 'service_type_list' %}" class="nav-link" data-key="t-starter">Service Type List</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{% url 'service_list' %}" class="nav-link" data-key="t-starter">Services List</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{% url 'create_service' %}" class="nav-link" data-key="t-starter">Services Create</a>
+                    <a href="{{ route('dashboard.media_cover_list') }}" class="nav-link"
+                        data-key="t-starter">MediaCoverage List</a>
                 </li>
             </ul>
         </div>
@@ -202,5 +212,6 @@
                 </li>
             </ul>
         </div>
+
 
 </ul>

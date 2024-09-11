@@ -39,7 +39,7 @@
                     <tr>
                         <td>{{ $value->id }}</td>
                         <td>{!! $value->follow_up_title_bn !!}</td>
-                        <td>{{ date('d-m-Y', strtotime($value->follow_up_title_bn)) }}</td>
+                        <td>{{ date('d-m-Y h:i:A', strtotime($value->follow_up_title_bn)) }}</td>
                         <td><img src="/uploads/follow_up_image/thumbnail/{{ $value->follow_up_image }}" width="100px">
                         </td>
 

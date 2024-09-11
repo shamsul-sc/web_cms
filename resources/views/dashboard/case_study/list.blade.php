@@ -71,7 +71,7 @@
                                 }}
                             </span>
                         </td>
-                        <td>{{ date('d-m-Y', strtotime($case_study->created_at)) }}</td>
+                        <td>{{ date('d-m-Y h:i:A', strtotime($case_study->created_at)) }}</td>
                         <td class='d-flex'>
                             <a href="{{ route('dashboard.case_study_edit',$case_study->id ) }}"
                                 class="btn btn-sm btn-info ">Edit</a>
