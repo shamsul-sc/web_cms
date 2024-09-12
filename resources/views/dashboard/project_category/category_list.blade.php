@@ -4,7 +4,8 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
-            @include('layouts._message')
+            {{-- @include('layouts._message') --}}
+            @include('sweetalert::alert')
             <div class="card-header" style="background-color: rgb(93, 198, 93);">
                 <h5 class="card-title mb-0">Category List</h5>
             </div>
@@ -55,12 +56,18 @@
                         <td>
                             <a href="{{ route('dashboard.category_edit',$category->cat_id ) }}"
                                 class="btn btn-sm btn-info ">Edit</a>
-                            <a href="{{ route('dashboard.category_deleted', $category->cat_id) }}"
-                                class="btn btn-sm btn-danger"
-                                onclick="return confirm('Are you sure you want to delete this category?')">Delete</a>
-                        </td>
-                        </td>
 
+                            <a href="javascript:void(0)" class="btn btn-sm btn-danger"
+                                onclick="deleteConfirmation({{ $category->cat_id }})">Delete</a>
+
+                            <form id="delete-form-{{ $category->cat_id }}"
+                                action="{{ route('dashboard.category_deleted', $category->cat_id) }}" method="POST"
+                                style="display: none;">
+                                @csrf
+                                @method('DELETE')
+                            </form>
+                        </td>
+                        </td>
 
                     </tr>
                     @endforeach
@@ -73,3 +80,21 @@
 </div>
 
 @endsection
+
+<script>
+    function deleteConfirmation(Id) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('delete-form-' + Id).submit();
+            }
+        });
+    }
+</script>

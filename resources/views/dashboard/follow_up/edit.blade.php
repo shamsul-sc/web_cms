@@ -4,7 +4,7 @@
 <div class="d-flex justify-content-center align-items-center">
     <div class="row">
         <div class="col-xl-12">
-            @include('layouts._message')
+            @include('sweetalert::alert')
             <div class="card shadow-lg">
                 <div class="card-header align-items-center d-flex text-white"
                     style="background-color: rgb(93, 198, 93);">

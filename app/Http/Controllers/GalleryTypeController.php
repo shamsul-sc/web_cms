@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\GalleryType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class GalleryTypeController extends Controller
 {
@@ -27,10 +28,12 @@ class GalleryTypeController extends Controller
             'type_name' => 'required',
         ]);
 
-        if($validator->fails())
-        {
+        if ($validator->fails()) {
+            $errors = $validator->errors()->all();
 
-            return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Validation error!');
+            Alert::error('Validation Error!', implode('<br>', $errors));
+
+            return redirect()->back()->withInput();
         }
 
         $gallery_type_model = new GalleryType();
@@ -40,7 +43,10 @@ class GalleryTypeController extends Controller
 
         $gallery_type_model->save();
 
-        return redirect('dashboard/gallery_type_list')->with('success', 'Gallery Type Created Successfully!');
+        Alert::success(title: 'Gallery Type Created Successfully!');
+
+        return redirect()->route('dashboard.gallery_type_list');
+
     }
 
     public function GalleryType_edit($id)
@@ -58,10 +64,12 @@ class GalleryTypeController extends Controller
             'type_name' => 'required',
         ]);
 
-        if($validator->fails())
-        {
+        if ($validator->fails()) {
+            $errors = $validator->errors()->all();
 
-            return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Validation error!');
+            Alert::error('Validation Error!', implode('<br>', $errors));
+
+            return redirect()->back()->withInput();
         }
 
         $gallery_type_model = GalleryType::getSingle($id);
@@ -76,7 +84,10 @@ class GalleryTypeController extends Controller
 
         $gallery_type_model->save();
 
-        return redirect('dashboard/gallery_type_list')->with('success', 'Gallery Type Updated Successfully!');
+        Alert::success(title: 'Gallery Type Updated Successfully!');
+
+        return redirect()->route('dashboard.gallery_type_list');
+
     }
 
     public function GalleryType_deleted($id)
@@ -85,6 +96,9 @@ class GalleryTypeController extends Controller
         $gallery_type_model->type_status = 'Hide';
         $gallery_type_model->save();
 
-        return redirect()->back()->with('success', "Category successfully deleted.");
+        Alert::success('GalleryType successfully deleted.');
+
+        return redirect()->back();
+
     }
 }

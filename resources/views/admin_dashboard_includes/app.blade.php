@@ -107,6 +107,7 @@
 
         <!-- Scripts -->
         @include('admin_dashboard_includes.script')
+
     </div>
 </body>
 

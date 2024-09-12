@@ -1,10 +1,10 @@
 @extends('admin_dashboard_includes.app')
 @section('content')
 
-<div class="d-flex justify-content-center align-items-center">
+<div class="">
     <div class="row">
         <div class="col-xl-12">
-            @include('layouts._message')
+            @include('sweetalert::alert')
             <div class="card shadow-lg">
                 <div class="card-header align-items-center d-flex text-white"
                     style="background-color: rgb(93, 198, 93);">
@@ -15,7 +15,8 @@
                 <div class="card-body mt-2">
 
 
-                    <form action="{{ route('dashboard.case_study_insert') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('dashboard.case_study_insert') }}" method="POST"
+                        enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="row">
                             <div class="col-md-6 outlined-input-container">
@@ -23,7 +24,8 @@
                                     <option value="">Select Project</option>
                                     @foreach($projects as $project)
                                     <option value="{{ $project->id }}">
-                                        {{ app()->getLocale() == 'en' ? $project->project_title : $project->project_title_bn }}
+                                        {{ app()->getLocale() == 'en' ? $project->project_title :
+                                        $project->project_title_bn }}
                                     </option>
                                     @endforeach
 
@@ -119,7 +121,7 @@
 
                         <div class="row">
                             <div class="col-md-6 ">
-                                <input type="file" id="case_image" name="case_image" class="form-control" required>
+                                <input type="file" id="case_image" name="case_image" class="form-control">
                                 <label for="case_image">Case Image <span class="required">*</span></label>
                                 <small class="form-text text-muted">Please upload a 600x340 pixels image.</small>
                             </div>

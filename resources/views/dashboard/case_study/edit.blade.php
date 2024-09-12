@@ -1,10 +1,10 @@
 @extends('admin_dashboard_includes.app')
 @section('content')
 
-<div class="d-flex justify-content-center align-items-center">
+<div class="">
     <div class="row">
         <div class="col-xl-12">
-            @include('layouts._message')
+            @include('sweetalert::alert')
             <div class="card shadow-lg">
                 <div class="card-header align-items-center d-flex text-white"
                     style="background-color: rgb(93, 198, 93);">
@@ -24,7 +24,8 @@
                                     <option value="">Select Project</option>
                                     @foreach($projects as $project)
                                     <option value="{{ $project->id }}">
-                                        {{ app()->getLocale() == 'en' ? $project->project_title : $project->project_title_bn }}
+                                        {{ app()->getLocale() == 'en' ? $project->project_title :
+                                        $project->project_title_bn }}
                                     </option>
                                     @endforeach
 
@@ -62,8 +63,8 @@
                         <div class="row mb-3">
                             <div class="col-md-12 ">
                                 <label for="introduction">Introduction <span class="required">*</span></label>
-                                <textarea id="introduction" name="introduction"
-                                    class="form-control dynamic-char-count" maxlength="500" placeholder=""
+                                <textarea id="introduction" name="introduction" class="form-control dynamic-char-count"
+                                    maxlength="500" placeholder=""
                                     rows="3">{!! old('introduction',$getRecord->introduction) !!}</textarea>
 
                             </div>
@@ -71,14 +72,14 @@
                         <div class="row mb-6">
                             <div class="col-md-12 ">
                                 <label for="details_bn">Details (Bangla)</label>
-                                <textarea id="details_bn" name="details_bn"
-                                    class="form-control dynamic-char-count" placeholder="" rows="5">{!! old('details_bn',$getRecord->details_bn) !!}</textarea>
+                                <textarea id="details_bn" name="details_bn" class="form-control dynamic-char-count"
+                                    placeholder="" rows="5">{!! old('details_bn',$getRecord->details_bn) !!}</textarea>
 
                             </div>
                             <div class="col-md-12 ">
                                 <label for="details">Details <span class="required">*</span></label>
-                                <textarea id="details" name="details"
-                                    class="form-control dynamic-char-count" placeholder="" rows="5">{!! old('details',$getRecord->details) !!}</textarea>
+                                <textarea id="details" name="details" class="form-control dynamic-char-count"
+                                    placeholder="" rows="5">{!! old('details',$getRecord->details) !!}</textarea>
 
                             </div>
 
@@ -86,15 +87,18 @@
                         <br>
                         <div class="row mb-6">
                             <div class="col-md-6 outlined-input-container">
-                                <label for="case_summary_bn">Case Summary (Bangla) <span class="required">*</span></label>
+                                <label for="case_summary_bn">Case Summary (Bangla) <span
+                                        class="required">*</span></label>
                                 <textarea id="case_summary_bn" name="case_summary_bn"
-                                    class="form-control dynamic-char-count" placeholder="" rows="5">{!! old('case_summary_bn',$getRecord->case_summary_bn) !!}</textarea>
+                                    class="form-control dynamic-char-count" placeholder=""
+                                    rows="5">{!! old('case_summary_bn',$getRecord->case_summary_bn) !!}</textarea>
                             </div>
 
                             <div class="col-md-6 outlined-input-container">
                                 <label for="case_summary">Case Summary</label>
-                                <textarea id="case_summary" name="case_summary"
-                                    class="form-control dynamic-char-count" placeholder="" rows="5">{!! old('case_summary',$getRecord->case_summary) !!}</textarea>
+                                <textarea id="case_summary" name="case_summary" class="form-control dynamic-char-count"
+                                    placeholder=""
+                                    rows="5">{!! old('case_summary',$getRecord->case_summary) !!}</textarea>
                             </div>
                         </div>
 
@@ -200,7 +204,7 @@
                                     <i class="ri-arrow-go-back-line"></i> Go to list
                                 </a>
                                 <button type="submit" class="btn btn-primary px-5 rounded-pill">
-                                    <i class="bi bi-plus-lg"></i> Submit
+                                    <i class="bi bi-plus-lg"></i> Update
                                 </button>
                             </div>
                         </div>

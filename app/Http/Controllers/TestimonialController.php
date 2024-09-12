@@ -6,6 +6,7 @@ use App\Models\Testimonial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Laravel\Facades\Image;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class TestimonialController extends Controller
 {
@@ -23,17 +24,19 @@ class TestimonialController extends Controller
     public function Testimonial_insert(Request $request)
     {
         // dd($request->all());
-         $validator = Validator::make($request->all(), [
+        $validator = Validator::make($request->all(), [
 
             'company_name' => 'required',
             'author_name' => 'required',
 
         ]);
 
-        if($validator->fails())
-        {
+        if ($validator->fails()) {
+            $errors = $validator->errors()->all();
 
-            return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Validation error!');
+            Alert::error('Validation Error!', implode('<br>', $errors));
+
+            return redirect()->back()->withInput();
         }
 
         $testimonial_model = new Testimonial();
@@ -68,7 +71,10 @@ class TestimonialController extends Controller
 
         $testimonial_model->save();
 
-        return redirect('dashboard/testimonial_list')->with('success', 'Testimonial Created Successfully!');
+        Alert::success(title: 'Testimonial Created Successfully!');
+
+        return redirect()->route('dashboard.testimonial_list');
+
     }
 
      public function Testimonial_edit($id)
@@ -80,6 +86,21 @@ class TestimonialController extends Controller
 
      public function Testimonial_update(Request $request, $id)
     {
+        $validator = Validator::make($request->all(), [
+
+            'company_name' => 'required',
+            'author_name' => 'required',
+
+        ]);
+
+        if ($validator->fails()) {
+            $errors = $validator->errors()->all();
+
+            Alert::error('Validation Error!', implode('<br>', $errors));
+
+            return redirect()->back()->withInput();
+        }
+
         $testimonial_model = Testimonial::getSingle($id);
 
         if (!$testimonial_model)
@@ -121,7 +142,9 @@ class TestimonialController extends Controller
 
         $testimonial_model->save();
 
-        return redirect('dashboard/testimonial_list')->with('success', 'Testimonial Updated Successfully!');
+        Alert::success(title: 'Testimonial Updated Successfully!');
+
+        return redirect()->route('dashboard.testimonial_list');
     }
 
     public function Testimonial_deleted($id)
@@ -130,6 +153,8 @@ class TestimonialController extends Controller
         $testimonial_model->status = 'Hide';
         $testimonial_model->save();
 
-        return redirect()->back()->with('success', "Testimonial successfully deleted.");
+        Alert::success('Testimonial successfully deleted.');
+
+        return redirect()->back();
     }
 }

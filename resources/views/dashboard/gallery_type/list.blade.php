@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
-            @include('layouts._message')
+            @include('sweetalert::alert')
             <div class="card-header" style="background-color: rgb(93, 198, 93);">
                 <h5 class="card-title mb-0">Gellary Type List</h5>
             </div>

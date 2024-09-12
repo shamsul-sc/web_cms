@@ -1,21 +1,20 @@
 @extends('admin_dashboard_includes.app')
 @section('content')
 
-<div class="d-flex justify-content-center align-items-center">
+<div class="">
     <div class="row">
         <div class="col-xl-12">
-            @include('layouts._message')
+            {{-- @include('layouts._message') --}}
+            @include('sweetalert::alert')
             <div class="card shadow-lg">
                 <div class="card-header align-items-center d-flex text-white"
                     style="background-color: rgb(93, 198, 93);">
                     <h4 class="card-title mb-0 flex-grow-1 text-white">Add a Project</h4>
 
                 </div>
-
                 <div class="card-body mt-2">
-
-
-                    <form action="{{ route('dashboard.insert') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('dashboard.insert') }}" method="POST" enctype="multipart/form-data"
+                        novalidate>
                         {{ csrf_field() }}
 
                         <div class="row">
@@ -30,7 +29,8 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6 outlined-input-container">
+                            <div class="col-md-6 outlined-input-container ">
+
                                 <input type="text" id="project_title" name="project_title" class="form-control"
                                     placeholder="" maxlength="255" required>
                                 <label for="project_title">Project Title <span class="required">*</span></label>
@@ -88,7 +88,8 @@
 
                             </div>
                             <div class="col-md-12">
-                                <label class="form-lebel" for="introduction_bn">Introduction (Bangla)</label>
+                                <label class="form-lebel mt-4" for="introduction_bn">Introduction (Bangla)<span
+                                        class="required">*</span></label>
                                 <textarea id="introduction_bn" name="introduction_bn"
                                     class="form-control dynamic-char-count" maxlength="10" placeholder=""
                                     rows="3"></textarea>
@@ -96,30 +97,31 @@
                             </div>
                         </div>
 
-                        <div class="row">
+                        <div class="row mt-4">
                             <div class="col-md-12 ">
                                 <label for="details">Details <span class="required">*</span></label>
-                                <textarea id="details" name="details" class="form-control dynamic-char-count"
+                                <textarea id="details" name="details" class="form-control  dynamic-char-count"
                                     placeholder="" rows="5"></textarea>
 
                             </div>
-                            <div class="col-md-12 ">
-                                <label for="details_bn">Details (Bangla)</label>
-                                <textarea id="details_bn" name="details_bn" class="form-control dynamic-char-count"
+                            <div class="col-md-12 mt-4 ">
+                                <label for="details_bn">Details (Bangla)<span class="required">*</span></label>
+                                <textarea id="details_bn" name="details_bn" class="form-control  dynamic-char-count"
                                     placeholder="" rows="5"></textarea>
 
                             </div>
                         </div>
 
-                        <div class="row">
+                        <div class="row mt-4">
                             <div class="col-md-12 ">
                                 <label for="project_summary">Project Summary <span class="required">*</span></label>
                                 <textarea id="project_summary" name="project_summary"
                                     class="form-control dynamic-char-count" placeholder="" rows="3"></textarea>
 
                             </div>
-                            <div class="col-md-12 ">
-                                <label for="project_summary_bn">Project Summary (Bangla)</label>
+                            <div class="col-md-12 mt-4 ">
+                                <label for="project_summary_bn">Project Summary (Bangla)<span
+                                        class="required">*</span></label>
                                 <textarea id="project_summary_bn" name="project_summary_bn"
                                     class="form-control dynamic-char-count" placeholder="" rows="3"></textarea>
 
@@ -130,31 +132,31 @@
 
                         <div class="row">
                             <div class="col-md-6 ">
+                                <label for="project_image">Project Image <span class="required">*</span></label>
                                 <input type="file" id="project_image" name="project_image" class="form-control"
                                     required>
-                                <label for="project_image">Project Image <span class="required">*</span></label>
                                 <small class="form-text text-muted">Please upload a 600x340 pixels image.</small>
                             </div>
-                            <div class="col-md-6 outlined-input-container">
+                            <div class="col-md-6 mt-4 outlined-input-container">
                                 <input type="file" id="project_pdf" name="project_pdf" class="form-control">
                                 <label for="project_pdf">Project PDF</label>
                             </div>
                         </div>
 
                         <div class="row">
-                            <div class="col-md-6 outlined-input-container">
+                            <div class="col-md-6 mt-4 outlined-input-container">
                                 <input type="url" id="youtube_video_link" name="youtube_video_link" class="form-control"
                                     placeholder="">
                                 <label for="youtube_video_link">YouTube Video Link</label>
                                 <small class="form-text text-muted">Hint: Please upload embed link like
                                     https://www.youtube.com/embed/OW0kUmsQHnU</small>
                             </div>
-                            <div class="col-md-6 outlined-input-container">
-                                <select id="album_id" name="album_id" class="form-select">
+                            <div class="col-md-6 mt-4 outlined-input-container">
+                                <select id="album_id" name="album_id" class="form-select" required>
                                     <option value="">Select Album</option>
-                                    {{-- @foreach($albums as $album)
-                                    <option value="{{ $album->id }}">{{ $album->name }}</option>
-                                    @endforeach --}}
+                                    @foreach($getGalleryAlbum as $album)
+                                    <option value="{{ $album->id }}">{{ $album->album_name }}</option>
+                                    @endforeach
                                 </select>
                                 <label for="album_id">Album</label>
                             </div>
@@ -208,3 +210,14 @@
     </div>
 
     @endsection
+
+    @if(Session::has('message'))
+    <script>
+        swal("Message","{{  Session::get('message')}}",'success',{
+        button:true,
+        button:'ok',
+        timer:3000,
+    });
+    </script>
+
+    @endif

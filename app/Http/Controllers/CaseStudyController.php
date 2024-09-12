@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Project;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Laravel\Facades\Image;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CaseStudyController extends Controller
 {
@@ -25,19 +26,19 @@ class CaseStudyController extends Controller
 
     public function CaseStudy_insert(Request $request)
     {
-        // dd($request->all());
-        // die();
-         $validator = Validator::make($request->all(), [
-
-           
-            'case_title_bn' => 'required|unique:case_studies,case_title_bn',
-            'case_approx_budget' => 'required',
+        $validator = Validator::make($request->all(), [
+            'case_title_bn' => 'required',
+            
         ]);
 
         if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Validation error!');
+            $errors = $validator->errors()->all();
+
+            Alert::error('Validation Error!', implode('<br>', $errors));
+
+            return redirect()->back()->withInput();
         }
-        // return dd($request->all());
+
         $case_model = new CaseStudy();
 
         $case_model->project_id = $request->project_id;
@@ -85,7 +86,10 @@ class CaseStudyController extends Controller
 
         $case_model->save();
 
-        return redirect('dashboard/case_study_list')->with('success', 'Case Study Created Successfully!');
+        
+        Alert::success(title: 'Case Study Created Successfully!');
+
+        return redirect()->route('dashboard.case_study_list');
     }
 
     public function CaseStudy_edit($id)
@@ -99,6 +103,19 @@ class CaseStudyController extends Controller
 
     public function CaseStudy_update(Request $request, $id)
     {
+
+        $validator = Validator::make($request->all(), [
+            'case_title_bn' => 'required',
+            
+        ]);
+
+        if ($validator->fails()) {
+            $errors = $validator->errors()->all();
+
+            Alert::error('Validation Error!', implode('<br>', $errors));
+
+            return redirect()->back()->withInput();
+        }
 
         $case_model = CaseStudy::getSingle($id);
 
@@ -146,7 +163,10 @@ class CaseStudyController extends Controller
 
         $case_model->save();
 
-        return redirect('dashboard/case_study_list')->with('success', 'Case Study Successfully updated!');
+        Alert::success(title: 'Category Updated Successfully!');
+
+        return redirect()->route('dashboard.case_study_list');
+
     }
 
     public function CaseStudy_deleted($id)
@@ -155,7 +175,11 @@ class CaseStudyController extends Controller
         $project->is_delete = 1;
         $project->save();
 
-        return redirect()->back()->with('success', "Case Study successfully deleted.");
+        Alert::success('Case Study successfully deleted.');
+
+        return redirect()->back();
+
+        
     }
 
 }

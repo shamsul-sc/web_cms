@@ -3,7 +3,7 @@
 <div class="d-flex justify-content-center align-items-center">
     <div class="col-xxl-6">
         <div class="card ">
-            @include('layouts._message')
+            @include('sweetalert::alert')
             <div class="card-header align-items-center d-flex text-white" style="background-color: rgb(93, 198, 93);">
                 <h4 class="card-title mb-0 flex-grow-1 ">Edit FAQ Category</h4>
             </div>
@@ -77,8 +77,8 @@
             </div>
 
             </form>
-            </d iv>
         </div>
     </div>
+</div>
 
-    @endsection
+@endsection

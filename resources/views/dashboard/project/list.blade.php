@@ -4,7 +4,8 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
-            @include('layouts._message')
+            {{-- @include('layouts._message') --}}
+            @include('sweetalert::alert')
             <div class="card-header" style="background-color: rgb(93, 198, 93);">
                 <h5 class="card-title mb-0">Project List</h5>
             </div>
@@ -32,12 +33,12 @@
                         <th>Project Image</th>
                         <th>Joint Project</th>
                         <th>Featured Project</th>
-                        {{-- <th>State</th> --}}
                         <th>Status</th>
                         <th>Created Date</th>
                         <th>Action</th>
                     </tr>
                 </thead>
+
                 <tbody>
                     @if($getProject && $getProject->count())
                     @foreach ($getProject as $category )
@@ -47,7 +48,7 @@
                         <td>{{ $category->category_name }}</td>
                         <td>{{ $category->project_title_bn }}</td>
                         <td>{!! $category->project_summary_bn !!}</td>
-                        <td>{{ $category->project_approx_budget }}</td>
+                        <td>{{ number_format($category->project_approx_budget) }}</td>
                         <td><img src="/uploads/category/thumbnail/{{ $category->project_image }}" width="100px"></td>
 
                         <td>
@@ -73,15 +74,20 @@
                             </span>
                         </td>
                         <td>{{ date('d-m-Y h:i:A', strtotime($category->created_at)) }}</td>
+
                         <td class='d-flex'>
-                            <a href="{{ route('dashboard.edit',$category->id ) }}" class="btn btn-sm btn-info ">Edit</a>
+                            <a href="{{ route('dashboard.edit',$category->id ) }}" class="btn btn-sm btn-info">Edit</a>
 
-                            <a href="{{ route('dashboard.deleted', $category->id) }}" class="btn btn-sm btn-danger"
-                                onclick="return confirm('Are you sure you want to deleted?')">Delete</a>
+                            <a href="javascript:void(0)" class="btn btn-sm btn-danger"
+                                onclick="deleteConfirmation({{ $category->id }})">Delete</a>
 
+                            <form id="delete-form-{{ $category->id }}"
+                                action="{{ route('dashboard.deleted', $category->id) }}" method="POST"
+                                style="display: none;">
+                                @csrf
+                                @method('DELETE')
+                            </form>
                         </td>
-
-
                     </tr>
                     @endforeach
                     @endif
@@ -93,3 +99,21 @@
 </div>
 
 @endsection
+
+<script>
+    function deleteConfirmation(categoryId) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('delete-form-' + categoryId).submit();
+            }
+        });
+    }
+</script>

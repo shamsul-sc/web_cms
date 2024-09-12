@@ -4,7 +4,7 @@
 <div class="col-12">
     <div class="row">
         <div class="col-xl-12">
-            @include('layouts._message')
+            @include('sweetalert::alert')
             <div class="card shadow-lg">
                 <div class="card-header align-items-center d-flex text-white"
                     style="background-color: rgb(93, 198, 93);">
@@ -97,7 +97,7 @@
                                     <i class="ri-arrow-go-back-line"></i> Go to list
                                 </a>
                                 <button type="submit" class="btn btn-primary px-5 rounded-pill">
-                                    <i class="bi bi-plus-lg"></i> Submit
+                                    <i class="bi bi-plus-lg"></i> Update
                                 </button>
                             </div>
                         </div>

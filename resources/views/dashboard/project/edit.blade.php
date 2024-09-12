@@ -1,25 +1,21 @@
 @extends('admin_dashboard_includes.app')
 @section('content')
 
-<div class="d-flex justify-content-center align-items-center">
+<div class="">
     <div class="row">
         <div class="col-xl-12">
-            @include('layouts._message')
+            {{-- @include('layouts._message') --}}
+            @include('sweetalert::alert')
             <div class="card shadow-lg">
                 <div class="card-header align-items-center d-flex text-white"
                     style="background-color: rgb(93, 198, 93);">
-                    <h4 class="card-title mb-0 flex-grow-1 text-white">Add a Project</h4>
+                    <h4 class="card-title mb-0 flex-grow-1 text-white">Edit a Project</h4>
 
                 </div>
-
                 <div class="card-body mt-2">
-
-
                     <form action="{{ route('dashboard.update',$getRecord->id) }}" method="POST"
                         enctype="multipart/form-data">
                         {{ csrf_field() }}
-
-
                         <div class="row">
                             <div class="col-md-6 outlined-input-container">
                                 <select id="cat_id" name="cat_id" class="form-select">
@@ -46,9 +42,8 @@
                                 <label for="project_title">Project Title <span class="required">*</span></label>
                             </div>
                             <div class="col-md-6 outlined-input-container">
-                                <input type="text" id="slug" name="slug"
-                                    value="{{ old('slug',$getRecord->slug) }}" class="form-control"
-                                    placeholder="" maxlength="100" required>
+                                <input type="text" id="slug" name="slug" value="{{ old('slug',$getRecord->slug) }}"
+                                    class="form-control" placeholder="" maxlength="100">
                                 <label for="slug">Slug EX.URL <span class="required">*</span></label>
                                 <small class="form-text text-muted">Use small letters and underscores. Example:
                                     "kfh_spondon"</small>
@@ -58,19 +53,20 @@
                         <div class="row">
                             <div class="col-md-6 outlined-input-container">
                                 <input type="text" id="project_title_bn" name="project_title_bn"
-                                    value="{{ old('project_title_bn',$getRecord->project_title_bn) }}" class="form-control"
-                                    placeholder="" maxlength="255" required>
+                                    value="{{ old('project_title_bn',$getRecord->project_title_bn) }}"
+                                    class="form-control" placeholder="" maxlength="255">
                                 <label for="project_title_bn">Project Title (Bangla) <span
                                         class="required">*</span></label>
                             </div>
                             <div class="col-md-6 outlined-input-container">
-                                <select id="joint_project" name="joint_project" class="form-select" required>
+                                <select id="joint_project" name="joint_project" class="form-select">
                                     <option value="" disabled {{ old('joint_project', $getRecord->joint_project) ===
                                         null ? 'selected' :
                                         '' }}>
                                         Select Project
                                     </option>
-                                    <option value="No" {{ old('joint_project', $getRecord->joint_project) == 'No' ? 'selected'
+                                    <option value="No" {{ old('joint_project', $getRecord->joint_project) == 'No' ?
+                                        'selected'
                                         : ''
                                         }}>No</option>
                                     <option value="Yes" {{ old('joint_project', $getRecord->joint_project) == 'Yes' ?
@@ -105,17 +101,18 @@
                         <div class="row mb-4">
                             <div class="col-md-12">
                                 <label for="introduction">Introduction <span class="required">*</span></label>
-                                <textarea id="introduction" name="introduction"
-                                    class="form-control dynamic-char-count" maxlength="10" placeholder=""
+                                <textarea id="introduction" name="introduction" class="form-control dynamic-char-count"
+                                    maxlength="10" placeholder=""
                                     rows="3">{!! old('introduction',$getRecord->introduction) !!}</textarea>
 
                             </div>
                         </div>
+
                         <div class="row mb-4">
                             <div class="col-md-12">
-                                <label class="form-lebel" for="introduction_bn">Introduction (Bangla)</label>
+                                <label class="form-lebel " for="introduction_bn">Introduction (Bangla)</label>
                                 <textarea id="introduction_bn" name="introduction_bn"
-                                    class="form-control dynamic-char-count" maxlength="10" placeholder=""
+                                    class="form-control dynamic-char-count " maxlength="10" placeholder=""
                                     rows="3">{!! old('introduction_bn',$getRecord->introduction_bn) !!}</textarea>
                             </div>
                         </div>
@@ -123,15 +120,15 @@
                         <div class="row mb-4">
                             <div class="col-md-12 ">
                                 <label for="details">Details <span class="required">*</span></label>
-                                <textarea id="details" name="details" 
-                                    class="form-control dynamic-char-count" placeholder="" rows="5">{!! old('details',$getRecord->details) !!}</textarea>
+                                <textarea id="details" name="details" class="form-control dynamic-char-count"
+                                    placeholder="" rows="5">{!! old('details',$getRecord->details) !!}</textarea>
                             </div>
                         </div>
                         <div class="row mb-4">
                             <div class="col-md-12 ">
                                 <label for="details_bn">Details (Bangla)</label>
-                                <textarea id="details_bn" name="details_bn"
-                                    class="form-control dynamic-char-count" placeholder="" rows="5">{!! old('details_bn',$getRecord->details_bn) !!}</textarea>
+                                <textarea id="details_bn" name="details_bn" class="form-control dynamic-char-count"
+                                    placeholder="" rows="5">{!! old('details_bn',$getRecord->details_bn) !!}</textarea>
 
                             </div>
                         </div>
@@ -140,7 +137,8 @@
                             <div class="col-md-12 ">
                                 <label for="project_summary">Project Summary <span class="required">*</span></label>
                                 <textarea id="project_summary" name="project_summary"
-                                    class="form-control dynamic-char-count" placeholder="" rows="3">{!! old('project_summary',$getRecord->project_summary) !!}</textarea>
+                                    class="form-control dynamic-char-count" placeholder=""
+                                    rows="3">{!! old('project_summary',$getRecord->project_summary) !!}</textarea>
 
                             </div>
                         </div>
@@ -148,36 +146,47 @@
                             <div class="col-md-12 ">
                                 <label for="project_summary_bn">Project Summary (Bangla)</label>
                                 <textarea id="project_summary_bn" name="project_summary_bn"
-                                    class="form-control dynamic-char-count" placeholder="" rows="3">{!! old('project_summary_bn',$getRecord->project_summary_bn) !!}</textarea>
+                                    class="form-control dynamic-char-count" placeholder=""
+                                    rows="3">{!! old('project_summary_bn',$getRecord->project_summary_bn) !!}</textarea>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6 outlined-input-container">
-                                <input type="file" id="project_image" name="project_image"
-                                    value="{{ old('project_image',$getRecord->project_image) }}" class="form-control">
-                                <label for="project_image">Project Image <span class="required">*</span></label>
+                            <div class="col-md-6 ">
+                                <label for="project_image">Project Image <span class="required ">*</span></label>
+                                <input type="file" id="project_image" name="project_image" class="form-control mb-1">
+                                @if($getRecord && $getRecord->project_image )
+                                <img src="{{ asset('/uploads/category/thumbnail/' . $getRecord->project_image ) }}"
+                                    alt=" Image" width="70">
+                                @endif
+                                <br>
                                 <small class="form-text text-muted">Please upload a 600x340 pixels image.</small>
                             </div>
-                            <div class="col-md-6 outlined-input-container">
-                                <input type="file" id="project_pdf" name="project_pdf" class="form-control">
+                            <div class="col-md-6 ">
                                 <label for="project_pdf">Project PDF</label>
+                                <input type="file" id="project_pdf" name="project_pdf" class="form-control ">
+
                             </div>
                         </div>
 
-                        <div class="row">
+                        <div class="row mt-4">
                             <div class="col-md-6 outlined-input-container">
-                                <input type="url" id="youtube_video_link" name="youtube_video_link" value="{{ old('youtube_video_link',$getRecord->youtube_video_link) }}"
+                                <input type="url" id="youtube_video_link" name="youtube_video_link"
+                                    value="{{ old('youtube_video_link',$getRecord->youtube_video_link) }}"
                                     class="form-control" placeholder="">
-                                <label for="youtube_video_link">YouTube Video Link <span class="required">*</span></label>
+                                <label for="youtube_video_link">YouTube Video Link <span
+                                        class="required">*</span></label>
                                 <small class="form-text text-muted">Hint: Please upload embed link like
                                     https://www.youtube.com/embed/OW0kUmsQHnU</small>
                             </div>
-                            <div class="col-md-6 outlined-input-container">
+                            <div class="col-md-6 mt-4 outlined-input-container">
                                 <select id="album_id" name="album_id" class="form-select">
                                     <option value="">Select Album</option>
-                                    {{-- @foreach($albums as $album)
-                                    <option value="{{ $album->id }}">{{ $album->name }}</option>
-                                    @endforeach --}}
+                                    @foreach($getGalleryAlbum as $album)
+                                    <option value="{{ $album->id }}" {{ $album->id == $getRecord->album_id ? 'selected'
+                                        : '' }}>
+                                        {{ $album->album_name }}
+                                    </option>
+                                    @endforeach
                                 </select>
                                 <label for="album_id">Album</label>
                             </div>
@@ -194,7 +203,8 @@
                                         ? 'selected'
                                         : ''
                                         }}>No</option>
-                                    <option value="Yes" {{ old('featured_project', $getRecord->featured_project) == 'Yes'
+                                    <option value="Yes" {{ old('featured_project', $getRecord->featured_project) ==
+                                        'Yes'
                                         ? 'selected'
                                         : ''
                                         }}>Yes</option>
@@ -223,7 +233,7 @@
                                 <label for="state">Project State</label>
                             </div>
                             <div class="col-md-6 outlined-input-container">
-                                <select class="form-select" name="status" required>
+                                <select class="form-select" name="status">
                                     <option value="" disabled {{ old('status', $getRecord->status) ===
                                         null ? 'selected' :
                                         '' }}>
@@ -251,7 +261,7 @@
                                     <i class="ri-arrow-go-back-line"></i> Go to list
                                 </a>
                                 <button type="submit" class="btn btn-primary px-5 rounded-pill">
-                                    <i class="bi bi-plus-lg"></i> Submit
+                                    <i class="bi bi-plus-lg"></i> Update
                                 </button>
                             </div>
                         </div>
