@@ -20,16 +20,27 @@
                         {{ csrf_field() }}
                         <div class="row">
                             <div class="col-md-6 outlined-input-container">
+                                <select id="category_id" name="category_id" class="form-select">
+                                    <option value="">Select Category</option>
+                                    @foreach($categories as $category)
+                                    <option value="{{ $category->id }}" {{ $getRecord->category_id == $category->id ? 'selected' : '' }}>
+                                        {{ app()->getLocale() == 'en' ? $category->category_name : $category->category_name_bn }}
+                                    </option>
+                                    @endforeach
+                                </select>
+                                <label for="category_id">Project Category</label>
+                            </div>
+                            <div class="col-md-6 outlined-input-container">
                                 <select id="project_id" name="project_id" class="form-select">
                                     <option value="">Select Project</option>
                                     @foreach($projects as $project)
-                                    <option value="{{ $project->id }}">
+                                    <option value="{{ $project->id }}" {{ $getRecord->project_id == $project->id ? 'selected' : '' }}>
                                         {{ app()->getLocale() == 'en' ? $project->project_title : $project->project_title_bn }}
                                     </option>
                                     @endforeach
 
                                 </select>
-                                <label for="album_id">Project Title<span class="required">*</span></label>
+                                <label for="album_id">Project Title</label>
                             </div>
                         </div>
                         <div class="row mb-3">

@@ -15,7 +15,7 @@ return new class extends Migration
         {
             Schema::create('project_categories', function (Blueprint $table) {
 
-                $table->id('cat_id')->length(11)->nullable(false);
+                $table->id();
                 $table->string('category_name', 100)->nullable(false);
                 $table->string('category_name_bn', 100)->nullable(false);
                 $table->string('slug', 100)->nullable(false)->comment('use dash or underscore in between words');

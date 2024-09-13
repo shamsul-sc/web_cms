@@ -9,6 +9,10 @@ class CaseStudy extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'case_title_bn'
+    ];
+
     protected $table = 'case_studies';
 
     static public function getCaseStudy()

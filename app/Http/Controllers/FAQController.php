@@ -41,13 +41,13 @@ class FAQController extends Controller
 
         $faq_model = new FAQ();
 
-        $faq_model->faq_cat_id = $request->faq_cat_id;
-        $faq_model->position = $request->position;
+        $faq_model->faq_cat_id  = $request->faq_cat_id;
+        $faq_model->position    = $request->position;
         $faq_model->question    = trim($request->question);
-        $faq_model->answer = trim($request->answer);
+        $faq_model->answer      = trim($request->answer);
         $faq_model->question_bn = trim($request->question_bn);
-        $faq_model->answer_bn = trim($request->answer_bn);
-        $faq_model->status           = trim($request->status);
+        $faq_model->answer_bn   = trim($request->answer_bn);
+        $faq_model->status      = trim($request->status);
         $faq_model->save();
 
         return redirect('dashboard/faq_list')->with('success', 'FAQ  Created Successfully!');
@@ -77,13 +77,13 @@ class FAQController extends Controller
             return redirect()->back()->with('error', 'FAQ not found!');
         }
 
-        $faq_model->faq_cat_id = $request->faq_cat_id;
-        $faq_model->position = $request->position;
+        $faq_model->faq_cat_id  = $request->faq_cat_id;
+        $faq_model->position    = $request->position;
         $faq_model->question    = trim($request->question);
-        $faq_model->answer = trim($request->answer);
+        $faq_model->answer      = trim($request->answer);
         $faq_model->question_bn = trim($request->question_bn);
-        $faq_model->answer_bn = trim($request->answer_bn);
-        $faq_model->status           = trim($request->status);
+        $faq_model->answer_bn   = trim($request->answer_bn);
+        $faq_model->status      = trim($request->status);
         $faq_model->save();
 
         return redirect('dashboard/faq_list')->with('success', 'FAQ  Updated Successfully!');

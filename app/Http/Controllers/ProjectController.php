@@ -20,6 +20,7 @@ class ProjectController extends Controller
     public function project_add()
     {
         $data['getRecord'] = ProjectCategory::getRecord();
+        // dd($data['getRecord']); exit;
         return view('dashboard.project.add', $data);
     }
 
@@ -38,25 +39,25 @@ class ProjectController extends Controller
         // return dd($request->all());
         $project_model = new Project();
 
-        $project_model->cat_id = $request->cat_id;
-        $project_model->project_title    = trim($request->project_title);
-        $project_model->slug    = trim($request->slug);
-        $project_model->project_title_bn    = trim($request->project_title_bn);
-        $project_model->joint_project    = trim($request->joint_project);
-        $project_model->user_id    = $request->user_id;
-        $project_model->project_approx_budget    = $request->project_approx_budget;
+        $project_model->cat_id          = $request->cat_id;
+        $project_model->project_title   = trim($request->project_title);
+        $project_model->slug            = trim($request->slug);
+        $project_model->project_title_bn = trim($request->project_title_bn);
+        $project_model->joint_project   = trim($request->joint_project);
+        $project_model->user_id         = $request->user_id;
+        $project_model->project_approx_budget = $request->project_approx_budget;
         $project_model->introduction    = trim($request->introduction);
-        $project_model->introduction_bn    = trim($request->introduction_bn);
-        $project_model->details    = trim($request->details);
-        $project_model->details_bn    = trim($request->details_bn);
-        $project_model->project_summary    = trim($request->project_summary);
-        $project_model->project_summary_bn    = trim($request->project_summary_bn);
-        $project_model->youtube_video_link    = trim($request->youtube_video_link);
-        $project_model->album_id    =$request->album_id;
-        $project_model->featured_project    = trim($request->featured_project);
-        $project_model->state    = trim($request->state);
-        $project_model->status    = trim($request->status);
-        $project_model->serial    = trim($request->serial);
+        $project_model->introduction_bn = trim($request->introduction_bn);
+        $project_model->details         = trim($request->details);
+        $project_model->details_bn      = trim($request->details_bn);
+        $project_model->project_summary = trim($request->project_summary);
+        $project_model->project_summary_bn = trim($request->project_summary_bn);
+        $project_model->youtube_video_link = trim($request->youtube_video_link);
+        $project_model->album_id        =$request->album_id;
+        $project_model->featured_project = trim($request->featured_project);
+        $project_model->state           = trim($request->state);
+        $project_model->status          = trim($request->status);
+        $project_model->serial          = trim($request->serial);
 
         if ($request->hasFile('project_image')) {
             $project_image = $request->file('project_image');
@@ -88,9 +89,9 @@ class ProjectController extends Controller
     public function edit($id)
     {
         $data['categories'] = ProjectCategory::getRecord();
-         $data['getRecord'] = Project::getSingle($id);
-         // dd($data['getRecord']); exit;
-         return view('dashboard.project.edit', $data);
+        $data['getRecord'] = Project::getSingle($id);
+        // dd($data['getRecord']); exit;
+        return view('dashboard.project.edit', $data);
     }
 
     public function update(Request $request, $id)
@@ -113,26 +114,26 @@ class ProjectController extends Controller
             return redirect()->back()->with('error', 'Category not found!');
         }
 
-        $project_model->cat_id = $request->cat_id;
-        $project_model->project_title    = trim($request->project_title);
-        $project_model->slug    = trim($request->slug);
-        $project_model->project_title_bn    = trim($request->project_title_bn);
-        $project_model->joint_project    = trim($request->joint_project);
-        $project_model->user_id    = $request->user_id;
-        $project_model->project_approx_budget    = $request->project_approx_budget;
+        $project_model->cat_id          = $request->cat_id;
+        $project_model->project_title   = trim($request->project_title);
+        $project_model->slug            = trim($request->slug);
+        $project_model->project_title_bn = trim($request->project_title_bn);
+        $project_model->joint_project   = trim($request->joint_project);
+        $project_model->user_id         = $request->user_id;
+        $project_model->project_approx_budget = $request->project_approx_budget;
         $project_model->introduction    = trim($request->introduction);
-        $project_model->introduction_bn    = trim($request->introduction_bn);
-        $project_model->details    = trim($request->details);
-        $project_model->details_bn    = trim($request->details_bn);
-        $project_model->project_summary    = trim($request->project_summary);
-        $project_model->project_summary_bn    = trim($request->project_summary_bn);
-        $project_model->youtube_video_link    = trim($request->youtube_video_link);
-        $project_model->album_id    =$request->album_id;
-        $project_model->project_pdf    = trim($request->project_pdf);
-        $project_model->featured_project    = trim($request->featured_project);
-        $project_model->state    = trim($request->state);
-        $project_model->status    = trim($request->status);
-        $project_model->serial    = trim($request->serial);
+        $project_model->introduction_bn = trim($request->introduction_bn);
+        $project_model->details         = trim($request->details);
+        $project_model->details_bn      = trim($request->details_bn);
+        $project_model->project_summary = trim($request->project_summary);
+        $project_model->project_summary_bn = trim($request->project_summary_bn);
+        $project_model->youtube_video_link = trim($request->youtube_video_link);
+        $project_model->album_id        = $request->album_id;
+        $project_model->project_pdf     = trim($request->project_pdf);
+        $project_model->featured_project = trim($request->featured_project);
+        $project_model->state           = trim($request->state);
+        $project_model->status          = trim($request->status);
+        $project_model->serial          = trim($request->serial);
 
         if ($request->hasFile('project_image')) {
             $project_image = $request->file('project_image');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CaseStudy;
 use Illuminate\Http\Request;
+use App\Models\ProjectCategory;
 use App\Models\Project;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Laravel\Facades\Image;
@@ -18,6 +19,7 @@ class CaseStudyController extends Controller
 
     public function CaseStudy_add()
     {
+        $data['categories'] = ProjectCategory::where('status', 'show')->orderBy('serial')->get();
         $data['projects'] = Project::where('status', 'Show')->orderBy('serial')->get();
         // dd($data['projects']); exit;
         return view('dashboard.case_study.add', $data);
@@ -28,10 +30,7 @@ class CaseStudyController extends Controller
         // dd($request->all());
         // die();
          $validator = Validator::make($request->all(), [
-
-           
-            'case_title_bn' => 'required|unique:case_studies,case_title_bn',
-            'case_approx_budget' => 'required',
+            'case_title_bn' => 'required|unique:case_studies,case_title_bn'
         ]);
 
         if ($validator->fails()) {
@@ -40,22 +39,22 @@ class CaseStudyController extends Controller
         // return dd($request->all());
         $case_model = new CaseStudy();
 
-        $case_model->project_id = $request->project_id;
-        $case_model->case_title_bn    = trim($request->case_title_bn);
-        $case_model->case_title    = trim($request->case_title);
-        $case_model->introduction_bn    = trim($request->introduction_bn);
-        $case_model->introduction    = trim($request->introduction);
-        $case_model->details_bn    = trim($request->details_bn);
-        $case_model->details    = trim($request->details);
-        $case_model->case_summary_bn    = trim($request->case_summary_bn);
-        $case_model->case_summary    = trim($request->case_summary);
-        $case_model->case_approx_budget    = $request->case_approx_budget;
-        $case_model->state    = trim($request->state);
-        $case_model->youtube_video_link    = trim($request->youtube_video_link);
-        $case_model->album_id    = $request->album_id;
+        $case_model->category_id    = $request->category_id;
+        $case_model->project_id     = $request->project_id;
+        $case_model->case_title_bn  = trim($request->case_title_bn);
+        $case_model->case_title     = trim($request->case_title);
+        $case_model->introduction_bn = trim($request->introduction_bn);
+        $case_model->introduction   = trim($request->introduction);
+        $case_model->details_bn     = trim($request->details_bn);
+        $case_model->details        = trim($request->details);
+        $case_model->case_summary_bn= trim($request->case_summary_bn);
+        $case_model->case_summary   = trim($request->case_summary);
+        $case_model->case_approx_budget = $request->case_approx_budget;
+        $case_model->state          = trim($request->state);
+        $case_model->youtube_video_link = trim($request->youtube_video_link);
+        $case_model->album_id       = $request->album_id;
         $case_model->urgent_case    = trim($request->urgent_case);
-        $case_model->featured_case    = trim($request->featured_case);
-
+        $case_model->featured_case  = trim($request->featured_case);
 
         if ($request->hasFile('case_image')) {
             $case_image = $request->file('case_image');
@@ -90,8 +89,8 @@ class CaseStudyController extends Controller
 
     public function CaseStudy_edit($id)
     {
-
         $data['getRecord'] = CaseStudy::getSingle($id);
+        $data['categories'] = ProjectCategory::where('status', 'show')->orderBy('serial')->get();        
         $data['projects'] = Project::where('status', 'Show')->orderBy('serial')->get();
         // dd($data['getRecord']); exit;
         return view('dashboard.case_study.edit', $data);
@@ -107,21 +106,22 @@ class CaseStudyController extends Controller
             return redirect()->back()->with('error', 'CaseStudy not found!');
         }
 
-        $case_model->project_id = $request->project_id;
-        $case_model->case_title_bn    = trim($request->case_title_bn);
-        $case_model->case_title    = trim($request->case_title);
-        $case_model->introduction_bn    = trim($request->introduction_bn);
-        $case_model->introduction    = trim($request->introduction);
-        $case_model->details_bn    = trim($request->details_bn);
-        $case_model->details    = trim($request->details);
-        $case_model->case_summary_bn    = trim($request->case_summary_bn);
-        $case_model->case_summary    = trim($request->case_summary);
-        $case_model->case_approx_budget    = $request->case_approx_budget;
-        $case_model->state    = trim($request->state);
-        $case_model->youtube_video_link    = trim($request->youtube_video_link);
-        $case_model->album_id    = $request->album_id;
+        $case_model->category_id    = $request->category_id;
+        $case_model->project_id     = $request->project_id;
+        $case_model->case_title_bn  = trim($request->case_title_bn);
+        $case_model->case_title     = trim($request->case_title);
+        $case_model->introduction_bn = trim($request->introduction_bn);
+        $case_model->introduction   = trim($request->introduction);
+        $case_model->details_bn     = trim($request->details_bn);
+        $case_model->details        = trim($request->details);
+        $case_model->case_summary_bn = trim($request->case_summary_bn);
+        $case_model->case_summary   = trim($request->case_summary);
+        $case_model->case_approx_budget = $request->case_approx_budget;
+        $case_model->state          = trim($request->state);
+        $case_model->youtube_video_link = trim($request->youtube_video_link);
+        $case_model->album_id       = $request->album_id;
         $case_model->urgent_case    = trim($request->urgent_case);
-        $case_model->featured_case    = trim($request->featured_case);
+        $case_model->featured_case  = trim($request->featured_case);
 
          if ($request->hasFile('case_image')) {
             $case_image = $request->file('case_image');

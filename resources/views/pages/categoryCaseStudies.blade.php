@@ -8,7 +8,7 @@
     <div class="container py-4">
         <div class="row">
             <div class="col text-center">
-                <h1 class="text-color-light font-weight-bold text-10">Case Study</h1>
+                <h1 class="text-color-light font-weight-bold text-10">Case Study | {{ app()->getLocale() == 'en' ? $category->category_name : $category->category_name_bn }}</h1>
             </div>
         </div>
     </div>
@@ -20,7 +20,7 @@
             @php $animation_delay = 200; @endphp
             @foreach ($caseStudies as $case)
                 <div class="col-md-4 mb-5 appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="{{ $animation_delay }}">
-                    <a href="{{ url('case-study',$case->id ) }}" class="text-decoration-none">
+                    <a href="demo-law-firm-2-case-study-detail.html" class="text-decoration-none">
                         <div class="card custom-card-style-2 border-0 border-radius-0">
                             <div class="card-img-top">
                                 <img src="/uploads/case_image/thumbnail/{{ $case->case_image }}" class="img-fluid" alt="" />

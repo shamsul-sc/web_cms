@@ -16,8 +16,8 @@
 
 <div class="container py-5 my-4">
     <div class="row row-gutter-sm py-2">        
-        @if($projects && $projects->count())
-            @foreach ($projects as $project)
+        @if($jointProjects && $jointProjects->count())
+            @foreach ($jointProjects as $project)
                 <div class="col-md-6 col-lg-4 mb-4 appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="200">
                     <a href="{{ url('project',$project->slug ) }}" class="text-decoration-none">
                         <div class="card custom-card-style-1 border-0 border-radius-0 custom-box-shadow-1">

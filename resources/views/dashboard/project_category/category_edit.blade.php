@@ -9,7 +9,7 @@
             </div>
             <div class="card-body ">
                 <div class="live-preview">
-                    <form action="{{ route('dashboard.category_update',$getRecord->cat_id) }}" method="post">
+                    <form action="{{ route('dashboard.category_update',$getRecord->id) }}" method="post">
                         {{ csrf_field() }}
 
                         <div class="row">

@@ -19,15 +19,26 @@ use App\Http\Controllers\ProjectCategoryController;
 use App\Http\Controllers\frontend\webProjectController;
 use App\Http\Controllers\frontend\WebCaseStudyController;
 use App\Http\Controllers\frontend\webAlbumsController;
+use App\Http\Controllers\frontend\webFAQController;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/about', function()
 {
    return View::make('pages.about');
 });
+
+Route::get('/project/categories', [webProjectController::class, 'projectCategories']);
+Route::get('/project/category/{slug}', [webProjectController::class, 'categoryCaseStudies']);
 Route::get('/projects', [webProjectController::class, 'projects']);
-Route::get('/case-studies', [WebCaseStudyController::class, 'case_studies'])->name('case_studies');
+Route::get('/joint-projects', [webProjectController::class, 'jointProjects']);
+Route::get('/project/{slug}', [webProjectController::class, 'project']);
+
+Route::get('/case-studies', [WebCaseStudyController::class, 'caseStudies'])->name('caseStudies');
+Route::get('/case-study/{id}', [WebCaseStudyController::class, 'caseStudyDetails'])->name('caseStudyDetails');
+
 Route::get('/albums', [webAlbumsController::class, 'albums'])->name('albums');
+
+Route::get('/faqs', [webFAQController::class, 'faqs'])->name('faqs');
 
 
 
@@ -38,13 +49,12 @@ Route::post('/home-sliders/{id}', [HomeSliderController::class, 'update'])->name
 
 Route::prefix('dashboard')->group(function () {
 
-
     Route::get('/category_list', [ProjectCategoryController::class, 'category_list'])->name('dashboard.category_list');
     Route::get('/category_add', [ProjectCategoryController::class, 'category_add'])->name('dashboard.category_add');
     Route::post('/category_add', [ProjectCategoryController::class, 'category_insert'])->name('dashboard.category_insert');
-    Route::get('/category_edit/{cat_id?}', [ProjectCategoryController::class, 'category_edit'])->name('dashboard.category_edit');
-    Route::post('category_update/{cat_id?}', [ProjectCategoryController::class, 'category_update'])->name('dashboard.category_update');
-    Route::get('category_deleted/{cat_id?}', [ProjectCategoryController::class, 'category_deleted'])->name('dashboard.category_deleted');
+    Route::get('/category_edit/{id?}', [ProjectCategoryController::class, 'category_edit'])->name('dashboard.category_edit');
+    Route::post('category_update/{id?}', [ProjectCategoryController::class, 'category_update'])->name('dashboard.category_update');
+    Route::get('category_deleted/{id?}', [ProjectCategoryController::class, 'category_deleted'])->name('dashboard.category_deleted');
 
     //Project routes
     Route::get('/list', [ProjectController::class, 'project_list'])->name('dashboard.list');
