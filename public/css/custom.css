@@ -1,0 +1,21 @@
+@media (min-width: 992px) {
+    #header .header-nav-main nav > ul > li > a {
+        font-size: 14px;
+        font-weight: 500;
+    }
+}
+
+.nav > li > a [class*="fa-"], #header .header-nav-top .nav > li > a .icons, #header .header-nav-top .nav > li > span [class*="fa-"], #header .header-nav-top .nav > li > span .icons {
+    margin-right: 3px;
+    font-size: 0.8em;
+    position: relative;
+}
+
+.custom-card-style-2 .card-body {
+    max-width: 90%;
+}
+
+.testimonial-style-2 span>p {
+    line-height: 40px !important;
+    color: #fff;
+}
