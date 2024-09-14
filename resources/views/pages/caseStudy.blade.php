@@ -66,7 +66,7 @@
         <div class="py-5">
             <a href="demo-law-firm-2-attorney-detail.html" class="text-decoration-none">
                 <div class="card custom-card-style-1 border-0 border-radius-0 custom-box-shadow-1">
-                    <img src="/uploads/category/thumbnail/{{ $project->project_image }}" alt="John Doe Image" />
+                    <img src="/uploads/project_image/thumbnail/{{ $project->project_image }}" alt="John Doe Image" />
                     <div class="card-body text-center px-4 py-5">
                         <h2 class="card-title alternative-font-4 text-color-dark font-weight-semibold line-height-1 text-5 mb-1">{{ app()->getLocale() == 'en' ? $project->project_title : $project->project_title_bn }}</h2>
                         <!-- <p class="text-color-grey positive-ls-3 mb-3">CEO & FOUNDER</p> -->

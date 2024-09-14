@@ -8,7 +8,7 @@ use App\Models\Project;
 use App\Models\ProjectCategory;
 use Illuminate\Http\Request;
 
-class webCaseStudyController extends Controller
+class WebCaseStudyController extends Controller
 {
     public function caseStudies()
     {

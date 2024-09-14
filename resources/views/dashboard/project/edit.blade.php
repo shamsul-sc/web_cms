@@ -23,7 +23,8 @@
                                         Select Category
                                     </option>
                                     @foreach($categories as $category)
-                                    <option value="{{ $category->id }}" {{ $category->id == $getRecord->cat_id ? 'selected' : '' }}>
+                                    <option value="{{ $category->id }}" {{ $category->id == $getRecord->cat_id ?
+                                        'selected' : '' }}>
                                         {{ $category->category_name }}
                                     </option>
                                     @endforeach
@@ -36,7 +37,7 @@
                             <div class="col-md-6 outlined-input-container">
                                 <input type="text" id="project_title" name="project_title"
                                     value="{{ old('project_title',$getRecord->project_title) }}" class="form-control"
-                                    placeholder="" maxlength="255" required>
+                                    placeholder="" maxlength="255">
                                 <label for="project_title">Project Title <span class="required">*</span></label>
                             </div>
                             <div class="col-md-6 outlined-input-container">
@@ -153,7 +154,7 @@
                                 <label for="project_image">Project Image <span class="required ">*</span></label>
                                 <input type="file" id="project_image" name="project_image" class="form-control mb-1">
                                 @if($getRecord && $getRecord->project_image )
-                                <img src="{{ asset('/uploads/category/thumbnail/' . $getRecord->project_image ) }}"
+                                <img src="{{ asset('/uploads/project_image/thumbnail/' . $getRecord->project_image ) }}"
                                     alt=" Image" width="70">
                                 @endif
                                 <br>
@@ -268,5 +269,6 @@
             </div>
         </div>
     </div>
+
 
     @endsection

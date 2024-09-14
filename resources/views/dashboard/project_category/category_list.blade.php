@@ -25,7 +25,7 @@
                 style="width:100%">
                 <thead>
                     <tr>
-                        <th>Category Name</th>
+                        <th>ID</th>
                         <th>Category Name BN.</th>
                         <th>Slug</th>
                         <th>Serial</th>

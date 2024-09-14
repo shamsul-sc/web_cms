@@ -6,9 +6,11 @@ use App\Models\Project;
 use App\Models\GalleryAlbum;
 use Illuminate\Http\Request;
 use App\Models\ProjectCategory;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Laravel\Facades\Image;
 use RealRashid\SweetAlert\Facades\Alert;
+
 
 
 class ProjectController extends Controller
@@ -111,7 +113,10 @@ class ProjectController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'project_title_bn' => 'required|unique:projects,project_title_bn',
+            'project_title_bn' => [
+                'required',
+                Rule::unique('projects')->ignore($id),
+            ],
             'status' => 'required',
         ]);
 
@@ -156,17 +161,17 @@ class ProjectController extends Controller
             $project_image = $request->file('project_image');
             $filename = time() . '_' . $project_image->getClientOriginalName();
 
-            $project_image->move(public_path('uploads/category/original/'), $filename);
+            $project_image->move(public_path('uploads/project_image/original/'), $filename);
 
-            $image_resize = Image::read(public_path('uploads/category/original/' . $filename));
+            $image_resize = Image::read(public_path('uploads/project_image/original/' . $filename));
             $image_resize->resize(600, 340, function ($constraint) {
                 $constraint->aspectRatio();
             });
-            $image_resize->save(public_path('uploads/category/thumbnail/' . $filename));
+            $image_resize->save(public_path('uploads/project_image/thumbnail/' . $filename));
 
-            if ($project_model->project_image && file_exists(public_path('uploads/category/original/' . $project_model->project_image))) {
-                unlink(public_path('uploads/category/original/' . $project_model->project_image));
-                unlink(public_path('uploads/category/thumbnail/' . $project_model->project_image));
+            if ($project_model->project_image && file_exists(public_path('uploads/project_image/original/' . $project_model->project_image))) {
+                unlink(public_path('uploads/project_image/original/' . $project_model->project_image));
+                unlink(public_path('uploads/project_image/thumbnail/' . $project_model->project_image));
             }
 
 

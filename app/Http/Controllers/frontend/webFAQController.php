@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\FAQ;
 use Illuminate\Http\Request;
 
-class webFAQController extends Controller
+class WebFAQController extends Controller
 {
     public function faqs()
     {

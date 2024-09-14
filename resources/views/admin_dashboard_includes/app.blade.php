@@ -88,27 +88,25 @@
                 <div class="container-fluid">
                     @yield('content')
                 </div>
-                <!-- Footer -->
-                {{-- @include('admin_dashboard_includes.footer') --}}
+
+                <!-- Vue.js Component -->
+                <div id="app">
+                    <!-- Vue.js Component -->
+                </div>
+
+            <!-- Footer -->
+            {{-- @include('admin_dashboard_includes.footer') --}}
             </div>
 
+            <!-- Back to Top Button -->
+            <button onclick="topFunction()" class="btn btn-danger btn-icon" id="back-to-top">
+                <i class="ri-arrow-up-line"></i>
+            </button>
+
+            <!-- Scripts -->
+            @include('admin_dashboard_includes.script')
 
         </div>
-
-        <!-- Back to Top Button -->
-        <button onclick="topFunction()" class="btn btn-danger btn-icon" id="back-to-top">
-            <i class="ri-arrow-up-line"></i>
-        </button>
-
-        <!-- Vue.js Component -->
-        <div id="app">
-            <!-- Vue.js Component -->
-        </div>
-
-        <!-- Scripts -->
-        @include('admin_dashboard_includes.script')
-
-    </div>
 </body>
 
 </html>

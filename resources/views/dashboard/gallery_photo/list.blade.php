@@ -42,7 +42,17 @@
                         <td>{{ $value->id }}</td>
                         <td>{{ $value->album_id }}</td>
                         <td>{{ $value->caption }}</td>
-                        <td><img src="/uploads/gallery_photo/thumbnail/{{ $value->image }}" width="100px"></td>
+                        {{-- <td><img src="/uploads/gallery_photo/thumbnail/{{ $value->image }}" width="100px"></td>
+                        --}}
+                        <td>
+                            @if(!empty($value->image) && file_exists(public_path('uploads/gallery_photo/thumbnail/' .
+                            $value->image)))
+                            <img src="{{ asset('uploads/gallery_photo/thumbnail/' . $value->image) }}" alt="Image"
+                                width="100px">
+                            @else
+                            <p>No Image Available</p>
+                            @endif
+                        </td>
                         <td>{{ $value->serial }}</td>
                         <td>
                             <span
