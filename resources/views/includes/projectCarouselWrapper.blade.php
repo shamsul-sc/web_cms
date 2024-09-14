@@ -1,12 +1,12 @@
-<div class="owl-carousel-wrapper position-relative z-index-1 appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="300" style="margin-top: -150px; height: 470px;">
-    <div class="owl-carousel owl-theme dots-horizontal-center custom-dots-style-1 dots-dark mb-0" data-plugin-options="{'responsive': {'576': {'items': 1}, '768': {'items': 2}, '992': {'items': 3}, '1200': {'items': 4}, '1440': {'items': 5}}, 'margin': 20, 'stagePadding': 20, 'loop': true, 'nav': false, 'dots': true, 'autoplay': true, 'autoplayTimeout': 7000}">
+<div class="owl-carousel-wrapper position-relative z-index-1 appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="100" style="margin-top: -150px; height: 470px;">
+    <div class="owl-carousel owl-theme dots-horizontal-center custom-dots-style-1 dots-dark mb-0" data-plugin-options="{'responsive': {'576': {'items': 1}, '768': {'items': 2}, '992': {'items': 3}, '1200': {'items': 4}, '1440': {'items': 5}}, 'margin': 20, 'stagePadding': 20, 'loop': true, 'nav': false, 'dots': true, 'autoplay': true, 'autoplayTimeout': 5000}">
         @if($projectCategories && $projectCategories->count())
             @foreach ($projectCategories as $category)
                 <div class="py-5">
-                    <a href="demo-law-firm-2-practice-areas-detail.html" class="text-decoration-none">
+                    <a href="{{ url('project/category',$category->slug) }}" class="text-decoration-none">
                         <div class="card custom-card-style-1 border-0 border-radius-0 custom-box-shadow-1">
                             <div class="card-body text-center px-4 py-5">
-                                <img width="60" height="60" src="img/demos/law-firm-2/icons/icon-group.svg" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-primary mt-2 mb-4 pb-3'}" />
+                                <img width="60" height="60" src="{{ asset('img/demos/law-firm-2/icons/icon-heart-hands.svg') }}" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-stroke-color-primary custom-stroke-width-1 mt-2 mb-4 pb-3'}" />
                                 <h2 class="card-title alternative-font-4 text-color-dark font-weight-semibold line-height-1 text-5 mb-3">
                                     {{ app()->getLocale() == 'en' ? $category->category_name : $category->category_name_bn }}
                                 </h2>

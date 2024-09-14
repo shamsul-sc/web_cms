@@ -46,22 +46,25 @@
                                     class="nav-item dropdown nav-item-left-border d-none d-sm-block nav-item-left-border-remove nav-item-left-border-md-show">
                                     <a class="nav-link" href="#" role="button" id="dropdownLanguage"
                                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <img src="img/blank.gif" class="flag {{ __('locale.flag') }} mx-1"
+                                        <img src="{{ asset('img/blank.gif') }}" class="flag {{ __('locale.flag') }} mx-1"
                                             alt="{{ __('locale.alt') }}"> {{ __('locale.locale') }} <i
                                             class="fas fa-angle-down mx-1"></i>
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="dropdownLanguage" style="">
                                         <a class="dropdown-item" href="locale/en" data-lang="English"
-                                            data-flag="flag-us"><img src="img/blank.gif"
+                                            data-flag="flag-us"><img src="{{ asset('img/blank.gif') }}"
                                                 class="flag flag-us custom-font-size-1" alt="English"> English</a>
                                         <a class="dropdown-item" href="locale/bn" data-lang="বাংলা"
-                                            data-flag="flag-bd"><img src="img/blank.gif"
+                                            data-flag="flag-bd"><img src="{{ asset('img/blank.gif') }}"
                                                 class="flag flag-bd custom-font-size-1" alt="Bangla"> বাংলা</a>
                                     </div>
                                 </li>
-                            </ul>
-                            <a href="#" class="btn btn-primary btn-px-4 py-3 font-weight-bold text-2 rounded-0">JOIN
-                                US</a>
+                            </ul><a href="{{ url('/faqs') }}" class="btn btn-secondary btn-px-4 py-3 font-weight-bold text-2 rounded-0">
+                                FAQs
+                            </a>
+                            <a href="#" class="btn btn-primary btn-px-4 py-3 font-weight-bold text-2 rounded-0">
+                                JOIN US
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -73,7 +76,7 @@
                     <div class="header-row">
                         <div class="header-logo">
                             <a href="{{ url('/') }}">
-                                <img src="img/demos/law-firm-2/logo.png" class="" width="" height="70"
+                                <img src="{{ asset('img/demos/law-firm-2/logo.png') }}" class="" width="" height="70"
                                     data-sticky-height="50" alt="" />
                             </a>
                         </div>
@@ -91,9 +94,10 @@
                                                 }}</a>
                                         </li>
                                         <li>
-                                            <a href="/about" class="nav-link">{{ __('custom_lang.about') }}</a>
+                                            <a href="{{ url('/about') }}" class="nav-link">{{ __('custom_lang.about') }}</a>
                                         </li>
-                                        <li class="dropdown">
+                                        
+                                        <!-- <li class="dropdown">
                                             <a href="demo-law-firm-2-practice-areas.html"
                                                 class="dropdown-item dropdown-toggle">Committees</a>
                                             <ul class="dropdown-menu border-radius-0">
@@ -112,17 +116,18 @@
                                                         class="nav-link">Family Law</a>
                                                 </li>
                                             </ul>
-                                        </li>
+                                        </li> -->
+                                        
                                         <li class="dropdown">
-                                            <a href="/projects" class="dropdown-item dropdown-toggle">{{ __('custom_lang.projects') }}</a>
+                                            <a href="{{ url('/projects') }}" class="dropdown-item dropdown-toggle">{{ __('custom_lang.projects') }}</a>
                                             <ul class="dropdown-menu border-radius-0">   
                                                 @if($projectCategories && $projectCategories->count())
                                                 <li class="dropdown-submenu">
-                                                    <a class="dropdown-item" href="#">Category ({{ $projectCategories->count() }})</a>
+                                                    <a class="dropdown-item" href="{{ url('project/categories') }}">Category ({{ $projectCategories->count() }})</a>
                                                     <ul class="dropdown-menu  border-radius-0">
                                                         @foreach ($projectCategories as $category)
                                                             <li>
-                                                                <a class="dropdown-item" href="demo-law-firm-2-practice-areas-detail.html">{{ app()->getLocale() == 'en' ? $category->category_name : $category->category_name_bn }}
+                                                                <a class="dropdown-item" href="{{ url('project/category',$category->slug) }}">{{ app()->getLocale() == 'en' ? $category->category_name : $category->category_name_bn }}
                                                                 </a>
                                                             </li>
                                                         @endforeach
@@ -132,34 +137,38 @@
 
                                                 @if($projects && $projects->count())
                                                 <li class="dropdown-submenu">
-                                                    <a class="dropdown-item" href="#">{{ __('custom_lang.projects') }} ({{ $projects->count() }})</a>
+                                                    <a class="dropdown-item" href="{{ url('/projects') }}">{{ __('custom_lang.projects') }} ({{ $projects->count() }})</a>
                                                     <ul class="dropdown-menu  border-radius-0">
                                                         @foreach ($projects as $project)
                                                             <li>
-                                                                <a class="dropdown-item" href="demo-law-firm-2-practice-areas-detail.html">{{ app()->getLocale() == 'en' ? $project->project_title : $project->project_title_bn }}
+                                                                <a class="dropdown-item" href="{{ url('project',$project->slug ) }}">{{ app()->getLocale() == 'en' ? $project->project_title : $project->project_title_bn }}
                                                                 </a>
                                                             </li>
                                                         @endforeach
                                                     </ul>
                                                 </li>
                                                 @endif
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="/case-studies" class="nav-link">Case Study</a>
-                                        </li>
-                                        <li class="dropdown">
-                                            <a href="demo-law-firm-2-practice-areas.html"
-                                                class="dropdown-item dropdown-toggle">Media</a>
-                                            <ul class="dropdown-menu border-radius-0">
                                                 <li>
-                                                    <a href="/albums"
-                                                        class="nav-link">Albums</a>
+                                                    <a href="{{ url('/joint-projects') }}"
+                                                        class="nav-link">Joint Project</a>
                                                 </li>
                                             </ul>
                                         </li>
                                         <li>
-                                            <a href="demo-law-firm-2-contact.html" class="nav-link">Contact</a>
+                                            <a href="{{ url('/case-studies') }}" class="nav-link">{{ __('custom_lang.case_study') }}</a>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="#"
+                                                class="dropdown-item dropdown-toggle">{{ __('custom_lang.media') }}</a>
+                                            <ul class="dropdown-menu border-radius-0">
+                                                <li>
+                                                    <a href="{{ url('/albums') }}"
+                                                        class="nav-link">{{ __('custom_lang.albums') }}</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="nav-link">{{ __('custom_lang.contact') }}</a>
                                         </li>
                                     </ul>
                                 </nav>

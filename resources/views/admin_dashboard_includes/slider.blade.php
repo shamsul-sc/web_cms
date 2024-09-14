@@ -90,10 +90,10 @@
             <ul class="nav nav-sm flex-column">
                 <li class="nav-item">
                     <a href="{{ route('dashboard.faq_list') }}" class="nav-link" data-key="t-category-list">
-                        FAQ
+                        FAQ List
                     </a>
                     <a href="{{ route('dashboard.faq_category_list') }}" class="nav-link" data-key="t-category-list">
-                        FAQ List
+                        FAQ Category
                     </a>
                 </li>
             </ul>

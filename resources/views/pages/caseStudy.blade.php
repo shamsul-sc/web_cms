@@ -1,17 +1,13 @@
 @extends('layouts.default')
 
-@section('title', 'Projects | Treatment Community Foundation')
+@section('title', 'Case Study | Treatment Community Foundation')
 
 @section('content')
 
-<section class="page-header page-header-modern page-header-lg overlay overlay-show overlay-op-9 m-0" style="background-image: url(img/demos/law-firm-2/backgrounds/background-4.jpg); background-size: cover; background-position: center;">
+<section class="page-header page-header-modern page-header-lg overlay overlay-show overlay-op-6 m-0" style="background-image: url('{{ asset('img/backgrounds/background-4.webp') }}'); background-size: cover; background-position: center;">
     <div class="container py-4">
         <div class="row">
             <div class="col text-center">
-                <ul class="breadcrumb d-flex justify-content-center text-4-5 font-weight-medium mb-2">
-                    <li><a href="demo-law-firm-2.html" class="text-color-primary text-decoration-none">HOME</a></li>
-                    <li class="text-color-primary active">CASE STUDY</li>
-                </ul>
                 <h1 class="text-color-light font-weight-bold text-10">Case Study</h1>
             </div>
         </div>
@@ -24,14 +20,14 @@
             @php $animation_delay = 200; @endphp
             @foreach ($caseStudies as $case)
                 <div class="col-md-4 mb-5 appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="{{ $animation_delay }}">
-                    <a href="demo-law-firm-2-case-study-detail.html" class="text-decoration-none">
+                    <a href="{{ url('case-study',$case->id ) }}" class="text-decoration-none">
                         <div class="card custom-card-style-2 border-0 border-radius-0">
                             <div class="card-img-top">
                                 <img src="/uploads/case_image/thumbnail/{{ $case->case_image }}" class="img-fluid" alt="" />
                             </div>
                             <div class="card-body custom-box-shadow-2">
-                                <span class="d-block text-color-grey positive-ls-2 mb-0">FAMILY LAW</span>
-                                <h4 class="text-color-dark font-weight-medium text-5-5 mb-2"><em>{{ app()->getLocale() == 'en' ? $case->case_title_bn : $case->case_title_bn }}</em></h4>
+                                <span class="d-block text-color-grey positive-ls-2 mb-0">{{ app()->getLocale() == 'en' ? $case->category_name : $case->category_name_bn }}</span>
+                                <h4 class="text-color-dark font-weight-medium text-5-5 mb-2"><em>{{ app()->getLocale() == 'en' ? $case->case_title : $case->case_title_bn }}</em></h4>
                                 <span class="custom-read-more font-weight-medium d-inline-flex justify-content-center align-items-center svg-fill-color-primary svg-stroke-color-primary">
                                     VIEW DETAILS
                                     <svg class="ms-2" version="1.1" viewBox="0 0 15.698 8.706" width="17" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

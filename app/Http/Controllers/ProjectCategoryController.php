@@ -55,21 +55,21 @@ class ProjectCategoryController extends Controller
 
     }
 
-    public function category_edit($cat_id)
-    {
-        
-        $data['getRecord'] = ProjectCategory::getSingle($cat_id);
+    public function category_edit($id)
+    {        
+        $data['getRecord'] = ProjectCategory::getSingle($id);
         return view('dashboard.project_category.category_edit',$data );
     }
-    public function category_update(Request $request, $cat_id)
-    {
-        
+
+    public function category_update(Request $request, $id)
+    {        
         $validator = Validator::make($request->all(), [
             'category_name_bn' => 'required',
             'slug' => [
                 'required',
-                Rule::unique('project_categories')->ignore($cat_id),
+                Rule::unique('project_categories')->ignore($id),
             ],
+
         ]);
 
         if ($validator->fails()) {
@@ -81,7 +81,7 @@ class ProjectCategoryController extends Controller
         }
 
         
-        $category_model = ProjectCategory::getSingle($cat_id);;
+        $category_model = ProjectCategory::getSingle($id);;
         
         if (!$category_model) {
             return redirect()->back()->with('error', 'Category not found!');
@@ -101,9 +101,9 @@ class ProjectCategoryController extends Controller
         
     }
 
-    public function category_deleted($cat_id)
+    public function category_deleted($id)
     {
-        $category = ProjectCategory::getSingle($cat_id);
+        $category = ProjectCategory::getSingle($id);
         $category->is_delete = 1;
         $category->save();
 
@@ -112,4 +112,4 @@ class ProjectCategoryController extends Controller
         return redirect()->back();
     }
         
-    }
+}

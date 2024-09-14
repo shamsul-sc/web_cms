@@ -40,11 +40,11 @@ class FaqCategoryController extends Controller
 
         $faq_model = new FaqCategory();
 
-        $faq_model->faq_cat_id = $request->faq_cat_id;
+        $faq_model->faq_cat_id      = $request->faq_cat_id;
         $faq_model->faq_cat_name    = trim($request->faq_cat_name);
         $faq_model->faq_cat_name_bn = trim($request->faq_cat_name_bn);
-        $faq_model->faq_cat_serial           = (int)trim($request->faq_cat_serial);
-        $faq_model->faq_cat_status           = trim($request->faq_cat_status);
+        $faq_model->faq_cat_serial  = (int)trim($request->faq_cat_serial);
+        $faq_model->faq_cat_status  = trim($request->faq_cat_status);
         $faq_model->save();
 
         Alert::success(title: 'FAQ Category Created Successfully!');
@@ -80,7 +80,7 @@ class FaqCategoryController extends Controller
             return redirect()->back()->with('error', 'Category not found!');
         }
 
-        $faq_model->faq_cat_id = $request->faq_cat_id;
+        $faq_model->faq_cat_id      = $request->faq_cat_id;
         $faq_model->faq_cat_name    = trim($request->faq_cat_name);
         $faq_model->faq_cat_name_bn = trim($request->faq_cat_name_bn);
         $faq_model->faq_cat_serial  = (int)trim($request->faq_cat_serial);

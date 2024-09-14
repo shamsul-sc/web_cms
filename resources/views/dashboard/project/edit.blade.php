@@ -23,9 +23,7 @@
                                         Select Category
                                     </option>
                                     @foreach($categories as $category)
-                                    <option value="{{ $category->cat_id }}" {{ $category->cat_id ==
-                                        $getRecord->cat_id ?
-                                        'selected' : '' }}>
+                                    <option value="{{ $category->id }}" {{ $category->id == $getRecord->cat_id ? 'selected' : '' }}>
                                         {{ $category->category_name }}
                                     </option>
                                     @endforeach

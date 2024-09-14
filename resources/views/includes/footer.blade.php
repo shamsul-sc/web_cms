@@ -15,21 +15,19 @@
                     <li class="mb-0"><a href="#">Contact</a></li>
                 </ul>
             </div>
+            @if($projectCategories && $projectCategories->count())
             <div class="col-lg-3 mb-5 mb-lg-0">
-                <h5 class="text-transform-none font-weight-bold text-color-light text-5-5 mb-4">Projects</h5>
+                <h5 class="text-transform-none font-weight-bold text-color-light text-5-5 mb-4">Category</h5>
                 <ul class="list list-unstyled text-3-5 mb-0">
-                    <li class="mb-2"><a href="demo-law-firm-2-practice-areas-detail.html">আর্থিক সহায়তা</a></li>
-                    <li class="mb-2"><a href="demo-law-firm-2-practice-areas-detail.html">খাদ্য সহায়তা</a></li>
-                    <li class="mb-2"><a href="demo-law-firm-2-practice-areas-detail.html">তথ্য সহায়তা</a></li>
-                    <li class="mb-2"><a href="demo-law-firm-2-practice-areas-detail.html">যাকাত কার্যক্রম</a></li>
-                    <li class="mb-2"><a href="demo-law-firm-2-practice-areas-detail.html">হেলথ ক্যাম্প</a></li>
+                    @foreach ($projectCategories as $category)
+                    <li class="mb-2">
+                        <a href="{{ url('project/category',$category->slug) }}">
+                            {{ app()->getLocale() == 'en' ? $category->category_name : $category->category_name_bn }}
+                        </a>
+                    </li>
+                    @endforeach
                 </ul>
-                <a href="#" class="d-inline-flex custom-read-more-link justify-content-center align-items-center font-weight-medium text-color-primary svg-fill-color-primary svg-stroke-color-primary">
-                    VIEW ALL
-                    <svg class="ms-2" version="1.1" viewBox="0 0 15.698 8.706" width="17" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <polygon stroke="#777" stroke-width="0.1" fill="#777" points="11.354,0 10.646,0.706 13.786,3.853 0,3.853 0,4.853 13.786,4.853 10.646,8 11.354,8.706 15.698,4.353 "/>
-                    </svg>
-                </a>
+                @endif
             </div>
             <div class="col-lg-3">
                 <h5 class="text-transform-none font-weight-bold text-color-light text-5-5 mb-4">Contact Us</h5>

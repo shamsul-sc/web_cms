@@ -25,7 +25,6 @@
                 style="width:100%">
                 <thead>
                     <tr>
-                        <th>Cat.Id.</th>
                         <th>Category Name</th>
                         <th>Category Name BN.</th>
                         <th>Slug</th>
@@ -40,7 +39,7 @@
                     @foreach ($getRecord as $category )
 
                     <tr>
-                        <td>{{ $category->cat_id }}</td>
+                        <td>{{ $category->id }}</td>
                         <td>{{ $category->category_name }}</td>
                         <td>{{ $category->category_name_bn }}</td>
                         <td>{{ $category->slug }}</td>
@@ -54,9 +53,8 @@
                         </td>
                         <td>{{ date('d-m-Y h:i:A', strtotime($category->created_at)) }}</td>
                         <td>
-                            <a href="{{ route('dashboard.category_edit',$category->cat_id ) }}"
+                            <a href="{{ route('dashboard.category_edit',$category->id ) }}"
                                 class="btn btn-sm btn-info ">Edit</a>
-
                             <a href="javascript:void(0)" class="btn btn-sm btn-danger"
                                 onclick="deleteConfirmation({{ $category->cat_id }})">Delete</a>
 
@@ -67,8 +65,6 @@
                                 @method('DELETE')
                             </form>
                         </td>
-                        </td>
-
                     </tr>
                     @endforeach
                     @endif

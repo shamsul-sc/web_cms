@@ -14,3 +14,8 @@
 .custom-card-style-2 .card-body {
     max-width: 90%;
 }
+
+.testimonial-style-2 span>p {
+    line-height: 40px !important;
+    color: #fff;
+}
