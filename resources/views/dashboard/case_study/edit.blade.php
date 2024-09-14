@@ -8,7 +8,7 @@
             <div class="card shadow-lg">
                 <div class="card-header align-items-center d-flex text-white"
                     style="background-color: rgb(93, 198, 93);">
-                    <h4 class="card-title mb-0 flex-grow-1 text-white">Add a Case Study</h4>
+                    <h4 class="card-title mb-0 flex-grow-1 text-white">Edit a Case Study</h4>
 
                 </div>
 

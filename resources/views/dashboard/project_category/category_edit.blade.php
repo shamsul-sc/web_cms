@@ -4,7 +4,7 @@
     <div class="col-xxl-6">
         <div class="card ">
             {{-- @include('layouts._message') --}}
-             @include('sweetalert::alert')
+            @include('sweetalert::alert')
             <div class="card-header align-items-center d-flex text-white" style="background-color: rgb(93, 198, 93);">
                 <h4 class="card-title mb-0 flex-grow-1 ">Edit Category</h4>
             </div>
@@ -62,15 +62,19 @@
                             <label> Status <span class="required">*</span></label>
                         </div>
                 </div>
-                <div class=" text-center d-flex col-6">
-                    <button type="submit" class="btn btn-primary px-5 rounded-pill"><i class=" bi bi-plus-lg"></i>
-                        Update</button>
+                <div class=" row">
+                    <div class="col-12 text-center d-flex justify-content-between align-items-center">
+                        <a href="{{ route('dashboard.category_list') }}" class="btn btn-danger px-5 rounded-pill">
+                            <i class="ri-arrow-go-back-line"></i> Go to list
+                        </a>
+                        <button type="submit" class="btn btn-primary px-5 rounded-pill"><i class=" bi bi-plus-lg"></i>
+                            Update</button>
+                    </div>
                 </div>
-            </div>
 
-            </form>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 
-@endsection
+    @endsection
