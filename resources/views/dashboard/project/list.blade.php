@@ -49,7 +49,7 @@
                         <td>{{ $category->project_title_bn }}</td>
                         <td>{!! $category->project_summary_bn !!}</td>
                         <td>{{ number_format($category->project_approx_budget) }}</td>
-                        <td><img src="/uploads/category/thumbnail/{{ $category->project_image }}" width="100px"></td>
+                        <td><img src="/uploads/project_image/thumbnail/{{ $category->project_image }}" width="100px"></td>
 
                         <td>
                             <span

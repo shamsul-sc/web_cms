@@ -154,7 +154,7 @@
                                 <label for="project_image">Project Image <span class="required ">*</span></label>
                                 <input type="file" id="project_image" name="project_image" class="form-control mb-1">
                                 @if($getRecord && $getRecord->project_image )
-                                <img src="{{ asset('/uploads/category/thumbnail/' . $getRecord->project_image ) }}"
+                                <img src="{{ asset('/uploads/project_image/thumbnail/' . $getRecord->project_image ) }}"
                                     alt=" Image" width="70">
                                 @endif
                                 <br>

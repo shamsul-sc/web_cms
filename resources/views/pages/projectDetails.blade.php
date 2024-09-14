@@ -22,7 +22,7 @@
             <div class="lightbox" data-plugin-options="{'delegate': 'a', 'type': 'image', 'gallery': {'enabled': true}}">
                 <div class="row pb-2 mb-2">
                     <div class="col-lg-12 mb-2 mb-lg-0">
-                        <a class="d-flex img-thumbnail img-thumbnail-no-borders img-thumbnail-hover-icon rounded-0 custom-box-shadow-1" href="{{ asset('uploads/category/original/' . $getRecord->project_image) }}" style="background-image: url('{{ asset('uploads/category/thumbnail/' . $getRecord->project_image) }}'); background-size: cover; background-position: center; min-height: 300px;"></a>
+                        <a class="d-flex img-thumbnail img-thumbnail-no-borders img-thumbnail-hover-icon rounded-0 custom-box-shadow-1" href="{{ asset('uploads/project_image/original/' . $getRecord->project_image) }}" style="background-image: url('{{ asset('uploads/project_image/thumbnail/' . $getRecord->project_image) }}'); background-size: cover; background-position: center; min-height: 300px;"></a>
                     </div>
                     <!-- <div class="col-lg-4 ps-lg-0">
                         <a class="d-flex img-thumbnail img-thumbnail-no-borders img-thumbnail-hover-icon rounded-0 custom-box-shadow-1" href="img/demos/law-firm-2/generic/generic-4-portrait.jpg" style="background-image: url(img/demos/law-firm-2/generic/generic-4-portrait.jpg); background-size: cover; background-position: center; min-height: 300px;"></a>
