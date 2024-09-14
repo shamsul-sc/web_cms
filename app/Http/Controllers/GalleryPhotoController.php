@@ -72,7 +72,7 @@ class GalleryPhotoController extends Controller
 
         return redirect()->route('dashboard.gallery_photo_list');
 
-       
+
     }
 
     public function GalleryPhoto_edit($id)
@@ -119,7 +119,7 @@ class GalleryPhotoController extends Controller
             $image->move(public_path('uploads/gallery_photo/original'), $filename);
 
 
-            $image_resize = Image::make(public_path('uploads/gallery_photo/original/'.$filename));
+            $image_resize = Image::read(public_path('uploads/gallery_photo/original/'.$filename));
             $image_resize->resize(600, 340, function ($constraint) {
                 $constraint->aspectRatio();
             });

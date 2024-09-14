@@ -1,5 +1,6 @@
 <?php
 
+// use Artisan;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FAQController;
@@ -15,19 +16,19 @@ use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\GalleryAlbumController;
 use App\Http\Controllers\GalleryPhotoController;
 use App\Http\Controllers\MediaCoverageController;
+use App\Http\Controllers\frontend\webFAQController;
 use App\Http\Controllers\ProjectCategoryController;
+use App\Http\Controllers\frontend\webAlbumsController;
 use App\Http\Controllers\frontend\webProjectController;
 use App\Http\Controllers\frontend\WebCaseStudyController;
-use App\Http\Controllers\frontend\webAlbumsController;
-use App\Http\Controllers\frontend\webFAQController;
 
-Route::get('/cache', function()
-{
-    \Artisan::call('cache:clear');
-    \Artisan::call('config:clear');    
-    \Artisan::call('route:clear');
-   return "ok";
-});
+// Route::get('/cache', function()
+// {
+//     Artisan::call('cache:clear');
+//     \Artisan::call('config:clear');
+//     \Artisan::call('route:clear');
+//    return "ok";
+// });
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/about', function()
