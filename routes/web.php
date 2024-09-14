@@ -21,6 +21,14 @@ use App\Http\Controllers\frontend\WebCaseStudyController;
 use App\Http\Controllers\frontend\webAlbumsController;
 use App\Http\Controllers\frontend\webFAQController;
 
+Route::get('/cache', function()
+{
+    \Artisan::call('cache:clear');
+    \Artisan::call('config:clear');    
+    \Artisan::call('route:clear');
+   return "ok";
+});
+
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/about', function()
 {
