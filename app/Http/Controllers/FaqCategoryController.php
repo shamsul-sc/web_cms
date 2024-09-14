@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\FaqCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class FaqCategoryController extends Controller
 {
@@ -29,10 +30,12 @@ class FaqCategoryController extends Controller
             'faq_cat_name_bn' => 'required',
         ]);
 
-        if($validator->fails())
-        {
+        if ($validator->fails()) {
+            $errors = $validator->errors()->all();
 
-            return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Validation error!');
+            Alert::error('Validation Error!', implode('<br>', $errors));
+
+            return redirect()->back()->withInput();
         }
 
         $faq_model = new FaqCategory();
@@ -44,7 +47,9 @@ class FaqCategoryController extends Controller
         $faq_model->faq_cat_status  = trim($request->faq_cat_status);
         $faq_model->save();
 
-        return redirect('dashboard/faq_category_list')->with('success', 'FAQ Category Created Successfully!');
+        Alert::success(title: 'FAQ Category Created Successfully!');
+
+        return redirect()->route('dashboard.faq_category_list');
 
     }
 
@@ -62,7 +67,11 @@ class FaqCategoryController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Validation error!');
+            $errors = $validator->errors()->all();
+
+            Alert::error('Validation Error!', implode('<br>', $errors));
+
+            return redirect()->back()->withInput();
         }
 
         $faq_model = FaqCategory::getSingle($id);;
@@ -79,7 +88,9 @@ class FaqCategoryController extends Controller
         $faq_model->save();
 
 
-        return redirect('dashboard/faq_category_list')->with('success', 'FAQ Category Updated!');
+        Alert::success(title: 'FAQ Category Updated Successfully!');
+
+        return redirect()->route('dashboard.faq_category_list');
     }
 
     public function FaqCategory_deleted($id)
@@ -88,6 +99,9 @@ class FaqCategoryController extends Controller
         $faq_model->faq_cat_status = 'Hide';
         $faq_model->save();
 
-        return redirect()->back()->with('success', "FAQ Category successfully deleted.");
+        Alert::success('FAQ Category successfully deleted.');
+
+        return redirect()->back();
+
     }
 }

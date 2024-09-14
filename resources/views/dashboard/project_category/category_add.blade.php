@@ -3,7 +3,8 @@
 <div class="d-flex justify-content-center align-items-center">
     <div class="col-xxl-6">
         <div class="card ">
-            @include('layouts._message')
+            {{-- @include('layouts._message') --}}
+            @include('sweetalert::alert')
             <div class="card-header align-items-center d-flex text-white" style="background-color: rgb(93, 198, 93);">
                 <h4 class="card-title mb-0 flex-grow-1 ">Add Category</h4>
             </div>

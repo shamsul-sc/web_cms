@@ -6,6 +6,7 @@ use App\Models\FollowUp;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Laravel\Facades\Image;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class FollowUpController extends Controller
 {
@@ -27,12 +28,15 @@ class FollowUpController extends Controller
         $validator = Validator::make($request->all(), [
 
             'follow_up_title_bn' => 'required|string|max:100',
-            'follow_up_title' => 'required|string|max:100',
 
         ]);
 
         if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Validation error!');
+            $errors = $validator->errors()->all();
+
+            Alert::error('Validation Error!', implode('<br>', $errors));
+
+            return redirect()->back()->withInput();
         }
 
         $followUp_model = new FollowUp();
@@ -64,7 +68,10 @@ class FollowUpController extends Controller
             $followUp_model->follow_up_image = $filename;
         }
         $followUp_model->save();
-        return redirect('dashboard/follow_up_list')->with('success', 'Follow Up Created Successfully!');
+        Alert::success(title: 'Follow Up Created Successfully!');
+
+        return redirect()->route('dashboard.follow_up_list');
+
     }
 
      public function FollowUp_edit($id)
@@ -76,6 +83,20 @@ class FollowUpController extends Controller
 
     public function FollowUp_update(Request $request, $id)
     {
+        $validator = Validator::make($request->all(), [
+
+            'follow_up_title_bn' => 'required|string|max:100',
+
+        ]);
+
+        if ($validator->fails()) {
+            $errors = $validator->errors()->all();
+
+            Alert::error('Validation Error!', implode('<br>', $errors));
+
+            return redirect()->back()->withInput();
+        }
+
         $followUp_model = FollowUp::getSingle($id);
 
         if (!$followUp_model)
@@ -106,7 +127,10 @@ class FollowUpController extends Controller
         }
 
         $followUp_model->save();
-        return redirect('dashboard/follow_up_list')->with('success', 'Follow Up Updated Successfully!');
+        Alert::success(title: 'Follow Up Updated Successfully!');
+
+        return redirect()->route('dashboard.follow_up_list');
+
     }
 
     public function FollowUp_deleted($id)
@@ -115,6 +139,9 @@ class FollowUpController extends Controller
         $followUp_model->status = 'hide';
         $followUp_model->save();
 
-        return redirect()->back()->with('success', "Follow Up successfully deleted.");
+        Alert::success('Follow Up successfully deleted.');
+
+        return redirect()->back();
+
     }
 }

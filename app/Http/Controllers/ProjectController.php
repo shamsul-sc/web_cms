@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
-use Intervention\Image\Laravel\Facades\Image;
+use App\Models\GalleryAlbum;
 use Illuminate\Http\Request;
 use App\Models\ProjectCategory;
 use Illuminate\Support\Facades\Validator;
+use Intervention\Image\Laravel\Facades\Image;
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 class ProjectController extends Controller
@@ -14,6 +16,7 @@ class ProjectController extends Controller
     public function project_list()
     {
         $data['getProject'] = Project::getProject();
+        // dd($data['getProject']);
         return view('dashboard.project.list',$data);
     }
 
@@ -21,21 +24,26 @@ class ProjectController extends Controller
     {
         $data['getRecord'] = ProjectCategory::getRecord();
         // dd($data['getRecord']); exit;
+        $data['getGalleryAlbum'] = GalleryAlbum::getGalleryAlbum();
         return view('dashboard.project.add', $data);
     }
 
     public function insert(Request $request)
     {
+      
         $validator = Validator::make($request->all(), [
-
             'project_title_bn' => 'required|unique:projects,project_title_bn',
-            'slug' => 'required',
-            'project_approx_budget' => 'required',
+            'status' => 'required',
         ]);
 
         if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Validation error!');
+            $errors = $validator->errors()->all();
+
+            Alert::error('Validation Error!', implode('<br>', $errors));
+
+            return redirect()->back()->withInput();
         }
+
         // return dd($request->all());
         $project_model = new Project();
 
@@ -81,13 +89,19 @@ class ProjectController extends Controller
         }
 
         $project_model->save();
+        
+        Alert::success('Project Created Successfully!');
 
-        return redirect('dashboard/list')->with('success', 'Project Created Successfully!');
+        return redirect()->route('dashboard.list');
+
+
+
 
     }
 
     public function edit($id)
     {
+        $data['getGalleryAlbum'] = GalleryAlbum::getGalleryAlbum();
         $data['categories'] = ProjectCategory::getRecord();
         $data['getRecord'] = Project::getSingle($id);
         // dd($data['getRecord']); exit;
@@ -97,21 +111,23 @@ class ProjectController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-
             'project_title_bn' => 'required|unique:projects,project_title_bn',
-            'slug' => 'required',
-            'project_approx_budget' => 'required',
+            'status' => 'required',
         ]);
 
         if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Validation error!');
+            $errors = $validator->errors()->all();
+
+            Alert::error('Validation Error!', implode('<br>', $errors));
+
+            return redirect()->back()->withInput();
         }
+
 
         $project_model = Project::getSingle($id);
 
-        if (!$project_model)
-        {
-            return redirect()->back()->with('error', 'Category not found!');
+        if (!$project_model) {
+            return redirect()->back()->with('error', 'Project not found!');
         }
 
         $project_model->cat_id          = $request->cat_id;
@@ -135,22 +151,34 @@ class ProjectController extends Controller
         $project_model->status          = trim($request->status);
         $project_model->serial          = trim($request->serial);
 
+
         if ($request->hasFile('project_image')) {
             $project_image = $request->file('project_image');
             $filename = time() . '_' . $project_image->getClientOriginalName();
-            $project_image->move(public_path('uploads/category').'/original/', $filename);
 
-            $image_resize = Image::read(public_path('uploads/category').'/original/' . $filename);
+            $project_image->move(public_path('uploads/category/original/'), $filename);
+
+            $image_resize = Image::read(public_path('uploads/category/original/' . $filename));
             $image_resize->resize(600, 340, function ($constraint) {
                 $constraint->aspectRatio();
             });
-            $image_resize->save(public_path('uploads/category').'/thumbnail/' . $filename);
+            $image_resize->save(public_path('uploads/category/thumbnail/' . $filename));
+
+            if ($project_model->project_image && file_exists(public_path('uploads/category/original/' . $project_model->project_image))) {
+                unlink(public_path('uploads/category/original/' . $project_model->project_image));
+                unlink(public_path('uploads/category/thumbnail/' . $project_model->project_image));
+            }
+
+
             $project_model->project_image = $filename;
         }
 
+
         $project_model->save();
 
-        return redirect('dashboard/list')->with('success', 'Project Successfully updated!');
+        Alert::success('Project Update Successfully!');
+
+        return redirect()->route('dashboard.list');
     }
 
     public function deleted($id)
@@ -158,7 +186,9 @@ class ProjectController extends Controller
         $project = Project::getSingle($id);
         $project->is_delete = 1;
         $project->save();
+        
+        Alert::success('Project successfully deleted.');
 
-        return redirect()->back()->with('success', "Project successfully deleted.");
+        return redirect()->back();
     }
 }

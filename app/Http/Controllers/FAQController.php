@@ -6,6 +6,7 @@ use App\Models\FAQ;
 use App\Models\FaqCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class FAQController extends Controller
 {
@@ -33,10 +34,12 @@ class FAQController extends Controller
             'question_bn' => 'required',
         ]);
 
-        if($validator->fails())
-        {
+        if ($validator->fails()) {
+            $errors = $validator->errors()->all();
 
-            return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Validation error!');
+            Alert::error('Validation Error!', implode('<br>', $errors));
+
+            return redirect()->back()->withInput();
         }
 
         $faq_model = new FAQ();
@@ -50,7 +53,9 @@ class FAQController extends Controller
         $faq_model->status      = trim($request->status);
         $faq_model->save();
 
-        return redirect('dashboard/faq_list')->with('success', 'FAQ  Created Successfully!');
+        Alert::success(title: 'FAQ  Created Successfully!');
+
+        return redirect()->route('dashboard.faq_list');
 
     }
 
@@ -68,7 +73,11 @@ class FAQController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Validation error!');
+            $errors = $validator->errors()->all();
+
+            Alert::error('Validation Error!', implode('<br>', $errors));
+
+            return redirect()->back()->withInput();
         }
 
         $faq_model = FAQ::getSingle($id);;
@@ -86,7 +95,11 @@ class FAQController extends Controller
         $faq_model->status      = trim($request->status);
         $faq_model->save();
 
-        return redirect('dashboard/faq_list')->with('success', 'FAQ  Updated Successfully!');
+        Alert::success(title: 'FAQ  Updated Successfully!');
+
+        return redirect()->route('dashboard.faq_list');
+
+        
     }
 
     public function Faq_deleted($id)
@@ -95,6 +108,9 @@ class FAQController extends Controller
         $faq_model->status = 'Hide';
         $faq_model->save();
 
-        return redirect()->back()->with('success', "FAQ  successfully deleted.");
+        Alert::success('FAQ  successfully deleted.');
+
+        return redirect()->back();
+
     }
 }

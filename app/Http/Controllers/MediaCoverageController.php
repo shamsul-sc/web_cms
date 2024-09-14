@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\MediaCoverage;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Laravel\Facades\Image;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class MediaCoverageController extends Controller
 {
@@ -29,7 +30,11 @@ class MediaCoverageController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Validation error!');
+            $errors = $validator->errors()->all();
+
+            Alert::error('Validation Error!', implode('<br>', $errors));
+
+            return redirect()->back()->withInput();
         }
 
 
@@ -67,7 +72,10 @@ class MediaCoverageController extends Controller
 
         $mediaCoverage_model->save();
 
-        return redirect('dashboard/media_cover_list')->with('success', 'Media Coverage Created Successfully!');
+        Alert::success(title: 'Media Coverage Created Successfully!');
+
+        return redirect()->route('dashboard.media_cover_list');
+
     }
 
     public function MediaCoverage_edit($id)
@@ -79,14 +87,18 @@ class MediaCoverageController extends Controller
     public function MediaCoverage_update(Request $request,$id)
     {
 
-        // $validator = Validator::make($request->all(), [
-        //     'media_name' => 'required',
-        //     'main_image_title' => 'required',
-        // ]);
+        $validator = Validator::make($request->all(), [
+            'media_name' => 'required',
+            'main_image_title' => 'required',
+        ]);
 
-        // if ($validator->fails()) {
-        //     return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Validation error!');
-        // }
+        if ($validator->fails()) {
+            $errors = $validator->errors()->all();
+
+            Alert::error('Validation Error!', implode('<br>', $errors));
+
+            return redirect()->back()->withInput();
+        }
         $mediaCoverage_model = MediaCoverage::getSingle($id);
 
         if (!$mediaCoverage_model)
@@ -141,7 +153,10 @@ class MediaCoverageController extends Controller
 
         $mediaCoverage_model->save();
 
-        return redirect('dashboard/media_cover_list')->with('success', 'Media Coverage Updated Successfully!');
+         Alert::success(title: 'Media Coverage Updated Successfully!');
+
+        return redirect()->route('dashboard.media_cover_list');
+
     }
 
     public function MediaCoverage_deleted($id)
@@ -150,7 +165,9 @@ class MediaCoverageController extends Controller
         $mediaCoverage_model->status = 'Hide';
         $mediaCoverage_model->save();
 
-        return redirect()->back()->with('success', value: "MediaCoverage successfully deleted.");
+        Alert::success('MediaCoverage successfully deleted.');
+
+        return redirect()->back();
     }
 
 }

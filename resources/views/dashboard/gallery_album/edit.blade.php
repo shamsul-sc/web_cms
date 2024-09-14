@@ -3,7 +3,7 @@
 <div class="d-flex justify-content-center align-items-center">
     <div class="col-xxl-6">
         <div class="card ">
-            @include('layouts._message')
+            @include('sweetalert::alert')
             <div class="card-header align-items-center d-flex text-white" style="background-color: rgb(93, 198, 93);">
                 <h4 class="card-title mb-0 flex-grow-1 ">Edit Gallery Album</h4>
             </div>
@@ -85,7 +85,7 @@
                             <i class="ri-arrow-go-back-line"></i> Go to list
                         </a>
                         <button type="submit" class="btn btn-primary px-5 rounded-pill">
-                            <i class="bi bi-plus-lg"></i> Submit
+                            <i class="bi bi-plus-lg"></i> Update
                         </button>
                     </div>
                 </div>

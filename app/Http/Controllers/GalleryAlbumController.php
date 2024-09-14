@@ -7,6 +7,7 @@ use App\Models\GalleryType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Laravel\Facades\Image;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class GalleryAlbumController extends Controller
 {
@@ -30,10 +31,12 @@ class GalleryAlbumController extends Controller
             'album_name' => 'required',
         ]);
 
-        if($validator->fails())
-        {
+        if ($validator->fails()) {
+            $errors = $validator->errors()->all();
 
-            return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Validation error!');
+            Alert::error('Validation Error!', implode('<br>', $errors));
+
+            return redirect()->back()->withInput();
         }
 
         $gallery_album_model = new GalleryAlbum();
@@ -67,7 +70,10 @@ class GalleryAlbumController extends Controller
 
         $gallery_album_model->save();
 
-        return redirect('dashboard/gallery_album_list')->with('success', 'Gallery Album Created Successfully!');
+        Alert::success(title: 'Gallery Album Created Successfully!');
+
+        return redirect()->route('dashboard.gallery_album_list');
+
     }
 
     public function GalleryAlbum_edit($id)
@@ -86,11 +92,14 @@ class GalleryAlbumController extends Controller
             // 'featured_image' => 'nullable|featured_image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        if($validator->fails())
-        {
+        if ($validator->fails()) {
+            $errors = $validator->errors()->all();
 
-            return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Validation error!');
+            Alert::error('Validation Error!', implode('<br>', $errors));
+
+            return redirect()->back()->withInput();
         }
+        
         $gallery_album_model = GalleryAlbum::getSingle($id);
 
         if (!$gallery_album_model) {
@@ -131,7 +140,10 @@ class GalleryAlbumController extends Controller
 
         $gallery_album_model->save();
 
-        return redirect('dashboard/gallery_album_list')->with('success', 'Gallery Album Created Successfully!');
+        Alert::success(title: 'Gallery Album Updated Successfully!');
+
+        return redirect()->route('dashboard.gallery_album_list');
+
     }
 
 
@@ -142,6 +154,9 @@ class GalleryAlbumController extends Controller
         $gallery_album_model->album_status = 'Hide';
         $gallery_album_model->save();
 
-        return redirect()->back()->with('success', "Gallery Album successfully deleted.");
+        Alert::success('Gallery Album successfully deleted.');
+
+        return redirect()->back();
+
     }
 }

@@ -7,6 +7,7 @@ use App\Models\ProjectCategory;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\Facades\DataTables;
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 class ProjectCategoryController extends Controller
@@ -27,14 +28,16 @@ class ProjectCategoryController extends Controller
     {
 
         $validator = Validator::make($request->all(), [
+            'category_name_bn' => 'required',
             
-            'slug' => 'required|unique:project_categories',
         ]);
 
-        if($validator->fails())
-        {
+        if ($validator->fails()) {
+            $errors = $validator->errors()->all();
 
-            return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Validation error!');
+            Alert::error('Validation Error!', implode('<br>', $errors));
+
+            return redirect()->back()->withInput();
         }
 
         $category_model = new ProjectCategory();
@@ -45,7 +48,9 @@ class ProjectCategoryController extends Controller
         $category_model->status           = trim($request->status);
         $category_model->save();
 
-        return redirect('dashboard/category_list')->with('success', 'Category Created Successfully!');
+        Alert::success(title: 'Category Created Successfully!');
+
+        return redirect()->route('dashboard.category_list');
 
     }
 
@@ -62,8 +67,13 @@ class ProjectCategoryController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Validation error!');
+            $errors = $validator->errors()->all();
+
+            Alert::error('Validation Error!', implode('<br>', $errors));
+
+            return redirect()->back()->withInput();
         }
+
         
         $category_model = ProjectCategory::getSingle($id);;
         
@@ -79,7 +89,10 @@ class ProjectCategoryController extends Controller
         $category_model->save();
    
 
-        return redirect('dashboard/category_list')->with('success', 'Category Updated!');
+        Alert::success(title: 'Category Updated Successfully!');
+
+        return redirect()->route('dashboard.category_list');
+        
     }
 
     public function category_deleted($id)
@@ -88,7 +101,9 @@ class ProjectCategoryController extends Controller
         $category->is_delete = 1;
         $category->save();
 
-        return redirect()->back()->with('success', "Category successfully deleted.");
+        Alert::success('Project successfully deleted.');
+
+        return redirect()->back();
     }
         
 }

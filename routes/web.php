@@ -68,7 +68,7 @@ Route::prefix('dashboard')->group(function () {
     Route::post('/insert', [ProjectController::class, 'insert'])->name('dashboard.insert');
     Route::get('/edit/{id}', [ProjectController::class, 'edit'])->name('dashboard.edit');
     Route::post('update/{id}', [ProjectController::class, 'update'])->name('dashboard.update');
-    Route::get('deleted/{id}', [ProjectController::class, 'deleted'])->name('dashboard.deleted');
+    Route::delete('deleted/{id}', [ProjectController::class, 'deleted'])->name('dashboard.deleted');
 
     //CaseStudy routes
     Route::get('/case_study_list', [CaseStudyController::class, 'CaseStudy_list'])->name('dashboard.case_study_list');

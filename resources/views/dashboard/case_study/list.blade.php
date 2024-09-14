@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
-            @include('layouts._message')
+            @include('sweetalert::alert')
             <div class="card-header" style="background-color: rgb(93, 198, 93);">
                 <h5 class="card-title mb-0">Case Study List</h5>
             </div>
@@ -77,8 +77,7 @@
                                 class="btn btn-sm btn-info ">Edit</a>
 
                             <a href="{{ route('dashboard.case_study_deleted', $case_study->id) }}"
-                                class="btn btn-sm btn-danger"
-                                onclick="return confirm('Are you sure you want to deleted?')">Delete</a>
+                                class="btn btn-sm btn-danger" )">Delete</a>
 
                         </td>
 
@@ -93,6 +92,7 @@
 
     </div>
 </div>
+
 
 
 

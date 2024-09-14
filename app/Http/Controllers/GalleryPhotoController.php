@@ -7,6 +7,7 @@ use App\Models\GalleryAlbum;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Laravel\Facades\Image;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class GalleryPhotoController extends Controller
 {
@@ -30,10 +31,12 @@ class GalleryPhotoController extends Controller
             'caption' => 'required',
         ]);
 
-        if($validator->fails())
-        {
+        if ($validator->fails()) {
+            $errors = $validator->errors()->all();
 
-            return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Validation error!');
+            Alert::error('Validation Error!', implode('<br>', $errors));
+
+            return redirect()->back()->withInput();
         }
 
         $gallery_photo_model = new GalleryPhoto();
@@ -65,7 +68,11 @@ class GalleryPhotoController extends Controller
 
         $gallery_photo_model->save();
 
-        return redirect('dashboard/gallery_photo_list')->with('success', 'Gallery Photo Created Successfully!');
+        Alert::success(title: 'Gallery Photo Created Successfully!');
+
+        return redirect()->route('dashboard.gallery_photo_list');
+
+       
     }
 
     public function GalleryPhoto_edit($id)
@@ -83,8 +90,12 @@ class GalleryPhotoController extends Controller
             // 'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        if($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Validation error!');
+        if ($validator->fails()) {
+            $errors = $validator->errors()->all();
+
+            Alert::error('Validation Error!', implode('<br>', $errors));
+
+            return redirect()->back()->withInput();
         }
 
         $gallery_photo_model = GalleryPhoto::getSingle($id);
@@ -127,7 +138,10 @@ class GalleryPhotoController extends Controller
 
         $gallery_photo_model->save();
 
-        return redirect('dashboard/gallery_photo_list')->with('success', 'Gallery Photo Updated Successfully!');
+         Alert::success(title: 'Gallery Photo Updated Successfully!');
+
+        return redirect()->route('dashboard.gallery_photo_list');
+
     }
 
 

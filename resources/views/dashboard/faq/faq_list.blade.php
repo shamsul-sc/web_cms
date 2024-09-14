@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
-            @include('layouts._message')
+            @include('sweetalert::alert')
             <div class="card-header" style="background-color: rgb(93, 198, 93);">
                 <h5 class="card-title mb-0">FAQ List</h5>
             </div>
@@ -59,8 +59,8 @@
                         <td class='d-flex'>
                             <a href="{{ route('dashboard.faq_edit',$value->id ) }}"
                                 class="btn btn-sm btn-info ">Edit</a>
-                            <a href="{{ route('dashboard.faq_deleted', $value->id) }}" class="btn btn-sm btn-danger"
-                                onclick="return confirm('Are you sure you want to delete this category?')">Delete</a>
+                            <a href="{{ route('dashboard.faq_deleted', $value->id) }}"
+                                class="btn btn-sm btn-danger">Delete</a>
                         </td>
 
 
