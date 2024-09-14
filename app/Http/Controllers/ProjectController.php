@@ -11,6 +11,7 @@ use Intervention\Image\Laravel\Facades\Image;
 use RealRashid\SweetAlert\Facades\Alert;
 
 
+
 class ProjectController extends Controller
 {
     public function project_list()

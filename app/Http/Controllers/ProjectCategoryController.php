@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ProjectCategory;
+use Illuminate\Validation\Rule;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\Validator;
-use Yajra\DataTables\Facades\DataTables;
 use RealRashid\SweetAlert\Facades\Alert;
+use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\Validator;
 
 
 class ProjectCategoryController extends Controller
@@ -61,9 +62,14 @@ class ProjectCategoryController extends Controller
     }
 
     public function category_update(Request $request, $id)
-    {
-        $validator = Validator::make($request->all(), [    
-            'slug' => 'required|unique:project_categories,slug',$id,
+    {        
+        $validator = Validator::make($request->all(), [
+            'category_name_bn' => 'required',
+            'slug' => [
+                'required',
+                Rule::unique('project_categories')->ignore($id),
+            ],
+
         ]);
 
         if ($validator->fails()) {

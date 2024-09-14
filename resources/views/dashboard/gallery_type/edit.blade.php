@@ -52,7 +52,7 @@
                             <i class="ri-arrow-go-back-line"></i> Go to list
                         </a>
                         <button type="submit" class="btn btn-primary px-5 rounded-pill">
-                            <i class="bi bi-plus-lg"></i> Submit
+                            <i class="bi bi-plus-lg"></i> Update
                         </button>
                     </div>
                 </div>
