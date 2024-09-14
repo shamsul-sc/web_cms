@@ -9,7 +9,7 @@ use App\Models\CaseStudy;
 use App\Models\GalleryPhoto;
 use Illuminate\Http\Request;
 
-class webProjectController extends Controller
+class WebProjectController extends Controller
 {
     public function projectCategories()
     {

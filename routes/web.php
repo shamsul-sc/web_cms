@@ -16,10 +16,10 @@ use App\Http\Controllers\GalleryAlbumController;
 use App\Http\Controllers\GalleryPhotoController;
 use App\Http\Controllers\MediaCoverageController;
 use App\Http\Controllers\ProjectCategoryController;
-use App\Http\Controllers\frontend\webProjectController;
+use App\Http\Controllers\frontend\WebProjectController;
 use App\Http\Controllers\frontend\WebCaseStudyController;
-use App\Http\Controllers\frontend\webAlbumsController;
-use App\Http\Controllers\frontend\webFAQController;
+use App\Http\Controllers\frontend\WebAlbumsController;
+use App\Http\Controllers\frontend\WebFAQController;
 
 Route::get('/cache', function()
 {
@@ -35,25 +35,46 @@ Route::get('/about', function()
    return View::make('pages.about');
 });
 
-Route::get('/project/categories', [webProjectController::class, 'projectCategories']);
-Route::get('/project/category/{slug}', [webProjectController::class, 'categoryCaseStudies']);
-Route::get('/projects', [webProjectController::class, 'projects']);
-Route::get('/joint-projects', [webProjectController::class, 'jointProjects']);
-Route::get('/project/{slug}', [webProjectController::class, 'project']);
+Route::get('/project/categories', [WebProjectController::class, 'projectCategories']);
+Route::get('/project/category/{slug}', [WebProjectController::class, 'categoryCaseStudies']);
+Route::get('/projects', [WebProjectController::class, 'projects']);
+Route::get('/joint-projects', [WebProjectController::class, 'jointProjects']);
+Route::get('/project/{slug}', [WebProjectController::class, 'project']);
 
 Route::get('/case-studies', [WebCaseStudyController::class, 'caseStudies'])->name('caseStudies');
 Route::get('/case-study/{id}', [WebCaseStudyController::class, 'caseStudyDetails'])->name('caseStudyDetails');
 
-Route::get('/albums', [webAlbumsController::class, 'albums'])->name('albums');
+Route::get('/albums', [WebAlbumsController::class, 'albums'])->name('albums');
 
-Route::get('/faqs', [webFAQController::class, 'faqs'])->name('faqs');
+Route::get('/faqs', [WebFAQController::class, 'faqs'])->name('faqs');
 
 Route::resource('home-sliders', HomeSliderController::class);
+
+
+
+
 
 Route::get('/home-sliders/{id}/edit', [HomeSliderController::class, 'edit'])->name('home-sliders.edit');
 Route::post('/home-sliders/{id}', [HomeSliderController::class, 'update'])->name('home-sliders.update');
 
 Route::prefix('dashboard')->group(function () {
+    Route::get('/', function(){
+        return view('dashboard');
+    });
+
+    Route::get('{all}', function(){
+        return view('dashboard');
+    })->where(['all' => '.*']);
+
+});
+
+
+
+
+
+
+
+
 
     Route::get('/category_list', [ProjectCategoryController::class, 'category_list'])->name('dashboard.category_list');
     Route::get('/category_add', [ProjectCategoryController::class, 'category_add'])->name('dashboard.category_add');
@@ -144,15 +165,6 @@ Route::prefix('dashboard')->group(function () {
     Route::post('/media_cover_update/{id}', [MediaCoverageController::class, 'MediaCoverage_update'])->name('dashboard.media_cover_update');
     Route::get('/media_cover_deleted/{id}', [MediaCoverageController::class, 'MediaCoverage_deleted'])->name('dashboard.media_cover_deleted');
 
-    Route::get('/', function(){
-        return view('dashboard');
-    });
-
-    Route::get('{all}', function(){
-        return view('dashboard');
-    })->where(['all' => '.*']);
-
-});
 
 
 

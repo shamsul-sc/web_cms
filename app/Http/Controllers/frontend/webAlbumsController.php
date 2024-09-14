@@ -7,7 +7,7 @@ use App\Models\GalleryType;
 use App\Models\GalleryAlbum;
 use Illuminate\Http\Request;
 
-class webAlbumsController extends Controller
+class WebAlbumsController extends Controller
 {
     public function albums()
     {

@@ -37,9 +37,9 @@
     window.Laravel = <?php echo json_encode([
                 'csrfToken' => csrf_token(),
             ]); ?>
-        </scrip>
+</script>
 
-        <script>
+<script>
             $(document).ready(function() {
                 $('#topnav-hamburger-icon').click(function() {
                     $('body').toggleClass('menu');
