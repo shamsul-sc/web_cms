@@ -17,13 +17,16 @@
 <div class="container py-5 my-5">
     <div class="row row-gutter-sm justify-content-center">
         @if($categories && $categories->count())
-            @php $animation_delay = 200; @endphp
+            <div class="col-lg-11 text-center text-4 pb-2 mb-2">
+                <p>মানুষের মৌলিক চাহিদার গুরুত্বপূর্ণ একটি হলো চিকিৎসা। ট্রিটমেন্ট কমিউনিটি ফাউন্ডেশন বাংলাদেশের একটি অরাজনৈতিক ও অলাভজনক স্বেচ্ছাসেবী সংগঠন হিসেবে রোগীদের কল্যাণে অনলাইন ও অফলাইন উভয় মাধ্যমে কাজ করে যাচ্ছে। আমাদের সেবাসমূহঃ</p>
+            </div>        
+            @php $animation_delay = 100; @endphp
             @foreach ($categories as $category)
                 <div class="col-md-6 col-lg-4 mb-4 appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="{{ $animation_delay }}">
                     <a href="{{ url('project/category',$category->slug) }}" class="text-decoration-none">
                         <div class="card custom-card-style-1 border-0 border-radius-0 custom-box-shadow-1">
                             <div class="card-body text-center px-4 py-5">
-                                <img class="mt-2 mb-4 pb-3" width="60" src="{{ asset('img/demos/law-firm-2/icons/icon-group.svg') }}" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-primary mt-2 mb-4 pb-3'}" />
+                                <img class="mt-2 mb-4 pb-3" width="60" src="{{ asset('img/demos/law-firm-2/icons/icon-heart-hands.svg') }}" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-stroke-color-primary custom-stroke-width-1 mt-2 mb-4 pb-3'}" />
                                 <h2 class="card-title alternative-font-4 text-color-dark font-weight-semibold line-height-1 text-5 mb-3">{{ app()->getLocale() == 'en' ? $category->category_name : $category->category_name_bn }}</h2>
                                 <span class="custom-read-more d-inline-flex justify-content-center align-items-center text-3 font-weight-medium svg-fill-color-primary">
                                     VIEW CASE

@@ -19,13 +19,13 @@
 <link id="googleFonts" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" type="text/css">
 
 <!-- Vendor CSS -->
-<link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
-<link rel="stylesheet" href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}">
-<link rel="stylesheet" href="{{ asset('vendor/animate/animate.compat.css') }}">
-<link rel="stylesheet" href="{{ asset('vendor/simple-line-icons/css/simple-line-icons.min.css') }}">
-<link rel="stylesheet" href="{{ asset('vendor/owl.carousel/assets/owl.carousel.min.css') }}">
-<link rel="stylesheet" href="{{ asset('vendor/owl.carousel/assets/owl.theme.default.min.css') }}">
-<link rel="stylesheet" href="{{ asset('vendor/magnific-popup/magnific-popup.min.css') }}">
+<link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/bootstrap.min.css') }}">
+<link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
+<link rel="stylesheet" href="{{ asset('plugins/animate/animate.compat.css') }}">
+<link rel="stylesheet" href="{{ asset('plugins/simple-line-icons/css/simple-line-icons.min.css') }}">
+<link rel="stylesheet" href="{{ asset('plugins/owl.carousel/assets/owl.carousel.min.css') }}">
+<link rel="stylesheet" href="{{ asset('plugins/owl.carousel/assets/owl.theme.default.min.css') }}">
+<link rel="stylesheet" href="{{ asset('plugins/magnific-popup/magnific-popup.min.css') }}">
 
 <!-- Theme CSS -->
 <link rel="stylesheet" href="{{ asset('css/theme.css') }}">

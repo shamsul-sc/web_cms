@@ -6,7 +6,7 @@
                     <a href="{{ url('project/category',$category->slug) }}" class="text-decoration-none">
                         <div class="card custom-card-style-1 border-0 border-radius-0 custom-box-shadow-1">
                             <div class="card-body text-center px-4 py-5">
-                                <img width="60" height="60" src="img/demos/law-firm-2/icons/icon-group.svg" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-primary mt-2 mb-4 pb-3'}" />
+                                <img width="60" height="60" src="{{ asset('img/demos/law-firm-2/icons/icon-heart-hands.svg') }}" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-stroke-color-primary custom-stroke-width-1 mt-2 mb-4 pb-3'}" />
                                 <h2 class="card-title alternative-font-4 text-color-dark font-weight-semibold line-height-1 text-5 mb-3">
                                     {{ app()->getLocale() == 'en' ? $category->category_name : $category->category_name_bn }}
                                 </h2>

@@ -40,8 +40,6 @@ Route::get('/albums', [webAlbumsController::class, 'albums'])->name('albums');
 
 Route::get('/faqs', [webFAQController::class, 'faqs'])->name('faqs');
 
-
-
 Route::resource('home-sliders', HomeSliderController::class);
 
 Route::get('/home-sliders/{id}/edit', [HomeSliderController::class, 'edit'])->name('home-sliders.edit');
@@ -137,9 +135,6 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/media_cover_edit/{id}', [MediaCoverageController::class, 'MediaCoverage_edit'])->name('dashboard.media_cover_edit');
     Route::post('/media_cover_update/{id}', [MediaCoverageController::class, 'MediaCoverage_update'])->name('dashboard.media_cover_update');
     Route::get('/media_cover_deleted/{id}', [MediaCoverageController::class, 'MediaCoverage_deleted'])->name('dashboard.media_cover_deleted');
-
-
-
 
     Route::get('/', function(){
         return view('dashboard');

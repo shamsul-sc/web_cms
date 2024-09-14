@@ -24,8 +24,8 @@
     </div>
     <div class="row">
         <div class="col-lg-4">
-            <p class="font-weight-bold line-height-9 text-4 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet libero id nisi euismod, sed porta est consectetur. Vestibulum auctor felis eget.</p>
-            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet libero id nisi euismod, sed porta est consectetur. Vestibulum auctor felis eget orci semper vestibulum. Pellentesque ultricies nibh gravida, accumsan libero luctus, molestie nunc.</p>
+            <p>মানুষের মৌলিক চাহিদার গুরুত্বপূর্ণ একটি হলো চিকিৎসা। ট্রিটমেন্ট কমিউনিটি ফাউন্ডেশন চিকিৎসা সংক্রান্ত একটি অরাজনৈতিক ও অলাভজনক সামাজিক স্বেচ্ছাসেবী সংগঠন হিসেবে রোগীদের কল্যাণে অনলাইন ও অফলাইন উভয় মাধ্যমে কাজ করে যাচ্ছে।</p>
+            <p>আমাদের স্বপ্ন, বাংলাদেশের মানুষের কাছে চিকিৎসা বিষয়ক তথ্য সহজ থেকে সহজতর হবে। মানুষ রোগকে জয় করবে পূর্ণ আত্মবিশ্বাসে, সবার প্রার্থনায়। আমার, আপনার ও আমাদের একটু ইচ্ছে ও সাহায্যই পারে আমাদের চারপাশকে সুন্দর করতে।</p>
         </div>
         <div class="col-lg-4">
             <h3 class="alternative-font-4 text-color-primary text-4-5 font-weight-bold mb-1">OUR MISSION</h3>
