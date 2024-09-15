@@ -41,7 +41,7 @@
 
                 <tbody>
                     @if($getProject && $getProject->count())
-                    @foreach ($getProject as $category )
+                    @forelse ($getProject as $category )
 
                     <tr>
                         <td>{{ $category->id }}</td>
@@ -49,7 +49,8 @@
                         <td>{{ $category->project_title_bn }}</td>
                         <td>{!! $category->project_summary_bn !!}</td>
                         <td>{{ number_format($category->project_approx_budget) }}</td>
-                        <td><img src="/uploads/project_image/thumbnail/{{ $category->project_image }}" width="100px"></td>
+                        <td><img src="/uploads/project_image/thumbnail/{{ $category->project_image }}" width="100px">
+                        </td>
 
                         <td>
                             <span
@@ -89,10 +90,21 @@
                             </form>
                         </td>
                     </tr>
-                    @endforeach
+                    @empty
+                    <tr>
+                        <td colspan="100%">Record not found.</td>
+                    </tr>
+                    @endforelse
                     @endif
+
                 </tbody>
             </table>
+            <div class="d-flex justify-content-between">
+                <div></div>
+                <div class="d-flex justify-content-end">
+                    {!! $getProject->appends(Illuminate\Support\Facades\Request::except('page'))->links() !!}
+                </div>
+            </div>
         </div>
 
     </div>

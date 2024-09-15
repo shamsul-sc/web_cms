@@ -17,11 +17,11 @@ use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\GalleryAlbumController;
 use App\Http\Controllers\GalleryPhotoController;
 use App\Http\Controllers\MediaCoverageController;
-use App\Http\Controllers\frontend\webFAQController;
+use App\Http\Controllers\frontend\WebFAQController;
 use App\Http\Controllers\frontend\WebProjectController;
 use App\Http\Controllers\frontend\WebCaseStudyController;
 use App\Http\Controllers\frontend\WebAlbumsController;
-use App\Http\Controllers\frontend\WebFAQController;
+
 
 // Route::get('/cache', function()
 // {
@@ -73,17 +73,12 @@ Route::prefix('dashboard')->group(function () {
 
 
 
-
-
-
-
-
     Route::get('/category_list', [ProjectCategoryController::class, 'category_list'])->name('dashboard.category_list');
     Route::get('/category_add', [ProjectCategoryController::class, 'category_add'])->name('dashboard.category_add');
     Route::post('/category_add', [ProjectCategoryController::class, 'category_insert'])->name('dashboard.category_insert');
     Route::get('/category_edit/{id?}', [ProjectCategoryController::class, 'category_edit'])->name('dashboard.category_edit');
     Route::post('category_update/{id?}', [ProjectCategoryController::class, 'category_update'])->name('dashboard.category_update');
-    Route::get('category_deleted/{id?}', [ProjectCategoryController::class, 'category_deleted'])->name('dashboard.category_deleted');
+    Route::delete('category_deleted/{id?}', [ProjectCategoryController::class, 'category_deleted'])->name('dashboard.category_deleted');
 
     //Project routes
     Route::get('/list', [ProjectController::class, 'project_list'])->name('dashboard.list');

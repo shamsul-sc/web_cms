@@ -177,7 +177,7 @@
                                 <small class="form-text text-muted">Hint: Please upload embed link like
                                     https://www.youtube.com/embed/OW0kUmsQHnU</small>
                             </div>
-                            <div class="col-md-6 mt-4 outlined-input-container">
+                            <div class="col-md-6  outlined-input-container">
                                 <select id="album_id" name="album_id" class="form-select">
                                     <option value="">Select Album</option>
                                     @foreach($getGalleryAlbum as $album)

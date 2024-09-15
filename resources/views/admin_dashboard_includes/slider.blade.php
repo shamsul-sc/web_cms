@@ -8,6 +8,21 @@
             <i class="ri-dashboard-line"></i> <span data-key="t-dashboard">Dashboard</span>
         </a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link menu-link" href="#sidebarServices" data-bs-toggle="collapse" role="button"
+            aria-expanded="false" aria-controls="sidebarServices">
+            <i class="ri-pages-line"></i> <span data-key="t-services">Home Slider</span>
+        </a>
+        <div class="collapse menu-dropdown" id="sidebarServices">
+            <ul class="nav nav-sm flex-column">
+                <li class="nav-item">
+                    <a href="{{ url('dashboard/home-sliders/') }}" class="nav-link" data-key="t-starter">Home Slider
+                        List</a>
+                </li>
+
+            </ul>
+        </div>
+    </li>
 
     <li class="nav-item">
         <a class="nav-link menu-link" href="#sidebarServices" data-bs-toggle="collapse" role="button"
@@ -23,9 +38,6 @@
                     <a href="{{ route('dashboard.category_list') }}" class="nav-link" data-key="t-starter">Category
                         List</a>
                 </li>
-                {{-- <li class="nav-item">
-                    <a href="{% url 'create_service' %}" class="nav-link" data-key="t-starter">Services Create</a>
-                </li> --}}
             </ul>
         </div>
     </li>
@@ -212,6 +224,7 @@
                 </li>
             </ul>
         </div>
+
 
 
 </ul>

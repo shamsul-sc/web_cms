@@ -36,7 +36,7 @@
                 </thead>
                 <tbody>
                     @if($getRecord && $getRecord->count())
-                    @foreach ($getRecord as $category )
+                    @forelse ($getRecord as $category )
 
                     <tr>
                         <td>{{ $category->id }}</td>
@@ -55,21 +55,32 @@
                         <td>
                             <a href="{{ route('dashboard.category_edit',$category->id ) }}"
                                 class="btn btn-sm btn-info ">Edit</a>
-                            <a href="javascript:void(0)" class="btn btn-sm btn-danger"
-                                onclick="deleteConfirmation({{ $category->cat_id }})">Delete</a>
 
-                            <form id="delete-form-{{ $category->cat_id }}"
-                                action="{{ route('dashboard.category_deleted', $category->cat_id) }}" method="POST"
+                            <a href="javascript:void(0)" class="btn btn-sm btn-danger"
+                                onclick="deleteConfirmation({{ $category->id }})">Delete</a>
+
+                            <form id="delete-form-{{ $category->id }}"
+                                action="{{ route('dashboard.category_deleted', $category->id) }}" method="POST"
                                 style="display: none;">
                                 @csrf
                                 @method('DELETE')
                             </form>
                         </td>
                     </tr>
-                    @endforeach
+                    @empty
+                    <tr>
+                        <td colspan="100%">Record not found.</td>
+                    </tr>
+                    @endforelse
                     @endif
                 </tbody>
             </table>
+            <div class="d-flex justify-content-between">
+                <div></div>
+                <div class="d-flex justify-content-end">
+                    {!! $getRecord->appends(Illuminate\Support\Facades\Request::except('page'))->links() !!}
+                </div>
+            </div>
         </div>
 
     </div>

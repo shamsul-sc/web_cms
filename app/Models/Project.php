@@ -17,7 +17,7 @@ class Project extends Model
                     ->join('project_categories', 'project_categories.id', '=', 'projects.cat_id')
                     ->where('projects.is_delete', '=', 0)
                     ->orderBy('projects.id', 'desc')
-                    ->paginate(20);
+                    ->paginate(10);
     }
 
     static public function getSingle($id)
