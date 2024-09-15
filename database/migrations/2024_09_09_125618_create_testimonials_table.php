@@ -16,7 +16,7 @@ return new class extends Migration
             Schema::create('testimonials', function (Blueprint $table) {
                 $table->id();
                 $table->text('content');
-                $table->string('author_name', 255)->nullable();
+                $table->string('author_name', 255);
                 $table->string('author_image', 255)->nullable()->comment('Upload square size image ');
                 $table->string('designation', 50)->nullable();
                 $table->string('company_name', 50)->nullable();

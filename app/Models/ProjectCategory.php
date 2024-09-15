@@ -16,7 +16,7 @@ class ProjectCategory extends Model
         return self::select('project_categories.*')
             ->where('is_delete', '=', 0)
             ->orderBy('serial')
-            ->paginate(1);
+            ->paginate(10);
             // ->get();
     }
 

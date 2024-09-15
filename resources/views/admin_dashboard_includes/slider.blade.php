@@ -32,7 +32,8 @@
         <div class="collapse menu-dropdown" id="sidebarServices">
             <ul class="nav nav-sm flex-column">
                 <li class="nav-item">
-                    <a href="{{ route('dashboard.list') }}" class="nav-link" data-key="t-starter">Project List</a>
+                    <a href="{{ route('dashboard.project_list') }}" class="nav-link" data-key="t-starter">Project
+                        List</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('dashboard.category_list') }}" class="nav-link" data-key="t-starter">Category
@@ -113,39 +114,6 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link menu-link" href="#sidebarServices" data-bs-toggle="collapse" role="button"
-            aria-expanded="false" aria-controls="sidebarServices">
-            <i class="ri-pages-line"></i> <span data-key="t-services">Testimonial</span>
-        </a>
-        <div class="collapse menu-dropdown" id="sidebarServices">
-            <ul class="nav nav-sm flex-column">
-                <li class="nav-item">
-                    <a href="{{ route('dashboard.testimonial_list') }}" class="nav-link"
-                        data-key="t-starter">Testimonial
-                        List</a>
-                </li>
-        </div>
-    </li>
-
-
-    <li class="menu-title"><i class="ri-more-fill"></i> <span data-key="t-services">Services</span>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link menu-link" href="#sidebarServices" data-bs-toggle="collapse" role="button"
-            aria-expanded="false" aria-controls="sidebarServices">
-            <i class="ri-pages-line"></i> <span data-key="t-services">MediaCoverage</span>
-        </a>
-        <div class="collapse menu-dropdown" id="sidebarServices">
-            <ul class="nav nav-sm flex-column">
-                <li class="nav-item">
-                    <a href="{{ route('dashboard.media_cover_list') }}" class="nav-link"
-                        data-key="t-starter">MediaCoverage List</a>
-                </li>
-            </ul>
-        </div>
-    </li>
-
-    <li class="nav-item">
         <a class="nav-link menu-link" href="#sidebarOthers" data-bs-toggle="collapse" role="button"
             aria-expanded="false" aria-controls="sidebarOthers">
             <i class="ri-pages-line"></i>
@@ -154,41 +122,14 @@
         <div class="collapse menu-dropdown" id="sidebarOthers">
             <ul class="nav nav-sm flex-column">
                 <li class="nav-item">
-                    <a href="#sidebarManufacturer" class="nav-link" data-bs-toggle="collapse" role="button"
-                        aria-expanded="false" aria-controls="sidebarManufacturer" data-key="t-Manufacturer">
-                        Manufacturer
+                    <a href="{{ route('dashboard.media_cover_list') }}" class="nav-link" data-key="t-category-list">
+                        MediaCoverage
                     </a>
-                    <div class="collapse menu-dropdown" id="sidebarManufacturer">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a href="{% url 'manufacturer_list' %}" class="nav-link"
-                                    data-key="t-Manufacturer-List">Manufacturer List</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{% url 'create_manufacturer' %}" class="nav-link"
-                                    data-key="t-Manufacturer-Create">Manufacturer Create</a>
-                            </li>
-                        </ul>
-                    </div>
+                    <a href="{{ route('dashboard.testimonial_list') }}" class="nav-link"
+                        data-key="t-starter">Testimonial</a>
+
                 </li>
-                <li class="nav-item">
-                    <a href="#sidebarGovFacilities" class="nav-link" data-bs-toggle="collapse" role="button"
-                        aria-expanded="false" aria-controls="sidebarGovFacilities" data-key="t-GovFacilities">
-                        GovFacilities
-                    </a>
-                    <div class="collapse menu-dropdown" id="sidebarGovFacilities">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a href="{% url 'gov_facility_list' %}" class="nav-link"
-                                    data-key="t-gov-facility-list">Gov Facility List</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{% url 'create_gov_facility' %}" class="nav-link"
-                                    data-key="t-gov-facility-create">Gov Facility Create</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+
                 <li class="nav-item">
                     <a href="#sidebarVideos" class="nav-link" data-bs-toggle="collapse" role="button"
                         aria-expanded="false" aria-controls="sidebarVideos" data-key="t-Videos"> YouTube Videos
@@ -224,7 +165,4 @@
                 </li>
             </ul>
         </div>
-
-
-
 </ul>

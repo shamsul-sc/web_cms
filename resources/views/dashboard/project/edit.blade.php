@@ -6,14 +6,13 @@
         <div class="col-xl-12">
             {{-- @include('layouts._message') --}}
             @include('sweetalert::alert')
-            <div class="card shadow-lg">
-                <div class="card-header align-items-center d-flex text-white"
-                    style="background-color: rgb(93, 198, 93);">
-                    <h4 class="card-title mb-0 flex-grow-1 text-white">Edit a Project</h4>
+            <div class="card ">
+                <div class="card-header d-flex align-items-center" style="background-color: rgb(93, 198, 93);">
+                    <h5 class="card-title mb-0 flex-grow-1 text-white">Edit a Project</h5>
 
                 </div>
                 <div class="card-body mt-2">
-                    <form action="{{ route('dashboard.update',$getRecord->id) }}" method="POST"
+                    <form action="{{ route('dashboard.project_update',$getRecord->id) }}" method="POST"
                         enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="row">
@@ -256,7 +255,8 @@
 
                         <div class="row">
                             <div class="col-12 text-center d-flex justify-content-between align-items-center">
-                                <a href="{{ route('dashboard.list') }}" class="btn btn-danger px-5 rounded-pill">
+                                <a href="{{ route('dashboard.project_list') }}"
+                                    class="btn btn-danger px-5 rounded-pill">
                                     <i class="ri-arrow-go-back-line"></i> Go to list
                                 </a>
                                 <button type="submit" class="btn btn-primary px-5 rounded-pill">

@@ -1,7 +1,7 @@
 @extends('admin_dashboard_includes.app')
 @section('content')
 
-<div class="d-flex justify-content-center align-items-center">
+<div class="">
     <div class="row">
         <div class="col-xl-12">
             @include('sweetalert::alert')

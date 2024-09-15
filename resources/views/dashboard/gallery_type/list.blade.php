@@ -5,8 +5,13 @@
     <div class="col-lg-12">
         <div class="card">
             @include('sweetalert::alert')
-            <div class="card-header" style="background-color: rgb(93, 198, 93);">
-                <h5 class="card-title mb-0">Gellary Type List</h5>
+            <div class="card-header d-flex align-items-center" style="background-color: rgb(93, 198, 93);">
+                <h5 class="card-title flex-grow-1 mb-0">Gellary Type List</h5>
+                <div class="flex-shrink-0">
+                    <a class="btn btn-soft-info waves-effect waves-light text-black"
+                        href="{{ route('dashboard.gallery_type_add') }}">Add New
+                        Gellary Type</a>
+                </div>
             </div>
             <div class="card-body">
                 <div class="col-sm-12  d-flex justify-content-between">
@@ -14,10 +19,7 @@
                         <label>Search:<input type="search" class="form-control form-control-sm" placeholder=""
                                 aria-controls="scroll-vertical"></label>
                     </div>
-                    <div class="mt-2 p-2">
-                        <a class="btn btn-sm btn-primary" href="{{ route('dashboard.gallery_type_add') }}">Add New
-                            Gellary Type</a>
-                    </div>
+
                 </div>
             </div>
             <table id="scroll-vertical" class="table table-bordered dt-responsive nowrap align-middle mdl-data-table"
@@ -51,14 +53,19 @@
                             </span>
                         </td>
 
-                        <td>
+                        <td class='mt-4'>
                             <a href="{{ route('dashboard.gallery_type_edit',$value->id ) }}"
                                 class="btn btn-sm btn-info ">Edit</a>
 
-                            <a href="{{ route('dashboard.gallery_type_deleted', $value->id) }}"
-                                class="btn btn-sm btn-danger"
-                                onclick="return confirm('Are you sure you want to deleted?')">Delete</a>
+                            <a href="javascript:void(0)" class="btn btn-sm btn-danger"
+                                onclick="deleteConfirmation({{ $value->id }})">Delete</a>
 
+                            <form id="delete-form-{{ $value->id }}"
+                                action="{{ route('dashboard.gallery_type_deleted', $value->id) }}" method="POST"
+                                style="display: none;">
+                                @csrf
+                                @method('DELETE')
+                            </form>
                         </td>
 
 
@@ -68,9 +75,33 @@
                     @endif
                 </tbody>
             </table>
+            <div class="d-flex justify-content-between">
+                <div></div>
+                <div class="d-flex justify-content-end">
+                    {!! $getGalleryType->appends(Illuminate\Support\Facades\Request::except('page'))->links() !!}
+                </div>
+            </div>
         </div>
 
     </div>
 </div>
 
 @endsection
+
+<script>
+    function deleteConfirmation(Id) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('delete-form-' + Id).submit();
+            }
+        });
+    }
+</script>

@@ -81,12 +81,12 @@ Route::prefix('dashboard')->group(function () {
     Route::delete('category_deleted/{id?}', [ProjectCategoryController::class, 'category_deleted'])->name('dashboard.category_deleted');
 
     //Project routes
-    Route::get('/list', [ProjectController::class, 'project_list'])->name('dashboard.list');
-    Route::get('/add', [ProjectController::class, 'project_add'])->name('dashboard.add');
-    Route::post('/insert', [ProjectController::class, 'insert'])->name('dashboard.insert');
-    Route::get('/edit/{id}', [ProjectController::class, 'edit'])->name('dashboard.edit');
-    Route::post('update/{id}', [ProjectController::class, 'update'])->name('dashboard.update');
-    Route::delete('deleted/{id}', [ProjectController::class, 'deleted'])->name('dashboard.deleted');
+    Route::get('/project_list', [ProjectController::class, 'project_list'])->name('dashboard.project_list');
+    Route::get('/project_add', [ProjectController::class, 'project_add'])->name('dashboard.project_add');
+    Route::post('/project_insert', [ProjectController::class, 'insert'])->name('dashboard.project_insert');
+    Route::get('/project_edit/{id}', [ProjectController::class, 'edit'])->name('dashboard.project_edit');
+    Route::post('/project_update/{id}', [ProjectController::class, 'update'])->name('dashboard.project_update');
+    Route::delete('/project_deleted/{id}', [ProjectController::class, 'deleted'])->name('dashboard.project_deleted');
 
     //CaseStudy routes
     Route::get('/case_study_list', [CaseStudyController::class, 'CaseStudy_list'])->name('dashboard.case_study_list');
@@ -94,7 +94,7 @@ Route::prefix('dashboard')->group(function () {
     Route::post('/case_study_insert', [CaseStudyController::class, 'CaseStudy_insert'])->name('dashboard.case_study_insert');
     Route::get('/case_study_edit/{id}', [CaseStudyController::class, 'CaseStudy_edit'])->name('dashboard.case_study_edit');
     Route::post('/case_study_update/{id}', [CaseStudyController::class, 'CaseStudy_update'])->name('dashboard.case_study_update');
-    Route::get('/case_study_deleted/{id}', [CaseStudyController::class, 'CaseStudy_deleted'])->name('dashboard.case_study_deleted');
+    Route::delete('/case_study_deleted/{id}', [CaseStudyController::class, 'CaseStudy_deleted'])->name('dashboard.case_study_deleted');
 
     //FollowUp routes
     Route::get('/follow_up_list', [FollowUpController::class, 'FollowUp_list'])->name('dashboard.follow_up_list');
@@ -102,7 +102,7 @@ Route::prefix('dashboard')->group(function () {
     Route::post('/follow_up_insert', [FollowUpController::class, 'FollowUp_insert'])->name('dashboard.follow_up_insert');
     Route::get('/follow_up_edit/{id}', [FollowUpController::class, 'FollowUp_edit'])->name('dashboard.follow_up_edit');
     Route::post('/follow_up_update/{id}', [FollowUpController::class, 'FollowUp_update'])->name('dashboard.follow_up_update');
-    Route::get('/follow_up_deleted/{id}', [FollowUpController::class, 'FollowUp_deleted'])->name('dashboard.follow_up_deleted');
+    Route::delete('/follow_up_deleted/{id}', [FollowUpController::class, 'FollowUp_deleted'])->name('dashboard.follow_up_deleted');
 
 
     //Gallery Type routes
@@ -111,7 +111,7 @@ Route::prefix('dashboard')->group(function () {
     Route::post('/gallery_type_insert', [GalleryTypeController::class, 'GalleryType_insert'])->name('dashboard.gallery_type_insert');
     Route::get('/gallery_type_edit/{id}', [GalleryTypeController::class, 'GalleryType_edit'])->name('dashboard.gallery_type_edit');
     Route::post('/gallery_type_update/{id}', [GalleryTypeController::class, 'GalleryType_update'])->name('dashboard.gallery_type_update');
-    Route::get('/gallery_type_deleted/{id}', [GalleryTypeController::class, 'GalleryType_deleted'])->name('dashboard.gallery_type_deleted');
+    Route::delete('/gallery_type_deleted/{id}', [GalleryTypeController::class, 'GalleryType_deleted'])->name('dashboard.gallery_type_deleted');
 
     //Gallery Photo routes
     Route::get('/gallery_photo_list', [GalleryPhotoController::class, 'GalleryPhoto_list'])->name('dashboard.gallery_photo_list');
@@ -119,7 +119,7 @@ Route::prefix('dashboard')->group(function () {
     Route::post('/gallery_photo_insert', [GalleryPhotoController::class, 'GalleryPhoto_insert'])->name('dashboard.gallery_photo_insert');
     Route::get('/gallery_photo_edit/{id}', [GalleryPhotoController::class, 'GalleryPhoto_edit'])->name('dashboard.gallery_photo_edit');
     Route::post('/gallery_photo_update/{id}', [GalleryPhotoController::class, 'GalleryPhoto_update'])->name('dashboard.gallery_photo_update');
-    Route::get('/gallery_photo_deleted/{id}', [GalleryPhotoController::class, 'GalleryPhoto_deleted'])->name('dashboard.gallery_photo_deleted');
+    Route::delete('/gallery_photo_deleted/{id}', [GalleryPhotoController::class, 'GalleryPhoto_deleted'])->name('dashboard.gallery_photo_deleted');
 
     //Gallery Album routes
     Route::get('/gallery_album_list', [GalleryAlbumController::class, 'GalleryAlbum_list'])->name('dashboard.gallery_album_list');
@@ -127,7 +127,7 @@ Route::prefix('dashboard')->group(function () {
     Route::post('/gallery_album_insert', [GalleryAlbumController::class, 'GalleryAlbum_insert'])->name('dashboard.gallery_album_insert');
     Route::get('/gallery_album_edit/{id}', [GalleryAlbumController::class, 'GalleryAlbum_edit'])->name('dashboard.gallery_album_edit');
     Route::post('/gallery_album_update/{id}', [GalleryAlbumController::class, 'GalleryAlbum_update'])->name('dashboard.gallery_album_update');
-    Route::get('/gallery_album_deleted/{id}', [GalleryAlbumController::class, 'GalleryAlbum_deleted'])->name('dashboard.gallery_album_deleted');
+    Route::delete('/gallery_album_deleted/{id}', [GalleryAlbumController::class, 'GalleryAlbum_deleted'])->name('dashboard.gallery_album_deleted');
 
      //FAQ category routes
     Route::get('/faq_category_list', [FaqCategoryController::class, 'FaqCategory_list'])->name('dashboard.faq_category_list');
@@ -135,7 +135,7 @@ Route::prefix('dashboard')->group(function () {
     Route::post('/faq_category_insert', [FaqCategoryController::class, 'FaqCategory_insert'])->name('dashboard.faq_category_insert');
     Route::get('/faq_category_edit/{id}', [FaqCategoryController::class, 'FaqCategory_edit'])->name('dashboard.faq_category_edit');
     Route::post('/faq_category_update/{id}', [FaqCategoryController::class, 'FaqCategory_update'])->name('dashboard.faq_category_update');
-    Route::get('/faq_category_deleted/{id}', [FaqCategoryController::class, 'FaqCategory_deleted'])->name('dashboard.faq_category_deleted');
+    Route::delete('/faq_category_deleted/{id}', [FaqCategoryController::class, 'FaqCategory_deleted'])->name('dashboard.faq_category_deleted');
 
     //FAQ routes
     Route::get('/faq_list', [FAQController::class, 'Faq_list'])->name('dashboard.faq_list');
@@ -143,7 +143,7 @@ Route::prefix('dashboard')->group(function () {
     Route::post('/faq_insert', [FAQController::class, 'Faq_insert'])->name('dashboard.faq_insert');
     Route::get('/faq_edit/{id}', [FAQController::class, 'Faq_edit'])->name('dashboard.faq_edit');
     Route::post('/faq_update/{id}', [FAQController::class, 'Faq_update'])->name('dashboard.faq_update');
-    Route::get('/faq_deleted/{id}', [FAQController::class, 'Faq_deleted'])->name('dashboard.faq_deleted');
+    Route::delete('/faq_deleted/{id}', [FAQController::class, 'Faq_deleted'])->name('dashboard.faq_deleted');
 
 
      //Testimonial routes
@@ -152,7 +152,7 @@ Route::prefix('dashboard')->group(function () {
     Route::post('/testimonial_insert', [TestimonialController::class, 'Testimonial_insert'])->name('dashboard.testimonial_insert');
     Route::get('/testimonial_edit/{id}', [TestimonialController::class, 'Testimonial_edit'])->name('dashboard.testimonial_edit');
     Route::post('/testimonial_update/{id}', [TestimonialController::class, 'Testimonial_update'])->name('dashboard.testimonial_update');
-    Route::get('/testimonial_deleted/{id}', [TestimonialController::class, 'Testimonial_deleted'])->name('dashboard.testimonial_deleted');
+    Route::delete('/testimonial_deleted/{id}', [TestimonialController::class, 'Testimonial_deleted'])->name('dashboard.testimonial_deleted');
 
      //MediaCoverage routes
     Route::get('/media_cover_list', [MediaCoverageController::class, 'MediaCoverage_list'])->name('dashboard.media_cover_list');
@@ -160,7 +160,7 @@ Route::prefix('dashboard')->group(function () {
     Route::post('/media_cover_insert', [MediaCoverageController::class, 'MediaCoverage_insert'])->name('dashboard.media_cover_insert');
     Route::get('/media_cover_edit/{id}', [MediaCoverageController::class, 'MediaCoverage_edit'])->name('dashboard.media_cover_edit');
     Route::post('/media_cover_update/{id}', [MediaCoverageController::class, 'MediaCoverage_update'])->name('dashboard.media_cover_update');
-    Route::get('/media_cover_deleted/{id}', [MediaCoverageController::class, 'MediaCoverage_deleted'])->name('dashboard.media_cover_deleted');
+    Route::delete('/media_cover_deleted/{id}', [MediaCoverageController::class, 'MediaCoverage_deleted'])->name('dashboard.media_cover_deleted');
 
 
 

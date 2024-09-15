@@ -6,18 +6,19 @@
         <div class="card">
             {{-- @include('layouts._message') --}}
             @include('sweetalert::alert')
-            <div class="card-header" style="background-color: rgb(93, 198, 93);">
-                <h5 class="card-title mb-0">Category List</h5>
+            <div class="card-header d-flex align-items-center" style="background-color: rgb(93, 198, 93);">
+                <h5 class="card-title flex-grow-1 mb-0 text-white">Category List</h5>
+                <div class="flex-shrink-0">
+                    <a class="btn btn-soft-info waves-effect waves-light text-black"
+                        href="{{ route('dashboard.category_add') }}">Add New
+                        Category</a>
+                </div>
             </div>
             <div class="card-body">
                 <div class="col-sm-12  d-flex justify-content-between">
                     <div id="scroll-vertical_filter" class="dataTables_filter">
                         <label>Search:<input type="search" class="form-control form-control-sm" placeholder=""
                                 aria-controls="scroll-vertical"></label>
-                    </div>
-                    <div class="mt-2 p-2">
-                        <a class="btn btn-sm btn-primary" href="{{ route('dashboard.category_add') }}">Add New
-                            Category</a>
                     </div>
                 </div>
             </div>
@@ -52,7 +53,7 @@
                             </span>
                         </td>
                         <td>{{ date('d-m-Y h:i:A', strtotime($category->created_at)) }}</td>
-                        <td>
+                        <td class='mt-4'>
                             <a href="{{ route('dashboard.category_edit',$category->id ) }}"
                                 class="btn btn-sm btn-info ">Edit</a>
 

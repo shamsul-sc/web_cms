@@ -14,7 +14,7 @@ class GalleryPhoto extends Model
         return self::select('gallery_photos.*')
             ->where('gallery_photos.status', '=', 'Show')
             ->orderBy('gallery_photos.id', 'desc')
-            ->get();
+            ->paginate(10);
     }
 
     static public function getSingle($id)
