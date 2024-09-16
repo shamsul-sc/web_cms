@@ -14,7 +14,7 @@ class GalleryAlbum extends Model
         return self::select('gallery_albums.*')
             ->where('gallery_albums.album_status', '=', 'Show')
             ->orderBy('gallery_albums.id', 'desc')
-            ->get();
+            ->paginate(10);
     }
 
     static public function getSingle($id)

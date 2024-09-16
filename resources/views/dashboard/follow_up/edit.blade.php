@@ -1,7 +1,7 @@
 @extends('admin_dashboard_includes.app')
 @section('content')
 
-<div class="d-flex justify-content-center align-items-center">
+<div class="">
     <div class="row">
         <div class="col-xl-12">
             @include('sweetalert::alert')
@@ -114,7 +114,7 @@
                                     <i class="ri-arrow-go-back-line"></i> Go to list
                                 </a>
                                 <button type="submit" class="btn btn-primary px-5 rounded-pill">
-                                    <i class="bi bi-plus-lg"></i> Submit
+                                    <i class="bi bi-plus-lg"></i> Update
                                 </button>
                             </div>
                         </div>

@@ -14,7 +14,7 @@ class GalleryType extends Model
         return self::select('gallery_types.*')
             ->where('gallery_types.type_status', '=', 'Show')
             ->orderBy('gallery_types.id', 'desc')
-            ->get();
+            ->paginate(10);
     }
 
     static public function getSingle($id)
