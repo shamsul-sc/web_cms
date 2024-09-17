@@ -9,7 +9,6 @@
             <div class="card ">
                 <div class="card-header d-flex align-items-center" style="background-color: rgb(93, 198, 93);">
                     <h5 class="card-title mb-0 flex-grow-1 text-white">Edit a Project</h5>
-
                 </div>
                 <div class="card-body mt-2">
                     <form action="{{ route('dashboard.project_update',$getRecord->id) }}" method="POST"

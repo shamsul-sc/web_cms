@@ -128,6 +128,7 @@
                     <a href="{{ route('dashboard.testimonial_list') }}" class="nav-link"
                         data-key="t-starter">Testimonial</a>
 
+                    <a href="{{ route('backend_auth.user_list') }}" class="nav-link" data-key="t-starter">User</a>
                 </li>
 
                 <li class="nav-item">

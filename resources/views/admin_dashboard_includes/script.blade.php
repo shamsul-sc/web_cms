@@ -30,7 +30,7 @@
                 revert: true
                 });
             });
-</script>>
+</script>
 
 
 <script>
@@ -40,7 +40,7 @@
 </script>
 
 <script>
-            $(document).ready(function() {
+    $(document).ready(function() {
                 $('#topnav-hamburger-icon').click(function() {
                     $('body').toggleClass('menu');
                 });
