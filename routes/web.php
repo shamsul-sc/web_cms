@@ -81,10 +81,12 @@ Route::post('/login',[AuthController::class, 'InsertLogin'])->name('auth.login_i
 
 //Backend Auth routes
 Route::get('/users',[UserAuthController::class, 'UserList'])->name('backend_auth.user_list');
+Route::get('/users_details/{id}',[UserAuthController::class, 'UserDetails'])->name(name: 'dashboard.users_details');
+Route::get('/users_profile_edit',[UserAuthController::class, 'UserProfileEdit'])->name(name: 'dashboard.users_profile_edit');
 
 //Member Type routes
 
-Route::get('/member_type_list', [MemberTypeController::class, 'MemberType_list'])->name('dashboard.member_type_list');
+Route::get('/member_type_list', [MemberTypeController::class, 'MemberType_list'])->name(name: 'dashboard.member_type_list');
 Route::get('/member_type_add', [MemberTypeController::class, 'MemberType_add'])->name('dashboard.member_type_add');
 Route::post('/member_type_add', [MemberTypeController::class, 'MemberType_insert'])->name('dashboard.member_type_insert');
 Route::get('/member_type_edit/{id}', [MemberTypeController::class, 'MemberType_edit'])->name('dashboard.member_type_edit');

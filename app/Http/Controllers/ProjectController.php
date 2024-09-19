@@ -19,7 +19,7 @@ class ProjectController extends Controller
     {
         $data['getProject'] = Project::getProject();
         // dd($data['getProject']);
-        return view('dashboard.project.list',$data);
+        return view('dashboard.project.list', $data);
     }
 
     public function project_add()
@@ -32,7 +32,7 @@ class ProjectController extends Controller
 
     public function insert(Request $request)
     {
-      
+
         $validator = Validator::make($request->all(), [
             'project_title_bn' => 'required|unique:projects,project_title_bn',
             'status' => 'required',
@@ -91,12 +91,10 @@ class ProjectController extends Controller
         }
 
         $project_model->save();
-        
+
         Alert::success('Project Created Successfully!');
 
         return redirect()->route('dashboard.list');
-
-
 
 
     }
@@ -191,7 +189,7 @@ class ProjectController extends Controller
         $project = Project::getSingle($id);
         $project->is_delete = 1;
         $project->save();
-        
+
         Alert::success('Project successfully deleted.');
 
         return redirect()->back();

@@ -65,6 +65,12 @@
                         <td>{{ date('d-m-Y h:i:A', strtotime($user->created_at)) }}</td>
 
                         <td class='d-flex mt-2'>
+
+                            <a href="{{ route('dashboard.users_details',$user->id ) }}"
+                                class="btn btn-sm btn-primary">Details</a>
+
+
+
                             <a href="{{ route('dashboard.project_edit',$user->id ) }}"
                                 class="btn btn-sm btn-info">Edit</a>
 
@@ -88,12 +94,6 @@
 
                 </tbody>
             </table>
-            {{-- <div class="d-flex justify-content-between">
-                <div></div>
-                <div class="d-flex justify-content-end">
-                    {!! $getProject->appends(Illuminate\Support\Facades\Request::except('page'))->links() !!}
-                </div>
-            </div> --}}
         </div>
 
     </div>
@@ -117,4 +117,5 @@
         }
     });
 }
+
 </script>

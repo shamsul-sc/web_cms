@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\auth;
 
 use App\Models\User;
+use App\Models\UserProfile;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -42,7 +43,7 @@ class AuthController extends Controller
 
         $user_model = new User();
 
-        $user_model->is_role = trim($request->is_role);
+        $user_model->is_role = trim(string: $request->is_role);
         $user_model->name = trim($request->name);
         $user_model->email = trim($request->email);
         $user_model->mobile_no = $request->mobile_no;
@@ -50,6 +51,9 @@ class AuthController extends Controller
         $user_model->remember_token = Str::random(50);
 
         $user_model->save();
+        $user_profile_obj = new UserProfile();
+        $user_profile_obj->user_id = $user_model->id;
+        $user_profile_obj->save();
 
         Alert::success(title: 'Registration  Successfully Done!');
 
@@ -73,9 +77,9 @@ class AuthController extends Controller
             Alert::error('Validation Error!', implode('<br>', $errors));
             return redirect()->back()->withInput();
         }
-        
+
         $loginField = filter_var($request->input('login'), FILTER_VALIDATE_EMAIL) ? 'email' : 'mobile_no';
-        
+
         $credentials = [
             $loginField => $request->input('login'),
             'password' => $request->input('password'),

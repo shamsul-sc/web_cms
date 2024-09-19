@@ -1,5 +1,3 @@
-<!-- source: valzone/dist/default/pages-profile-settings.html -->
-
 @extends('admin_dashboard_includes.app')
 @section('content')
 
@@ -25,7 +23,8 @@
             <div class="card-body p-4">
                 <div class="text-center">
                     <div class="profile-user position-relative d-inline-block mx-auto  mb-4">
-                        <img src="assets/images/users/avatar-1.jpg" class="rounded-circle avatar-xl img-thumbnail user-profile-image" alt="user-profile-image">
+                        <img src="assets/images/users/avatar-1.jpg"
+                            class="rounded-circle avatar-xl img-thumbnail user-profile-image" alt="user-profile-image">
                         <div class="avatar-xs p-0 rounded-circle profile-photo-edit">
                             <input id="profile-img-file-input" type="file" class="profile-img-file-input">
                             <label for="profile-img-file-input" class="profile-photo-edit avatar-xs">
@@ -67,42 +66,49 @@
                                 <div class="col-lg-6">
                                     <div class="mb-3">
                                         <label for="firstnameInput" class="form-label">First Name</label>
-                                        <input type="text" class="form-control" id="firstnameInput" placeholder="Enter your firstname" value="Dave">
+                                        <input type="text" class="form-control" id="firstnameInput"
+                                            placeholder="Enter your firstname" value="Dave">
                                     </div>
                                 </div>
                                 <!--end col-->
                                 <div class="col-lg-6">
                                     <div class="mb-3">
                                         <label for="lastnameInput" class="form-label">Last Name</label>
-                                        <input type="text" class="form-control" id="lastnameInput" placeholder="Enter your lastname" value="Adame">
+                                        <input type="text" class="form-control" id="lastnameInput"
+                                            placeholder="Enter your lastname" value="Adame">
                                     </div>
                                 </div>
                                 <!--end col-->
                                 <div class="col-lg-6">
                                     <div class="mb-3">
                                         <label for="phonenumberInput" class="form-label">Phone Number</label>
-                                        <input type="text" class="form-control" id="phonenumberInput" placeholder="Enter your phone number" value="+(1) 987 6543">
+                                        <input type="text" class="form-control" id="phonenumberInput"
+                                            placeholder="Enter your phone number" value="+(1) 987 6543">
                                     </div>
                                 </div>
                                 <!--end col-->
                                 <div class="col-lg-6">
                                     <div class="mb-3">
                                         <label for="emailInput" class="form-label">Email Address</label>
-                                        <input type="email" class="form-control" id="emailInput" placeholder="Enter your email" value="daveadame@velzon.com">
+                                        <input type="email" class="form-control" id="emailInput"
+                                            placeholder="Enter your email" value="daveadame@velzon.com">
                                     </div>
                                 </div>
                                 <!--end col-->
                                 <div class="col-lg-12">
                                     <div class="mb-3">
                                         <label for="JoiningdatInput" class="form-label">Joining Date</label>
-                                        <input type="text" class="form-control" data-provider="flatpickr" id="JoiningdatInput" data-date-format="d M, Y" data-deafult-date="24 Nov, 2021" placeholder="Select date" />
+                                        <input type="text" class="form-control" data-provider="flatpickr"
+                                            id="JoiningdatInput" data-date-format="d M, Y"
+                                            data-deafult-date="24 Nov, 2021" placeholder="Select date" />
                                     </div>
                                 </div>
                                 <!--end col-->
                                 <div class="col-lg-12">
                                     <div class="mb-3">
                                         <label for="skillsInput" class="form-label">Skills</label>
-                                        <select class="form-control" name="skillsInput" data-choices data-choices-text-unique-true multiple id="skillsInput">
+                                        <select class="form-control" name="skillsInput" data-choices
+                                            data-choices-text-unique-true multiple id="skillsInput">
                                             <option value="illustrator">Illustrator</option>
                                             <option value="photoshop">Photoshop</option>
                                             <option value="css">CSS</option>
@@ -117,42 +123,49 @@
                                 <div class="col-lg-6">
                                     <div class="mb-3">
                                         <label for="designationInput" class="form-label">Designation</label>
-                                        <input type="text" class="form-control" id="designationInput" placeholder="Designation" value="Lead Designer / Developer">
+                                        <input type="text" class="form-control" id="designationInput"
+                                            placeholder="Designation" value="Lead Designer / Developer">
                                     </div>
                                 </div>
                                 <!--end col-->
                                 <div class="col-lg-6">
                                     <div class="mb-3">
                                         <label for="websiteInput1" class="form-label">Website</label>
-                                        <input type="text" class="form-control" id="websiteInput1" placeholder="www.example.com" value="www.velzon.com" />
+                                        <input type="text" class="form-control" id="websiteInput1"
+                                            placeholder="www.example.com" value="www.velzon.com" />
                                     </div>
                                 </div>
                                 <!--end col-->
                                 <div class="col-lg-4">
                                     <div class="mb-3">
                                         <label for="cityInput" class="form-label">City</label>
-                                        <input type="text" class="form-control" id="cityInput" placeholder="City" value="California" />
+                                        <input type="text" class="form-control" id="cityInput" placeholder="City"
+                                            value="California" />
                                     </div>
                                 </div>
                                 <!--end col-->
                                 <div class="col-lg-4">
                                     <div class="mb-3">
                                         <label for="countryInput" class="form-label">Country</label>
-                                        <input type="text" class="form-control" id="countryInput" placeholder="Country" value="United States" />
+                                        <input type="text" class="form-control" id="countryInput" placeholder="Country"
+                                            value="United States" />
                                     </div>
                                 </div>
                                 <!--end col-->
                                 <div class="col-lg-4">
                                     <div class="mb-3">
                                         <label for="zipcodeInput" class="form-label">Zip Code</label>
-                                        <input type="text" class="form-control" minlength="5" maxlength="6" id="zipcodeInput" placeholder="Enter zipcode" value="90011">
+                                        <input type="text" class="form-control" minlength="5" maxlength="6"
+                                            id="zipcodeInput" placeholder="Enter zipcode" value="90011">
                                     </div>
                                 </div>
                                 <!--end col-->
                                 <div class="col-lg-12">
                                     <div class="mb-3 pb-2">
                                         <label for="exampleFormControlTextarea" class="form-label">Description</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea" placeholder="Enter your description" rows="3">Hi I'm Anna Adame,It will be as simple as Occidental; in fact, it will be Occidental. To an English person, it will seem like simplified English, as a skeptical Cambridge friend of mine told me what Occidental is European languages are members of the same family.</textarea>
+                                        <textarea class="form-control" id="exampleFormControlTextarea"
+                                            placeholder="Enter your description"
+                                            rows="3">Hi I'm Anna Adame,It will be as simple as Occidental; in fact, it will be Occidental. To an English person, it will seem like simplified English, as a skeptical Cambridge friend of mine told me what Occidental is European languages are members of the same family.</textarea>
                                     </div>
                                 </div>
                                 <!--end col-->
@@ -174,27 +187,31 @@
                                 <div class="col-lg-4">
                                     <div>
                                         <label for="oldpasswordInput" class="form-label">Old Password*</label>
-                                        <input type="password" class="form-control" id="oldpasswordInput" placeholder="Enter current password">
+                                        <input type="password" class="form-control" id="oldpasswordInput"
+                                            placeholder="Enter current password">
                                     </div>
                                 </div>
                                 <!--end col-->
                                 <div class="col-lg-4">
                                     <div>
                                         <label for="newpasswordInput" class="form-label">New Password*</label>
-                                        <input type="password" class="form-control" id="newpasswordInput" placeholder="Enter new password">
+                                        <input type="password" class="form-control" id="newpasswordInput"
+                                            placeholder="Enter new password">
                                     </div>
                                 </div>
                                 <!--end col-->
                                 <div class="col-lg-4">
                                     <div>
                                         <label for="confirmpasswordInput" class="form-label">Confirm Password*</label>
-                                        <input type="password" class="form-control" id="confirmpasswordInput" placeholder="Confirm password">
+                                        <input type="password" class="form-control" id="confirmpasswordInput"
+                                            placeholder="Confirm password">
                                     </div>
                                 </div>
                                 <!--end col-->
                                 <div class="col-lg-12">
                                     <div class="mb-3">
-                                        <a href="javascript:void(0);" class="link-primary text-decoration-underline">Forgot Password ?</a>
+                                        <a href="javascript:void(0);"
+                                            class="link-primary text-decoration-underline">Forgot Password ?</a>
                                     </div>
                                 </div>
                                 <!--end col-->

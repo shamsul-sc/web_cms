@@ -94,8 +94,8 @@
                     <!-- Vue.js Component -->
                 </div>
 
-            <!-- Footer -->
-            {{-- @include('admin_dashboard_includes.footer') --}}
+                <!-- Footer -->
+                @include('admin_dashboard_includes.footer')
             </div>
 
             <!-- Back to Top Button -->

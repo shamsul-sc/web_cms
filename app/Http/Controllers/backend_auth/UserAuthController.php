@@ -10,7 +10,19 @@ class UserAuthController extends Controller
 {
     public function UserList()
     {
-        $data['getUser'] = User::select('users.*')->orderBy('users.id', 'desc')->get();
+        $data['getUser'] = User::getUser();
         return view('user_auth.user_list',$data);
+    }
+
+    public function UserDetails()
+    {
+        $data['getUserProfile'] = User::getUserProfile();
+        return view('dashboard.user.user_profile',$data);
+    }
+
+    public function UserProfileEdit()
+    {
+
+        return view('dashboard.user.user_profile_edit');
     }
 }

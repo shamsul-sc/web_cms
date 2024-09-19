@@ -136,7 +136,7 @@ class MediaCoverageController extends Controller
 
             $mediaCoverage_model->main_image = $filename;
         }
-       
+
 
         if ($request->hasFile('media_logo')) {
             $media_logo = $request->file('media_logo');

@@ -44,4 +44,22 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    static public function getUser()
+    {
+        return self::select('users.*')
+            ->orderBy('users.id', 'desc')
+            ->get();
+
+    }
+
+    static public function getSingle($id)
+    {
+        return self::find($id);
+    }
+
+    static public function getUserProfile()
+    {
+        return self::first();
+    }
+
 }

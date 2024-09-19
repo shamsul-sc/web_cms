@@ -101,7 +101,7 @@
                         <label class="form-label text-color-dark text-3">Email <span
                                 class="text-color-danger">*</span></label>
                         <input type="text" name="email" value="{{ old('email') }}"
-                            class="form-control form-control-lg text-4" placeholder="Enter yor email" required>
+                            class="form-control form-control-lg text-4" placeholder="Enter your email" required>
                     </div>
                 </div>
                 <div class="row">
