@@ -10,6 +10,10 @@
 
 <!-- projects js -->
 <script src="{{ asset('js/pages/dashboard.init.js') }}"></script>
+
+<!-- profile init js -->
+<script src="{{ asset('js/pages/profile.init.js') }}"></script>
+
 <!-- App js -->
 <script src="{{ asset('js/app.js') }}"></script>
 
