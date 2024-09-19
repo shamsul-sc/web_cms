@@ -11,6 +11,7 @@ use App\Http\Controllers\FollowUpController;
 use App\Http\Controllers\auth\AuthController;
 use App\Http\Controllers\CaseStudyController;
 use App\Http\Controllers\HomeSliderController;
+use App\Http\Controllers\MemberTypeController;
 use App\Http\Controllers\FaqCategoryController;
 use App\Http\Controllers\GalleryTypeController;
 use App\Http\Controllers\TestimonialController;
@@ -80,6 +81,15 @@ Route::post('/login',[AuthController::class, 'InsertLogin'])->name('auth.login_i
 
 //Backend Auth routes
 Route::get('/users',[UserAuthController::class, 'UserList'])->name('backend_auth.user_list');
+
+//Member Type routes
+
+Route::get('/member_type_list', [MemberTypeController::class, 'MemberType_list'])->name('dashboard.member_type_list');
+Route::get('/member_type_add', [MemberTypeController::class, 'MemberType_add'])->name('dashboard.member_type_add');
+Route::post('/member_type_add', [MemberTypeController::class, 'MemberType_insert'])->name('dashboard.member_type_insert');
+Route::get('/member_type_edit/{id}', [MemberTypeController::class, 'MemberType_edit'])->name('dashboard.member_type_edit');
+Route::post('/member_type_update/{id}', [MemberTypeController::class, 'MemberType_update'])->name('dashboard.member_type_update');
+Route::delete('/member_type_deleted/{id}', [MemberTypeController::class, 'MemberType_deleted'])->name('dashboard.member_type_deleted');
 
 //Project category
 
@@ -177,10 +187,10 @@ Route::group(['middleware' => 'admin'], function () {
 
  });
  Route::group(['middleware' => 'user'], function () {
-    
+
  });
  Route::group(['middleware' => 'stuff'], function () {
-    
+
  });
 
 Route::get('locale/{lang}',[LocaleController::class,'setLocale']);

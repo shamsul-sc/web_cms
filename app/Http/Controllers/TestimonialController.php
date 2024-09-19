@@ -13,7 +13,7 @@ class TestimonialController extends Controller
     public function Testimonial_list()
     {
         $data['getTestimonial'] = Testimonial::getTestimonial();
-        return view('dashboard.testimonial.testimonial_list',$data);
+        return view(view: 'dashboard.testimonial.testimonial_list',$data);
     }
 
     public function Testimonial_add()

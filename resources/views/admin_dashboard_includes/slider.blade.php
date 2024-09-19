@@ -32,13 +32,14 @@
         <div class="collapse menu-dropdown" id="sidebarServices">
             <ul class="nav nav-sm flex-column">
                 <li class="nav-item">
-                    <a href="{{ route('dashboard.project_list') }}" class="nav-link" data-key="t-starter">Project
-                        List</a>
-                </li>
-                <li class="nav-item">
                     <a href="{{ route('dashboard.category_list') }}" class="nav-link" data-key="t-starter">Category
                         List</a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('dashboard.project_list') }}" class="nav-link" data-key="t-starter">Project
+                        List</a>
+                </li>
+
             </ul>
         </div>
     </li>
@@ -102,12 +103,32 @@
         <div class="collapse menu-dropdown" id="sidebarPages">
             <ul class="nav nav-sm flex-column">
                 <li class="nav-item">
-                    <a href="{{ route('dashboard.faq_list') }}" class="nav-link" data-key="t-category-list">
-                        FAQ List
-                    </a>
                     <a href="{{ route('dashboard.faq_category_list') }}" class="nav-link" data-key="t-category-list">
                         FAQ Category
                     </a>
+                    <a href="{{ route('dashboard.faq_list') }}" class="nav-link" data-key="t-category-list">
+                        FAQ List
+                    </a>
+
+                </li>
+            </ul>
+        </div>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link menu-link" href="#sidebarPages" data-bs-toggle="collapse" role="button" aria-expanded="false"
+            aria-controls="sidebarPages">
+            <i class="ri-pages-line"></i>
+            <span data-key="t-pages">User</span>
+        </a>
+        <div class="collapse menu-dropdown" id="sidebarPages">
+            <ul class="nav nav-sm flex-column">
+                <li class="nav-item">
+                    <a href="{{ route('dashboard.member_type_list') }}" class="nav-link" data-key="t-category-list">
+                        Member Type
+                    </a>
+                    <a href="{{ route('backend_auth.user_list') }}" class="nav-link" data-key="t-starter">User</a>
+
                 </li>
             </ul>
         </div>
@@ -128,7 +149,7 @@
                     <a href="{{ route('dashboard.testimonial_list') }}" class="nav-link"
                         data-key="t-starter">Testimonial</a>
 
-                    <a href="{{ route('backend_auth.user_list') }}" class="nav-link" data-key="t-starter">User</a>
+
                 </li>
 
                 <li class="nav-item">
