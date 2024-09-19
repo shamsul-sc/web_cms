@@ -20,7 +20,7 @@ return new class extends Migration
                 $table->string('email')->nullable();
                 $table->timestamp('email_verified_at')->nullable();
                 $table->string('password');
-                $table->enum('is_role', ['admin', 'user'])->comment('user:user, admin:admin');
+                $table->enum('is_role', ['admin', 'user', 'stuff'])->comment('user:user, admin:admin, stuff:stuff');
                 $table->enum('status', ['pending', 'enabled', 'block'])->default('pending');
                 $table->rememberToken();
                 $table->timestamps();

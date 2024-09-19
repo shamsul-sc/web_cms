@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Requests\HomeSliderRequest;
+use Log;
 use App\Models\HomeSlider;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\HomeSliderRequest;
 
 class HomeSliderController extends Controller
 {
@@ -56,7 +57,7 @@ class HomeSliderController extends Controller
             $homeSlider->save();
             return response()->json('Successfully added.');
         } catch (\Exception $e) {
-            \Log::error('Error adding slider: ' . $e->getMessage());
+            Log::error('Error adding slider: ' . $e->getMessage());
             return response()->json(['error' => 'Failed to add slider.'], 500);
         }
     }

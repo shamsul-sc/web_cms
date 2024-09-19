@@ -6,11 +6,8 @@
         <div class="card">
             @include('sweetalert::alert')
             <div class="card-header d-flex align-items-center" style="background-color: rgb(93, 198, 93);">
-                <h5 class="card-title flex-grow-1 mb-0 text-white">Project List</h5>
+                <h5 class="card-title flex-grow-1 mb-0 text-white">User List</h5>
                 <div class="flex-shrink-0">
-                    <a class="btn btn-soft-info waves-effect waves-light text-black"
-                        href="{{ route('dashboard.project_add') }}">Add New
-                        Project</a>
                 </div>
             </div>
 
@@ -27,13 +24,10 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Category Name</th>
-                        <th>Project Title BN.</th>
-                        <th>Project Summary BN</th>
-                        <th>Project Approx Budget</th>
-                        <th>Project Image</th>
-                        <th>Joint Project</th>
-                        <th>Featured Project</th>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>User Type</th>
                         <th>Status</th>
                         <th>Created Date</th>
                         <th>Action</th>
@@ -41,51 +35,44 @@
                 </thead>
 
                 <tbody>
-                    @if($getProject && $getProject->count())
-                    @forelse ($getProject as $category )
+                    @if($getUser && $getUser->count())
+                    @forelse ($getUser as $user )
 
                     <tr>
-                        <td>{{ $category->id }}</td>
-                        <td>{{ $category->category_name }}</td>
-                        <td>{{ $category->project_title_bn }}</td>
-                        <td>{!! $category->project_summary_bn !!}</td>
-                        <td>{{ number_format($category->project_approx_budget) }}</td>
-                        <td><img src="/uploads/project_image/thumbnail/{{ $category->project_image }}" width="100px">
-                        </td>
-
+                        <td>{{ $user->id }}</td>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->mobile_no }}</td>
+                        <td>{{ $user->email }}</td>
                         <td>
                             <span
                                 class="badge
-                                {{ $category->joint_project === 'Yes' ? 'bg-info-subtle text-info' : 'bg-secondary-subtle text-warning' }}">
-                                {{ $category->joint_project === 'Yes' ? 'Yes' : 'No' }}
+                                {{ $user->is_role === 'admin' ? 'bg-info-subtle text-info' : ($user->is_role === 'stuff' ? 'bg-secondary-subtle text-warning' : 'bg-success-subtle text-success') }}">
+                                {{ $user->is_role === 'admin' ? 'Admin' : ($user->is_role === 'stuff' ?
+                                'Stuff' : 'User')
+                                }}
                             </span>
                         </td>
                         <td>
                             <span
                                 class="badge
-                                {{ $category->featured_project === 'Yes' ? 'bg-info-subtle text-info' : 'bg-secondary-subtle text-warning' }}">
-                                {{ $category->featured_project === 'Yes' ? 'Yes' : 'No' }}
+                                {{ $user->status === 'admin' ? 'bg-info-subtle text-info' : ($user->status === ' block' ? 'bg-secondary-subtle text-warning' : 'bg-success-subtle text-success') }}">
+                                {{ $user->status === 'pending' ? 'Pending' : ($user->status === ' Block' ?
+                                'block' : 'Enabled')
+                                }}
                             </span>
                         </td>
 
-                        <td>
-                            <span
-                                class="badge
-                                {{ $category->status === 'Show' ? 'bg-info-subtle text-success' : 'bg-secondary-subtle text-warning' }}">
-                                {{ $category->status === 'Show' ? 'Show' : 'Hide' }}
-                            </span>
-                        </td>
-                        <td>{{ date('d-m-Y h:i:A', strtotime($category->created_at)) }}</td>
+                        <td>{{ date('d-m-Y h:i:A', strtotime($user->created_at)) }}</td>
 
-                        <td class='d-flex mt-4'>
-                            <a href="{{ route('dashboard.project_edit',$category->id ) }}"
+                        <td class='d-flex mt-2'>
+                            <a href="{{ route('dashboard.project_edit',$user->id ) }}"
                                 class="btn btn-sm btn-info">Edit</a>
 
                             <a href="javascript:void(0)" class="btn btn-sm btn-danger"
-                                onclick="deleteConfirmation({{ $category->id }})">Delete</a>
+                                onclick="deleteConfirmation({{ $user->id }})">Delete</a>
 
-                            <form id="delete-form-{{ $category->id }}"
-                                action="{{ route('dashboard.project_deleted', $category->id) }}" method="POST"
+                            <form id="delete-form-{{ $user->id }}"
+                                action="{{ route('dashboard.project_deleted', $user->id) }}" method="POST"
                                 style="display: none;">
                                 @csrf
                                 @method('DELETE')
@@ -101,12 +88,12 @@
 
                 </tbody>
             </table>
-            <div class="d-flex justify-content-between">
+            {{-- <div class="d-flex justify-content-between">
                 <div></div>
                 <div class="d-flex justify-content-end">
                     {!! $getProject->appends(Illuminate\Support\Facades\Request::except('page'))->links() !!}
                 </div>
-            </div>
+            </div> --}}
         </div>
 
     </div>
@@ -115,7 +102,7 @@
 @endsection
 
 <script>
-    function deleteConfirmation(categoryId) {
+    function deleteConfirmation(Id) {
     Swal.fire({
         title: 'Are you sure?',
         text: "You won't be able to revert this!",
@@ -126,7 +113,7 @@
         confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
         if (result.isConfirmed) {
-            document.getElementById('delete-form-' + categoryId).submit();
+            document.getElementById('delete-form-' + Id).submit();
         }
     });
 }
