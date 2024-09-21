@@ -34,7 +34,7 @@
                             </label>
                         </div>
                     </div>
-                    <h5 class="fs-16 mb-1">Anna Adame</h5>
+                    <h5 class="fs-16 mb-1">{{ $getUser->name}}</h5>
                     <p class="text-muted mb-0">Lead Designer / Developer</p>
                 </div>
             </div>
@@ -61,114 +61,122 @@
             <div class="card-body p-4">
                 <div class="tab-content">
                     <div class="tab-pane active" id="personalDetails" role="tabpanel">
-                        <form action="javascript:void(0);">
+                        <form action="{{ route('dashboard.users_profile_updated',$getUser->id) }}" method="POST">
+                            {{ csrf_field() }}
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="mb-3">
-                                        <label for="firstnameInput" class="form-label">First Name</label>
-                                        <input type="text" class="form-control" id="firstnameInput"
-                                            placeholder="Enter your firstname" value="Dave">
+                                        <label for="fullname" class="form-label">Full Name</label>
+                                        <input type="text" class="form-control" id="name" name="name"
+                                            placeholder="Enter your name" value="{{ old('name',$getUser->name) }}">
                                     </div>
                                 </div>
-                                <!--end col-->
-                                <div class="col-lg-6">
-                                    <div class="mb-3">
-                                        <label for="lastnameInput" class="form-label">Last Name</label>
-                                        <input type="text" class="form-control" id="lastnameInput"
-                                            placeholder="Enter your lastname" value="Adame">
-                                    </div>
-                                </div>
-                                <!--end col-->
                                 <div class="col-lg-6">
                                     <div class="mb-3">
                                         <label for="phonenumberInput" class="form-label">Phone Number</label>
-                                        <input type="text" class="form-control" id="phonenumberInput"
-                                            placeholder="Enter your phone number" value="+(1) 987 6543">
+                                        <input type="text" class="form-control" id="phonenumberInput" name="mobile_no"
+                                            placeholder="Enter your phone number"
+                                            value="{{ old('mobile_no',$getUser->mobile_no) }}">
                                     </div>
                                 </div>
                                 <!--end col-->
                                 <div class="col-lg-6">
                                     <div class="mb-3">
                                         <label for="emailInput" class="form-label">Email Address</label>
-                                        <input type="email" class="form-control" id="emailInput"
-                                            placeholder="Enter your email" value="daveadame@velzon.com">
+                                        <input type="email" class="form-control" id="emailInput" name="email"
+                                            placeholder="Enter your email" value="{{ old('email',$getUser->email) }}">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label for="numberInput" class="form-label">NID Number</label>
+                                        <input type="text" class="form-control" id="nid_number" name="nid_number"
+                                            placeholder="Enter your nid number"
+                                            value="{{ old('nid_number',$getUserProfile->nid_number) }}">
                                     </div>
                                 </div>
                                 <!--end col-->
-                                <div class="col-lg-12">
+                                <div class="col-lg-6">
                                     <div class="mb-3">
-                                        <label for="JoiningdatInput" class="form-label">Joining Date</label>
-                                        <input type="text" class="form-control" data-provider="flatpickr"
-                                            id="JoiningdatInput" data-date-format="d M, Y"
-                                            data-deafult-date="24 Nov, 2021" placeholder="Select date" />
+                                        <label for="nameInput" class="form-label">Father Name</label>
+                                        <input type="text" class="form-control" id="father_name" name="father_name"
+                                            placeholder="Enter your father name"
+                                            value="{{ old('father_name',$getUserProfile->father_name) }}">
                                     </div>
                                 </div>
-                                <!--end col-->
-                                <div class="col-lg-12">
+                                <div class="col-lg-6">
                                     <div class="mb-3">
-                                        <label for="skillsInput" class="form-label">Skills</label>
-                                        <select class="form-control" name="skillsInput" data-choices
-                                            data-choices-text-unique-true multiple id="skillsInput">
-                                            <option value="illustrator">Illustrator</option>
-                                            <option value="photoshop">Photoshop</option>
-                                            <option value="css">CSS</option>
-                                            <option value="html">HTML</option>
-                                            <option value="javascript" selected>Javascript</option>
-                                            <option value="python">Python</option>
-                                            <option value="php">PHP</option>
+                                        <label for="nameInput" class="form-label">Mother Name</label>
+                                        <input type="text" class="form-control" id="mother_name" name="mother_name"
+                                            placeholder="Enter your mother name"
+                                            value="{{ old('mother_name',$getUserProfile->mother_name) }}">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label for="bloodgroupInput" class="form-label">Blood Group</label>
+                                        <input type="text" class="form-control" id="blood_group" name="blood_group"
+                                            placeholder="Enter your blood group name"
+                                            value="{{ old('blood_group',$getUserProfile->blood_group) }}">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label for="genderInput" class="form-label">Gender</label>
+                                        <select class="form-select" name="gender">
+                                            <option value="" disabled {{ old('gender', $getUserProfile->gender) === null
+                                                ?
+                                                'selected'
+                                                :
+                                                '' }}>
+                                                Select Gender
+                                            </option>
+                                            <option value="Male" {{ old('gender', $getUserProfile->gender) == 'Male' ?
+                                                'selected' :
+                                                ''
+                                                }}>Male</option>
+                                            <option value="Female" {{ old('gender', $getUserProfile->gender) == 'Female'
+                                                ?
+                                                'selected' :
+                                                ''
+                                                }}>Female</option>
+                                            <option value="Others" {{ old('gender', $getUserProfile->gender) == 'Others'
+                                                ?
+                                                'selected' :
+                                                ''
+                                                }}>Others</option>
+
                                         </select>
                                     </div>
                                 </div>
-                                <!--end col-->
                                 <div class="col-lg-6">
                                     <div class="mb-3">
-                                        <label for="designationInput" class="form-label">Designation</label>
-                                        <input type="text" class="form-control" id="designationInput"
-                                            placeholder="Designation" value="Lead Designer / Developer">
+                                        <label for="profile_image">Profile Image</label>
+                                        <input type="file" id="profile_image" name="profile_image" class="form-control"
+                                            placeholder="" maxlength="255">
+                                        <small class="form-text text-muted">Please Upload square size image.</small>
                                     </div>
                                 </div>
-                                <!--end col-->
+
                                 <div class="col-lg-6">
                                     <div class="mb-3">
-                                        <label for="websiteInput1" class="form-label">Website</label>
-                                        <input type="text" class="form-control" id="websiteInput1"
-                                            placeholder="www.example.com" value="www.velzon.com" />
+                                        <label for="addressInput" class="form-label">Present Address</label>
+                                        <input type="text" class="form-control" id="present_address"
+                                            name="present_address" placeholder="Enter your pressent address"
+                                            value="{{ old('present_address',$getUserProfile->present_address) }}">
                                     </div>
                                 </div>
-                                <!--end col-->
-                                <div class="col-lg-4">
+
+
+                                <div class="col-lg-6">
                                     <div class="mb-3">
-                                        <label for="cityInput" class="form-label">City</label>
-                                        <input type="text" class="form-control" id="cityInput" placeholder="City"
-                                            value="California" />
+                                        <label for="dateInput" class="form-label">Date Of Birth</label>
+                                        <input type="date" class="form-control" id="date_of_birth" name="date_of_birth"
+                                            placeholder="Enter your birthday date"
+                                            value="{{ old('date_of_birth',$getUserProfile->date_of_birth) }}">
                                     </div>
                                 </div>
-                                <!--end col-->
-                                <div class="col-lg-4">
-                                    <div class="mb-3">
-                                        <label for="countryInput" class="form-label">Country</label>
-                                        <input type="text" class="form-control" id="countryInput" placeholder="Country"
-                                            value="United States" />
-                                    </div>
-                                </div>
-                                <!--end col-->
-                                <div class="col-lg-4">
-                                    <div class="mb-3">
-                                        <label for="zipcodeInput" class="form-label">Zip Code</label>
-                                        <input type="text" class="form-control" minlength="5" maxlength="6"
-                                            id="zipcodeInput" placeholder="Enter zipcode" value="90011">
-                                    </div>
-                                </div>
-                                <!--end col-->
-                                <div class="col-lg-12">
-                                    <div class="mb-3 pb-2">
-                                        <label for="exampleFormControlTextarea" class="form-label">Description</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea"
-                                            placeholder="Enter your description"
-                                            rows="3">Hi I'm Anna Adame,It will be as simple as Occidental; in fact, it will be Occidental. To an English person, it will seem like simplified English, as a skeptical Cambridge friend of mine told me what Occidental is European languages are members of the same family.</textarea>
-                                    </div>
-                                </div>
-                                <!--end col-->
+
                                 <div class="col-lg-12">
                                     <div class="hstack gap-2">
                                         <button type="submit" class="btn btn-success">Update</button>

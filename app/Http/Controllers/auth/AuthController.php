@@ -43,6 +43,11 @@ class AuthController extends Controller
 
         $user_model = new User();
 
+        if (!$user_model)
+        {
+            return redirect()->back()->with('error', value: 'User  not found!');
+        }
+
         $user_model->is_role = trim(string: $request->is_role);
         $user_model->name = trim($request->name);
         $user_model->email = trim($request->email);
@@ -51,9 +56,17 @@ class AuthController extends Controller
         $user_model->remember_token = Str::random(50);
 
         $user_model->save();
-        $user_profile_obj = new UserProfile();
-        $user_profile_obj->user_id = $user_model->id;
-        $user_profile_obj->save();
+
+        if ($user_model)
+        {
+            $user_profile_obj = new UserProfile();
+            $user_profile_obj->user_id = $user_model->id;
+            $user_profile_obj->save();
+        }
+        else
+        {
+            return redirect()->back()->with('error', value: 'User  not found!');
+        }
 
         Alert::success(title: 'Registration  Successfully Done!');
 
@@ -102,9 +115,10 @@ class AuthController extends Controller
             }
         }
 
-        return redirect()->back()->withErrors([
-            'login' => 'The provided credentials do not match our records.',
-        ])->withInput();
+        Alert::success(title: 'Login  Successfully Done!');
+
+        return redirect()->back()->withInput();
+
     }
 
 }

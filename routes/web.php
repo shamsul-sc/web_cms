@@ -82,7 +82,8 @@ Route::post('/login',[AuthController::class, 'InsertLogin'])->name('auth.login_i
 //Backend Auth routes
 Route::get('/users',[UserAuthController::class, 'UserList'])->name('backend_auth.user_list');
 Route::get('/users_details/{id}',[UserAuthController::class, 'UserDetails'])->name(name: 'dashboard.users_details');
-Route::get('/users_profile_edit',[UserAuthController::class, 'UserProfileEdit'])->name(name: 'dashboard.users_profile_edit');
+Route::get('/users_profile_edit/{id}',[UserAuthController::class, 'UserProfileEdit'])->name(name: 'dashboard.users_profile_edit');
+Route::post('/users_profile_edit/{id}', action: [UserAuthController::class, 'UserProfileUpdated'])->name('dashboard.users_profile_updated');
 
 //Member Type routes
 

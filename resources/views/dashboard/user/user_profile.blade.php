@@ -16,12 +16,11 @@
         <!--end col-->
         <div class="col">
             <div class="p-2">
-                <h3 class="text-white mb-1">Anna Adame</h3>
+                <h3 class="text-white mb-1">{{ $getUser->name }}</h3>
                 <p class="text-white text-opacity-75">Owner & Founder</p>
                 <div class="hstack text-white-50 gap-1">
-                    <div class="me-2"><i
-                            class="ri-map-pin-user-line me-1 text-white text-opacity-75 fs-16 align-middle"></i>California,
-                        United States</div>
+                    <div class="me-2"><i class="ri-map-pin-user-line me-1 text-white text-opacity-75 fs-16 align-middle"></i>{{
+                        $getUserProfile->present_address }}</div>
                     <div>
                         <i class="ri-building-line me-1 text-white text-opacity-75 fs-16 align-middle"></i>Themesbrand
                     </div>
@@ -72,7 +71,7 @@
                 </ul>
                 <div class="flex-shrink-0">
 
-                    <a href="{{ route('dashboard.users_profile_edit') }}" class="btn btn-success"><i
+                    <a href="{{ route('dashboard.users_profile_edit',$getUser->id) }}" class="btn btn-success"><i
                             class="ri-edit-box-line align-bottom"></i> Edit Profile</a>
 
                 </div>
@@ -89,23 +88,23 @@
                                     <div class="table-responsive">
                                         <table class="table table-borderless mb-0">
                                             <tbody>
-                                                @if($getUserProfile)
+                                                @if($getUser)
 
                                                 <tr>
                                                     <th class="ps-0" scope="row">Full Name :</th>
-                                                    <td class="text-muted">{{ $getUserProfile->name }}</td>
-                                                    <th class="ps-0" scope="row">Mobile :</th>
-                                                    <td class="text-muted">{{ $getUserProfile->mobile_no }}</td>
+                                                    <td class="text-muted">{{ $getUser->name }}</td>
+                                                    <th class="ps-0" scope="row">Phone Number :</th>
+                                                    <td class="text-muted">{{ $getUser->mobile_no }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <th class="ps-0" scope="row">Father Name :</th>
+                                                    <th class="ps-0" scope="row" name="">Father Name :</th>
                                                     <td class="text-muted">{{ $getUserProfile->father_name }}</td>
                                                     <th class="ps-0" scope="row">Mother Name :</th>
                                                     <td class="text-muted">{{ $getUserProfile->mother_name }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th class="ps-0" scope="row">E-mail :</th>
-                                                    <td class="text-muted">{{ $getUserProfile->email }}</td>
+                                                    <td class="text-muted">{{ $getUser->email }}</td>
                                                     <th class="ps-0" scope="row">Blood Group :</th>
                                                     <td class="text-muted">{{ $getUserProfile->blood_group }}</td>
                                                 </tr>
@@ -125,7 +124,7 @@
                                                 </tr>
                                                 <tr>
                                                     <th class="ps-0" scope="row">Joining Date</th>
-                                                    <td class="text-muted">{{ $getUserProfile->created_at->format('d M
+                                                    <td class="text-muted">{{ $getUser->created_at->format('d M
                                                         Y') }}</td>
                                                 </tr>
                                                 @endif
