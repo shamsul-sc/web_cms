@@ -77,7 +77,7 @@
                 {{ csrf_field() }}
                 <div class="row">
 
-                    <div class="form-group col">
+                    {{-- <div class="form-group col">
                         <label for="is_role">User Type</label>
                         <select class="form-select" name="is_role" required>
                             <option value="" disabled>Select Role</option>
@@ -86,6 +86,15 @@
                             <option value="stuff">Stuff</option>
                         </select>
 
+                    </div> --}}
+                    <div class="form-group col">
+                        <label for="is_role">User Type</label>
+                        <select class="form-select" name="is_role" id="is_role" required>
+                            <option value="" disabled {{ old('is_role') ? '' : 'selected' }}>Select Role</option>
+                            <option value="user" {{ old('is_role')=='user' ? 'selected' : '' }}>User</option>
+                            <option value="admin" {{ old('is_role')=='admin' ? 'selected' : '' }}>Admin</option>
+                            <option value="stuff" {{ old('is_role')=='stuff' ? 'selected' : '' }}>Stuff</option>
+                        </select>
                     </div>
                 </div>
                 <div class="row">

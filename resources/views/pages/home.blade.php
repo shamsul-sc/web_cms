@@ -12,17 +12,30 @@
 <div class="container pt-3 pb-5 mt-3">
     <div class="row align-items-center justify-content-center">
         <div class="col-lg-6 mb-5 mb-lg-0">
-            <h2 class="text-color-dark font-weight-extra-bold text-10 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">প্রতিষ্ঠা ও প্রতিষ্ঠাতা</h2>
-            <p class="font-weight-light text-color-dark mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">বাংলাদেশের রোগীদের তথ্য সংক্রান্ত সাহায্য ও সহযোগীতার সহজীকরণের লক্ষ্য নিয়ে ২০১৬ সালের ২২ নভেম্বর সোশ্যাল মিডিয়া ফেসবুক ভিত্তিক প্লাটফর্ম ট্রিটমেন্ট কমিউনিটি (TREATMENT COMMUNITY) এর যাত্রা শুরু হয়। ২০২২ সালের ২২ নভেম্বর গ্রুপের ৫ম বর্ষ পূর্তিতে 'ট্রিটমেন্ট কমিউনিটি ফাউন্ডেশন' (Treatment Community Foundation) নামে, একটি সামাজিক স্বেচ্ছাসেবী ও অলাভজনক সংগঠন হিসেবে আত্মপ্রকাশ করে।</p>
-            <p class="positive-ls-3 text-color-grey mb-3 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600">মোহামদ মনিরুল ইসলাম - প্রতিষ্ঠাতা</p>
+            <h2 class="text-color-dark font-weight-extra-bold text-10 mb-4 appear-animation"
+                data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">প্রতিষ্ঠা ও প্রতিষ্ঠাতা</h2>
+            <p class="font-weight-light text-color-dark mb-4 appear-animation" data-appear-animation="fadeInUpShorter"
+                data-appear-animation-delay="400">বাংলাদেশের রোগীদের তথ্য সংক্রান্ত সাহায্য ও সহযোগীতার সহজীকরণের লক্ষ্য
+                নিয়ে ২০১৬ সালের ২২ নভেম্বর সোশ্যাল মিডিয়া ফেসবুক ভিত্তিক প্লাটফর্ম ট্রিটমেন্ট কমিউনিটি (TREATMENT
+                COMMUNITY) এর যাত্রা শুরু হয়। ২০২২ সালের ২২ নভেম্বর গ্রুপের ৫ম বর্ষ পূর্তিতে 'ট্রিটমেন্ট কমিউনিটি
+                ফাউন্ডেশন' (Treatment Community Foundation) নামে, একটি সামাজিক স্বেচ্ছাসেবী ও অলাভজনক সংগঠন হিসেবে
+                আত্মপ্রকাশ করে।</p>
+            <p class="positive-ls-3 text-color-grey mb-3 appear-animation" data-appear-animation="fadeInUpShorter"
+                data-appear-animation-delay="600">মোহামদ মনিরুল ইসলাম - প্রতিষ্ঠাতা</p>
         </div>
         <div class="col-md-9 col-lg-6 ps-lg-5">
             <div class="position-relative">
-                <div class="custom-shape-1 appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="1100">
-                    <div class="position-absolute top-0 left-0 right-0 bottom-0 bg-primary" data-plugin-float-element data-plugin-options="{'startPos': 'top', 'speed': 0.1, 'transition': true, 'transitionDuration': 1000, 'isInsideSVG': true}"></div>
+                <div class="custom-shape-1 appear-animation" data-appear-animation="fadeInUpShorterPlus"
+                    data-appear-animation-delay="1100">
+                    <div class="position-absolute top-0 left-0 right-0 bottom-0 bg-primary" data-plugin-float-element
+                        data-plugin-options="{'startPos': 'top', 'speed': 0.1, 'transition': true, 'transitionDuration': 1000, 'isInsideSVG': true}">
+                    </div>
                 </div>
-                <div data-plugin-float-element data-plugin-options="{'startPos': 'top', 'speed': 0.3, 'transition': true, 'transitionDuration': 1000, 'isInsideSVG': true}">
-                    <img src="{{ asset('img/team-1.jpg') }}" class="img-fluid position-relative z-index-1 appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="900" alt="" />
+                <div data-plugin-float-element
+                    data-plugin-options="{'startPos': 'top', 'speed': 0.3, 'transition': true, 'transitionDuration': 1000, 'isInsideSVG': true}">
+                    <img src="{{ asset('img/team-1.jpg') }}"
+                        class="img-fluid position-relative z-index-1 appear-animation"
+                        data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="900" alt="" />
                 </div>
             </div>
         </div>
@@ -30,34 +43,48 @@
 </div>
 
 @if($featuredProjects && $featuredProjects->count())
-<section class="section overlay overlay-show overlay-op-6 border-0 m-0" style="background-image: url(img/backgrounds/background-2.webp); background-size: cover; background-position: center;">
+<section class="section overlay overlay-show overlay-op-6 border-0 m-0"
+    style="background-image: url(img/backgrounds/background-2.webp); background-size: cover; background-position: center;">
     <div class="container py-3 mb-5">
         <div class="row pb-5 mb-4">
             <div class="col text-center">
-                <h3 class="alternative-font-4 text-color-primary font-weight-semibold text-4 mb-2 appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="200">Featured Projects</h3>
-                <h2 class="text-transform-none text-color-light font-weight-bold text-10 negative-ls-1 mb-5 appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="400">Our Most Valuable Works</h2>
+                <h3 class="alternative-font-4 text-color-primary font-weight-semibold text-4 mb-2 appear-animation"
+                    data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="200">Featured Projects</h3>
+                <h2 class="text-transform-none text-color-light font-weight-bold text-10 negative-ls-1 mb-5 appear-animation"
+                    data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="400">Our Most Valuable
+                    Works</h2>
             </div>
         </div>
     </div>
 </section>
 
-<div class="owl-carousel-wrapper position-relative z-index-3 pb-2 mb-2 appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="600" style="height: 373px; margin-top: -225px;">
-    <div class="owl-carousel owl-theme dots-horizontal-center custom-dots-style-1 dots-dark mb-0" data-plugin-options="{'responsive': {'576': {'items': 2}, '768': {'items': 2}, '992': {'items': 3}, '1200': {'items': 3}, '1440': {'items': 5}}, 'margin': 20, 'stagePadding': 20, 'loop': true, 'nav': false, 'dots': true, 'autoplay': true, 'autoplayTimeout': 3000}">        
+<div class="owl-carousel-wrapper position-relative z-index-3 pb-2 mb-2 appear-animation"
+    data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="600"
+    style="height: 373px; margin-top: -225px;">
+    <div class="owl-carousel owl-theme dots-horizontal-center custom-dots-style-1 dots-dark mb-0"
+        data-plugin-options="{'responsive': {'576': {'items': 2}, '768': {'items': 2}, '992': {'items': 3}, '1200': {'items': 3}, '1440': {'items': 5}}, 'margin': 20, 'stagePadding': 20, 'loop': true, 'nav': false, 'dots': true, 'autoplay': true, 'autoplayTimeout': 3000}">
         @foreach ($featuredProjects as $project)
         <div class="py-5">
             <a href="{{ url('project',$project->slug ) }}" class="text-decoration-none">
                 <div class="card custom-card-style-1 border-0 border-radius-0 custom-box-shadow-1">
-                    <img src="{{ asset('uploads/project_image/thumbnail/'.$project->project_image) }}" class="card-img-top border-radius-0" alt="John Doe Image" />
+                    <img src="{{ asset('uploads/project_image/thumbnail/'.$project->project_image) }}"
+                        class="card-img-top border-radius-0" alt="John Doe Image" />
                     <div class="card-body text-center px-4 py-5">
-                        <h2 class="card-title alternative-font-4 text-color-dark font-weight-semibold line-height-1 text-5 mb-3">
+                        <h2
+                            class="card-title alternative-font-4 text-color-dark font-weight-semibold line-height-1 text-5 mb-3">
                             {{ app()->getLocale() == 'en' ? $project->project_title : $project->project_title_bn }}
                         </h2>
                         <!-- <p class="text-color-grey positive-ls-3 mb-3">CEO & FOUNDER</p> -->
-                        <p class="font-weight-light text-color-dark line-height-7 mb-2">{!! Str::words(app()->getLocale() == 'en' ? $project->project_summary : $project->project_summary_bn, 20, '...') !!}</p>
-                        <span class="custom-read-more d-inline-flex justify-content-center align-items-center text-3 font-weight-medium svg-fill-color-primary">
+                        <p class="font-weight-light text-color-dark line-height-7 mb-2">{!!
+                            Str::words(app()->getLocale() == 'en' ? $project->project_summary :
+                            $project->project_summary_bn, 20, '...') !!}</p>
+                        <span
+                            class="custom-read-more d-inline-flex justify-content-center align-items-center text-3 font-weight-medium svg-fill-color-primary">
                             VIEW DETAILS
-                            <svg class="ms-2" version="1.1" viewBox="0 0 15.698 8.706" width="17" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                <polygon stroke="#777" stroke-width="0.1" fill="#777" points="11.354,0 10.646,0.706 13.786,3.853 0,3.853 0,4.853 13.786,4.853 10.646,8 11.354,8.706 15.698,4.353 "/>
+                            <svg class="ms-2" version="1.1" viewBox="0 0 15.698 8.706" width="17" xml:space="preserve"
+                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <polygon stroke="#777" stroke-width="0.1" fill="#777"
+                                    points="11.354,0 10.646,0.706 13.786,3.853 0,3.853 0,4.853 13.786,4.853 10.646,8 11.354,8.706 15.698,4.353 " />
                             </svg>
                         </span>
                     </div>
@@ -230,27 +257,34 @@
 </div> -->
 
 @if($testimonials && $testimonials->count())
-<section class="section overlay overlay-show overlay-op-9 border-0 m-0 appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="300" style="background-image: url(img/backgrounds/background-6.webp); background-size: cover; background-position: center;">
+<section class="section overlay overlay-show overlay-op-9 border-0 m-0 appear-animation" data-appear-animation="fadeIn"
+    data-appear-animation-delay="300"
+    style="background-image: url(img/backgrounds/background-6.webp); background-size: cover; background-position: center;">
     <div class="container pt-3 pb-3">
         <div class="row">
             <div class="col text-center">
                 <h2 class="alternative-font-4 text-color-primary font-weight-semibold text-4 mb-2">TESTIMONIALS</h2>
-                <h3 class="text-transform-none text-color-light font-weight-bold text-10 negative-ls-1 pb-3 mb-5">Satisfied Reviews</h3>
+                <h3 class="text-transform-none text-color-light font-weight-bold text-10 negative-ls-1 pb-3 mb-5">
+                    Satisfied Reviews</h3>
                 <p class="custom-font-secondary text-color-light custom-font-size-1 font-weight-extra-bold">“</p>
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-lg-7 text-center px-lg-0">
-                <div class="owl-carousel owl-theme dots-horizontal-center custom-dots-style-1 dots-light mb-0" data-plugin-options="{'responsive': {'576': {'items': 1}, '768': {'items': 1}, '992': {'items': 1}, '1200': {'items': 1}}, 'loop': true, 'nav': false, 'dots': true, 'autoplay': true, 'autoplayTimeout': 5000}">
+                <div class="owl-carousel owl-theme dots-horizontal-center custom-dots-style-1 dots-light mb-0"
+                    data-plugin-options="{'responsive': {'576': {'items': 1}, '768': {'items': 1}, '992': {'items': 1}, '1200': {'items': 1}}, 'loop': true, 'nav': false, 'dots': true, 'autoplay': true, 'autoplayTimeout': 5000}">
                     @foreach($testimonials as $item)
                     <div class="testimonial testimonial-style-2">
-                        <span class="text-color-light text-6 custom-font-secondary line-height-4 opacity-8 pb-2 mb-0">{!! $item->content !!}</span>
+                        <span
+                            class="text-color-light text-6 custom-font-secondary line-height-4 opacity-8 pb-2 mb-0">{!!
+                            $item->content !!}</span>
                         <div class="divider divider-primary divider-small mt-2 mb-4 pb-2">
                             <hr class="my-4 mx-auto">
                         </div>
                         <div class="testimonial-author">
                             <div class="testimonial-author-thumbnail">
-                                <img src="{{ asset('uploads/author_image/original/'.$item->author_image) }}" class="img-fluid rounded-circle" alt="">
+                                <img src="{{ asset('uploads/author_image/original/'.$item->author_image) }}"
+                                    class="img-fluid rounded-circle" alt="">
                             </div>
                             <p>
                                 <strong class="font-weight-extra-bold text-color-light mb-1">
@@ -305,33 +339,43 @@
     </div>
 </section> -->
 
-         
+
 <div class="container pb-3 my-5">
-    
-    @if($featuredCases && $featuredCases->count())   
+
+    @if($featuredCases && $featuredCases->count())
     <div class="row pb-2 mb-5">
         <div class="col text-center">
-            <h3 class="alternative-font-4 text-color-primary font-weight-semibold text-4 mb-1 appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="400">FEATURED CASES</h3>
-            <h2 class="text-transform-none text-color-dark font-weight-bold text-10 negative-ls-1 mb-2 appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="600">Success Stories</h2>
+            <h3 class="alternative-font-4 text-color-primary font-weight-semibold text-4 mb-1 appear-animation"
+                data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="400">FEATURED CASES</h3>
+            <h2 class="text-transform-none text-color-dark font-weight-bold text-10 negative-ls-1 mb-2 appear-animation"
+                data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="600">Success Stories</h2>
         </div>
     </div>
     <div class="row">
         <div class="col appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="800">
-            <div class="custom-carousel-style-2 owl-carousel owl-theme dots-horizontal-center custom-dots-style-1 dots-dark mb-0" data-plugin-options="{'responsive': {'576': {'items': 1}, '768': {'items': 1}, '992': {'items': 2}, '1200': {'items': 2}}, 'loop': true, 'nav': false, 'dots': true, 'margin': 25, 'stagePadding': 25, 'autoplay': false, 'autoplayTimeout': 3000}">
+            <div class="custom-carousel-style-2 owl-carousel owl-theme dots-horizontal-center custom-dots-style-1 dots-dark mb-0"
+                data-plugin-options="{'responsive': {'576': {'items': 1}, '768': {'items': 1}, '992': {'items': 2}, '1200': {'items': 2}}, 'loop': true, 'nav': false, 'dots': true, 'margin': 25, 'stagePadding': 25, 'autoplay': false, 'autoplayTimeout': 3000}">
                 @foreach ($featuredCases as $case)
                 <div class="pb-5">
                     <a href="{{ url('case-study',$case->id ) }}" class="text-decoration-none">
                         <div class="card custom-card-style-2 border-0 border-radius-0">
                             <div class="card-img-top">
-                                <img src="/uploads/case_image/thumbnail/{{ $case->case_image }}" class="img-fluid" alt="" />
+                                <img src="/uploads/case_image/thumbnail/{{ $case->case_image }}" class="img-fluid"
+                                    alt="" />
                             </div>
                             <div class="card-body">
-                                <span class="d-block text-color-grey positive-ls-2 mb-0">{{ app()->getLocale() == 'en' ? $case->category_name : $case->category_name_bn }}</span>
-                                <h4 class="text-color-dark font-weight-medium text-5-5 mb-2"><em>{{ app()->getLocale() == 'en' ? $case->case_title : $case->case_title_bn }}</em></h4>
-                                <span class="custom-read-more font-weight-medium d-inline-flex justify-content-center align-items-center svg-fill-color-primary svg-stroke-color-primary">
+                                <span class="d-block text-color-grey positive-ls-2 mb-0">{{ app()->getLocale() == 'en' ?
+                                    $case->category_name : $case->category_name_bn }}</span>
+                                <h4 class="text-color-dark font-weight-medium text-5-5 mb-2"><em>{{ app()->getLocale()
+                                        == 'en' ? $case->case_title : $case->case_title_bn }}</em></h4>
+                                <span
+                                    class="custom-read-more font-weight-medium d-inline-flex justify-content-center align-items-center svg-fill-color-primary svg-stroke-color-primary">
                                     VIEW DETAILS
-                                    <svg class="ms-2" version="1.1" viewBox="0 0 15.698 8.706" width="17" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                        <polygon stroke="#777" stroke-width="0.1" fill="#777" points="11.354,0 10.646,0.706 13.786,3.853 0,3.853 0,4.853 13.786,4.853 10.646,8 11.354,8.706 15.698,4.353 "/>
+                                    <svg class="ms-2" version="1.1" viewBox="0 0 15.698 8.706" width="17"
+                                        xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <polygon stroke="#777" stroke-width="0.1" fill="#777"
+                                            points="11.354,0 10.646,0.706 13.786,3.853 0,3.853 0,4.853 13.786,4.853 10.646,8 11.354,8.706 15.698,4.353 " />
                                     </svg>
                                 </span>
                             </div>
@@ -341,19 +385,21 @@
                 @endforeach
             </div>
         </div>
-    </div>    
+    </div>
     @endif
 
-    @if($galleryPhotos && $galleryPhotos->count()) 
+    @if($galleryPhotos && $galleryPhotos->count())
     <div class="row pt-2 pb-2 mb-4">
         <div class="col text-center">
             <!-- <h3 class="alternative-font-4 text-color-primary font-weight-semibold text-4 mb-1 appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="400">FEATURED CASES</h3> -->
-            <h2 class="text-transform-none text-color-dark font-weight-bold text-10 negative-ls-1 mb-2 appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="300">Our Activities</h2>
+            <h2 class="text-transform-none text-color-dark font-weight-bold text-10 negative-ls-1 mb-2 appear-animation"
+                data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="300">Our Activities</h2>
         </div>
-    </div>    
+    </div>
     <div class="row">
         <div class="col">
-            <div class="owl-carousel owl-theme carousel-center-active-item" data-plugin-options="{'responsive': {'0': {'items': 1}, '476': {'items': 1}, '768': {'items': 3}, '992': {'items': 3}, '1200': {'items': 3}}, 'autoplay': true, 'autoplayTimeout': 3000, 'dots': true, 'margin': 20}">
+            <div class="owl-carousel owl-theme carousel-center-active-item"
+                data-plugin-options="{'responsive': {'0': {'items': 1}, '476': {'items': 1}, '768': {'items': 3}, '992': {'items': 3}, '1200': {'items': 3}}, 'autoplay': true, 'autoplayTimeout': 3000, 'dots': true, 'margin': 20}">
                 @foreach ($galleryPhotos as $photo)
                 <div>
                     <img class="img-fluid" src="{{ asset('uploads/gallery_photo/thumbnail/' . $photo->image) }}" alt="">
@@ -403,10 +449,10 @@
                     </div>
                     <div class="card-body bg-light p-4 z-index-1">
                         <p class="text-uppercase text-color-default text-1 mb-1 pt-1">
-                            <time pubdate datetime="2023-01-10">10 Jan 2023</time> 
-                            <span class="opacity-3 d-inline-block px-2">|</span> 
-                            3 Comments 
-                            <span class="opacity-3 d-inline-block px-2">|</span> 
+                            <time pubdate datetime="2023-01-10">10 Jan 2023</time>
+                            <span class="opacity-3 d-inline-block px-2">|</span>
+                            3 Comments
+                            <span class="opacity-3 d-inline-block px-2">|</span>
                             John Doe
                         </p>
                         <div class="card-body p-0">
@@ -433,10 +479,10 @@
                     </div>
                     <div class="card-body bg-light p-4 z-index-1">
                         <p class="text-uppercase text-color-default text-1 mb-1 pt-1">
-                            <time pubdate datetime="2023-01-10">10 Jan 2023</time> 
-                            <span class="opacity-3 d-inline-block px-2">|</span> 
-                            3 Comments 
-                            <span class="opacity-3 d-inline-block px-2">|</span> 
+                            <time pubdate datetime="2023-01-10">10 Jan 2023</time>
+                            <span class="opacity-3 d-inline-block px-2">|</span>
+                            3 Comments
+                            <span class="opacity-3 d-inline-block px-2">|</span>
                             John Doe
                         </p>
                         <div class="card-body p-0">

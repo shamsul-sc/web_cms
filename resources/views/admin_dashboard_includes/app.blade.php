@@ -38,8 +38,10 @@
     <!-- JS Libraries -->
     <script src="{{ asset('js/layout.js') }}"></script>
 
+    @isset($usevite)
     <!-- Vite for Module Bundling -->
     @vite(['resources/js/app.js'])
+    @endisset
 </head>
 
 <body>

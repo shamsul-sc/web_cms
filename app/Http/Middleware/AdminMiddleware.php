@@ -18,21 +18,16 @@ class AdminMiddleware
     {
         if(Auth::check())
         {
-            if(Auth::user()->is_role == 'admin')
-            {
+            if(Auth::user()->is_role === 'admin'){
                 return $next($request);
             }
-            else
-            {
-                Auth::logout();
-                return redirect(url('login'));
+            else{
+                abort(404, 'Unauthorized action.');
             }
         }
-        else
-        {
-            Auth::logout();
-            return redirect(url('login'));
+        else{
+            return redirect()->route('login');
         }
-        
+
     }
 }

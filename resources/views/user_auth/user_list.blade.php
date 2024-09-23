@@ -55,34 +55,25 @@
                         <td>
                             <span
                                 class="badge
-                                {{ $user->status === 'admin' ? 'bg-info-subtle text-info' : ($user->status === ' block' ? 'bg-secondary-subtle text-warning' : 'bg-success-subtle text-success') }}">
-                                {{ $user->status === 'pending' ? 'Pending' : ($user->status === ' Block' ?
-                                'block' : 'Enabled')
-                                }}
+                                {{ $user->status === 'enabled' ? 'bg-info-subtle text-info' : ($user->status === 'block' ? 'bg-secondary-subtle text-danger' : 'bg-success-subtle text-success') }}">
+                                {{ $user->status }}
                             </span>
                         </td>
 
                         <td>{{ date('d-m-Y h:i:A', strtotime($user->created_at)) }}</td>
 
                         <td class='d-flex mt-2'>
-
+                            @if($user->status == 'enabled')
                             <a href="{{ route('dashboard.users_details',$user->id ) }}"
                                 class="btn btn-sm btn-primary">Details</a>
-
-
-
                             <a href="{{ route('dashboard.project_edit',$user->id ) }}"
                                 class="btn btn-sm btn-info">Edit</a>
-
-                            <a href="javascript:void(0)" class="btn btn-sm btn-danger"
-                                onclick="deleteConfirmation({{ $user->id }})">Delete</a>
-
-                            <form id="delete-form-{{ $user->id }}"
-                                action="{{ route('dashboard.project_deleted', $user->id) }}" method="POST"
-                                style="display: none;">
-                                @csrf
-                                @method('DELETE')
-                            </form>
+                            <a href="{{ route('dashboard.user_block',$user->id ) }}"
+                                class="btn btn-sm btn-danger">Block</a>
+                            @elseif($user->status == 'pending' || $user->status == 'block' )
+                            <a href="{{ route('dashboard.user_activate',$user->id ) }}"
+                                class="btn btn-sm btn-primary">Activate</a>
+                            @endif
                         </td>
                     </tr>
                     @empty
@@ -117,5 +108,8 @@
         }
     });
 }
+
+
+
 
 </script>

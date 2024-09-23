@@ -9,7 +9,6 @@ use App\Http\Controllers\Controller;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Laravel\Facades\Image;
-use Carbon\Carbon;
 
 class UserAuthController extends Controller
 {
@@ -35,6 +34,47 @@ class UserAuthController extends Controller
         return view('dashboard.user.user_profile',$data);
     }
 
+    public function UserActivate($id)
+    {
+        $user = User::find($id);
+        if (!$user)
+        {
+            Alert::error('User not found!');
+
+        }
+
+        $user->status = 'enabled';
+        $updated = $user->save();
+
+        if ($updated) {
+
+            $userProfile = UserProfile::where('user_id', $id)->first();
+
+            if (!$userProfile) {
+                UserProfile::create([
+                    'user_id' => $id
+                ]);
+            }
+            Alert::success('Activated Successfully Done!');
+
+        }
+        return redirect()->route('backend_auth.user_list');
+    }
+
+    public function UserBlock($id)
+    {
+         $user = User::find($id);
+        if (!$user)
+        {
+            Alert::error('User not found!');
+
+        } else {
+            $user->status = 'block';
+            $user->save();
+            Alert::success('User Block Successfully!');
+        }
+        return redirect()->route('backend_auth.user_list');
+    }
     public function UserProfileEdit($id)
     {
         $user = User::find($id);
@@ -81,7 +121,6 @@ class UserAuthController extends Controller
         $user_model->save();
 
         $user_profile_obj = UserProfile::where('user_id', $id)->first();
-        dd($user_profile_obj);
 
         if ($user_profile_obj)
         {
@@ -94,8 +133,8 @@ class UserAuthController extends Controller
             $user_profile_obj->present_address = $request->input('present_address', $user_profile_obj->present_address);
             $user_profile_obj->date_of_birth = $request->input('date_of_birth', $user_profile_obj->date_of_birth);
 
+            if ($request->hasFile('profile_image'))
 
-            if($request->hasFile('profile_image'))
             {
                 $profile_image = $request->file('profile_image');
                 $filename = time().'_'.$profile_image->getClientOriginalName();
@@ -115,6 +154,7 @@ class UserAuthController extends Controller
 
 
                 $user_profile_obj->profile_image = $filename;
+
             }
 
             $user_profile_obj->save();

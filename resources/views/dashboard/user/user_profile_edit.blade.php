@@ -61,7 +61,8 @@
             <div class="card-body p-4">
                 <div class="tab-content">
                     <div class="tab-pane active" id="personalDetails" role="tabpanel">
-                        <form action="{{ route('dashboard.users_profile_updated',$getUser->id) }}" method="POST">
+                        <form action="{{ route('dashboard.users_profile_updated',$getUser->id) }}" method="POST"
+                            enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <div class="row">
                                 <div class="col-lg-6">

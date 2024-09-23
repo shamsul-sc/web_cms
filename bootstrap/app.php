@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\Authenticate;
 use Illuminate\Foundation\Application;
 use App\Http\Middleware\UserMiddleware;
 use App\Http\Middleware\AdminMiddleware;
@@ -22,6 +23,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'admin' => AdminMiddleware::class,
             'user' => UserMiddleware::class,
             'stuff' => StuffMiddleware::class,
+            'auth' => Authenticate::class,
         ]);
 
     })

@@ -18,19 +18,13 @@ class UserMiddleware
     {
         if(Auth::check())
         {
-            if(Auth::user()->is_role == 'user')
-            {
+            if(Auth::user()->is_role === 'user'){
                 return $next($request);
             }
-            else
-            {
-                Auth::logout();
-                return redirect(url('login'));
+            else{
+                abort(404, 'Unauthorized action.');
             }
-        }
-        else
-        {
-            Auth::logout();
+        }else{
             return redirect(url('login'));
         }
     }

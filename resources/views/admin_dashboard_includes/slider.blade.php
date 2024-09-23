@@ -1,5 +1,7 @@
 <div id="two-column-menu">
 </div>
+@include('sweetalert::alert')
+@if(Auth::check() )
 <ul class="navbar-nav " id="sortable">
     <li class="menu-title"><span data-key="t-menu">Menu</span></li>
 
@@ -8,6 +10,14 @@
             <i class="ri-dashboard-line"></i> <span data-key="t-dashboard">Dashboard</span>
         </a>
     </li>
+    @if(Auth::user()->is_role == 'user')
+    <li class="nav-item">
+        <a class="nav-link menu-link" href="{{ url('/dashboard') }}">
+            <i class="ri-dashboard-line"></i> <span data-key="t-dashboard">Profile</span>
+        </a>
+    </li>
+    @endif
+    @if(Auth::user()->is_role == 'admin')
     <li class="nav-item">
         <a class="nav-link menu-link" href="#sidebarServices" data-bs-toggle="collapse" role="button"
             aria-expanded="false" aria-controls="sidebarServices">
@@ -43,7 +53,6 @@
             </ul>
         </div>
     </li>
-
 
     <li class="nav-item">
         <a class="nav-link menu-link" href="#sidebarPages" data-bs-toggle="collapse" role="button" aria-expanded="false"
@@ -115,6 +124,7 @@
         </div>
     </li>
 
+
     <li class="nav-item">
         <a class="nav-link menu-link" href="#sidebarPages" data-bs-toggle="collapse" role="button" aria-expanded="false"
             aria-controls="sidebarPages">
@@ -133,6 +143,7 @@
             </ul>
         </div>
     </li>
+
 
     <li class="nav-item">
         <a class="nav-link menu-link" href="#sidebarOthers" data-bs-toggle="collapse" role="button"
@@ -187,4 +198,6 @@
                 </li>
             </ul>
         </div>
+        @endif
 </ul>
+@endif
