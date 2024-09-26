@@ -58,4 +58,11 @@ class User extends Authenticatable
         return self::find($id);
     }
 
+    public function ecMember()
+    {
+        return $this->belongsTo(EcMember::class, 'user_id'); # One to Many relation
+        // return $this->belongsToMany(EcMember::class, 'user_id'); # Many to Many relation
+    }
+    
+
 }

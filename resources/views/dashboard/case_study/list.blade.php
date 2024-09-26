@@ -22,10 +22,11 @@
 
                 </div>
             </div>
-            <table id="scroll-vertical" class="table table-bordered dt-responsive nowrap align-middle mdl-data-table"
+            <table id="scroll-vertical"
+                class="table table-bordered dt-responsive nowrap align-middle mdl-data-table text-center"
                 style="width:100%">
                 <thead>
-                    <tr>
+                    <tr class="text-nowrap py-2">
                         <th>ID</th>
                         <th>Case Title BN.</th>
                         <th>Case Summary BN</th>
@@ -40,7 +41,7 @@
                 </thead>
                 <tbody>
                     @if($getCaseStudy && $getCaseStudy->count())
-                    @foreach ($getCaseStudy as $case_study )
+                    @forelse ($getCaseStudy as $case_study )
 
                     <tr>
                         <td>{{ $case_study->id }}</td>
@@ -74,7 +75,7 @@
                             </span>
                         </td>
                         <td>{{ date('d-m-Y h:i:A', strtotime($case_study->created_at)) }}</td>
-                        <td class='d-flex mt-4'>
+                        <td class='d-flex align-items-center mt-4 gap-1'>
                             <a href="{{ route('dashboard.case_study_edit',$case_study->id ) }}"
                                 class="btn btn-sm btn-info ">Edit</a>
 
@@ -87,10 +88,15 @@
                                 @method('DELETE')
                             </form>
                         </td>
-
+                        @empty
+                    <tr>
+                        <td colspan="100%">Record not found.</td>
                     </tr>
-                    @endforeach
-
+                    @endforelse
+                    @else
+                    <tr>
+                        <td colspan="100%">No records found.</td>
+                    </tr>
                     @endif
                 </tbody>
             </table>
@@ -123,4 +129,5 @@
             }
         });
     }
+
 </script>

@@ -15,7 +15,7 @@ class FollowUp extends Model
     static public function getFollowUp()
     {
         return self::select('follow_ups.*')
-            // ->join('projects', 'projects.id', '=', 'case_studies.project_id')
+            // ->join('case_studies', 'case_studies.id', '=', 'follow_ups.case_id')
             ->where('follow_ups.status', '=', 'Show')
             ->orderBy('follow_ups.id', 'desc')
             ->paginate(20);

@@ -22,12 +22,11 @@
 
                 </div>
             </div>
-            <table id="scroll-vertical" class="table table-bordered dt-responsive nowrap align-middle mdl-data-table"
+            <table id="scroll-vertical" class="table table-bordered dt-responsive nowrap align-middle mdl-data-table "
                 style="width:100%">
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Album ID.</th>
                         <th>Gallery Caption</th>
                         <th>Gallery Image</th>
                         <th>Serial Number</th>
@@ -38,14 +37,11 @@
                 </thead>
                 <tbody>
                     @if($getGalleryPhoto && $getGalleryPhoto->count())
-                    @foreach ($getGalleryPhoto as $value )
+                    @forelse ($getGalleryPhoto as $value )
 
                     <tr>
                         <td>{{ $value->id }}</td>
-                        <td>{{ $value->album_id }}</td>
                         <td>{{ $value->caption }}</td>
-                        {{-- <td><img src="/uploads/gallery_photo/thumbnail/{{ $value->image }}" width="100px"></td>
-                        --}}
                         <td>
                             @if(!empty($value->image) && file_exists(public_path('uploads/gallery_photo/thumbnail/' .
                             $value->image)))
@@ -78,9 +74,15 @@
                                 @method('DELETE')
                             </form>
                         </td>
+                        @empty
+                    <tr class="text-center">
+                        <td colspan="100%">Record not found.</td>
                     </tr>
-                    @endforeach
-
+                    @endforelse
+                    @else
+                    <tr>
+                        <td colspan="100%">No records found.</td>
+                    </tr>
                     @endif
                 </tbody>
             </table>

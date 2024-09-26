@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\FollowUp;
+use App\Models\CaseStudy;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Laravel\Facades\Image;
-use RealRashid\SweetAlert\Facades\Alert;
 
 class FollowUpController extends Controller
 {
@@ -18,7 +19,10 @@ class FollowUpController extends Controller
 
     public function FollowUp_add()
     {
-        return view('dashboard.follow_up.add');
+       
+        $data['cases'] = CaseStudy::getCaseStudy();
+        
+        return view('dashboard.follow_up.add',$data);
     }
 
     public function FollowUp_insert(Request $request)
@@ -76,7 +80,7 @@ class FollowUpController extends Controller
 
      public function FollowUp_edit($id)
     {
-
+        $data['cases'] = CaseStudy::getCaseStudy();
         $data['getFollowUp'] = FollowUp::getSingle($id);
         return view('dashboard.follow_up.edit', $data);
     }

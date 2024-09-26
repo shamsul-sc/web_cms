@@ -33,6 +33,17 @@
         .topbar-user {
             background-color: inherit;
         }
+
+        .loader {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            /* display: none; */
+            background: #333
+                /* Hide by default */
+        }
     </style>
 
     <!-- JS Libraries -->
@@ -47,6 +58,8 @@
 <body>
     <div id="layout-wrapper">
         <!-- Header -->
+
+
         @include('admin_dashboard_includes.header')
 
         <!-- Sidebar -->
@@ -80,6 +93,19 @@
                     @include('admin_dashboard_includes.slider')
                 </div>
             </div>
+            {{-- <div id="scrollbar">
+                <div class="container-fluid">
+                    <!-- Loader -->
+                    <div class="loader"
+                        style="display:block; position:fixed; left:50%; top:50%; transform:translate(-50%, -50%); z-index:9999;">
+                        <img src="{{ asset('assets/img/logos/loading-svgrepo-com.svg') }}" alt="Loading..."
+                            width="100" />
+                    </div>
+
+                    <!-- Main Content -->
+                    @include('admin_dashboard_includes.slider')
+                </div>
+            </div> --}}
 
             <div class="sidebar-background"></div>
         </div>
@@ -88,6 +114,8 @@
         <div class="main-content">
             <div class="page-content">
                 <div class="container-fluid">
+
+
                     @yield('content')
                 </div>
 
@@ -110,5 +138,7 @@
 
         </div>
 </body>
+
+
 
 </html>

@@ -4,7 +4,6 @@
 <div class="">
     <div class="row">
         <div class="col-xl-12">
-            {{-- @include('layouts._message') --}}
             @include('sweetalert::alert')
             <div class="card ">
                 <div class="card-header d-flex align-items-center" style="background-color: rgb(93, 198, 93);">
@@ -158,9 +157,9 @@
                                 <br>
                                 <small class="form-text text-muted">Please upload a 600x340 pixels image.</small>
                             </div>
-                            <div class="col-md-6 ">
+                            <div class="col-md-6  ">
                                 <label for="project_pdf">Project PDF</label>
-                                <input type="file" id="project_pdf" name="project_pdf" class="form-control ">
+                                <input type="file" disabled id="project_pdf" name="project_pdf" class="form-control ">
 
                             </div>
                         </div>

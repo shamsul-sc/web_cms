@@ -72,7 +72,7 @@
                         </div>
                 </div>
 
-                <div class="row">
+                <div class="row ">
                     <div class="col-12 text-center d-flex justify-content-between align-items-center">
                         <a href="{{ route('dashboard.gallery_album_list') }}" class="btn btn-danger px-5 rounded-pill">
                             <i class="ri-arrow-go-back-line"></i> Go to list

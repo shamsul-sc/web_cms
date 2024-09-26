@@ -13,24 +13,17 @@
                         {{ csrf_field() }}
 
                         <div class="row">
-                            <div class="col-md-12 outlined-input-container">
-                                <input type="number" id="faq_cat_id" class="form-control" name="faq_cat_id"
-                                    placeholder="">
-                                <label for="faq_cat_id">FAQ Category ID<span class="required">*</span></label>
-                            </div>
-                        </div>
-                        {{-- <div class="row">
                             <div class="col-md-6 outlined-input-container">
                                 <select id="faq_cat_id" name="faq_cat_id" class="form-select">
                                     <option value="">Select FAQ Category</option>
-                                    @foreach($getFaqCategory as $faq_category)
-                                    <option value="{{ $faq_category->id }}">{{ $faq_category->faq_category_name
+                                    @foreach($getProjectCategory as $faq_category)
+                                    <option value="{{ $faq_category->id }}">{{ $faq_category->category_name
                                         }}
                                     </option>
                                     @endforeach
                                 </select>
-                                <label for="faq_cat_id">FAQ Category Name<span class="required">*</span></label>
-                            </div> --}}
+                                <label for="faq_cat_id">Project Name<span class="required">*</span></label>
+                            </div>
 
                             <div class="row">
                                 <div class="col-md-12 outlined-input-container">

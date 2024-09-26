@@ -25,7 +25,7 @@
             <table id="scroll-vertical" class="table table-bordered dt-responsive nowrap align-middle mdl-data-table"
                 style="width:100%">
                 <thead>
-                    <tr>
+                    <tr class="text-nowrap py-2">
                         <th>Id.</th>
                         <th>FAQ Cat.Id.</th>
                         <th>Question BN.</th>
@@ -40,11 +40,11 @@
                 </thead>
                 <tbody>
                     @if($getFaq && $getFaq->count())
-                    @foreach ($getFaq as $value )
+                    @forelse ($getFaq as $value )
 
                     <tr>
                         <td>{{ $value->id }}</td>
-                        <td>{{ $value->faq_cat_id }}</td>
+                        <td>{{ $value->faq_cat_name }}</td>
                         <td>{{ $value->question_bn }}</td>
                         <td>{{ $value->answer_bn }}</td>
                         <td>{{ $value->question }}</td>
@@ -58,7 +58,7 @@
                             </span>
                         </td>
                         <td>{{ date('d-m-Y h:i:A', strtotime($value->created_at)) }}</td>
-                        <td class='d-flex mt-4'>
+                        <td class='d-flex mt-4 gap-1'>
                             <a href="{{ route('dashboard.faq_edit',$value->id ) }}"
                                 class="btn btn-sm btn-info ">Edit</a>
 
@@ -72,7 +72,13 @@
                             </form>
                         </td>
                     </tr>
-                    @endforeach
+                    @empty
+                    @endforelse
+                    @else
+                    <tr>
+                        <td class="text-center" colspan="12">No records found.</td>
+                    </tr>
+
                     @endif
                 </tbody>
 

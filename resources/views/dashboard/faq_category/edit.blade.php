@@ -12,12 +12,18 @@
                     <form action="{{ route('dashboard.faq_category_update',$getRecord->id) }}" method="POST">
                         {{ csrf_field() }}
 
-                        <div class="row">
-                            <div class="col-md-12 outlined-input-container">
-                                <input type="number" id="faq_cat_id" class="form-control" name="faq_cat_id"
-                                    value="{{ old('faq_cat_id',$getRecord->faq_cat_id) }}" placeholder="">
-                                <label for="faq_cat_id">FAQ Category ID<span class="required">*</span></label>
-                            </div>
+                        <div class="col-md-6 outlined-input-container">
+
+                            <select id="faq_cat_id" name="faq_cat_id" class="form-select">
+                                <option value="">Select FAQ Category</option>
+                                @foreach($getProjectCategory as $faq_category)
+                                <option value="{{ $faq_category->id }}" {{ $getRecord->faq_cat_id == $faq_category->id ?
+                                    'selected' : '' }}>
+                                    {{ $faq_category->category_name }}
+                                </option>
+                                @endforeach
+                            </select>
+                            <label for="faq_cat_id">Project Name<span class="required">*</span></label>
                         </div>
 
                         <div class="row">

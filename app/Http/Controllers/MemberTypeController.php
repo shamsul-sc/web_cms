@@ -72,7 +72,7 @@ class MemberTypeController extends Controller
         $member_model = MemberType::getSingle($id);;
 
         if (!$member_model) {
-            return redirect()->back()->with('error', value: 'Member type not found!');
+            return redirect()->back()->with('error','Member type not found!');
         }
 
         $member_model->member_type    = trim($request->member_type);

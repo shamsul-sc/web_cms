@@ -10,6 +10,7 @@ class Project extends Model
     use HasFactory;
 
     protected $table = 'projects';
+    protected $fillable = ['album_id','user_id','project_pdf'];
 
     static public function getProject()
     {

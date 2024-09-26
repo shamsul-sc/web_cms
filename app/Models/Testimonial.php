@@ -9,12 +9,14 @@ class Testimonial extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['content'];
+
     static public function getTestimonial()
     {
         return self::select('testimonials.*')
             ->where('testimonials.status', '=', 'Show')
             ->orderBy('testimonials.id', 'desc')
-            ->paginate(20);
+            ->paginate(10);
 
     }
 

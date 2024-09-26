@@ -11,9 +11,10 @@ class GalleryAlbum extends Model
 
     static public function getGalleryAlbum()
     {
-        return self::select('gallery_albums.*')
+        return self::select('gallery_albums.*','gallery_types.type_name as type_name')
+            ->join('gallery_types', 'gallery_types.id', '=', 'gallery_albums.type_id')
             ->where('gallery_albums.album_status', '=', 'Show')
-            ->orderBy('gallery_albums.id', 'desc')
+            ->orderBy('gallery_albums.id', direction: 'desc')
             ->paginate(10);
     }
 

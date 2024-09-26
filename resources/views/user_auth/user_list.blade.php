@@ -77,10 +77,11 @@
                         </td>
                     </tr>
                     @empty
-                    <tr>
-                        <td colspan="100%">Record not found.</td>
-                    </tr>
                     @endforelse
+                    @else
+                    <tr>
+                        <td class="text-center" colspan="8">No records found.</td>
+                    </tr>
                     @endif
 
                 </tbody>
@@ -108,8 +109,6 @@
         }
     });
 }
-
-
 
 
 </script>

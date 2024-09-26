@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Project;
 use App\Models\CaseStudy;
+use App\Models\GalleryAlbum;
 use Illuminate\Http\Request;
 use App\Models\ProjectCategory;
-use App\Models\Project;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Laravel\Facades\Image;
-use RealRashid\SweetAlert\Facades\Alert;
 
 class CaseStudyController extends Controller
 {
@@ -20,6 +21,7 @@ class CaseStudyController extends Controller
 
     public function CaseStudy_add()
     {
+        $data['getAlbum'] = GalleryAlbum::where('album_status', 'Show')->orderBy('id')->get();
         $data['categories'] = ProjectCategory::where('status', 'show')->orderBy('serial')->get();
         $data['projects'] = Project::where('status', 'Show')->orderBy('serial')->get();
         // dd($data['projects']); exit;
@@ -79,17 +81,17 @@ class CaseStudyController extends Controller
             $case_model->case_image = $filename;
         }
 
-        if($request->hasFile('case_pdf'))
-        {
+        if ($request->hasFile('case_pdf')) {
             $file = $request->file('case_pdf');
-            $filename = time() . '.' . $request->file('case_pdf')->extension();
-            $filePath = public_path() . 'uploads/case_pdf';
-            $file->move($filePath, $filename);
+            $filename = time() . '.' . $file->extension();
+            $filePath = 'uploads/case_pdf';
+            $file->move(public_path($filePath), $filename);
+            $case_model->case_pdf = $filePath . '/' . $filename;
         }
 
         $case_model->save();
 
-        
+
         Alert::success(title: 'Case Study Created Successfully!');
 
         return redirect()->route('dashboard.case_study_list');
@@ -98,7 +100,8 @@ class CaseStudyController extends Controller
     public function CaseStudy_edit($id)
     {
         $data['getRecord'] = CaseStudy::getSingle($id);
-        $data['categories'] = ProjectCategory::where('status', 'show')->orderBy('serial')->get();        
+        $data['getAlbum'] = GalleryAlbum::where('album_status', 'Show')->orderBy('id')->get();
+        $data['categories'] = ProjectCategory::where('status', 'show')->orderBy('serial')->get();
         $data['projects'] = Project::where('status', 'Show')->orderBy('serial')->get();
         // dd($data['getRecord']); exit;
         return view('dashboard.case_study.edit', $data);
@@ -109,7 +112,7 @@ class CaseStudyController extends Controller
 
         $validator = Validator::make($request->all(), [
             'case_title_bn' => 'required',
-            
+
         ]);
 
         if ($validator->fails()) {
@@ -181,7 +184,7 @@ class CaseStudyController extends Controller
 
         Alert::success('Case Study successfully deleted.');
 
-        return redirect()->back();        
+        return redirect()->back();
     }
 
 }

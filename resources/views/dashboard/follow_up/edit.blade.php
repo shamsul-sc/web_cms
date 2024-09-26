@@ -18,25 +18,19 @@
                     <form action="{{ route('dashboard.follow_up_update',$getFollowUp->id) }}" method="POST"
                         enctype="multipart/form-data">
                         {{ csrf_field() }}
-                        {{--
-                        <div class="row">
-                            <div class="col-md-6 outlined-input-container">
-                                <select id="project_id" name="project_id" class="form-select">
-                                    <option value="">Select Project</option>
-                                    @foreach($getProject as $Project)
-                                    <option value="{{ $Project->project_id }}">{{ $Project->project_name }}</option>
-                                    @endforeach
 
-                                </select>
-                                <label for="album_id">Project Name<span class="required">*</span></label>
-                            </div>
-                        </div> --}}
                         <div class="row mb-3">
                             <div class="col-md-6 outlined-input-container">
-                                <input type="text" id="case_id" name="case_id"
-                                    value="{{ old('case_id',$getFollowUp->case_id) }}" class="form-control"
-                                    placeholder="" maxlength="255">
-                                <label for="case_id">Case ID <span class="required">*</span></label>
+                                <select id="case_id" name="case_id" class="form-select">
+                                    <option value="">Select Case</option>
+                                    @foreach($cases as $case)
+                                    <option value="{{ $case->id }}" {{ $case->id == $getFollowUp->case_id ? 'selected' :
+                                        '' }}>
+                                        {{ $case->case_title_bn }}
+                                    </option>
+                                    @endforeach
+                                </select>
+                                <label for="case_id">Case<span class="required">*</span></label>
                             </div>
                             <div class="col-md-6 outlined-input-container">
                                 <input type="date" id="follow_up_date" name="follow_up_date"

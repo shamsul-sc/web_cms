@@ -27,7 +27,7 @@
                 <thead>
                     <tr>
                         <th>Id.</th>
-                        <th>FAQ Cat.Id.</th>
+                        <th>Project Name</th>
                         <th>FAQ Category Name</th>
                         <th>FAQ Category Name BN.</th>
                         <th>Serial</th>
@@ -37,27 +37,23 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if($getFaqCategory && $getFaqCategory->count())
-                    @foreach ($getFaqCategory as $value )
-
+                    @forelse ($getFaqCategory as $value)
                     <tr>
                         <td>{{ $value->id }}</td>
-                        <td>{{ $value->faq_cat_id }}</td>
+                        <td>{{ $value->category_name }}</td>
                         <td>{{ $value->faq_cat_name }}</td>
                         <td>{{ $value->faq_cat_name_bn }}</td>
                         <td>{{ $value->faq_cat_serial }}</td>
                         <td>
                             <span
-                                class="badge
-                                {{ $value->faq_cat_status === 'Show' ? 'bg-info-subtle text-success' : 'bg-secondary-subtle text-warning' }}">
-                                {{ $value->faq_cat_status === 'Show' ? 'Show' : 'Hide' }}
+                                class="badge {{ $value->faq_cat_status === 'Show' ? 'bg-info-subtle text-success' : 'bg-secondary-subtle text-warning' }}">
+                                {{ $value->faq_cat_status }}
                             </span>
                         </td>
-                        <td>{{ date('d-m-Y h:i:A', strtotime($value->created_at)) }}</td>
-                        <td class='mt-4'>
-                            <a href="{{ route('dashboard.faq_category_edit',$value->id ) }}"
-                                class="btn btn-sm btn-info ">Edit</a>
-
+                        <td>{{ $value->created_at->format('d-m-Y h:i:A') }}</td>
+                        <td>
+                            <a href="{{ route('dashboard.faq_category_edit', $value->id) }}"
+                                class="btn btn-sm btn-info">Edit</a>
                             <a href="javascript:void(0)" class="btn btn-sm btn-danger"
                                 onclick="deleteConfirmation({{ $value->id }})">Delete</a>
                             <form id="delete-form-{{ $value->id }}"
@@ -67,10 +63,13 @@
                                 @method('DELETE')
                             </form>
                         </td>
-
                     </tr>
-                    @endforeach
-                    @endif
+                    @empty
+                    <tr>
+                        <td class="text-center" colspan="8">No records found.</td>
+                    </tr>
+                    @endforelse
+
                 </tbody>
             </table>
             <div class="d-flex justify-content-between">

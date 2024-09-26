@@ -36,7 +36,7 @@
                 </thead>
                 <tbody>
                     @if($getGalleryType && $getGalleryType->count())
-                    @foreach ($getGalleryType as $value )
+                    @forelse ($getGalleryType as $value )
 
                     <tr>
                         <td>{{ $value->id }}</td>
@@ -66,11 +66,17 @@
                                 @csrf
                                 @method('DELETE')
                             </form>
-                        </td>
-
-
+                        </td class="text-center">
                     </tr>
-                    @endforeach
+                    @empty
+                    <tr>
+                        <td colspan="100%">Record not found.</td>
+                    </tr>
+                    @endforelse
+                    @else
+                    <tr>
+                        <td colspan="100%">No records found.</td>
+                    </tr>
 
                     @endif
                 </tbody>

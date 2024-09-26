@@ -23,8 +23,10 @@
             <div class="card-body p-4">
                 <div class="text-center">
                     <div class="profile-user position-relative d-inline-block mx-auto  mb-4">
-                        <img src="assets/images/users/avatar-1.jpg"
-                            class="rounded-circle avatar-xl img-thumbnail user-profile-image" alt="user-profile-image">
+                        @if($getUserProfile && $getUserProfile->profile_image )
+                        <img src="{{ asset('/uploads/profile_image/thumbnail/' . $getUserProfile->profile_image ) }}"
+                            class="rounded-circle avatar-xl img-thumbnail user-profile-image" alt=" Image" width="70">
+                        @endif
                         <div class="avatar-xs p-0 rounded-circle profile-photo-edit">
                             <input id="profile-img-file-input" type="file" class="profile-img-file-input">
                             <label for="profile-img-file-input" class="profile-photo-edit avatar-xs">
@@ -155,6 +157,11 @@
                                         <label for="profile_image">Profile Image</label>
                                         <input type="file" id="profile_image" name="profile_image" class="form-control"
                                             placeholder="" maxlength="255">
+                                        @if($getUserProfile && $getUserProfile->profile_image )
+                                        <img src="{{ asset('/uploads/profile_image/thumbnail/' . $getUserProfile->profile_image ) }}"
+                                            alt=" Image" width="70">
+                                        @endif
+                                        <br>
                                         <small class="form-text text-muted">Please Upload square size image.</small>
                                     </div>
                                 </div>

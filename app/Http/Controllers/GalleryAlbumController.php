@@ -78,7 +78,7 @@ class GalleryAlbumController extends Controller
 
     public function GalleryAlbum_edit($id)
     {
-
+        $data['galleryTypes'] = GalleryType::where('type_status', 'Show')->orderBy('type_serial')->get();
         $data['getRecord'] = GalleryAlbum::getSingle($id);
         return view('dashboard.gallery_album.edit',$data);
     }

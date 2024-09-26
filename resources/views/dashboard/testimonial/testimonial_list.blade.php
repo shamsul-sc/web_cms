@@ -39,7 +39,7 @@
                 </thead>
                 <tbody>
                     @if($getTestimonial && $getTestimonial->count())
-                    @foreach ($getTestimonial as $value )
+                    @forelse ($getTestimonial as $value )
 
                     <tr>
                         <td>{{ $value->id }}</td>
@@ -71,7 +71,13 @@
 
                         </td>
                     </tr>
-                    @endforeach
+                    @empty
+
+                    @endforelse
+                    @else
+                    <tr>
+                        <td class="text-center" colspan="8">No records found.</td>
+                    </tr>
                     @endif
                 </tbody>
             </table>

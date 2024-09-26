@@ -72,29 +72,29 @@ class ProjectController extends Controller
         if ($request->hasFile('project_image')) {
             $project_image = $request->file('project_image');
             $filename = time() . '_' . $project_image->getClientOriginalName();
-            $project_image->move(public_path('uploads/category').'/original/', $filename);
+            $project_image->move(public_path('uploads/project_image').'/original/', $filename);
 
-            $image_resize = Image::read(public_path('uploads/category').'/original/' . $filename);
+            $image_resize = Image::read(public_path('uploads/project_image').'/original/' . $filename);
             $image_resize->resize(600, 340, function ($constraint) {
                 $constraint->aspectRatio();
             });
-            $image_resize->save(public_path('uploads/category').'/thumbnail/' . $filename);
+            $image_resize->save(public_path('uploads/project_image').'/thumbnail/' . $filename);
             $project_model->project_image = $filename;
         }
 
-        if($request->hasFile('project_pdf'))
-        {
+        if ($request->hasFile('project_pdf')) {
             $file = $request->file('project_pdf');
-            $filename = time() . '.' . $request->file('project_pdf')->extension();
-            $filePath = public_path() . 'uploads/project_odf';
-            $file->move($filePath, $filename);
+            $filename = time() . '.' . $file->extension();
+            $filePath = 'uploads/project_pdf';
+            $file->move(public_path($filePath), $filename);
+            $project_model->project_pdf = $filePath . '/' . $filename;
         }
 
         $project_model->save();
 
         Alert::success('Project Created Successfully!');
 
-        return redirect()->route('dashboard.list');
+        return redirect()->route('dashboard.project_list');
 
 
     }
@@ -181,7 +181,7 @@ class ProjectController extends Controller
 
         Alert::success('Project Update Successfully!');
 
-        return redirect()->route('dashboard.list');
+        return redirect()->route('dashboard.project_list');
     }
 
     public function deleted($id)

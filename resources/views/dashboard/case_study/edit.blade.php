@@ -23,8 +23,10 @@
                                 <select id="category_id" name="category_id" class="form-select">
                                     <option value="">Select Category</option>
                                     @foreach($categories as $category)
-                                    <option value="{{ $category->id }}" {{ $getRecord->category_id == $category->id ? 'selected' : '' }}>
-                                        {{ app()->getLocale() == 'en' ? $category->category_name : $category->category_name_bn }}
+                                    <option value="{{ $category->id }}" {{ $getRecord->category_id == $category->id ?
+                                        'selected' : '' }}>
+                                        {{ app()->getLocale() == 'en' ? $category->category_name :
+                                        $category->category_name_bn }}
                                     </option>
                                     @endforeach
                                 </select>
@@ -34,8 +36,10 @@
                                 <select id="project_id" name="project_id" class="form-select">
                                     <option value="">Select Project</option>
                                     @foreach($projects as $project)
-                                    <option value="{{ $project->id }}" {{ $getRecord->project_id == $project->id ? 'selected' : '' }}>
-                                        {{ app()->getLocale() == 'en' ? $project->project_title : $project->project_title_bn }}
+                                    <option value="{{ $project->id }}" {{ $getRecord->project_id == $project->id ?
+                                        'selected' : '' }}>
+                                        {{ app()->getLocale() == 'en' ? $project->project_title :
+                                        $project->project_title_bn }}
                                     </option>
                                     @endforeach
 
@@ -149,8 +153,8 @@
                                 <br>
                                 <small class="form-text text-muted">Please upload a 600x340 pixels image.</small>
                             </div>
-                            <div class="col-md-6 outlined-input-container">
-                                <input type="file" id="case_pdf" name="case_pdf" class="form-control">
+                            <div class="col-md-6 mt-4 outlined-input-container">
+                                <input type="file" disabled id="case_pdf" name="case_pdf" class="form-control">
                                 <label for="case_pdf">Case PDF</label>
                             </div>
                         </div>
@@ -164,12 +168,16 @@
                                 <small class="form-text text-muted">Hint: Please upload embed link like
                                     https://www.youtube.com/embed/OW0kUmsQHnU</small>
                             </div>
-                            <div class="col-md-6 outlined-input-container">
+
+                            <div class="col-md-6  outlined-input-container">
                                 <select id="album_id" name="album_id" class="form-select">
                                     <option value="">Select Album</option>
-                                    {{-- @foreach($albums as $album)
-                                    <option value="{{ $album->id }}">{{ $album->name }}</option>
-                                    @endforeach --}}
+                                    @foreach($getAlbum as $album)
+                                    <option value="{{ $album->id }}" {{ $album->id == $getRecord->album_id ? 'selected'
+                                        : '' }}>
+                                        {{ $album->album_name }}
+                                    </option>
+                                    @endforeach
                                 </select>
                                 <label for="album_id">Album</label>
                             </div>

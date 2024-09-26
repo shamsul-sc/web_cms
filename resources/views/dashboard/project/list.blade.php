@@ -22,18 +22,19 @@
                     </div>
                 </div>
             </div>
-            <table id="scroll-vertical" class="table table-bordered dt-responsive nowrap align-middle mdl-data-table"
+            <table id="scroll-vertical"
+                class="table table-bordered dt-responsive nowrap align-middle mdl-data-table text-center "
                 style="width:100%">
                 <thead>
-                    <tr>
+                    <tr class="text-nowrap py-2">
                         <th>ID</th>
                         <th>Category Name</th>
                         <th>Project Title BN.</th>
                         <th>Project Summary BN</th>
-                        <th>Project Approx Budget</th>
-                        <th>Project Image</th>
+                        <th>Approx Budget</th>
+                        <th>Image</th>
                         <th>Joint Project</th>
-                        <th>Featured Project</th>
+                        <th>Featured</th>
                         <th>Status</th>
                         <th>Created Date</th>
                         <th>Action</th>
@@ -77,9 +78,9 @@
                         </td>
                         <td>{{ date('d-m-Y h:i:A', strtotime($category->created_at)) }}</td>
 
-                        <td class='d-flex mt-4'>
+                        <td class='d-flex align-items-center mt-5 gap-1'>
                             <a href="{{ route('dashboard.project_edit',$category->id ) }}"
-                                class="btn btn-sm btn-info">Edit</a>
+                                class="btn btn-sm btn-info ">Edit</a>
 
                             <a href="javascript:void(0)" class="btn btn-sm btn-danger"
                                 onclick="deleteConfirmation({{ $category->id }})">Delete</a>
@@ -97,6 +98,10 @@
                         <td colspan="100%">Record not found.</td>
                     </tr>
                     @endforelse
+                    @else
+                    <tr>
+                        <td colspan="100%">No records found.</td>
+                    </tr>
                     @endif
 
                 </tbody>

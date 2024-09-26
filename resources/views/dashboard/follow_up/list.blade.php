@@ -21,10 +21,10 @@
                     </div>
                 </div>
             </div>
-            <table id="scroll-vertical" class="table table-bordered dt-responsive nowrap align-middle mdl-data-table"
+            <table id="scroll-vertical" class="table table-bordered dt-responsive nowrap align-middle mdl-data-table "
                 style="width:100%">
                 <thead>
-                    <tr>
+                    <tr class="">
                         <th>Id</th>
                         <th>Follow Up Title BN.</th>
                         <th>Follow Up Date</th>
@@ -35,7 +35,7 @@
                 </thead>
                 <tbody>
                     @if($getFollowUp && $getFollowUp->count())
-                    @foreach ($getFollowUp as $value )
+                    @forelse ($getFollowUp as $value )
 
                     <tr>
                         <td>{{ $value->id }}</td>
@@ -52,7 +52,7 @@
                             </span>
                         </td>
 
-                        <td class='d-flex mt-4'>
+                        <td class='d-flex mt-4 gap-1'>
                             <a href="{{ route('dashboard.follow_up_edit',$value->id ) }}"
                                 class="btn btn-sm btn-info ">Edit</a>
 
@@ -67,7 +67,15 @@
 
                         </td>
                     </tr>
-                    @endforeach
+                    @empty
+                    <tr class="text-center">
+                        <td colspan="100%">Record not found.</td>
+                    </tr>
+                    @endforelse
+                    @else
+                    <tr>
+                        <td colspan="100%">No records found.</td>
+                    </tr>
 
                     @endif
                 </tbody>

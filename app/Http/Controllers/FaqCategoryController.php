@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\FaqCategory;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use App\Models\ProjectCategory;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Validator;
 
 class FaqCategoryController extends Controller
 {
@@ -17,7 +18,8 @@ class FaqCategoryController extends Controller
 
      public function FaqCategory_add()
     {
-        return view('dashboard.faq_category.add');
+        $data['getProjectCategory'] = ProjectCategory::getRecord();
+        return view('dashboard.faq_category.add',$data);
     }
 
     public function FaqCategory_insert(Request $request)
@@ -55,7 +57,7 @@ class FaqCategoryController extends Controller
 
     public function FaqCategory_edit($id)
     {
-
+        $data['getProjectCategory'] = ProjectCategory::getRecord();
         $data['getRecord'] = FaqCategory::getSingle($id);
         return view('dashboard.faq_category.edit',$data );
     }

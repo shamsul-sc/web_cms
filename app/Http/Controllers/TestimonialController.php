@@ -13,7 +13,8 @@ class TestimonialController extends Controller
     public function Testimonial_list()
     {
         $data['getTestimonial'] = Testimonial::getTestimonial();
-        return view(view: 'dashboard.testimonial.testimonial_list',$data);
+        return view('dashboard.testimonial.testimonial_list',$data);
+
     }
 
     public function Testimonial_add()
@@ -45,7 +46,7 @@ class TestimonialController extends Controller
         $testimonial_model->company_url    = trim($request->company_url);
         $testimonial_model->author_name    = trim($request->author_name);
         $testimonial_model->designation    = trim($request->designation);
-        $testimonial_model->content    = trim($request->content);
+        $testimonial_model->content = trim($request->content);
         $testimonial_model->serial  = $request->serial;
         $testimonial_model->status  = $request->status;
 

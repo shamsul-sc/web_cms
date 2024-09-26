@@ -27,7 +27,7 @@
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Type ID.</th>
+                        <th>Type Name</th>
                         <th>Album Name</th>
                         <th>venue</th>
                         <th>Featured Image</th>
@@ -39,11 +39,11 @@
                 </thead>
                 <tbody>
                     @if($getGalleryAlbum && $getGalleryAlbum->count())
-                    @foreach ($getGalleryAlbum as $value )
+                    @forelse ($getGalleryAlbum as $value )
 
                     <tr>
                         <td>{{ $value->id }}</td>
-                        <td>{{ $value->type_id }}</td>
+                        <td>{{ $value->type_name }}</td>
                         <td>{{ $value->album_name }}</td>
                         <td>{{ $value->venue }}</td>
                         <td><img src="/uploads/gallery_Album_photo/thumbnail/{{ $value->featured_image }}"
@@ -75,9 +75,16 @@
 
                         </td>
 
-
                     </tr>
-                    @endforeach
+                    @empty
+                    <tr class="text-center">
+                        <td colspan="100%">Record not found.</td>
+                    </tr>
+                    @endforelse
+                    @else
+                    <tr>
+                        <td colspan="100%">No records found.</td>
+                    </tr>
 
                     @endif
                 </tbody>

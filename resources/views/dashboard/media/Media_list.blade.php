@@ -25,7 +25,7 @@
             <table id="scroll-vertical" class="table table-bordered dt-responsive nowrap align-middle mdl-data-table"
                 style="width:100%">
                 <thead>
-                    <tr>
+                    <tr class="text-nowrap py-2">
                         <th>Id</th>
                         <th>Media Name</th>
                         <th>Media Logo</th>
@@ -41,18 +41,18 @@
                 </thead>
                 <tbody>
                     @if($getMedia && $getMedia->count())
-                    @foreach ($getMedia as $value )
+                    @forelse ($getMedia as $value )
 
                     <tr>
                         <td>{{ $value->id }}</td>
                         <td>{{ $value->media_name }}</td>
-                        <td><img src="/uploads/media_logo/{{ $value->main_image }}" width="100px">
+                        <td><img src="/uploads/media_logo/{{ $value->media_logo }}" width="100px">
 
                         </td>
                         <td>{{ $value->coverage_title }}</td>
                         <td>{!! $value->summary !!}</td>
                         <td>{{ $value->main_image_title }}</td>
-                        <td><img src="/uploads/main_image/thumbnail/{{ $value->media_logo }}" width="100px">
+                        <td><img src="/uploads/main_image/thumbnail/{{ $value->main_image }}" width="100px">
                         </td>
                         <td>
                             <span
@@ -71,8 +71,8 @@
                         </td>
                         <td>{{ date('d-m-Y h:i:A', strtotime($value->publish_date)) }}</td>
 
-                        <td class='d-flex mt-4'>
-                            <a href="{{ route('dashboard.media_cover_deleted',$value->id ) }}"
+                        <td class='d-flex mt-4 gap-1'>
+                            <a href="{{ route('dashboard.media_cover_edit',$value->id ) }}"
                                 class="btn btn-sm btn-info ">Edit</a>
 
                             <a href="javascript:void(0)" class="btn btn-sm btn-danger"
@@ -86,8 +86,13 @@
                             </form>
                         </td>
                     </tr>
-                    @endforeach
+                    @empty
 
+                    @endforelse
+                    @else
+                    <tr>
+                        <td class="text-center" colspan="8">No records found.</td>
+                    </tr>
                     @endif
                 </tbody>
             </table>

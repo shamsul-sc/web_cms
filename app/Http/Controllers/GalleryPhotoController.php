@@ -77,7 +77,7 @@ class GalleryPhotoController extends Controller
 
     public function GalleryPhoto_edit($id)
     {
-
+        $data['albums'] = GalleryAlbum::where('album_status', 'Show')->orderBy('album_serial')->get();
         $data['getRecord'] = GalleryPhoto::getSingle($id);
         return view('dashboard.gallery_photo.edit', $data);
     }

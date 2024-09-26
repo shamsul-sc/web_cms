@@ -1,32 +1,38 @@
 <?php
 
 // use Artisan;
-use Illuminate\Support\Facades\View;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\FAQController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\LocaleController;
-use App\Http\Controllers\ProjectController;
-use App\Http\Controllers\FollowUpController;
-use App\Http\Controllers\CaseStudyController;
+use App\Http\Controllers\auth\ForgotPasswordController;
 use App\Http\Controllers\auth\LoginController;
-use App\Http\Controllers\HomeSliderController;
-use App\Http\Controllers\MemberTypeController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\backend_auth\UserAuthController;
+use App\Http\Controllers\CaseStudyController;
+use App\Http\Controllers\EcMemberController;
+use App\Http\Controllers\EcPositionController;
+use App\Http\Controllers\EcSerialController;
 use App\Http\Controllers\FaqCategoryController;
-use App\Http\Controllers\GalleryTypeController;
-use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\FAQController;
+use App\Http\Controllers\FollowUpController;
+use App\Http\Controllers\frontend\WebAlbumsController;
+use App\Http\Controllers\frontend\WebCaseStudyController;
+use App\Http\Controllers\frontend\WebFAQController;
+use App\Http\Controllers\frontend\WebProjectController;
 use App\Http\Controllers\GalleryAlbumController;
 use App\Http\Controllers\GalleryPhotoController;
-use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\GalleryTypeController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HomeSliderController;
+use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\MediaCoverageController;
-use App\Http\Controllers\frontend\WebFAQController;
+use App\Http\Controllers\MemberTypeController;
 use App\Http\Controllers\ProjectCategoryController;
-use App\Http\Controllers\frontend\WebAlbumsController;
-use App\Http\Controllers\auth\ForgotPasswordController;
-use App\Http\Controllers\dashboard\DashboardController;
-use App\Http\Controllers\frontend\WebProjectController;
-use App\Http\Controllers\backend_auth\UserAuthController;
-use App\Http\Controllers\frontend\WebCaseStudyController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\TestimonialController;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\View;
+
+
+
 
 
 
@@ -89,15 +95,19 @@ Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth'])->group(function () {
 
-        Route::group(['middleware' => 'admin'], routes: function () {
+        Route::group(['middleware' => 'admin'],  function () {
+
+            Route::resource('ec-position', EcPositionController::class );
+            Route::resource('ec-serial', EcSerialController::class );
+            Route::resource('ec-member', EcMemberController::class );
 
             //User Auth routes
             Route::get('/users',[UserAuthController::class, 'UserList'])->name('backend_auth.user_list');
-            Route::get('/users-details/{id}',[UserAuthController::class, 'UserDetails'])->name(name: 'dashboard.users_details');
-            Route::get('/user-activate/{id}',[UserAuthController::class, 'UserActivate'])->name(name: 'dashboard.user_activate');
-            Route::get('/user-block/{id}',[UserAuthController::class, 'UserBlock'])->name(name: 'dashboard.user_block');
+            Route::get('/users-details/{id}',[UserAuthController::class, 'UserDetails'])->name( 'dashboard.users_details');
+            Route::get('/user-activate/{id}',[UserAuthController::class, 'UserActivate'])->name( 'dashboard.user_activate');
+            Route::get('/user-block/{id}',[UserAuthController::class, 'UserBlock'])->name( 'dashboard.user_block');
             Route::get('/users-profile_edit/{id}',[UserAuthController::class, 'UserProfileEdit'])->name(name: 'dashboard.users_profile_edit');
-            Route::post('/users-profile_edit/{id}', action: [UserAuthController::class, 'UserProfileUpdated'])->name('dashboard.users_profile_updated');
+            Route::post('/users-profile_edit/{id}',  [UserAuthController::class, 'UserProfileUpdated'])->name('dashboard.users_profile_updated');
 
 
             //MediaCoverage routes
@@ -110,7 +120,7 @@ Route::middleware(['auth'])->group(function () {
 
             //Member Type routes
 
-            Route::get('/member-type-list', [MemberTypeController::class, 'MemberType_list'])->name(name: 'dashboard.member_type_list');
+            Route::get('/member-type-list', [MemberTypeController::class, 'MemberType_list'])->name('dashboard.member_type_list');
             Route::get('/member-type-add', [MemberTypeController::class, 'MemberType_add'])->name('dashboard.member_type_add');
             Route::post('/member-type-add', [MemberTypeController::class, 'MemberType_insert'])->name('dashboard.member_type_insert');
             Route::get('/member-type-edit/{id}', [MemberTypeController::class, 'MemberType_edit'])->name('dashboard.member_type_edit');
@@ -129,7 +139,7 @@ Route::middleware(['auth'])->group(function () {
             //Project routes
             Route::get('/project-list', [ProjectController::class, 'project_list'])->name('dashboard.project_list');
             Route::get('/project-add', [ProjectController::class, 'project_add'])->name('dashboard.project_add');
-            Route::post('/project-insert', [ProjectController::class, 'insert'])->name('dashboard.project_insert');
+            Route::post('/project-add', [ProjectController::class, 'insert'])->name('dashboard.project_insert');
             Route::get('/project-edit/{id}', [ProjectController::class, 'edit'])->name('dashboard.project_edit');
             Route::post('/project-update/{id}', [ProjectController::class, 'update'])->name('dashboard.project_update');
             Route::delete('/project-deleted/{id}', [ProjectController::class, 'deleted'])->name('dashboard.project_deleted');
@@ -200,15 +210,31 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/testimonial-update/{id}', [TestimonialController::class, 'Testimonial_update'])->name('dashboard.testimonial_update');
             Route::delete('/testimonial-deleted/{id}', [TestimonialController::class, 'Testimonial_deleted'])->name('dashboard.testimonial_deleted');
 
+            // Route::resource('users', EcPositionController::class)->names([
+            //     // 'index' => 'backend_auth.user_list',
+            //     // 'show' => 'dashboard.users_details',
+            //     // 'edit' => 'dashboard.users_profile_edit',
+            //     // 'update' => 'dashboard.users_profile_updated',
+
+            // ]);
+
+
 
         });
 
-        Route::group(['middleware' => 'user'], routes: function () {
+        Route::group(['middleware' => 'user'],  function () {
 
+             //User Auth routes
+            // Route::get('/users',[UserAuthController::class, 'UserList'])->name('backend_auth.user_list');
+            // Route::get('/users-details/{id}',[UserAuthController::class, 'UserDetails'])->name( 'dashboard.users_details');
+            // Route::get('/user-activate/{id}',[UserAuthController::class, 'UserActivate'])->name('dashboard.user_activate');
+            // Route::get('/user-block/{id}',[UserAuthController::class, 'UserBlock'])->name(name: 'dashboard.user_block');
+            // Route::get('/users-profile_edit/{id}',[UserAuthController::class, 'UserProfileEdit'])->name('dashboard.users_profile_edit');
+            // Route::post('/users-profile_edit/{id}',  [UserAuthController::class, 'UserProfileUpdated'])->name('dashboard.users_profile_updated');
 
 
         });
-        Route::group(['middleware' => 'stuff'], routes: function () {
+        Route::group(['middleware' => 'stuff'],  function () {
 
         });
 

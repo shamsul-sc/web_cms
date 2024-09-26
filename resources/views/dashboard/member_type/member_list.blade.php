@@ -35,7 +35,7 @@
                 </thead>
                 <tbody>
                     @if($getMemberType && $getMemberType->count())
-                    @foreach ($getMemberType as $value )
+                    @forelse ($getMemberType as $value )
 
                     <tr>
                         <td>{{ $value->id }}</td>
@@ -50,7 +50,7 @@
                         </td>
                         <td>{{ date('d-m-Y h:i:A', strtotime($value->created_at)) }}</td>
 
-                        <td class='d-flex mt-4'>
+                        <td class='d-flex mt-4 gap-1'>
                             <a href="{{ route('dashboard.member_type_edit',$value->id ) }}"
                                 class="btn btn-sm btn-info ">Edit</a>
 
@@ -65,8 +65,13 @@
 
                         </td>
                     </tr>
-                    @endforeach
+                    @empty
 
+                    @endforelse
+                    @else
+                    <tr>
+                        <td class="text-center" colspan="8">No records found.</td>
+                    </tr>
                     @endif
                 </tbody>
             </table>

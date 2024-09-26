@@ -61,3 +61,11 @@
                 menubar: true
             });
 </script>
+<script>
+    $(window).on('load', function() {
+        // Show the loader for 3 seconds, then fade it out over 1 second
+        setTimeout(() => {
+            $(".loader").fadeOut(1000);
+        }, 3000); // Keeps loader for 3 seconds before fading out
+    });
+</script>

@@ -4,7 +4,6 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
-            {{-- @include('layouts._message') --}}
             @include('sweetalert::alert')
             <div class="card-header d-flex align-items-center" style="background-color: rgb(93, 198, 93);">
                 <h5 class="card-title flex-grow-1 mb-0 text-white">Category List</h5>
@@ -22,7 +21,7 @@
                     </div>
                 </div>
             </div>
-            <table id="scroll-vertical" class="table table-bordered dt-responsive nowrap align-middle mdl-data-table"
+            <table id="scroll-vertical" class="table table-bordered dt-responsive nowrap align-middle mdl-data-table "
                 style="width:100%">
                 <thead>
                     <tr>
@@ -41,7 +40,6 @@
 
                     <tr>
                         <td>{{ $category->id }}</td>
-                        <td>{{ $category->category_name }}</td>
                         <td>{{ $category->category_name_bn }}</td>
                         <td>{{ $category->slug }}</td>
                         <td>{{ $category->serial }}</td>
@@ -69,10 +67,13 @@
                         </td>
                     </tr>
                     @empty
+                    <tr class="text-center" <td colspan="100%">Record not found.</td>
+                    </tr>
+                    @endforelse
+                    @else
                     <tr>
                         <td colspan="100%">Record not found.</td>
                     </tr>
-                    @endforelse
                     @endif
                 </tbody>
             </table>
