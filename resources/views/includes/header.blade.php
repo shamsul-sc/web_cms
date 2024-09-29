@@ -47,8 +47,8 @@
                                     <a class="nav-link" href="#" role="button" id="dropdownLanguage"
                                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <img src="{{ asset('img/blank.gif') }}"
-                                            class="flag {{ __('locale.flag') }} mx-1" alt="{{ __('locale.alt') }}"> {{
-                                        __('locale.locale') }} <i class="fas fa-angle-down mx-1"></i>
+                                            class="flag {{ __('locale.flag') }} mx-1" alt="{{ __('locale.alt') }}">
+                                        {{ __('locale.locale') }} <i class="fas fa-angle-down mx-1"></i>
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="dropdownLanguage" style="">
                                         <a class="dropdown-item" href="locale/en" data-lang="English"
@@ -78,8 +78,8 @@
                     <div class="header-row">
                         <div class="header-logo">
                             <a href="{{ url('/') }}">
-                                <img src="{{ asset('img/demos/law-firm-2/logo.png') }}" class="" width="" height="70"
-                                    data-sticky-height="50" alt="" />
+                                <img src="{{ asset('img/demos/law-firm-2/logo.png') }}" class="" width=""
+                                    height="70" data-sticky-height="50" alt="" />
                             </a>
                         </div>
                     </div>
@@ -92,12 +92,12 @@
                                 <nav class="collapse">
                                     <ul class="nav nav-pills" id="mainNav">
                                         <li>
-                                            <a href="{{ url('/') }}" class="nav-link active">{{ __('custom_lang.home')
-                                                }}</a>
+                                            <a href="{{ url('/') }}"
+                                                class="nav-link active">{{ __('custom_lang.home') }}</a>
                                         </li>
                                         <li>
-                                            <a href="{{ url('/about') }}" class="nav-link">{{ __('custom_lang.about')
-                                                }}</a>
+                                            <a href="{{ url('/about') }}"
+                                                class="nav-link">{{ __('custom_lang.about') }}</a>
                                         </li>
 
                                         <!-- <li class="dropdown">
@@ -122,44 +122,41 @@
                                         </li> -->
 
                                         <li class="dropdown">
-                                            <a href="{{ url('/projects') }}" class="dropdown-item dropdown-toggle">{{
-                                                __('custom_lang.projects') }}</a>
+                                            <a href="{{ url('/projects') }}"
+                                                class="dropdown-item dropdown-toggle">{{ __('custom_lang.projects') }}</a>
                                             <ul class="dropdown-menu border-radius-0">
-                                                @if($projectCategories && $projectCategories->count())
-                                                <li class="dropdown-submenu">
-                                                    <a class="dropdown-item"
-                                                        href="{{ url('project/categories') }}">Category ({{
-                                                        $projectCategories->count() }})</a>
-                                                    <ul class="dropdown-menu  border-radius-0">
-                                                        @foreach ($projectCategories as $category)
-                                                        <li>
-                                                            <a class="dropdown-item"
-                                                                href="{{ url('project/category',$category->slug) }}">{{
-                                                                app()->getLocale() == 'en' ? $category->category_name :
-                                                                $category->category_name_bn }}
-                                                            </a>
-                                                        </li>
-                                                        @endforeach
-                                                    </ul>
-                                                </li>
+                                                @if ($projectCategories && $projectCategories->count())
+                                                    <li class="dropdown-submenu">
+                                                        <a class="dropdown-item"
+                                                            href="{{ url('project/categories') }}">Category
+                                                            ({{ $projectCategories->count() }})</a>
+                                                        <ul class="dropdown-menu  border-radius-0">
+                                                            @foreach ($projectCategories as $category)
+                                                                <li>
+                                                                    <a class="dropdown-item"
+                                                                        href="{{ url('project/category', $category->slug) }}">{{ app()->getLocale() == 'en' ? $category->category_name : $category->category_name_bn }}
+                                                                    </a>
+                                                                </li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </li>
                                                 @endif
 
-                                                @if($projects && $projects->count())
-                                                <li class="dropdown-submenu">
-                                                    <a class="dropdown-item" href="{{ url('/projects') }}">{{
-                                                        __('custom_lang.projects') }} ({{ $projects->count() }})</a>
-                                                    <ul class="dropdown-menu  border-radius-0">
-                                                        @foreach ($projects as $project)
-                                                        <li>
-                                                            <a class="dropdown-item"
-                                                                href="{{ url('project',$project->slug ) }}">{{
-                                                                app()->getLocale() == 'en' ? $project->project_title :
-                                                                $project->project_title_bn }}
-                                                            </a>
-                                                        </li>
-                                                        @endforeach
-                                                    </ul>
-                                                </li>
+                                                @if ($projects && $projects->count())
+                                                    <li class="dropdown-submenu">
+                                                        <a class="dropdown-item"
+                                                            href="{{ url('/projects') }}">{{ __('custom_lang.projects') }}
+                                                            ({{ $projects->count() }})</a>
+                                                        <ul class="dropdown-menu  border-radius-0">
+                                                            @foreach ($projects as $project)
+                                                                <li>
+                                                                    <a class="dropdown-item"
+                                                                        href="{{ url('project', $project->slug) }}">{{ app()->getLocale() == 'en' ? $project->project_title : $project->project_title_bn }}
+                                                                    </a>
+                                                                </li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </li>
                                                 @endif
                                                 <li>
                                                     <a href="{{ url('/joint-projects') }}" class="nav-link">Joint
@@ -168,16 +165,26 @@
                                             </ul>
                                         </li>
                                         <li>
-                                            <a href="{{ url('/case-studies') }}" class="nav-link">{{
-                                                __('custom_lang.case_study') }}</a>
+                                            <a href="{{ url('/case-studies') }}"
+                                                class="nav-link">{{ __('custom_lang.case_study') }}</a>
                                         </li>
                                         <li class="dropdown">
-                                            <a href="#" class="dropdown-item dropdown-toggle">{{ __('custom_lang.media')
-                                                }}</a>
+                                            <a href="#"
+                                                class="dropdown-item dropdown-toggle">{{ __('custom_lang.media') }}</a>
                                             <ul class="dropdown-menu border-radius-0">
                                                 <li>
-                                                    <a href="{{ url('/albums') }}" class="nav-link">{{
-                                                        __('custom_lang.albums') }}</a>
+                                                    <a href="{{ url('/albums') }}"
+                                                        class="nav-link">{{ __('custom_lang.albums') }}</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="#"
+                                                class="dropdown-item dropdown-toggle">{{ __('custom_lang.member') }}</a>
+                                            <ul class="dropdown-menu border-radius-0">
+                                                <li>
+                                                    <a href="{{ url('/general-member') }}"
+                                                        class="nav-link">{{ __('custom_lang.general_member') }}</a>
                                                 </li>
                                             </ul>
                                         </li>
@@ -185,7 +192,8 @@
                                             <a href="#" class="nav-link">{{ __('custom_lang.contact') }}</a>
                                         </li>
                                         <li>
-                                            <a href="{{ route('auth.login') }}" class="nav-link">Login</a>
+                                            <a href="{{ route('auth.login') }}"
+                                                class="nav-link">{{ __('custom_lang.login') }}</a>
                                         </li>
                                     </ul>
                                 </nav>

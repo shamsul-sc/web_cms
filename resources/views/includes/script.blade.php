@@ -19,8 +19,10 @@
 <!-- Theme Initialization Files -->
 <script src="{{ asset('js/theme.init.js') }}"></script>
 
+
+
 <script>
-    $(document).ready(function(){
+    $(document).ready(function() {
         // $('.dropdown-item').click(function(e){
         //     e.preventDefault();
         //     var selectedLang = $(this).data('lang');

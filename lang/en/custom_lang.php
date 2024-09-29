@@ -11,4 +11,7 @@ return [
     'media'     => 'Media',
     'albums'    => 'Albums',
     'contact'   => 'Contact',
+    'member'    => 'Member',
+    'general_member' => 'General Member',
+    'login' => 'Login',
 ];

@@ -28,38 +28,39 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
+
 <script>
-    $( function() {
-                $( "#sortable" ).sortable({
-                revert: true
-                });
-            });
+    $(function() {
+        $("#sortable").sortable({
+            revert: true
+        });
+    });
 </script>
 
 
 <script>
     window.Laravel = <?php echo json_encode([
-                'csrfToken' => csrf_token(),
-            ]); ?>
+        'csrfToken' => csrf_token(),
+    ]); ?>
 </script>
 
 <script>
     $(document).ready(function() {
-                $('#topnav-hamburger-icon').click(function() {
-                    $('body').toggleClass('menu');
-                });
-            });
+        $('#topnav-hamburger-icon').click(function() {
+            $('body').toggleClass('menu');
+        });
+    });
 </script>
 
 <!-- TinyMCE -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.10.9/tinymce.min.js"></script>
 <script>
     tinymce.init({
-                selector: 'textarea',
-                plugins: 'advlist autolink lists link image charmap print preview anchor',
-                toolbar: 'undo redo | formatselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
-                menubar: true
-            });
+        selector: 'textarea',
+        plugins: 'advlist autolink lists link image charmap print preview anchor',
+        toolbar: 'undo redo | formatselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
+        menubar: true
+    });
 </script>
 <script>
     $(window).on('load', function() {

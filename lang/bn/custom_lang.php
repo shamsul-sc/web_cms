@@ -11,5 +11,8 @@ return [
     'media'     => 'মিডিয়া',
     'albums'    => 'অ্যালবাম',
     'contact'   => 'যোগাযোগ',  
+    'member'    => 'সদস্য',
+    'general_member' => 'সাধারণ সদস্য',
+    'login' => 'লগইন করুন',
 
 ];

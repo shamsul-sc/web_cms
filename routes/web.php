@@ -15,6 +15,7 @@ use App\Http\Controllers\FollowUpController;
 use App\Http\Controllers\frontend\WebAlbumsController;
 use App\Http\Controllers\frontend\WebCaseStudyController;
 use App\Http\Controllers\frontend\WebFAQController;
+use App\Http\Controllers\frontend\WebMemberController;
 use App\Http\Controllers\frontend\WebProjectController;
 use App\Http\Controllers\GalleryAlbumController;
 use App\Http\Controllers\GalleryPhotoController;
@@ -30,6 +31,7 @@ use App\Http\Controllers\TestimonialController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
+
 
 
 
@@ -60,6 +62,10 @@ Route::get('/case-studies', [WebCaseStudyController::class, 'caseStudies'])->nam
 Route::get('/case-study/{id}', [WebCaseStudyController::class, 'caseStudyDetails'])->name('caseStudyDetails');
 
 Route::get('/albums', [WebAlbumsController::class, 'albums'])->name('albums');
+
+Route::get('/general-member', [WebMemberController::class, 'member'])->name('member');
+Route::get('/general-member', [WebMemberController::class, 'member'])->name('member.search');
+
 
 Route::get('/faqs', [WebFAQController::class, 'faqs'])->name('faqs');
 
