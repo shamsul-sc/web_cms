@@ -34,15 +34,26 @@
             background-color: inherit;
         }
 
-        .loader {
+        /* loading page */
+        .overlay {
+            display: none;
             position: fixed;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 9999;
-            /* display: none; */
-            background: #333
-                /* Hide by default */
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 999;
+            background: rgba(255, 255, 255, 0.8) url("loader.gif") center no-repeat;
+        }
+
+        /* Turn off scrollbar when body element has the loading class */
+        body.loading {
+            overflow: hidden;
+        }
+
+        /* Make spinner image visible when body element has the loading class */
+        body.loading .overlay {
+            display: block;
         }
     </style>
 
@@ -50,8 +61,8 @@
     <script src="{{ asset('js/layout.js') }}"></script>
 
     @isset($usevite)
-    <!-- Vite for Module Bundling -->
-    @vite(['resources/js/app.js'])
+        <!-- Vite for Module Bundling -->
+        @vite(['resources/js/app.js'])
     @endisset
 </head>
 
@@ -93,19 +104,6 @@
                     @include('admin_dashboard_includes.slider')
                 </div>
             </div>
-            {{-- <div id="scrollbar">
-                <div class="container-fluid">
-                    <!-- Loader -->
-                    <div class="loader"
-                        style="display:block; position:fixed; left:50%; top:50%; transform:translate(-50%, -50%); z-index:9999;">
-                        <img src="{{ asset('assets/img/logos/loading-svgrepo-com.svg') }}" alt="Loading..."
-                            width="100" />
-                    </div>
-
-                    <!-- Main Content -->
-                    @include('admin_dashboard_includes.slider')
-                </div>
-            </div> --}}
 
             <div class="sidebar-background"></div>
         </div>
@@ -142,3 +140,23 @@
 
 
 </html>
+{{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Include the Spin.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/4.0.0/spin.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js">
+</script> --}}
+{{-- <script>
+    $(document).ready(function() {
+        // Show overlay on a button click or an event
+        $('#loadButton').on('click', function() {
+            $.LoadingOverlay("show");
+
+            // Simulate a delay or perform an AJAX call
+            setTimeout(function() {
+                $.LoadingOverlay("hide"); // Hide the overlay when done
+            }, 3000);
+        });
+    });
+</script> --}}
+
+{{-- <button id="loadButton">Show Loading Spinner</button> --}}

@@ -28,9 +28,11 @@ use App\Http\Controllers\MemberTypeController;
 use App\Http\Controllers\ProjectCategoryController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\UserImportkController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
+
 
 
 
@@ -114,6 +116,9 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/user-block/{id}',[UserAuthController::class, 'UserBlock'])->name( 'dashboard.user_block');
             Route::get('/users-profile_edit/{id}',[UserAuthController::class, 'UserProfileEdit'])->name(name: 'dashboard.users_profile_edit');
             Route::post('/users-profile_edit/{id}',  [UserAuthController::class, 'UserProfileUpdated'])->name('dashboard.users_profile_updated');
+
+
+            Route::post('/users-import',  [UserImportkController::class, 'userImport'])->name('dashboard.users_import');
 
 
             //MediaCoverage routes

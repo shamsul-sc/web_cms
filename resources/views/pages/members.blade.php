@@ -27,6 +27,8 @@
                             <i class="czi-user mr-2 ml-n1"></i>
                             <span class="btn-txt">Search</span>
                         </button>
+                        <a class="btn btn-secondary waves-effect waves-light loadButton"
+                            href="{{ route('member.search') }}">Reset</a>
                     </div>
                 </div>
         </div>

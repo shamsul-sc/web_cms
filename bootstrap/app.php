@@ -1,12 +1,14 @@
 <?php
 
-use App\Http\Middleware\Authenticate;
-use Illuminate\Foundation\Application;
-use App\Http\Middleware\UserMiddleware;
 use App\Http\Middleware\AdminMiddleware;
+use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\StuffMiddleware;
+use App\Http\Middleware\UserMiddleware;
+use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -24,6 +26,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'user' => UserMiddleware::class,
             'stuff' => StuffMiddleware::class,
             'auth' => Authenticate::class,
+            'Excel' => Excel::class,
         ]);
 
     })

@@ -7,7 +7,7 @@
                 <div class="card-header d-flex align-items-center" style="background-color: rgb(93, 198, 93);">
                     <h5 class="card-title flex-grow-1 mb-0 text-white">Excursion Committee Member</h5>
                     <div class="flex-shrink-0">
-                        <a class="btn btn-soft-info waves-effect waves-light text-black"
+                        <a class="btn btn-soft-info waves-effect waves-light text-black loadButton"
                             href="{{ route('ec-member.create') }}">Add New Excursion Committee Member</a>
                     </div>
                 </div>
@@ -53,7 +53,7 @@
 
                                     <td class='d-flex  gap-1'>
                                         <a href="{{ route('ec-member.edit', $value->id) }}"
-                                            class="btn btn-sm btn-info ">Edit</a>
+                                            class="btn btn-sm btn-info loadButton">Edit</a>
 
                                         <a href="javascript:void(0)" class="btn btn-sm btn-danger"
                                             onclick="deleteConfirmation({{ $value->id }})">Delete</a>

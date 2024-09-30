@@ -7,7 +7,7 @@
                 <div class="card-header d-flex align-items-center" style="background-color: rgb(93, 198, 93);">
                     <h5 class="card-title flex-grow-1 mb-0 text-white">Excursion Committee Serial</h5>
                     <div class="flex-shrink-0">
-                        <a class="btn btn-soft-info waves-effect waves-light text-black"
+                        <a class="btn btn-soft-info waves-effect waves-light text-black loadButton"
                             href="{{ route('ec-serial.create') }}">Add New Excursion Committee Serial</a>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
 
                                     <td class='d-flex  gap-1'>
                                         <a href="{{ route('ec-serial.edit', $value->id) }}"
-                                            class="btn btn-sm btn-info ">Edit</a>
+                                            class="btn btn-sm btn-info loadButton">Edit</a>
 
                                     </td>
                                 </tr>
@@ -57,7 +57,7 @@
                             @endforelse
                         @else
                             <tr>
-                                <td class="text-center" colspan="8">No records found.</td>
+                                <td class="text-center" colspan="12">No records found.</td>
                             </tr>
                         @endif
                     </tbody>

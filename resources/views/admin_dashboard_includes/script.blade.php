@@ -27,7 +27,25 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+{{-- spinner --}}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Include the Spin.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/4.0.0/spin.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js">
+</script>
 
+<script>
+    $(document).ready(function() {
+
+        $('.loadButton').on('click', function() {
+            $.LoadingOverlay("show");
+
+            setTimeout(function() {
+                $.LoadingOverlay("hide");
+            }, 3000);
+        });
+    });
+</script>
 
 <script>
     $(function() {
@@ -36,7 +54,6 @@
         });
     });
 </script>
-
 
 <script>
     window.Laravel = <?php echo json_encode([
@@ -60,13 +77,5 @@
         plugins: 'advlist autolink lists link image charmap print preview anchor',
         toolbar: 'undo redo | formatselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
         menubar: true
-    });
-</script>
-<script>
-    $(window).on('load', function() {
-        // Show the loader for 3 seconds, then fade it out over 1 second
-        setTimeout(() => {
-            $(".loader").fadeOut(1000);
-        }, 3000); // Keeps loader for 3 seconds before fading out
     });
 </script>

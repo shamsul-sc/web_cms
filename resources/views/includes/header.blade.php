@@ -64,7 +64,7 @@
                                 FAQs
                             </a>
                             <a href="{{ route('auth.register') }}"
-                                class="btn btn-primary btn-px-4 py-3 font-weight-bold text-2 rounded-0">
+                                class="btn btn-primary btn-px-4 py-3 font-weight-bold text-2 rounded-0 loadButton">
                                 JOIN US
                             </a>
                         </div>
@@ -159,7 +159,8 @@
                                                     </li>
                                                 @endif
                                                 <li>
-                                                    <a href="{{ url('/joint-projects') }}" class="nav-link">Joint
+                                                    <a href="{{ url('/joint-projects') }}"
+                                                        class="nav-link loadButton">Joint
                                                         Project</a>
                                                 </li>
                                             </ul>
@@ -180,11 +181,11 @@
                                         </li>
                                         <li class="dropdown">
                                             <a href="#"
-                                                class="dropdown-item dropdown-toggle">{{ __('custom_lang.member') }}</a>
+                                                class="dropdown-item dropdown-toggle ">{{ __('custom_lang.member') }}</a>
                                             <ul class="dropdown-menu border-radius-0">
                                                 <li>
                                                     <a href="{{ url('/general-member') }}"
-                                                        class="nav-link">{{ __('custom_lang.general_member') }}</a>
+                                                        class="nav-link loadButton">{{ __('custom_lang.general_member') }}</a>
                                                 </li>
                                             </ul>
                                         </li>
@@ -193,7 +194,7 @@
                                         </li>
                                         <li>
                                             <a href="{{ route('auth.login') }}"
-                                                class="nav-link">{{ __('custom_lang.login') }}</a>
+                                                class="nav-link loadButton">{{ __('custom_lang.login') }}</a>
                                         </li>
                                     </ul>
                                 </nav>

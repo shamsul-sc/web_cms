@@ -75,6 +75,8 @@ class UserAuthController extends Controller
         }
         return redirect()->route('backend_auth.user_list');
     }
+
+
     public function UserProfileEdit($id)
     {
         $user = User::find($id);

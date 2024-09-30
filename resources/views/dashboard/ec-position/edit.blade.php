@@ -39,10 +39,10 @@
                     </div>
                     <div class="row">
                         <div class="col-12 text-center d-flex justify-content-between align-items-center">
-                            <a href="{{ route('ec-position.index') }}" class="btn btn-danger px-5 rounded-pill">
+                            <a href="{{ route('ec-position.index') }}" class="btn btn-danger px-5 rounded-pill loadButton">
                                 <i class="ri-arrow-go-back-line"></i> Go to list
                             </a>
-                            <button type="submit" class="btn btn-primary px-5 rounded-pill">
+                            <button type="submit" class="btn btn-primary px-5 rounded-pill loadButton">
                                 <i class="bi bi-plus-lg"></i> Update
                             </button>
                         </div>
