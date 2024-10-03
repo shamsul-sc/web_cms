@@ -8,10 +8,6 @@
                 <div class="card-header d-flex align-items-center" style="background-color: rgb(93, 198, 93);">
                     <h5 class="card-title flex-grow-1 mb-0 text-white">User List</h5>
                     <div class="flex-shrink-0">
-                        <a id=""class="btn btn-soft-info waves-effect waves-light text-black loadButton"
-                            href="{{ route('dashboard.users_import') }}"><span class="icon-on"><i
-                                    class="ri-file-excel-2-line align-bottom me-1"></i>
-                                Users Import</span></a>
                     </div>
 
                 </div>
@@ -24,17 +20,6 @@
                                         aria-controls="scroll-vertical">
                                 </label>
                             </div>
-                        </div>
-                        <div class="col-md-6 text-end">
-                            <form action="{{ route('dashboard.users_import') }}" method="POST"
-                                enctype="multipart/form-data" class="d-flex justify-content-end">
-                                @csrf
-                                <input type="file" name="file" required class="form-control w-50 me-2">
-                                <button type="submit" class="btn btn-success loadButton">
-                                    <span class="icon-on"><i class="ri-file-excel-2-line align-bottom me-1"></i> Import
-                                        Users</span>
-                                </button>
-                            </form>
                         </div>
                     </div>
                 </div>

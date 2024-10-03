@@ -10,6 +10,12 @@ class UserProfile extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id'
+        'user_id', 'father_name', 'mother_name', 'blood_group', 
+        'present_address', 'nid_number', 'gender', 'date_of_birth'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

@@ -98,7 +98,13 @@ Route::get('register', [RegisterController::class, 'showRegistrationForm'])->nam
 Route::post('register', [RegisterController::class, 'register'])->name('auth.register_insert');
 Route::get('login',  [LoginController::class, 'showLoginForm'])->name('auth.login');
 Route::post('login', [LoginController::class, 'login'])->name('auth.login_insert');
+
 Route::get('forgot-password', [ForgotPasswordController::class, 'showForgotPassForm'])->name('auth.forgot_password');
+Route::post('forgot-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('auth.forgot_password');
+
+Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
+Route::post('reset-password/{token}', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
+
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth'])->group(function () {
@@ -118,7 +124,8 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/users-profile_edit/{id}',  [UserAuthController::class, 'UserProfileUpdated'])->name('dashboard.users_profile_updated');
 
 
-            Route::post('/users-import',  [UserImportkController::class, 'userImport'])->name('dashboard.users_import');
+            Route::get('/users-import',  [UserImportkController::class, 'showUserImport'])->name('dashboard.users_import');
+            Route::post('/users-import', [UserImportkController::class, 'userImport'])->name('dashboard.upload');
 
 
             //MediaCoverage routes

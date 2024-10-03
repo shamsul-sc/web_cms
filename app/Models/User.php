@@ -22,6 +22,7 @@ class User extends Authenticatable
         'is_role',
         'email',
         'password',
+        'remember_token'
     ];
 
     /**
@@ -62,6 +63,10 @@ class User extends Authenticatable
     {
         return $this->belongsTo(EcMember::class, 'user_id'); # One to Many relation
         // return $this->belongsToMany(EcMember::class, 'user_id'); # Many to Many relation
+    }
+    public function profile()
+    {
+        return $this->hasOne(UserProfile::class);
     }
     
 

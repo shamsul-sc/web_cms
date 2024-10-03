@@ -2,7 +2,7 @@
 
 @extends('layouts.default')
 
-@section('title', 'About Us | Treatment Community Foundation')
+@section('title', 'Login| Treatment Community Foundation')
 
 @section('content')
 

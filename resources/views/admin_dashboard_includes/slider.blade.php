@@ -159,6 +159,9 @@
                                 data-key="t-category-list">
                                 Member Type
                             </a>
+                            <a href="{{ route('dashboard.users_import') }}" class="nav-link loadButton"
+                                data-key="t-starter">Import User</a>
+
                             <a href="{{ route('backend_auth.user_list') }}" class="nav-link loadButton"
                                 data-key="t-starter">User</a>
 
