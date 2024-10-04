@@ -17,6 +17,7 @@ class HomeController extends Controller
         $data['featuredProjects'] = Project::where('featured_project', 'Yes')->where('status', 'Show')->orderBy('serial')->get();
         $data['featuredCases'] = CaseStudy::select('case_studies.*', 'project_categories.category_name', 'project_categories.category_name_bn')->join('project_categories', 'project_categories.id', '=', 'case_studies.category_id')->where('featured_case', 'Yes')->where('case_studies.is_delete', 0)->get();
         $data['galleryPhotos'] = GalleryPhoto::where('status', 'Show')->orderBy('serial')->get();
+        // dd($data);
         return view('pages.home', $data);
     }
 }

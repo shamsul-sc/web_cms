@@ -43,57 +43,59 @@
 </div>
 
 @if($featuredProjects && $featuredProjects->count())
-<section class="section overlay overlay-show overlay-op-6 border-0 m-0"
-    style="background-image: url(img/backgrounds/background-2.webp); background-size: cover; background-position: center;">
-    <div class="container py-3 mb-5">
-        <div class="row pb-5 mb-4">
-            <div class="col text-center">
-                <h3 class="alternative-font-4 text-color-primary font-weight-semibold text-4 mb-2 appear-animation"
-                    data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="200">Featured Projects</h3>
-                <h2 class="text-transform-none text-color-light font-weight-bold text-10 negative-ls-1 mb-5 appear-animation"
-                    data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="400">Our Most Valuable
-                    Works</h2>
+    <section class="section overlay overlay-show overlay-op-6 border-0 m-0"
+        style="background-image: url(img/backgrounds/background-2.webp); background-size: cover; background-position: center;">
+        <div class="container py-3 mb-5">
+            <div class="row pb-5 mb-4">
+                <div class="col text-center">
+                    <h3 class="alternative-font-4 text-color-primary font-weight-semibold text-4 mb-2 appear-animation"
+                        data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="200">Featured Projects</h3>
+                    <h2 class="text-transform-none text-color-light font-weight-bold text-10 negative-ls-1 mb-5 appear-animation"
+                        data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="400">Our Most Valuable
+                        Works {{ $featuredProjects->count() }}</h2>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<div class="owl-carousel-wrapper position-relative z-index-3 pb-2 mb-2 appear-animation"
-    data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="600"
-    style="height: 373px; margin-top: -225px;">
-    <div class="owl-carousel owl-theme dots-horizontal-center custom-dots-style-1 dots-dark mb-0"
-        data-plugin-options="{'responsive': {'576': {'items': 2}, '768': {'items': 2}, '992': {'items': 3}, '1200': {'items': 3}, '1440': {'items': 5}}, 'margin': 20, 'stagePadding': 20, 'loop': true, 'nav': false, 'dots': true, 'autoplay': true, 'autoplayTimeout': 3000}">
-        @foreach ($featuredProjects as $project)
-        <div class="py-5">
-            <a href="{{ url('project',$project->slug ) }}" class="text-decoration-none">
-                <div class="card custom-card-style-1 border-0 border-radius-0 custom-box-shadow-1">
-                    <img src="{{ asset('uploads/project_image/thumbnail/'.$project->project_image) }}"
-                        class="card-img-top border-radius-0" alt="John Doe Image" />
-                    <div class="card-body text-center px-4 py-5">
-                        <h2
-                            class="card-title alternative-font-4 text-color-dark font-weight-semibold line-height-1 text-5 mb-3">
-                            {{ app()->getLocale() == 'en' ? $project->project_title : $project->project_title_bn }}
-                        </h2>
-                        <!-- <p class="text-color-grey positive-ls-3 mb-3">CEO & FOUNDER</p> -->
-                        <p class="font-weight-light text-color-dark line-height-7 mb-2">{!!
-                            Str::words(app()->getLocale() == 'en' ? $project->project_summary :
-                            $project->project_summary_bn, 20, '...') !!}</p>
-                        <span
-                            class="custom-read-more d-inline-flex justify-content-center align-items-center text-3 font-weight-medium svg-fill-color-primary">
-                            VIEW DETAILS
-                            <svg class="ms-2" version="1.1" viewBox="0 0 15.698 8.706" width="17" xml:space="preserve"
-                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                <polygon stroke="#777" stroke-width="0.1" fill="#777"
-                                    points="11.354,0 10.646,0.706 13.786,3.853 0,3.853 0,4.853 13.786,4.853 10.646,8 11.354,8.706 15.698,4.353 " />
-                            </svg>
-                        </span>
+    <div class="owl-carousel-wrapper position-relative z-index-3 pb-2 mb-2 appear-animation"
+        data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="600"
+        style="height: 373px; margin-top: -225px;">
+        <div class="owl-carousel owl-theme dots-horizontal-center custom-dots-style-1 dots-dark mb-0"
+            data-plugin-options="{'responsive': {'576': {'items': 2}, '768': {'items': 2}, '992': {'items': 3}, '1200': {'items': 3}, '1440': {'items': 5}}, 'margin': 20, 'stagePadding': 20, 'loop': true, 'nav': false, 'dots': true, 'autoplay': true, 'autoplayTimeout': 3000}">
+            @foreach ($featuredProjects as $project)
+            <div class="py-5">
+                <a href="{{ url('project',$project->slug ) }}" class="text-decoration-none">
+                    <div class="card custom-card-style-1 border-0 border-radius-0 custom-box-shadow-1">
+                        <img src="{{ asset('uploads/project_image/thumbnail/'.$project->project_image) }}"
+                            class="card-img-top border-radius-0" alt="John Doe Image" />
+                        <div class="card-body text-center px-4 py-5">
+                            <h2
+                                class="card-title alternative-font-4 text-color-dark font-weight-semibold line-height-1 text-5 mb-3">
+                                {{ app()->getLocale() == 'en' ? $project->project_title : $project->project_title_bn }}
+                            </h2>
+                            <!-- <p class="text-color-grey positive-ls-3 mb-3">CEO & FOUNDER</p> -->
+                            <p class="font-weight-light text-color-dark line-height-7 mb-2">{!!
+                                Str::words(app()->getLocale() == 'en' ? $project->project_summary :
+                                $project->project_summary_bn, 20, '...') !!}</p>
+                            <span
+                                class="custom-read-more d-inline-flex justify-content-center align-items-center text-3 font-weight-medium svg-fill-color-primary">
+                                VIEW DETAILS
+                                <svg class="ms-2" version="1.1" viewBox="0 0 15.698 8.706" width="17" xml:space="preserve"
+                                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <polygon stroke="#777" stroke-width="0.1" fill="#777"
+                                        points="11.354,0 10.646,0.706 13.786,3.853 0,3.853 0,4.853 13.786,4.853 10.646,8 11.354,8.706 15.698,4.353 " />
+                                </svg>
+                            </span>
+                        </div>
                     </div>
-                </div>
-            </a>
+                </a>
+            </div>
+            @endforeach
         </div>
-        @endforeach
     </div>
-</div>
+@else
+    <p class="text-center text-light">No featured projects available.</p>
 @endif
 
 <!-- <div class="container pb-5 my-3">
