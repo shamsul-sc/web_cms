@@ -53,12 +53,12 @@ class GalleryPhotoController extends Controller
             //echo $filename; exit();
             $image->move(public_path('uploads/gallery_photo').'/original/',$filename);
 
-            $image_resize = Image::read(public_path('uploads/gallery_photo').'/original/'.$filename);
-            $image_resize->resize(600, 340, function ($constraint) {
-                $constraint->aspectRatio();
-            });
-            $image_resize->save(public_path('uploads/gallery_photo').'/thumbnail/'.$filename);
-            $gallery_photo_model->image = $filename;
+                $image_resize = Image::read(public_path('uploads/gallery_photo').'/original/'.$filename);
+                $image_resize->resize(600, 340, function ($constraint) {
+                    $constraint->aspectRatio();
+                });
+                $image_resize->save(public_path('uploads/gallery_photo').'/thumbnail/'.$filename);
+                $gallery_photo_model->image = $filename;
 
         }
         else
