@@ -46,21 +46,28 @@ class GalleryPhotoController extends Controller
         $gallery_photo_model->serial  = $request->serial;
         $gallery_photo_model->status  = $request->status;
 
-        if($request->image)
-        {
-            $image   = $request->file('image');
-            $filename         = time().'_'.$image->getClientOriginalName();
-            //echo $filename; exit();
-            $image->move(public_path('uploads/gallery_photo').'/original/',$filename);
+       if ($request->hasFile('image')) {
+            foreach ($request->file('image') as $image) {
+                $filename = time().'_'.$image->getClientOriginalName();
+
+                $image->move(public_path('uploads/gallery_photo').'/original/', $filename);
 
                 $image_resize = Image::read(public_path('uploads/gallery_photo').'/original/'.$filename);
                 $image_resize->resize(600, 340, function ($constraint) {
                     $constraint->aspectRatio();
                 });
                 $image_resize->save(public_path('uploads/gallery_photo').'/thumbnail/'.$filename);
+
+                $gallery_photo_model = new GalleryPhoto();
+                $gallery_photo_model->album_id = $request->input('album_id'); 
+                $gallery_photo_model->serial = $request->input('serial');   
+                $gallery_photo_model->caption = $request->input('caption');   
                 $gallery_photo_model->image = $filename;
 
+                $gallery_photo_model->save();
+            }
         }
+
         else
         {
             $gallery_photo_model->image = null;
@@ -71,7 +78,6 @@ class GalleryPhotoController extends Controller
         Alert::success(title: 'Gallery Photo Created Successfully!');
 
         return redirect()->route('dashboard.gallery_photo_list');
-
 
     }
 
@@ -138,7 +144,7 @@ class GalleryPhotoController extends Controller
 
         $gallery_photo_model->save();
 
-         Alert::success(title: 'Gallery Photo Updated Successfully!');
+        Alert::success(title: 'Gallery Photo Updated Successfully!');
 
         return redirect()->route('dashboard.gallery_photo_list');
 

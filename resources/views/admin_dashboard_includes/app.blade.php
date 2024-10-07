@@ -25,8 +25,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.0/min/dropzone.min.css">
 
 
-
-
     <!-- Custom Styles -->
     <style>
         .topbar-user {
@@ -111,7 +109,7 @@
         <div class="main-content">
             <div class="page-content">
                 <div class="container-fluid">
-
+                    @include('sweetalert::alert')
 
                     @yield('content')
                 </div>
@@ -131,9 +129,11 @@
             </button>
 
             <!-- Scripts -->
-            @include('admin_dashboard_includes.script')
+
 
         </div>
+        @include('admin_dashboard_includes.script')
+        @yield('scripts')
 </body>
 
 
