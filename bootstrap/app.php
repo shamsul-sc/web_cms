@@ -8,6 +8,8 @@ use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 use Maatwebsite\Excel\Facades\Excel;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 
 return Application::configure(basePath: dirname(__DIR__))
@@ -28,6 +30,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'stuff' => StuffMiddleware::class,
             'auth' => Authenticate::class,
             'Excel' => Excel::class,
+            'Alert' => Alert::class,
         ]);
 
     })

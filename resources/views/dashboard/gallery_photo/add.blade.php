@@ -2,12 +2,14 @@
 
 @section('styles')
     <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+    {{-- <link rel="stylesheet" href="{{ asset('libs/dropzone/dropzone.css" type="text/css') }}" /> --}}
 @endsection
 
 @section('content')
     <div class="d-flex justify-content-center align-items-center">
         <div class="col-xxl-6">
             <div class="card">
+                @include('sweetalert::alert')
                 <div class="card-header align-items-center d-flex text-white" style="background-color: rgb(93, 198, 93);">
                     <h4 class="card-title mb-0 flex-grow-1">Add Gallery Photo</h4>
                 </div>
@@ -101,6 +103,18 @@
     <script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
     <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.0/min/dropzone.min.js"></script>
+
+    {{-- <!-- dropzone min -->
+    <script src="{{ asset('assets/libs/dropzone/dropzone-min.js') }}"></script>
+    <!-- filepond js -->
+    <script src="{{ asset('libs/filepond/filepond.min.js') }}"></script>
+    <script src="{{ asset('libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.js') }}"></script>
+    <script src="{{ asset('libs/filepond-plugin-file-validate-size/filepond-plugin-file-validate-size.min.js') }}"></script>
+    <script src="{{ asset('libs/filepond-plugin-image-exif-orientation/filepond-plugin-image-exif-orientation.min.js') }}">
+    </script>
+    <script src="{{ asset('libs/filepond-plugin-file-encode/filepond-plugin-file-encode.min.js') }}"></script>
+
+    <script src="{{ asset('js/pages/form-file-upload.init.js') }}"></script> --}}
 
 
     <script type="text/javascript">

@@ -82,7 +82,14 @@
                     </tbody>
                 </table>
                 <div class="d-flex justify-content-between">
-                    <div></div>
+                    <div>
+                        @if ($getGalleryPhoto->count())
+                            Showing {{ $getGalleryPhoto->firstItem() }} to {{ $getGalleryPhoto->lastItem() }} of
+                            {{ $getGalleryPhoto->total() }} results
+                        @else
+                            <span class="text-center" colspan="12">No records found.</span>
+                        @endif
+                    </div>
                     <div class="d-flex justify-content-end">
                         {!! $getGalleryPhoto->appends(Illuminate\Support\Facades\Request::except('page'))->links() !!}
                     </div>

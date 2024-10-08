@@ -79,16 +79,31 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
+    // protected function create(array $data)
+    // {
+    //     // Create the user with the validated data
+    //     return User::create([
+    //         'is_role' => $data['is_role'],
+    //         'name' => $data['name'],
+    //         'mobile_no' => $data['mobile_no'],
+    //         'email' => $data['email'],
+    //         'password' => Hash::make($data['password']),
+    //         'remember_token' => Str::random(50),
+    //     ]);
+    // }
     protected function create(array $data)
     {
-        // Create the user with the validated data
-        return User::create([
-            'is_role' => $data['is_role'],
-            'name' => $data['name'],
-            'mobile_no' => $data['mobile_no'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'remember_token' => Str::random(50),
-        ]);
+        return User::firstOrCreate(
+            // ['email' => $data['email']], 
+            ['mobile_no' => $data['mobile_no']], 
+            [
+                'is_role' => $data['is_role'],
+                'name' => $data['name'],
+                // 'mobile_no' => $data['mobile_no'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+                'remember_token' => Str::random(50),
+            ]
+        );
     }
 }
